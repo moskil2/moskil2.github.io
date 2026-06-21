@@ -64,10 +64,18 @@
     .app-card {
       background: #1a1a1a;
       border: 1px solid #2a2a2a;
-      border-radius: 12px;
+      border-radius: 16px;
       padding: 1.5rem 2rem;
       text-align: center;
       min-width: 160px;
+    }
+    .app-icon {
+      width: 80px;
+      height: 80px;
+      border-radius: 18px;
+      object-fit: cover;
+      margin: 0 auto 0.75rem;
+      display: block;
     }
     .app-name {
       font-size: 1.1rem;
@@ -95,10 +103,12 @@
 
   <div class="apps">
     <div class="app-card">
+      <img class="app-icon" src="/icons/directdrop.png" alt="DirectDrop icon">
       <div class="app-name">DirectDrop</div>
       <a href="/directdrop/privacy.html">Privacy Policy</a>
     </div>
     <div class="app-card">
+      <img class="app-icon" src="/icons/truebubble.jpg" alt="TrueBubble icon">
       <div class="app-name">TrueBubble</div>
       <a href="/truebubble/privacy.html">Privacy Policy</a>
     </div>
