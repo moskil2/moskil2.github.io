@@ -2,7 +2,8 @@
   "permissions": {
     "allow": [
       "Read(//c/TEMP/TrueBubble/TrueBubbleApp/app/src/main/java/com/truebubble/sensor/**)",
-      "PowerShell(gh api repos/moskil2/moskil2.github.io/pages -H \"Accept: application/vnd.github+json\" 2>&1)"
+      "PowerShell(gh api repos/moskil2/moskil2.github.io/pages -H \"Accept: application/vnd.github+json\" 2>&1)",
+      "Bash(/c/Users/RWSwiss/AppData/Local/Programs/Python/Python313/python -c ' *)"
     ]
   }
 }
