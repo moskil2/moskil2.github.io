@@ -50,11 +50,19 @@
       padding: 2rem;
     }
     .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
       font-size: 1.5rem;
       font-weight: 700;
       letter-spacing: 0.05em;
       color: #fff;
       margin-bottom: 0.5rem;
+    }
+    .logo img {
+      height: 1.6em;
+      width: 1.6em;
+      border-radius: 22%;
     }
     .tagline {
       font-size: 0.9rem;
@@ -104,7 +112,7 @@
   </style>
 </head>
 <body>
-  <div class="logo">Spot Robotics</div>
+  <div class="logo"><span>Spot Robotics</span><img src="/icons/logo-header.png" alt="Spot Robotics logo"></div>
   <div class="tagline">Simple apps. Honest policies.</div>
 
   <div class="apps">
