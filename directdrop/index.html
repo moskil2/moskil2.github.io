@@ -80,7 +80,7 @@
       font-family: 'JetBrains Mono', monospace; font-size: 13px;
     }
     .hero-visual { display: flex; align-items: center; justify-content: center; gap: 8px; }
-    .hero-shot { display: flex; justify-content: center; flex: none; }
+    .hero-shot { display: flex; justify-content: center; flex: none; margin-left: -72px; }
     .hero-shot .bezel {
       border-radius: 36px; padding: 10px; background: #1f2128;
       box-shadow: 0 30px 80px rgba(0,0,0,0.55), inset 0 0 0 1px #2c2e36;
@@ -89,11 +89,22 @@
 
     /* device tree */
     .tree-arrow {
-      flex: none; display: flex; flex-direction: column; align-items: center; gap: 6px;
-      color: #1f6feb; font-family: 'JetBrains Mono', monospace; font-size: 34px; font-weight: 700;
-      line-height: 1;
+      flex: none; display: flex; flex-direction: column; justify-content: center; gap: 16px;
     }
-    .tree-arrow span { display: block; }
+    .arrow-line {
+      position: relative; width: 96px; height: 3px; background: #1f6feb; border-radius: 2px;
+    }
+    .arrow-line::after {
+      content: ""; position: absolute; top: 50%; width: 0; height: 0; border-style: solid;
+    }
+    .arrow-right::after {
+      right: -1px; transform: translateY(-50%);
+      border-width: 7px 0 7px 9px; border-color: transparent transparent transparent #1f6feb;
+    }
+    .arrow-left::after {
+      left: -1px; transform: translateY(-50%);
+      border-width: 7px 9px 7px 0; border-color: transparent #1f6feb transparent transparent;
+    }
     .device-tree {
       flex: none; position: relative; padding-left: 24px;
       display: flex; flex-direction: column; gap: 10px;
@@ -125,8 +136,8 @@
       display: flex; align-items: center; justify-content: center; flex: none;
     }
     .step-head span.title { font-weight: 700; font-size: 16px; }
-    .step-shot { border-radius: 20px; overflow: hidden; background: #16171c; box-shadow: inset 0 0 0 1px #2c2e36; }
-    .step-shot img { width: 100%; height: auto; display: block; }
+    .step-shot { border-radius: 20px; overflow: hidden; background: #16171c; box-shadow: inset 0 0 0 1px #2c2e36; aspect-ratio: 480 / 832; }
+    .step-shot img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .step-card p { margin: 0; color: #a8a49a; font-size: 14.5px; line-height: 1.5; }
 
     /* features */
@@ -203,6 +214,7 @@
     @media (max-width: 880px) {
       .hero { grid-template-columns: 1fr; padding-top: 40px; gap: 40px; }
       .hero-visual { order: -1; }
+      .hero-shot { margin-left: 0; }
       .tree-arrow, .device-tree { display: none; }
       .hero h1 { font-size: 38px; }
       .steps { grid-template-columns: repeat(2, 1fr); }
@@ -247,7 +259,7 @@
           <img src="img/home.jpg" alt="DirectDrop home screen" width="280" height="606">
         </div>
       </div>
-      <div class="tree-arrow"><span>&rarr;</span><span>&larr;</span></div>
+      <div class="tree-arrow"><span class="arrow-line arrow-right"></span><span class="arrow-line arrow-left"></span></div>
       <div class="device-tree">
         <div class="device-node"><div class="name">PC Windows</div><div class="via">Browser</div></div>
         <div class="device-node"><div class="name">PC Mac</div><div class="via">Browser</div></div>
