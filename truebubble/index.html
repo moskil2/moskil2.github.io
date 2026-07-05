@@ -137,10 +137,11 @@
     .anydevice p { font-size: 17px; line-height: 1.6; color: #a8a49a; margin: 0 0 20px; }
     .anydevice p:last-child { margin-bottom: 0; }
     .anydevice p strong { color: #f3f1ea; }
-    .anydevice-shot { border-radius: 20px; overflow: hidden; box-shadow: 0 30px 80px rgba(0,0,0,0.5); }
-    .anydevice-shot img { width: 100%; height: auto; display: block; }
-    .anydevice-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-    .anydevice-pair .anydevice-shot:last-child { margin-top: 40px; }
+    .device-shot { display: flex; justify-content: center; }
+    .device-shot img { width: 100%; max-width: 280px; height: auto; display: block; border-radius: 20px; box-shadow: 0 30px 80px rgba(0,0,0,0.5); }
+    .device-pair { display: flex; justify-content: center; align-items: flex-start; gap: 16px; flex-wrap: wrap; }
+    .device-pair .device-shot img { max-width: 240px; }
+    .device-pair .device-shot:last-child { margin-top: 40px; }
 
     /* privacy */
     .privacy-wrap { max-width: 1200px; margin: 32px auto 96px; padding: 0 32px; }
@@ -196,7 +197,7 @@
       .steps { grid-template-columns: repeat(2, 1fr); }
       .feature-grid { grid-template-columns: repeat(2, 1fr); }
       .anydevice { grid-template-columns: 1fr; gap: 32px; }
-      .anydevice-pair .anydevice-shot:last-child { margin-top: 0; }
+      .device-pair .device-shot:last-child { margin-top: 0; }
       .privacy { grid-template-columns: 1fr; padding: 40px; }
       .privacy-points { grid-template-columns: 1fr; }
       .final-cta { justify-content: center; text-align: center; padding: 48px 32px; }
@@ -318,15 +319,15 @@
       <p>Place your phone on a known-flat reference and one tap zeroes the sensor offset, with step-by-step on-screen guidance. No guesswork, no drift left uncorrected.</p>
       <p>Want more control? <strong>Manual calibration</strong> lets you fine-tune pitch and roll offsets directly with +/- controls, and always shows exactly when the device was last calibrated.</p>
     </div>
-    <div class="anydevice-pair">
-      <div class="anydevice-shot"><img src="img/04_Calibration_Guide.jpg" alt="Guided auto calibration screen"></div>
-      <div class="anydevice-shot"><img src="img/05_Calibration_Manual.jpg" alt="Manual pitch and roll calibration screen"></div>
+    <div class="device-pair">
+      <div class="device-shot"><img src="img/04_Calibration_Guide.jpg" alt="Guided auto calibration screen"></div>
+      <div class="device-shot"><img src="img/05_Calibration_Manual.jpg" alt="Manual pitch and roll calibration screen"></div>
     </div>
   </section>
 
   <!-- CUSTOMIZATION HIGHLIGHT -->
   <section class="anydevice">
-    <div class="anydevice-shot" style="order:1;"><img src="img/03_Settings_Appearance.jpg" alt="Appearance settings with theme and bubble color picker"></div>
+    <div class="device-shot" style="order:1;"><img src="img/03_Settings_Appearance.jpg" alt="Appearance settings with theme and bubble color picker"></div>
     <div style="order:2;">
       <div class="eyebrow">Make it yours</div>
       <h2>Readable in any light.</h2>
