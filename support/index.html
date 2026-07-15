@@ -87,7 +87,7 @@
     <a class="back" href="/">&larr; spotrobotics.app</a>
 
     <h1>Support & Feedback</h1>
-    <p class="lede">Found a bug? Have an idea for a new feature? Send it directly to Tomasz - every message is read personally.</p>
+    <p class="lede">Found a bug? Have an idea for a new feature? Send it directly to us - every message is read personally.</p>
 
     <form id="supportForm">
       <input type="hidden" name="access_key" value="bc6d6e3e-ffcf-4103-9a43-95e32f0d43d7">
@@ -108,6 +108,7 @@
 
       <label for="message">Message</label>
       <textarea id="message" name="message" placeholder="Describe the bug or feature request in detail" required></textarea>
+      <p class="hint">Tip: to attach a screenshot, upload it to a site like imgur.com and paste the link here.</p>
 
       <label for="email">Your email (optional, if you'd like a reply)</label>
       <input type="email" id="email" name="email" placeholder="you@example.com">
@@ -134,11 +135,9 @@
       btn.textContent = 'Sending...';
 
       try {
-        const payload = Object.fromEntries(new FormData(form).entries());
         const res = await fetch('https://api.web3forms.com/submit', {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-          body: JSON.stringify(payload),
+          body: new FormData(form),
         });
         const data = await res.json();
         if (data.success) {
