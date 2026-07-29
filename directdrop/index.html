@@ -3,14 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DirectDrop – Send files to any device over Wi-Fi | Spot Robotics</title>
+  <title>DirectDrop - Send files to any device over Wi-Fi | Spot Robotics</title>
   <meta name="description" content="DirectDrop transfers files between your Android phone and any device with a browser over local Wi-Fi. No cloud. No account. Free on Google Play.">
   <meta name="author" content="Tomasz Pieczara">
-  <meta property="og:title" content="DirectDrop – Send files to any device over Wi-Fi">
+  <meta property="og:title" content="DirectDrop - Send files to any device over Wi-Fi">
   <meta property="og:description" content="No cloud. No account. Your phone becomes the sender - nothing to install on the other side.">
   <meta property="og:url" content="https://spotrobotics.app/directdrop/">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://spotrobotics.app/icons/directdrop.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="DirectDrop - Send files to any device over Wi-Fi">
+  <meta name="twitter:description" content="No cloud. No account. Your phone becomes the sender - nothing to install on the other side.">
+  <meta name="twitter:image" content="https://spotrobotics.app/icons/directdrop.png">
   <link rel="canonical" href="https://spotrobotics.app/directdrop/">
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
@@ -184,6 +188,19 @@
     .privacy-points .check { color: #3ec87a; font-weight: 800; flex-shrink: 0; }
     .privacy-points span.label { font-size: 15.5px; line-height: 1.5; color: #f3f1ea; }
 
+    /* faq */
+    .faq-wrap { max-width: 900px; margin: 0 auto; padding: 96px 32px; }
+    .faq-list { display: flex; flex-direction: column; gap: 16px; }
+    .faq-item { background: #1f2128; border-radius: 18px; padding: 22px 26px; }
+    .faq-item summary {
+      cursor: pointer; font-weight: 700; font-size: 16.5px; list-style: none;
+      display: flex; justify-content: space-between; align-items: center; gap: 16px;
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after { content: "+"; color: #1f6feb; font-size: 22px; font-weight: 800; flex: none; }
+    .faq-item[open] summary::after { content: "\00d7"; }
+    .faq-item p { margin-top: 14px; color: #a8a49a; font-size: 15px; line-height: 1.6; }
+
     /* footnote strip */
     .footnote-wrap { max-width: 1200px; margin: 0 auto; padding: 0 32px 96px; text-align: center; }
     .footnote-pill {
@@ -241,6 +258,44 @@
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
     "downloadUrl": "https://play.google.com/store/apps/details?id=app.spotrobotics.directdrop",
     "installUrl": "https://play.google.com/store/apps/details?id=app.spotrobotics.directdrop"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Do I need to create an account to use DirectDrop?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. DirectDrop works with zero sign-up - install it and start sending files right away." }
+      },
+      {
+        "@type": "Question",
+        "name": "Does DirectDrop work between Android and iPhone?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. The receiving device just needs a browser - iPhone, iPad, Mac, PC, Linux, and smart TVs all work, since nothing has to be installed on that side." }
+      },
+      {
+        "@type": "Question",
+        "name": "Do my files pass through the cloud or a server?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. Files travel directly between devices over your local Wi-Fi network - they are never uploaded to a server." }
+      },
+      {
+        "@type": "Question",
+        "name": "Do both devices need to be on the same Wi-Fi network?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes, both devices need to be connected to the same local Wi-Fi network for the transfer to work." }
+      },
+      {
+        "@type": "Question",
+        "name": "Is there a file size limit?",
+        "acceptedAnswer": { "@type": "Answer", "text": "There is no fixed limit set by the app. Since transfers go directly over Wi-Fi instead of through a server, the practical limit depends on your network speed and available storage." }
+      },
+      {
+        "@type": "Question",
+        "name": "Is DirectDrop free?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes, DirectDrop is completely free on Google Play." }
+      }
+    ]
   }
   </script>
 </head>
@@ -399,6 +454,40 @@
         <div><span class="check">&check;</span><span class="label">No data collection</span></div>
         <div><span class="check">&check;</span><span class="label">Local Wi-Fi network only</span></div>
       </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq-wrap">
+    <div class="section-head">
+      <div class="eyebrow">FAQ</div>
+      <h2>Questions, answered.</h2>
+    </div>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>Do I need to create an account?</summary>
+        <p>No. DirectDrop works with zero sign-up - install it and start sending files right away.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Does it work between Android and iPhone?</summary>
+        <p>Yes. The receiving device just needs a browser - iPhone, iPad, Mac, PC, Linux, and smart TVs all work, since nothing has to be installed on that side.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Do my files pass through the cloud or a server?</summary>
+        <p>No. Files travel directly between devices over your local Wi-Fi network - they are never uploaded to a server.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Do both devices need to be on the same Wi-Fi network?</summary>
+        <p>Yes, both devices need to be connected to the same local Wi-Fi network for the transfer to work.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Is there a file size limit?</summary>
+        <p>There is no fixed limit set by the app. Since transfers go directly over Wi-Fi instead of through a server, the practical limit depends on your network speed and available storage.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Is DirectDrop free?</summary>
+        <p>Yes, DirectDrop is completely free on Google Play.</p>
+      </details>
     </div>
   </section>
 
