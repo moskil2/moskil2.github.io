@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EggSPEED – Bafang BBS01/BBS02/BBSHD configuration tool | Spot Robotics</title>
+  <title>EggSPEED – Program your Bafang BBS01/BBS02/BBSHD controller from your phone | Spot Robotics</title>
   <meta name="description" content="EggSPEED reads and displays your Bafang BBS01/BBS02/BBSHD controller over USB - live cockpit, full Basic/Pedal/Throttle configuration, assist-level tuning. Read-only by design, can't brick your controller.">
   <meta name="author" content="Tomasz Pieczara">
   <meta property="og:title" content="EggSPEED – Bafang BBS01/BBS02/BBSHD configuration tool">
@@ -141,12 +141,17 @@
     .anydevice p { font-size: 17px; line-height: 1.6; color: #a8a49a; margin: 0 0 20px; }
     .anydevice p:last-child { margin-bottom: 0; }
     .anydevice p strong { color: #f3f1ea; }
-    .device-shot { display: flex; justify-content: center; }
-    .device-shot img { width: 100%; max-width: 280px; height: auto; display: block; border-radius: 20px; box-shadow: 0 30px 80px rgba(0,0,0,0.5); }
-    .device-pair { display: flex; justify-content: center; align-items: flex-start; gap: 16px; flex-wrap: wrap; }
-    .device-pair .device-shot img { max-width: 210px; }
-    .device-pair .device-shot:nth-child(2) { margin-top: 32px; }
-    .device-pair .device-shot:nth-child(3) { margin-top: 64px; }
+    /* Uniform screenshot row - every image the same fixed size, top-aligned in a single line,
+       regardless of how many screenshots the section has (1, 2 or 3) - a flat "table row" of
+       shots instead of a staggered/oversized collage. */
+    .shot-row {
+      display: flex; align-items: flex-start; justify-content: flex-start;
+      gap: 16px; flex-wrap: wrap;
+    }
+    .shot-row img {
+      width: 160px; height: auto; display: block; flex: none;
+      border-radius: 16px; box-shadow: 0 16px 40px rgba(0,0,0,0.45);
+    }
 
     /* privacy */
     .privacy-wrap { max-width: 1200px; margin: 32px auto 96px; padding: 0 32px; }
@@ -202,7 +207,7 @@
       .steps { grid-template-columns: 1fr; }
       .feature-grid { grid-template-columns: repeat(2, 1fr); }
       .anydevice { grid-template-columns: 1fr; gap: 32px; }
-      .device-pair .device-shot:nth-child(2), .device-pair .device-shot:nth-child(3) { margin-top: 0; }
+      .shot-row { justify-content: flex-start; }
       .privacy { grid-template-columns: 1fr; padding: 40px; }
       .privacy-points { grid-template-columns: 1fr; }
       .final-cta { justify-content: center; text-align: center; padding: 48px 32px; }
@@ -241,8 +246,9 @@
         <img src="/icons/eggspeed.png" alt="EggSPEED icon">
         <span>EggSPEED</span>
       </div>
-      <h1>Your Bafang controller, fully readable, right on your phone.</h1>
-      <p class="lede">Live cockpit, full Basic/Pedal/Throttle configuration, and assist-level tuning for BBS01/BBS02/BBSHD - over a simple USB cable, no Bluetooth dongle needed.</p>
+      <div class="eyebrow">Bafang BBS01 / BBS02 / BBSHD programming tool</div>
+      <h1>Program your Bafang controller, right from your phone.</h1>
+      <p class="lede">Connect over a simple USB cable and see everything your controller has stored - live cockpit, full Basic/Pedal/Throttle configuration, and assist-level tuning for BBS01/BBS02/BBSHD. No PC, no Bluetooth dongle needed.</p>
       <div class="hero-ctas">
         <a class="btn-primary" href="/eggspeed/EggSPEED_v0.3.4.apk">Download APK v0.3.4 &rarr;</a>
         <span class="badge-warn">USB OTG required</span>
@@ -347,21 +353,23 @@
       <p>Basic (battery protection, current limit, wheel and speed-meter setup), Pedal Assist (sensor type, start current, slow-start mode, work mode), and Throttle (start/end voltage, speed or current mode) - all read directly from the controller and shown the way the factory display would.</p>
       <p><strong>Read-only in this release</strong> - see and understand your full setup with zero risk of a bad write.</p>
     </div>
-    <div class="device-pair">
-      <div class="device-shot"><img src="img/03_BafangBasic.jpg" alt="Bafang Basic configuration screen"></div>
-      <div class="device-shot"><img src="img/04_BafangPedal.jpg" alt="Bafang Pedal Assist (PAS) configuration screen"></div>
-      <div class="device-shot"><img src="img/05_BafangThrottle.jpg" alt="Bafang Throttle configuration screen"></div>
+    <div class="shot-row">
+      <img src="img/03_BafangBasic.jpg" alt="Bafang Basic configuration screen">
+      <img src="img/04_BafangPedal.jpg" alt="Bafang Pedal Assist (PAS) configuration screen">
+      <img src="img/05_BafangThrottle.jpg" alt="Bafang Throttle configuration screen">
     </div>
   </section>
 
   <!-- ASSIST LEVELS HIGHLIGHT -->
   <section class="anydevice">
-    <div class="device-shot" style="order:1;"><img src="img/06_AssistLevels.jpg" alt="Assist levels screen with power and speed distribution charts"></div>
-    <div style="order:2;">
+    <div>
       <div class="eyebrow">Assist levels</div>
       <h2>Dial in every level, see the shape of your ride.</h2>
       <p>Speed limit and current limit for each of the 10 assist levels (0-9), plus power- and speed-distribution charts across all levels at a glance.</p>
       <p>See exactly how aggressive level 7 really is compared to level 3 - before you're already riding it.</p>
+    </div>
+    <div class="shot-row">
+      <img src="img/06_AssistLevels.jpg" alt="Assist levels screen with power and speed distribution charts">
     </div>
   </section>
 
@@ -373,9 +381,9 @@
       <p>Tell EggSPEED your cell count and capacity once, and the cockpit's range estimate blends your riding history with your current riding style - the longer the trip, the more it adapts to how you're riding right now.</p>
       <p>Controller reading current wrong after a shunt mod? <strong>Calibration</strong> applies an app-side current and voltage correction factor - nothing is changed on the controller.</p>
     </div>
-    <div class="device-pair">
-      <div class="device-shot"><img src="img/07_Battery.jpg" alt="Battery screen with cell count and capacity"></div>
-      <div class="device-shot"><img src="img/09_Calibration.jpg" alt="Calibration screen with current and voltage correction"></div>
+    <div class="shot-row">
+      <img src="img/07_Battery.jpg" alt="Battery screen with cell count and capacity">
+      <img src="img/09_Calibration.jpg" alt="Calibration screen with current and voltage correction">
     </div>
   </section>
 
@@ -387,9 +395,9 @@
       <p>Save the current configuration as a named profile, export it to a <strong>.ini</strong> file, or import one back in.</p>
       <p>Switch between km/h and mph, set your real odometer reading, or force extreme values with Test mode to check the cockpit layout on your own device.</p>
     </div>
-    <div class="device-pair">
-      <div class="device-shot"><img src="img/11_Profiles.jpg" alt="Profiles screen with save, import and export"></div>
-      <div class="device-shot"><img src="img/08_Settings.jpg" alt="Settings screen with units, odometer and test mode"></div>
+    <div class="shot-row">
+      <img src="img/11_Profiles.jpg" alt="Profiles screen with save, import and export">
+      <img src="img/08_Settings.jpg" alt="Settings screen with units, odometer and test mode">
     </div>
   </section>
 
@@ -401,9 +409,9 @@
       <p>English or Polish, switchable any time from the menu.</p>
       <p>The About tab always has the current Privacy Policy and Terms of Service, plus a direct link to report a bug or request a feature - read personally, every time.</p>
     </div>
-    <div class="device-pair">
-      <div class="device-shot"><img src="img/12_Language.jpg" alt="Language selection screen"></div>
-      <div class="device-shot"><img src="img/13_About.jpg" alt="About screen with privacy policy, terms of service and contact"></div>
+    <div class="shot-row">
+      <img src="img/12_Language.jpg" alt="Language selection screen">
+      <img src="img/13_About.jpg" alt="About screen with privacy policy, terms of service and contact">
     </div>
   </section>
 
