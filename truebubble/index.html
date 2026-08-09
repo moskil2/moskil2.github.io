@@ -64,6 +64,14 @@
       transition: background .15s ease, color .15s ease;
     }
     .btn-outline:hover { background: rgba(31,111,235,0.1); }
+    .btn-github {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: #FFC107; color: #1a1408; font-weight: 700; font-size: 17px;
+      padding: 16px 28px; border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(255,193,7,0.4);
+      transition: background .15s ease;
+    }
+    .btn-github:hover { background: #ffce3d; }
     .badge-soon {
       display: inline-flex; align-items: center;
       font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 700;
@@ -71,13 +79,11 @@
       background: rgba(242,163,60,0.14); border: 1px solid rgba(242,163,60,0.4);
       border-radius: 100px; padding: 7px 14px;
     }
-    .badge-testing {
-      display: inline-flex; align-items: center;
-      font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 700;
-      letter-spacing: 0.05em; text-transform: uppercase; color: #1f6feb;
-      background: rgba(31,111,235,0.14); border: 1px solid rgba(31,111,235,0.4);
-      border-radius: 100px; padding: 7px 14px;
+    .hero-note {
+      margin: 16px 0 0; color: #a8a49a; font-size: 14.5px; line-height: 1.5;
     }
+    .hero-note a { color: #35D07F; font-weight: 600; }
+    .hero-note a:hover { text-decoration: underline; }
     .link-muted {
       color: #a8a49a; font-weight: 600; font-size: 15px;
       border-bottom: 1px solid #3a3b42; padding-bottom: 2px;
@@ -230,6 +236,7 @@
 
   <div class="topbar">
     <a href="/">&larr; spotrobotics.app</a>
+    <a href="https://github.com/moskil2/TrueBubble" target="_blank" rel="noopener">GitHub</a>
     <a href="/truebubble/privacy.html">Privacy Policy</a>
   </div>
 
@@ -243,18 +250,17 @@
       <h1>A precision bubble level and protractor, right in your pocket.</h1>
       <p class="lede">Dual-axis level, bullseye mode, and real calibration - so readings you can actually build with.</p>
       <div class="hero-ctas">
-        <a class="btn-primary" href="https://groups.google.com/g/truebubble" target="_blank" rel="noopener">Join the tester group &rarr;</a>
-        <a class="btn-outline" href="https://play.google.com/apps/testing/app.spotrobotics.truebubble" target="_blank" rel="noopener">Open testing link on Play Store &rarr;</a>
-        <span class="badge-testing">Closed testing</span>
+        <a class="btn-primary" href="https://play.google.com/apps/testing/app.spotrobotics.truebubble" target="_blank" rel="noopener">Get the beta on Google Play &rarr;</a>
+        <a class="btn-github" href="https://github.com/moskil2/TrueBubble" target="_blank" rel="noopener">View on GitHub &rarr;</a>
       </div>
+      <p class="hero-note">TrueBubble is in closed testing - <a href="https://groups.google.com/g/truebubble" target="_blank" rel="noopener">join the tester group</a> first, then open the Google Play link above to unlock the install button.</p>
       <div class="hero-foot mono">
         <span>~17 MB</span>
         <span>&middot;</span>
         <span>Android 8.0+</span>
         <span>&middot;</span>
-        <span>Free</span>
+        <span>Free &middot; closed testing on Google Play</span>
       </div>
-      <p style="margin-top:16px; color:#6f6a5f; font-size:14px; max-width:520px;">TrueBubble is in closed testing - join the group first, then open the Play Store link on your phone to unlock the install button.</p>
     </div>
     <div class="hero-shot">
       <div class="bezel">
@@ -393,15 +399,15 @@
     <div class="final-cta">
       <div>
         <h2>Get TrueBubble.</h2>
-        <p>Free on Google Play, currently in closed testing. Precision leveling, fully offline.</p>
+        <p>Free precision leveling app, fully offline. Currently in closed testing on Google Play - <a href="https://groups.google.com/g/truebubble" target="_blank" rel="noopener">join the tester group</a> to get access.</p>
         <div class="hero-ctas">
-          <a class="btn-primary" href="https://groups.google.com/g/truebubble" target="_blank" rel="noopener">Join the tester group &rarr;</a>
-          <a class="btn-outline" href="https://play.google.com/apps/testing/app.spotrobotics.truebubble" target="_blank" rel="noopener">Open testing link on Play Store &rarr;</a>
+          <a class="btn-outline" href="https://play.google.com/apps/testing/app.spotrobotics.truebubble" target="_blank" rel="noopener">Get the beta on Google Play &rarr;</a>
+          <a class="btn-github" href="https://github.com/moskil2/TrueBubble" target="_blank" rel="noopener">View on GitHub &rarr;</a>
         </div>
       </div>
       <div class="final-cta-qr">
-        <img src="https://api.qrserver.com/v1/create-qr-code/?size=260x260&margin=0&color=16-17-28&data=https%3A%2F%2Fgroups.google.com%2Fg%2Ftruebubble" alt="QR code to join the tester group" width="150" height="150">
-        <div class="caption mono">Scan to join the tester group</div>
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=260x260&margin=0&color=16-17-28&data=https%3A%2F%2Fplay.google.com%2Fapps%2Ftesting%2Fapp.spotrobotics.truebubble" alt="QR code to the Google Play testing link" width="150" height="150">
+        <div class="caption mono">Scan to open the beta on Google Play</div>
       </div>
     </div>
   </section>
