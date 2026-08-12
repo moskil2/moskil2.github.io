@@ -383,7 +383,11 @@
   </section>
 
   <!-- BBS-FW HIGHLIGHT -->
-  <section class="anydevice">
+  <!-- align-items:flex-start override: this section has 4 screenshots (vs. 1-3 elsewhere), so the
+       shot-row wraps to two rows and gets noticeably taller than the text column - with the shared
+       .anydevice center-alignment that pushed the text down to look vertically misaligned against
+       the images, which start at the top. -->
+  <section class="anydevice" style="align-items: flex-start;">
     <div>
       <div class="eyebrow">BBS-FW support</div>
       <h2>Full BBS-FW configuration, right alongside OEM.</h2>
