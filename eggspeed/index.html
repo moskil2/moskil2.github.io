@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EggSPEED – Program your Bafang BBS01/BBS02/BBSHD controller from your phone | Spot Robotics</title>
-  <meta name="description" content="EggSPEED reads and programs your Bafang BBS01/BBS02/BBSHD controller over USB - live cockpit, full Basic/Pedal/Throttle configuration, assist-level tuning. A modern alternative to the Speeed Bafang app. Validated writes, no firmware flashing.">
+  <title>EggSPEED – Program your Bafang BBS01/BBS02/BBSHD controller (OEM or BBS-FW) from your phone | Spot Robotics</title>
+  <meta name="description" content="EggSPEED reads and programs your Bafang BBS01/BBS02/BBSHD controller over USB - on factory OEM firmware or BBS-FW. Live cockpit, full configuration, assist-level tuning. A modern alternative to the Speeed Bafang app. Validated writes, no firmware flashing.">
   <meta name="author" content="Tomasz Pieczara">
-  <meta property="og:title" content="EggSPEED – Bafang BBS01/BBS02/BBSHD configuration tool (Speeed alternative)">
-  <meta property="og:description" content="Live cockpit, full controller configuration, and assist-level tuning for Bafang mid-drives - over a simple USB cable. A modern alternative to the Speeed Bafang app.">
+  <meta property="og:title" content="EggSPEED – Bafang BBS01/BBS02/BBSHD configuration tool (OEM & BBS-FW)">
+  <meta property="og:description" content="Live cockpit, full controller configuration, and assist-level tuning for Bafang mid-drives, on OEM or BBS-FW firmware - over a simple USB cable.">
   <meta property="og:url" content="https://spotrobotics.app/eggspeed/">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://spotrobotics.app/icons/eggspeed.png">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="EggSPEED – Bafang BBS01/BBS02/BBSHD configuration tool (Speeed alternative)">
-  <meta name="twitter:description" content="Live cockpit, full controller configuration, and assist-level tuning for Bafang mid-drives - over a simple USB cable. A modern alternative to the Speeed Bafang app.">
+  <meta name="twitter:title" content="EggSPEED – Bafang BBS01/BBS02/BBSHD configuration tool (OEM & BBS-FW)">
+  <meta name="twitter:description" content="Live cockpit, full controller configuration, and assist-level tuning for Bafang mid-drives, on OEM or BBS-FW firmware - over a simple USB cable.">
   <meta name="twitter:image" content="https://spotrobotics.app/icons/eggspeed.png">
   <link rel="canonical" href="https://spotrobotics.app/eggspeed/">
   <link rel="icon" href="/favicon.ico" sizes="any">
@@ -233,11 +233,11 @@
     "name": "EggSPEED",
     "operatingSystem": "ANDROID",
     "applicationCategory": "UtilitiesApplication",
-    "description": "EggSPEED reads and programs your Bafang BBS01/BBS02/BBSHD controller over USB - live cockpit, full Basic/Pedal/Throttle configuration, assist-level tuning. Validated writes, no firmware flashing.",
+    "description": "EggSPEED reads and programs your Bafang BBS01/BBS02/BBSHD controller over USB - on factory OEM firmware or BBS-FW. Live cockpit, full configuration, assist-level tuning. Validated writes, no firmware flashing.",
     "url": "https://spotrobotics.app/eggspeed/",
     "image": "https://spotrobotics.app/icons/eggspeed.png",
     "installUrl": "https://play.google.com/apps/testing/app.spotrobotics.eggspeed",
-    "softwareVersion": "0.3.8",
+    "softwareVersion": "0.3.26",
     "fileSize": "2MB",
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
     "author": { "@type": "Person", "name": "Tomasz Pieczara" },
@@ -260,9 +260,9 @@
         <img src="/icons/eggspeed.png" alt="EggSPEED icon">
         <span>EggSPEED</span>
       </div>
-      <div class="eyebrow">Bafang BBS01 / BBS02 / BBSHD programming tool</div>
+      <div class="eyebrow">Bafang BBS01 / BBS02 / BBSHD programming tool - OEM &amp; BBS-FW</div>
       <h1>Program your Bafang controller, right from your phone.</h1>
-      <p class="lede">Connect over a simple USB cable and see everything your controller has stored - live cockpit, full Basic/Pedal/Throttle configuration, and assist-level tuning for BBS01/BBS02/BBSHD. No PC, no Bluetooth dongle needed.</p>
+      <p class="lede">Connect over a simple USB cable and see everything your controller has stored - live cockpit, full configuration, and assist-level tuning for BBS01/BBS02/BBSHD, on factory OEM firmware or BBS-FW. No PC, no Bluetooth dongle needed.</p>
       <div class="hero-ctas">
         <a class="btn-primary" href="https://play.google.com/apps/testing/app.spotrobotics.eggspeed" target="_blank" rel="noopener">Get the beta on Google Play &rarr;</a>
         <a class="btn-github" href="https://github.com/moskil2/EggSPEED" target="_blank" rel="noopener">View on GitHub &rarr;</a>
@@ -324,6 +324,11 @@
           <p>Speed, power, current, voltage, distance, trip, average speed, Wh/km usage, and estimated range, all on one screen.</p>
         </div>
         <div class="feature-card">
+          <span class="feature-glyph mono">FW</span>
+          <div class="title">OEM &amp; BBS-FW support</div>
+          <p>Switch between factory OEM Bafang firmware and <a href="https://github.com/danielnilsson9/bbs-fw" target="_blank" rel="noopener" class="link-muted" style="font-size:14px;">BBS-FW</a> right in Settings - EggSPEED speaks both configuration protocols natively.</p>
+        </div>
+        <div class="feature-card">
           <span class="feature-glyph mono">USB</span>
           <div class="title">USB OTG connection</div>
           <p>One cable to the Bafang programming port at 1200 baud - no Bluetooth dongle, no pairing.</p>
@@ -374,6 +379,22 @@
       <img src="img/03_BafangBasic.jpg" alt="Bafang Basic configuration screen">
       <img src="img/04_BafangPedal.jpg" alt="Bafang Pedal Assist (PAS) configuration screen">
       <img src="img/05_BafangThrottle.jpg" alt="Bafang Throttle configuration screen">
+    </div>
+  </section>
+
+  <!-- BBS-FW HIGHLIGHT -->
+  <section class="anydevice">
+    <div>
+      <div class="eyebrow">BBS-FW support</div>
+      <h2>Full BBS-FW configuration, right alongside OEM.</h2>
+      <p>Switch to <strong>BBS-FW</strong> right in Settings, then configure everything through dedicated screens built to match the field names and layout of BBS-FW's own official Windows tool - Global settings, Throttle, Pedal Assist, Features, Speed Sensor, and Shift Sensor, all in one System screen.</p>
+      <p>Assist Levels get their own screen too - Standard and Sport pages, with Type (PAS/Throttle/Cruise), Variant, and per-level current/cadence/speed limits for all 10 levels.</p>
+    </div>
+    <div class="shot-row">
+      <img src="img/14_BbsFwSettings.jpg" alt="Settings screen with the OEM Bafang / BBS-FW firmware switch">
+      <img src="img/15_BbsFwSystemGlobal.jpg" alt="BBS-FW System screen, Global and Throttle settings">
+      <img src="img/16_BbsFwSystemFeatures.jpg" alt="BBS-FW System screen, Features and Speed Sensor settings">
+      <img src="img/17_BbsFwAssistLevels.jpg" alt="BBS-FW Assist Levels screen, Standard/Sport pages">
     </div>
   </section>
 
