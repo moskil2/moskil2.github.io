@@ -236,8 +236,8 @@
     "description": "EggSPEED reads and programs your Bafang BBS01/BBS02/BBSHD controller over USB - on factory OEM firmware or BBS-FW. Live cockpit, full configuration, assist-level tuning. Validated writes, no firmware flashing.",
     "url": "https://spotrobotics.app/eggspeed/",
     "image": "https://spotrobotics.app/icons/eggspeed.png",
-    "installUrl": "https://play.google.com/apps/testing/app.spotrobotics.eggspeed",
-    "softwareVersion": "0.3.26",
+    "installUrl": "https://play.google.com/store/apps/details?id=app.spotrobotics.eggspeed",
+    "softwareVersion": "0.3.58",
     "fileSize": "2MB",
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
     "author": { "@type": "Person", "name": "Tomasz Pieczara" },
@@ -264,23 +264,31 @@
       <h1>Program your Bafang controller, right from your phone.</h1>
       <p class="lede">Connect over a simple USB cable and see everything your controller has stored - live cockpit, full configuration, and assist-level tuning for BBS01/BBS02/BBSHD, on factory OEM firmware or BBS-FW. No PC, no Bluetooth dongle needed.</p>
       <div class="hero-ctas">
-        <a class="btn-primary" href="https://play.google.com/apps/testing/app.spotrobotics.eggspeed" target="_blank" rel="noopener">Get the beta on Google Play &rarr;</a>
+        <a class="btn-primary" href="https://play.google.com/store/apps/details?id=app.spotrobotics.eggspeed" target="_blank" rel="noopener">Get it on Google Play &rarr;</a>
         <a class="btn-github" href="https://github.com/moskil2/EggSPEED" target="_blank" rel="noopener">View on GitHub &rarr;</a>
         <span class="badge-warn">USB OTG required</span>
       </div>
-      <p class="hero-note">EggSPEED is in closed testing - <a href="https://groups.google.com/g/eggspeed" target="_blank" rel="noopener">join the tester group</a> first, then open the Google Play link above to unlock the install button.</p>
       <div class="hero-foot mono">
-        <span>~10 MB</span>
+        <span>~2 MB</span>
         <span>&middot;</span>
         <span>Android 8.0+</span>
         <span>&middot;</span>
-        <span>Free &middot; closed testing on Google Play</span>
+        <span>Free on Google Play</span>
       </div>
       <p style="margin-top:16px; color:#6f6a5f; font-size:13.5px; max-width:520px;">Coming from the Speeed app for Bafang? EggSPEED covers the same BBS01/BBS02/BBSHD controllers with a modern, actively developed UI.</p>
     </div>
     <div class="hero-shot">
       <div class="bezel">
         <img src="img/01_Cockpit.jpg" alt="EggSPEED live cockpit with speed, power and range" width="280" height="607">
+      </div>
+    </div>
+  </section>
+
+  <!-- DEMO VIDEO -->
+  <section class="wrap" style="padding-top:0; padding-bottom:64px;">
+    <div style="max-width:800px; margin:0 auto;">
+      <div style="position:relative; padding-bottom:56.25%; height:0; border-radius:24px; overflow:hidden; box-shadow:0 30px 80px rgba(0,0,0,0.55);">
+        <iframe src="https://www.youtube.com/embed/zbL4AiccX18" title="EggSPEED demo video" style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
       </div>
     </div>
   </section>
@@ -351,7 +359,7 @@
         <div class="feature-card">
           <span class="feature-glyph mono">&plusmn;</span>
           <div class="title">Calibration</div>
-          <p>App-side current and voltage correction for shunt-modded controllers - nothing is changed on the controller itself.</p>
+          <p>App-side current, voltage, and speed correction for shunt-modded controllers or a slightly-off wheel size - nothing is changed on the controller itself.</p>
         </div>
         <div class="feature-card">
           <span class="feature-glyph mono">.ini</span>
@@ -362,6 +370,26 @@
           <span class="feature-glyph mono">&check;</span>
           <div class="title">Validated writes</div>
           <p>Every value is clamped to a safe range before it's sent, and the controller's own confirmation code is decoded and shown to you - never a silent failure. No firmware flashing, ever.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">LOCK</span>
+          <div class="title">PROTECT (Anti-COP)</div>
+          <p>One tap silently locks assist to 0 while the Cockpit still looks and responds normally - unlocking only from a PIN-gated screen. Looks unchanged at a glance.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">GPS</span>
+          <div class="title">GPS speed overlay</div>
+          <p>Optional phone-GPS speed shown right on the Cockpit alongside the controller's own reading, for an independent comparison.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">~V</span>
+          <div class="title">SAG measurement</div>
+          <p>A passive Estimated SAG computed from your normal riding, plus a guided SAG Measurement procedure for a controlled, comparable battery-quality reading.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">/s</span>
+          <div class="title">Live monitoring charts</div>
+          <p>Power, current, voltage, and speed plotted over time, sampled twice a second with a 10-minute rolling history - drag to scrub any point.</p>
         </div>
       </div>
     </div>
@@ -415,17 +443,43 @@
     </div>
   </section>
 
+  <!-- MONITORING HIGHLIGHT -->
+  <section class="anydevice">
+    <div>
+      <div class="eyebrow">Monitoring</div>
+      <h2>Watch every number move, in real time.</h2>
+      <p>Power, current, voltage, and speed plotted live - sampled every 0.5s with a 10-minute rolling history, each chart independently toggleable.</p>
+      <p>Drag your finger across any chart to scrub back and read the exact value (and how long ago it was) at any point in the last 10 minutes.</p>
+    </div>
+    <div class="shot-row">
+      <img src="img/18_Monitoring.jpg" alt="Monitoring screen with Power, Current, Voltage and Speed charts">
+    </div>
+  </section>
+
   <!-- BATTERY & CALIBRATION HIGHLIGHT -->
   <section class="anydevice">
     <div>
       <div class="eyebrow">Battery &amp; accuracy</div>
       <h2>Range you can actually trust.</h2>
       <p>Tell EggSPEED your cell count and capacity once, and the cockpit's range estimate blends your riding history with your current riding style - the longer the trip, the more it adapts to how you're riding right now.</p>
-      <p>Controller reading current wrong after a shunt mod? <strong>Calibration</strong> applies an app-side current and voltage correction factor - nothing is changed on the controller.</p>
+      <p>Controller reading current or speed wrong (shunt mod, slightly-off wheel size)? <strong>Calibration</strong> applies an app-side current, voltage, and speed correction factor - nothing is changed on the controller.</p>
     </div>
     <div class="shot-row">
       <img src="img/07_Battery.jpg" alt="Battery screen with cell count and capacity">
       <img src="img/09_Calibration.jpg" alt="Calibration screen with current and voltage correction">
+    </div>
+  </section>
+
+  <!-- SAG MEASUREMENT HIGHLIGHT -->
+  <section class="anydevice">
+    <div>
+      <div class="eyebrow">SAG measurement</div>
+      <h2>Know your battery's real condition.</h2>
+      <p>An <strong>Estimated SAG</strong> is calculated continuously in the background from your normal riding - no setup needed.</p>
+      <p>For a controlled, comparable number, run the guided <strong>SAG Measurement</strong>: 2 min resting, 30s at full load, 2 min resting again - EggSPEED does the timing and the math, then rates your battery's quality against a clear legend.</p>
+    </div>
+    <div class="shot-row">
+      <img src="img/20_SAG.jpg" alt="Battery SAG Measurement screen with quality legend and guided procedure">
     </div>
   </section>
 
@@ -440,6 +494,19 @@
     <div class="shot-row">
       <img src="img/11_Profiles.jpg" alt="Profiles screen with save, import and export">
       <img src="img/08_Settings.jpg" alt="Settings screen with units, odometer and test mode">
+    </div>
+  </section>
+
+  <!-- THEME & AOD HIGHLIGHT -->
+  <section class="anydevice">
+    <div>
+      <div class="eyebrow">Display &amp; lock screen</div>
+      <h2>Ride your way, day or night.</h2>
+      <p>Dark or Light theme, plus a High Contrast mode that brightens faded text for full-sun readability - switchable any time in Settings.</p>
+      <p>Optionally show speed, power, and assist right on the lock screen/AOD, so your phone can actually sleep instead of staying lit for the whole ride - a real battery saving.</p>
+    </div>
+    <div class="shot-row">
+      <img src="img/19_LightTheme.jpg" alt="EggSPEED Cockpit in Light theme">
     </div>
   </section>
 
@@ -481,7 +548,7 @@
       <span class="sep">|</span>
       <span>Android 8.0+</span>
       <span class="sep">|</span>
-      <span>~10 MB</span>
+      <span>~2 MB</span>
       <span class="sep">|</span>
       <span>USB OTG + Bafang programming cable required</span>
     </div>
@@ -492,15 +559,15 @@
     <div class="final-cta">
       <div>
         <h2>Get EggSPEED.</h2>
-        <p>Free, open configuration tool for Bafang BBS01/BBS02/BBSHD. Currently in closed testing on Google Play - <a href="https://groups.google.com/g/eggspeed" target="_blank" rel="noopener">join the tester group</a> to get access.</p>
+        <p>Free, open configuration tool for Bafang BBS01/BBS02/BBSHD. Available now on Google Play.</p>
         <div class="hero-ctas">
-          <a class="btn-outline" href="https://play.google.com/apps/testing/app.spotrobotics.eggspeed" target="_blank" rel="noopener">Get the beta on Google Play &rarr;</a>
+          <a class="btn-outline" href="https://play.google.com/store/apps/details?id=app.spotrobotics.eggspeed" target="_blank" rel="noopener">Get it on Google Play &rarr;</a>
           <a class="btn-github" href="https://github.com/moskil2/EggSPEED" target="_blank" rel="noopener">View on GitHub &rarr;</a>
         </div>
       </div>
       <div class="final-cta-qr">
-        <img src="https://api.qrserver.com/v1/create-qr-code/?size=260x260&margin=0&color=16-17-28&data=https%3A%2F%2Fplay.google.com%2Fapps%2Ftesting%2Fapp.spotrobotics.eggspeed" alt="QR code to the Google Play testing link" width="150" height="150">
-        <div class="caption mono">Scan to open the beta on Google Play</div>
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=260x260&margin=0&color=16-17-28&data=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dapp.spotrobotics.eggspeed" alt="QR code to the Google Play listing" width="150" height="150">
+        <div class="caption mono">Scan to open on Google Play</div>
       </div>
     </div>
   </section>
