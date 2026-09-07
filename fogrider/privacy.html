@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FogRider – Privacy Policy | Spot Robotics by Tomasz Pieczara</title>
-  <meta name="description" content="Privacy policy for FogRider – a GPX track viewer and analyzer by Tomasz Pieczara / Spot Robotics.">
+  <title>FogRider - Privacy Policy | Spot Robotics by Tomasz Pieczara</title>
+  <meta name="description" content="Privacy policy for FogRider - a Windows desktop GPX track viewer and analyzer by Tomasz Pieczara / Spot Robotics.">
   <meta name="author" content="Tomasz Pieczara">
   <link rel="canonical" href="https://spotrobotics.app/fogrider/privacy.html">
   <link rel="icon" href="/favicon.ico" sizes="any">
@@ -76,31 +76,31 @@
 
     <div class="app-label">FogRider</div>
     <h1>Privacy Policy</h1>
-    <p class="updated">Last updated: July 1, 2026</p>
+    <p class="updated">Last updated: September 7, 2026</p>
 
     <div class="highlight">
-      FogRider runs entirely in your browser. <strong style="color:#fff">GPX tracks you load and profiles you save are stored locally on your device — nothing is ever uploaded to our servers.</strong>
+      FogRider is a native Windows desktop app. <strong style="color:#fff">GPX tracks you load and profiles you save stay on your own PC - nothing is ever uploaded to our servers.</strong>
     </div>
 
     <hr class="divider">
 
     <h2>1. What FogRider Does</h2>
-    <p>FogRider is a browser-based GPX track viewer and analyzer. It lets you load GPX files, visualize routes on an interactive map, and analyze the speed, frequency, and surface type of your tracks.</p>
+    <p>FogRider is a native Windows desktop app (built with Tauri) for viewing and analyzing GPX tracks on an interactive map. It lets you load GPX files, watch Fog of War clear along the roads you've ridden, and analyze the speed, elevation and surface type of your tracks.</p>
 
     <h2>2. Data Stored Locally on Your Device</h2>
-    <p>FogRider stores the following data in your browser's local storage (localStorage). This data never leaves your device and is never transmitted to us:</p>
+    <p>FogRider stores the following data only on your own PC. None of it is transmitted to us:</p>
     <ul>
-      <li>GPX tracks you load and their colors/display settings</li>
-      <li>Saved "profiles" (named collections of tracks you choose to save for later)</li>
+      <li>GPX tracks and "profiles" (named collections of tracks, including colors and display settings) that you explicitly save - written as JSON files to a location you choose, via a native save dialog. Nothing is saved automatically unless you choose to save a profile.</li>
+      <li>App preferences and progress that persist between sessions - achievement unlock status, your Fog of War hex-size choice, and sidebar layout settings, kept in the app's local data storage.</li>
     </ul>
-    <p>You can clear this data at any time by clearing your browser's site data for spotrobotics.app, or by not saving a profile.</p>
+    <p>You can delete any saved profile file directly from disk at any time. Preferences and achievement progress can be reset from within the app, or cleared entirely by removing the app's local data folder.</p>
 
     <h2>3. Third-Party Services FogRider Connects To</h2>
-    <p>FogRider has no backend server of its own. When certain features are used, your browser connects directly to the following third-party services:</p>
+    <p>FogRider has no backend server of its own. When certain features are used, the app connects directly to the following third-party services:</p>
     <ul>
-      <li><strong>OpenStreetMap / Overpass API</strong> — used to fetch tourist points of interest and to classify the surface type of your tracks (asphalt, gravel, forest path, etc.). Only geographic coordinates are sent; no personal data is included.</li>
-      <li><strong>Komoot API</strong> — if you choose to import activities from Komoot, your browser connects directly to Komoot's API using the login credentials you provide. Your credentials and session token are used only within your browser session and are never sent to or stored on our servers.</li>
-      <li><strong>Map tiles</strong> — base map imagery is loaded from OpenStreetMap and CARTO, subject to their own privacy practices.</li>
+      <li><strong>OpenStreetMap / Overpass API</strong> - used to fetch tourist points of interest and to classify the surface type of your tracks (asphalt, gravel, forest path, etc.). Only geographic coordinates are sent; no personal data is included.</li>
+      <li><strong>Komoot API</strong> - if you choose to import activities from Komoot, the app connects directly to Komoot's API using the login credentials you provide. Your credentials and session token are used only within your app session and are never sent to or stored on our servers.</li>
+      <li><strong>Map tiles</strong> - base map imagery is loaded from OpenStreetMap and CARTO, subject to their own privacy practices.</li>
     </ul>
 
     <h2>4. Data We Do Not Collect</h2>
