@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FogRider – GPS track analysis for cyclists, Windows desktop app | Spot Robotics</title>
+  <title>FogRider - GPS track analysis for cyclists, Windows desktop app | Spot Robotics</title>
   <meta name="description" content="FogRider visualizes and analyzes your GPS rides on an interactive map: Fog of War terrain discovery, SpeedMap, HeatMap, surface-type analysis, and one-click Komoot/Strava import. Free Windows desktop app.">
   <meta name="author" content="Tomasz Pieczara">
-  <meta property="og:title" content="FogRider – GPS track analysis for cyclists">
+  <meta property="og:title" content="FogRider - GPS track analysis for cyclists">
   <meta property="og:description" content="Fog of War terrain discovery, SpeedMap, HeatMap, surface analysis, and one-click Komoot/Strava import - free Windows desktop app.">
   <meta property="og:url" content="https://spotrobotics.app/fogrider/">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://spotrobotics.app/icons/fogrider.png">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="FogRider – GPS track analysis for cyclists">
+  <meta name="twitter:title" content="FogRider - GPS track analysis for cyclists">
   <meta name="twitter:description" content="Fog of War terrain discovery, SpeedMap, HeatMap, surface analysis, and one-click Komoot/Strava import - free Windows desktop app.">
   <meta name="twitter:image" content="https://spotrobotics.app/icons/fogrider.png">
   <link rel="canonical" href="https://spotrobotics.app/fogrider/">
@@ -103,6 +103,17 @@
       font-family: 'JetBrains Mono', monospace; font-size: 12.5px;
     }
 
+    /* screenshot gallery */
+    .gallery-section { padding: 96px 32px; }
+    .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .gallery-card { background: #1f2128; border-radius: 18px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.35); }
+    .gallery-card a { display: block; }
+    .gallery-card img { display: block; width: 100%; height: auto; transition: transform .2s ease; }
+    .gallery-card a:hover img { transform: scale(1.03); }
+    .gallery-card-body { padding: 18px 20px 22px; }
+    .gallery-card-title { font-weight: 700; font-size: 15.5px; margin-bottom: 6px; }
+    .gallery-card-body p { margin: 0; color: #a8a49a; font-size: 13.5px; line-height: 1.5; }
+
     /* how it works */
     .section-head { text-align: center; margin-bottom: 56px; }
     .section-head h2 { font-size: 38px; font-weight: 800; margin: 0; letter-spacing: -0.01em; text-wrap: balance; }
@@ -181,11 +192,15 @@
     @media (max-width: 880px) {
       .hero h1 { font-size: 34px; }
       .feature-grid { grid-template-columns: repeat(2, 1fr); }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
       .anydevice { grid-template-columns: 1fr; gap: 32px; }
       .import-visual { padding: 32px 16px; }
       .privacy { grid-template-columns: 1fr; padding: 40px; }
       .privacy-points { grid-template-columns: 1fr; }
       .final-cta { padding: 48px 32px; }
+    }
+    @media (max-width: 560px) {
+      .gallery-grid { grid-template-columns: 1fr; }
     }
   </style>
   <script type="application/ld+json">
@@ -198,8 +213,8 @@
     "description": "FogRider visualizes and analyzes your GPS rides on an interactive map: Fog of War terrain discovery, SpeedMap, HeatMap, surface-type analysis, and one-click Komoot/Strava import.",
     "url": "https://spotrobotics.app/fogrider/",
     "image": "https://spotrobotics.app/icons/fogrider.png",
-    "installUrl": "https://spotrobotics.app/fogrider/FogRider_0.7.1_x64-setup.exe",
-    "softwareVersion": "0.7.1",
+    "installUrl": "https://spotrobotics.app/fogrider/FogRider_0.7.2_x64-setup.exe",
+    "softwareVersion": "0.7.2",
     "fileSize": "4.4MB",
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
     "author": { "@type": "Person", "name": "Tomasz Pieczara" },
@@ -224,7 +239,7 @@
     <h1>See every ride you've ever done, on one map.</h1>
     <p class="lede">Load your GPX tracks and watch the fog lift off every road you've ridden. Analyze speed, surface type, and elevation, or pull your history straight from Komoot and Strava - no account, no upload, everything stays on your PC.</p>
     <div class="hero-ctas">
-      <a class="btn-primary" href="/fogrider/FogRider_0.7.1_x64-setup.exe">Download for Windows &rarr;</a>
+      <a class="btn-primary" href="/fogrider/FogRider_0.7.2_x64-setup.exe">Download for Windows &rarr;</a>
       <span class="badge-warn">Windows 10/11</span>
     </div>
     <div class="hero-foot mono">
@@ -247,6 +262,135 @@
     </div>
     <div class="desktop-shot-caption">HeatMap view - 97 tracks loaded, colored by how often each area was visited</div>
   </div>
+
+  <!-- SCREENSHOT GALLERY -->
+  <section class="gallery-section">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Screenshots</div>
+        <h2>A closer look at every screen.</h2>
+      </div>
+      <div class="gallery-grid">
+        <div class="gallery-card">
+          <a href="img/02_Overview.jpg" target="_blank" rel="noopener noreferrer">
+            <img src="img/02_Overview.jpg" alt="FogRider main view with toolbar and full track list" loading="lazy">
+          </a>
+          <div class="gallery-card-body">
+            <div class="gallery-card-title">Main view &amp; track list</div>
+            <p>Every loaded ride listed with distance, time, average and max speed - colors and visibility toggle per track, right next to the map.</p>
+          </div>
+        </div>
+        <div class="gallery-card">
+          <a href="img/03_HeatMap_Region.jpg" target="_blank" rel="noopener noreferrer">
+            <img src="img/03_HeatMap_Region.jpg" alt="HeatMap zoomed on a home region showing most-ridden roads" loading="lazy">
+          </a>
+          <div class="gallery-card-body">
+            <div class="gallery-card-title">HeatMap</div>
+            <p>Zoom into any region and see at a glance which roads and trails you actually ride the most.</p>
+          </div>
+        </div>
+        <div class="gallery-card">
+          <a href="img/04_FogOfWar.jpg" target="_blank" rel="noopener noreferrer">
+            <img src="img/04_FogOfWar.jpg" alt="Fog of War hex grid overlay with discovery statistics panel" loading="lazy">
+          </a>
+          <div class="gallery-card-body">
+            <div class="gallery-card-title">Fog of War</div>
+            <p>The map starts covered in fog and clears hex by hex as you ride. Track discovered area, switch hex size, and see what's new since your last import.</p>
+          </div>
+        </div>
+        <div class="gallery-card">
+          <a href="img/05_Achievements.jpg" target="_blank" rel="noopener noreferrer">
+            <img src="img/05_Achievements.jpg" alt="Achievements panel with an unlocked badge notification" loading="lazy">
+          </a>
+          <div class="gallery-card-body">
+            <div class="gallery-card-title">Achievements</div>
+            <p>Unlock badges for distance, exploration and consistency milestones as your riding history grows.</p>
+          </div>
+        </div>
+        <div class="gallery-card">
+          <a href="img/06_RiderDNA.jpg" target="_blank" rel="noopener noreferrer">
+            <img src="img/06_RiderDNA.jpg" alt="Rider DNA panel with a personality radar chart" loading="lazy">
+          </a>
+          <div class="gallery-card-body">
+            <div class="gallery-card-title">Rider DNA</div>
+            <p>A cycling personality profile built from your rides - explorer, climber, speed, consistency and more, visualized on a radar chart.</p>
+          </div>
+        </div>
+        <div class="gallery-card">
+          <a href="img/07_YearInReview.jpg" target="_blank" rel="noopener noreferrer">
+            <img src="img/07_YearInReview.jpg" alt="Year in Review shareable summary card" loading="lazy">
+          </a>
+          <div class="gallery-card-body">
+            <div class="gallery-card-title">Year in Review</div>
+            <p>A shareable yearly recap card: distance, elevation gain, new terrain discovered and your rider personality for the year.</p>
+          </div>
+        </div>
+        <div class="gallery-card">
+          <a href="img/08_ChartsPreview.jpg" target="_blank" rel="noopener noreferrer">
+            <img src="img/08_ChartsPreview.jpg" alt="Charts preview showing weekly distance and average speed trends" loading="lazy">
+          </a>
+          <div class="gallery-card-body">
+            <div class="gallery-card-title">Activity charts</div>
+            <p>Distance, average speed and ride time broken down by week, month or year, with trend comparisons against previous periods.</p>
+          </div>
+        </div>
+        <div class="gallery-card">
+          <a href="img/09_CalendarHeatmap.jpg" target="_blank" rel="noopener noreferrer">
+            <img src="img/09_CalendarHeatmap.jpg" alt="Calendar Heatmap, a GitHub-style contribution calendar of riding activity" loading="lazy">
+          </a>
+          <div class="gallery-card-body">
+            <div class="gallery-card-title">Calendar Heatmap</div>
+            <p>A GitHub-style contribution calendar of your riding activity, with streaks, most active weekday and month at a glance.</p>
+          </div>
+        </div>
+        <div class="gallery-card">
+          <a href="img/10_ElevationMap.jpg" target="_blank" rel="noopener noreferrer">
+            <img src="img/10_ElevationMap.jpg" alt="ElevationMap coloring tracks by climb steepness" loading="lazy">
+          </a>
+          <div class="gallery-card-body">
+            <div class="gallery-card-title">ElevationMap</div>
+            <p>Colors every track by segment steepness, so the steepest climbs and descents jump out at a glance.</p>
+          </div>
+        </div>
+        <div class="gallery-card">
+          <a href="img/11_POIPoints.jpg" target="_blank" rel="noopener noreferrer">
+            <img src="img/11_POIPoints.jpg" alt="POI Points layers showing castles, churches and museums on the map" loading="lazy">
+          </a>
+          <div class="gallery-card-body">
+            <div class="gallery-card-title">POI Points</div>
+            <p>Overlay castles, churches, museums, viewpoints and other points of interest straight from OpenStreetMap.</p>
+          </div>
+        </div>
+        <div class="gallery-card">
+          <a href="img/12_KomootImport.jpg" target="_blank" rel="noopener noreferrer">
+            <img src="img/12_KomootImport.jpg" alt="Komoot import panel with a list of activities ready to import" loading="lazy">
+          </a>
+          <div class="gallery-card-body">
+            <div class="gallery-card-title">Komoot import</div>
+            <p>Log in with your Komoot account and pull recorded activities directly into FogRider - no manual export needed.</p>
+          </div>
+        </div>
+        <div class="gallery-card">
+          <a href="img/13_SatelliteHeatMap.jpg" target="_blank" rel="noopener noreferrer">
+            <img src="img/13_SatelliteHeatMap.jpg" alt="Satellite map type combined with the HeatMap overlay" loading="lazy">
+          </a>
+          <div class="gallery-card-body">
+            <div class="gallery-card-title">Map types</div>
+            <p>Switch between map styles, including satellite imagery, and combine them with any overlay - Fog of War, HeatMap, SpeedMap or ElevationMap.</p>
+          </div>
+        </div>
+        <div class="gallery-card">
+          <a href="img/14_StatsBar.jpg" target="_blank" rel="noopener noreferrer">
+            <img src="img/14_StatsBar.jpg" alt="Bottom stats bar with surface breakdown, global stats and activity charts" loading="lazy">
+          </a>
+          <div class="gallery-card-body">
+            <div class="gallery-card-title">Bottom stats bar</div>
+            <p>Surface breakdown, global stats, Fog of War, activity charts and riding-pattern histograms - five sections, always one click away.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- FEATURES -->
   <section class="features-section">
@@ -340,8 +484,6 @@
       <span>~4.4 MB</span>
       <span class="sep">|</span>
       <span>Free</span>
-      <span class="sep">|</span>
-      <span>More screenshots coming soon</span>
     </div>
   </section>
 
@@ -350,7 +492,7 @@
     <div class="final-cta">
       <h2>Get FogRider.</h2>
       <p>Free GPS track viewer and analyzer for Windows. Load your rides and watch the fog lift.</p>
-      <a class="btn-primary" href="/fogrider/FogRider_0.7.1_x64-setup.exe">Download for Windows &rarr;</a>
+      <a class="btn-primary" href="/fogrider/FogRider_0.7.2_x64-setup.exe">Download for Windows &rarr;</a>
     </div>
   </section>
 
