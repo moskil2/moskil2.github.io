@@ -136,6 +136,14 @@
     .device-node .name { font-size: 14px; font-weight: 700; color: #f3f1ea; }
     .device-node .via { font-size: 12px; color: #6f6a5f; font-family: 'JetBrains Mono', monospace; }
 
+    /* promo video */
+    .video-wrap { max-width: 900px; margin: 0 auto; padding: 0 32px 96px; }
+    .video-frame {
+      position: relative; padding-top: 56.25%; border-radius: 20px; overflow: hidden;
+      background: #000; box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+    }
+    .video-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
     /* how it works */
     .section-head { text-align: center; margin-bottom: 56px; }
     .section-head h2 { font-size: 38px; font-weight: 800; margin: 0; letter-spacing: -0.01em; text-wrap: balance; }
@@ -352,6 +360,17 @@
         <div class="device-node"><div class="name">Tablet</div><div class="via">Browser</div></div>
         <div class="device-node"><div class="name">Other</div><div class="via">Browser</div></div>
       </div>
+    </div>
+  </section>
+
+  <!-- PROMO VIDEO -->
+  <section class="video-wrap">
+    <div class="section-head">
+      <div class="eyebrow">Watch it in action</div>
+      <h2>See DirectDrop in action.</h2>
+    </div>
+    <div class="video-frame">
+      <iframe src="https://www.youtube-nocookie.com/embed/ZyoUhzcU9zE" title="DirectDrop promo video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
     </div>
   </section>
 
