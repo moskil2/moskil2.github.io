@@ -340,97 +340,6 @@
   </section>
 
   <!-- FEATURES -->
-  <section class="features-section">
-    <div class="wrap">
-      <div class="section-head">
-        <div class="eyebrow">Features</div>
-        <h2>Everything your factory display shows - and more.</h2>
-      </div>
-      <div class="feature-grid">
-        <div class="feature-card">
-          <span class="feature-glyph mono">km/h</span>
-          <div class="title">Live cockpit</div>
-          <p>Speed, power, current, voltage, distance, trip, average speed, Wh/km usage, and estimated range, all on one screen.</p>
-        </div>
-        <div class="feature-card">
-          <span class="feature-glyph mono">FW</span>
-          <div class="title">OEM &amp; BBS-FW support</div>
-          <p>Switch between factory OEM Bafang firmware and <a href="https://github.com/danielnilsson9/bbs-fw" target="_blank" rel="noopener" class="link-muted" style="font-size:14px;">BBS-FW</a> right in Settings - EggSPEED speaks both configuration protocols natively.</p>
-        </div>
-        <div class="feature-card">
-          <span class="feature-glyph mono">USB</span>
-          <div class="title">USB OTG connection</div>
-          <p>One cable to the Bafang programming port at 1200 baud - no Bluetooth dongle, no pairing.</p>
-        </div>
-        <div class="feature-card">
-          <span class="feature-glyph mono">CFG</span>
-          <div class="title">Full configuration read</div>
-          <p>Basic, Pedal Assist (PAS), and Throttle - every parameter read straight from the controller, in its own units.</p>
-        </div>
-        <div class="feature-card">
-          <span class="feature-glyph mono">0-9</span>
-          <div class="title">Assist levels &amp; charts</div>
-          <p>Speed and current limits for all 10 assist levels, with power- and speed-distribution charts across the whole range.</p>
-        </div>
-        <div class="feature-card">
-          <span class="feature-glyph mono">%</span>
-          <div class="title">Battery &amp; range</div>
-          <p>Set your cell count and capacity once - the cockpit blends riding history and current style into a live range estimate.</p>
-        </div>
-        <div class="feature-card">
-          <span class="feature-glyph mono">&plusmn;</span>
-          <div class="title">Calibration</div>
-          <p>App-side current, voltage, and speed correction for shunt-modded (AmpMax) controllers or a slightly-off wheel size - nothing is changed on the controller itself.</p>
-        </div>
-        <div class="feature-card">
-          <span class="feature-glyph mono">.ini</span>
-          <div class="title">Profiles</div>
-          <p>Save your current setup, export it to a .ini file, or import one back in on another device.</p>
-        </div>
-        <div class="feature-card">
-          <span class="feature-glyph mono">&check;</span>
-          <div class="title">Validated writes</div>
-          <p>Every value is clamped to a safe range before it's sent, and the controller's own confirmation code is decoded and shown to you - never a silent failure. No firmware flashing, ever.</p>
-        </div>
-        <div class="feature-card">
-          <span class="feature-glyph mono">LOCK</span>
-          <div class="title">PROTECT (Anti-COP)</div>
-          <p>One tap silently locks assist to 0 while the Cockpit still looks and responds normally - unlocking only from a PIN-gated screen. Looks unchanged at a glance.</p>
-        </div>
-        <div class="feature-card">
-          <span class="feature-glyph mono">GPS</span>
-          <div class="title">GPS speed overlay</div>
-          <p>Optional phone-GPS speed shown right on the Cockpit alongside the controller's own reading, for an independent comparison.</p>
-        </div>
-        <div class="feature-card">
-          <span class="feature-glyph mono">~V</span>
-          <div class="title">SAG measurement</div>
-          <p>A passive Estimated SAG computed from your normal riding, plus a guided SAG Measurement procedure for a controlled, comparable battery-quality reading.</p>
-        </div>
-        <div class="feature-card">
-          <span class="feature-glyph mono">/s</span>
-          <div class="title">Live monitoring charts</div>
-          <p>Power, current, voltage, and speed plotted over time, sampled twice a second with a 10-minute rolling history - drag to scrub any point.</p>
-        </div>
-        <div class="feature-card">
-          <span class="feature-glyph mono">S/R</span>
-          <div class="title">STREET/RACE dual profiles</div>
-          <p>Two full sets of 10 assist levels, switchable on the fly right from the Cockpit - the EggRider Road/Offroad equivalent. Switching reprograms the controller instantly.</p>
-        </div>
-        <div class="feature-card">
-          <span class="feature-glyph mono">ERR</span>
-          <div class="title">Controller error detection</div>
-          <p>Optional live monitoring for hardware faults - a yellow warning triangle appears on the Cockpit the moment a Bafang controller error occurs, tap it to jump straight to the full error code and description.</p>
-        </div>
-        <div class="feature-card">
-          <span class="feature-glyph mono">BT</span>
-          <div class="title">Bluetooth remote control</div>
-          <p>Map a handlebar Bluetooth remote's Vol+/Vol- to assist level, light, PROTECT or STREET/RACE - control the ride without touching your phone.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- FULL CONFIG HIGHLIGHT -->
   <section class="anydevice">
     <div>
@@ -599,6 +508,7 @@
     </div>
     <div class="shot-row">
       <img src="img/19_LightTheme.jpg" alt="EggSPEED Cockpit in Light theme">
+      <img src="img/29_AOD.jpg" alt="Lock screen AOD showing speed, power and assist level">
     </div>
   </section>
 
@@ -627,6 +537,98 @@
     <div class="shot-row">
       <img src="img/12_Language.jpg" alt="Language selection screen">
       <img src="img/13_About.jpg" alt="About screen with privacy policy, terms of service and contact">
+    </div>
+  </section>
+
+  <!-- ALL FEATURES AT A GLANCE (moved to bottom) -->
+  <section class="features-section">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Features</div>
+        <h2>Everything your factory display shows - and more.</h2>
+      </div>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <span class="feature-glyph mono">km/h</span>
+          <div class="title">Live cockpit</div>
+          <p>Speed, power, current, voltage, distance, trip, average speed, Wh/km usage, and estimated range, all on one screen.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">FW</span>
+          <div class="title">OEM &amp; BBS-FW support</div>
+          <p>Switch between factory OEM Bafang firmware and <a href="https://github.com/danielnilsson9/bbs-fw" target="_blank" rel="noopener" class="link-muted" style="font-size:14px;">BBS-FW</a> right in Settings - EggSPEED speaks both configuration protocols natively.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">USB</span>
+          <div class="title">USB OTG connection</div>
+          <p>One cable to the Bafang programming port at 1200 baud - no Bluetooth dongle, no pairing.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">CFG</span>
+          <div class="title">Full configuration read</div>
+          <p>Basic, Pedal Assist (PAS), and Throttle - every parameter read straight from the controller, in its own units.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">0-9</span>
+          <div class="title">Assist levels &amp; charts</div>
+          <p>Speed and current limits for all 10 assist levels, with power- and speed-distribution charts across the whole range.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">%</span>
+          <div class="title">Battery &amp; range</div>
+          <p>Set your cell count and capacity once - the cockpit blends riding history and current style into a live range estimate.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">&plusmn;</span>
+          <div class="title">Calibration</div>
+          <p>App-side current, voltage, and speed correction for shunt-modded (AmpMax) controllers or a slightly-off wheel size - nothing is changed on the controller itself.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">.ini</span>
+          <div class="title">Profiles</div>
+          <p>Save your current setup, export it to a .ini file, or import one back in on another device.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">&check;</span>
+          <div class="title">Validated writes</div>
+          <p>Every value is clamped to a safe range before it's sent, and the controller's own confirmation code is decoded and shown to you - never a silent failure. No firmware flashing, ever.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">LOCK</span>
+          <div class="title">PROTECT (Anti-COP)</div>
+          <p>One tap silently locks assist to 0 while the Cockpit still looks and responds normally - unlocking only from a PIN-gated screen. Looks unchanged at a glance.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">GPS</span>
+          <div class="title">GPS speed overlay</div>
+          <p>Optional phone-GPS speed shown right on the Cockpit alongside the controller's own reading, for an independent comparison.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">~V</span>
+          <div class="title">SAG measurement</div>
+          <p>A passive Estimated SAG computed from your normal riding, plus a guided SAG Measurement procedure for a controlled, comparable battery-quality reading.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">/s</span>
+          <div class="title">Live monitoring charts</div>
+          <p>Power, current, voltage, and speed plotted over time, sampled twice a second with a 10-minute rolling history - drag to scrub any point.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">S/R</span>
+          <div class="title">STREET/RACE dual profiles</div>
+          <p>Two full sets of 10 assist levels, switchable on the fly right from the Cockpit - the EggRider Road/Offroad equivalent. Switching reprograms the controller instantly.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">ERR</span>
+          <div class="title">Controller error detection</div>
+          <p>Optional live monitoring for hardware faults - a yellow warning triangle appears on the Cockpit the moment a Bafang controller error occurs, tap it to jump straight to the full error code and description.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">BT</span>
+          <div class="title">Bluetooth remote control</div>
+          <p>Map a handlebar Bluetooth remote's Vol+/Vol- to assist level, light, PROTECT or STREET/RACE - control the ride without touching your phone.</p>
+        </div>
+      </div>
     </div>
   </section>
 
