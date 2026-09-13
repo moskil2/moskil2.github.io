@@ -165,6 +165,12 @@
       width: 160px; height: auto; display: block; flex: none;
       border-radius: 16px; box-shadow: 0 16px 40px rgba(0,0,0,0.45);
     }
+    /* Display & lock screen section only - 19_LightTheme.jpg and 29_AOD.jpg have different aspect
+       ratios, so the shared width-based sizing above renders them at different heights; match by
+       height instead just for this pair, width follows each image's own ratio. */
+    .shot-row--match-height img {
+      width: auto; height: 347px;
+    }
 
     /* privacy */
     .privacy-wrap { max-width: 1200px; margin: 32px auto 96px; padding: 0 32px; }
@@ -506,7 +512,7 @@
       <p>Dark or Light theme, plus a High Contrast mode that brightens faded text for full-sun readability - switchable any time in Settings.</p>
       <p>Optionally show speed, power, and assist right on the lock screen/AOD, so your phone can actually sleep instead of staying lit for the whole ride - a real battery saving.</p>
     </div>
-    <div class="shot-row">
+    <div class="shot-row shot-row--match-height">
       <img src="img/19_LightTheme.jpg" alt="EggSPEED Cockpit in Light theme">
       <img src="img/29_AOD.jpg" alt="Lock screen AOD showing speed, power and assist level">
     </div>
