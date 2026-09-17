@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SW102 Firmware - Privacy Policy | Spot Robotics by Tomasz Pieczara</title>
+  <meta name="description" content="Privacy policy for the SW102 firmware - open-source firmware for the Bafang SW102 display by Tomasz Pieczara / Spot Robotics.">
+  <meta name="author" content="Tomasz Pieczara">
+  <link rel="canonical" href="https://spotrobotics.app/sw102/privacy.html">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #0f0f0f;
+      color: #e8e8e8;
+      line-height: 1.7;
+      padding: 2rem 1rem 4rem;
+    }
+    .container { max-width: 680px; margin: 0 auto; }
+    .back {
+      display: inline-block;
+      font-size: 0.85rem;
+      color: #6b9fff;
+      text-decoration: none;
+      margin-bottom: 2.5rem;
+    }
+    .back:hover { text-decoration: underline; }
+    .app-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #6b9fff;
+      margin-bottom: 0.5rem;
+    }
+    h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+    .updated {
+      font-size: 0.85rem;
+      color: #666;
+      margin-bottom: 2.5rem;
+    }
+    h2 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #fff;
+      margin-top: 2rem;
+      margin-bottom: 0.5rem;
+    }
+    p { color: #aaa; margin-bottom: 0.75rem; }
+    ul { color: #aaa; padding-left: 1.5rem; margin-bottom: 0.75rem; }
+    li { margin-bottom: 0.25rem; }
+    a { color: #6b9fff; }
+    .divider { border: none; border-top: 1px solid #222; margin: 2rem 0; }
+    .highlight {
+      background: #1a1a1a;
+      border: 1px solid #2a2a2a;
+      border-radius: 10px;
+      padding: 1rem 1.25rem;
+      margin-bottom: 1rem;
+      color: #ccc;
+      font-size: 0.95rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a class="back" href="/">← spotrobotics.app</a>
+
+    <div class="app-label">SW102 Firmware</div>
+    <h1>Privacy Policy</h1>
+    <p class="updated">Last updated: September 17, 2026</p>
+
+    <div class="highlight">
+      The SW102 firmware is not an app - it's software that runs entirely on the display's own hardware. <strong style="color:#fff">It has no internet connectivity of any kind, and nothing is ever sent anywhere online.</strong>
+    </div>
+
+    <hr class="divider">
+
+    <h2>1. What This Firmware Does</h2>
+    <p>This is open-source firmware for the Bafang SW102 display, replacing the stock firmware entirely. It reads live telemetry from a genuine Bafang mid-drive controller over a wired UART connection and shows it on the display's own screen - speed, power, battery, assist level, trip, and range.</p>
+
+    <h2>2. Data Stored on the Display</h2>
+    <p>The firmware stores a small amount of data directly in the display's own flash memory - never anywhere else:</p>
+    <ul>
+      <li>Your settings (unit preference, wheel size, calibration values, cockpit layout choices)</li>
+      <li>Trip distance, odometer, and the learned riding data used to estimate range</li>
+    </ul>
+    <p>This data never leaves the display. A factory reset from the on-screen menu clears it.</p>
+
+    <h2>3. Bluetooth</h2>
+    <p>The display's Bluetooth radio is used only to install firmware updates (DFU) from a phone. It does not connect to the internet, does not pair with any app for data exchange, and transmits no riding data over Bluetooth.</p>
+
+    <h2>4. Data We Do Not Collect</h2>
+    <p>Because the firmware has no internet connectivity and no backend server, we do not collect, log, or have access to any of the following:</p>
+    <ul>
+      <li>Your riding data, location, or usage patterns</li>
+      <li>Any information about your controller or battery</li>
+      <li>Usage statistics, analytics, or crash reports</li>
+    </ul>
+
+    <h2>5. Children's Privacy</h2>
+    <p>This firmware is not directed at children under the age of 13 and we do not knowingly collect any personal information from children.</p>
+
+    <h2>6. Changes to This Policy</h2>
+    <p>If we update this Privacy Policy, we will post the revised version on this page with an updated "Last updated" date.</p>
+
+    <h2>7. Contact</h2>
+    <p>Questions about this policy? Contact us at <a href="mailto:privacy@spotrobotics.app">privacy@spotrobotics.app</a></p>
+  </div>
+</body>
+</html>
