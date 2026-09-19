@@ -213,7 +213,7 @@
     "description": "Open-source firmware for the Bafang SW102 display, built for genuine Bafang mid-drive controllers - redesigned cockpit, full menu, Bluetooth OTA updates.",
     "url": "https://spotrobotics.app/sw102/",
     "image": "https://spotrobotics.app/sw102/img/logo.jpg",
-    "softwareVersion": "0.0.9",
+    "softwareVersion": "0.1.2",
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
     "author": { "@type": "Person", "name": "Tomasz Pieczara" },
     "publisher": { "@type": "Organization", "name": "Spot Robotics", "url": "https://spotrobotics.app" }
@@ -240,7 +240,7 @@
       <p class="lede">Open-source firmware that replaces the stock SW102 firmware entirely - a redesigned cockpit, a full settings menu, and Bluetooth OTA updates, built from scratch for genuine Bafang mid-drive controllers (BBS01/BBS02/BBSHD/M400/M420/M620).</p>
       <div class="hero-ctas">
         <a class="btn-github" href="https://github.com/moskil2/SW102_BAFANG_OSF" target="_blank" rel="noopener">View on GitHub &rarr;</a>
-        <span class="badge-warn">v0.0.9</span>
+        <span class="badge-warn">v0.1.2</span>
       </div>
       <div class="hero-foot mono">
         <span>nRF51822</span>
@@ -274,20 +274,36 @@
     </div>
     <div class="shots">
       <div class="shot-card">
-        <img src="img/1_boot.jpeg" alt="SW102 boot screen showing the firmware name and version" class="zoomable">
+        <img src="img/boot.jpg" alt="SW102 boot screen showing the firmware name and version" class="zoomable">
         <p>Boot screen</p>
       </div>
       <div class="shot-card">
-        <img src="img/2_cockpit.jpeg" alt="SW102 cockpit screen with speed, power, assist level, trip and range" class="zoomable">
+        <img src="img/cockpit_a.jpg" alt="SW102 cockpit screen with speed, power, assist level, trip and range" class="zoomable">
         <p>Cockpit</p>
       </div>
       <div class="shot-card">
-        <img src="img/3_menu_marker.jpeg" alt="SW102 settings menu with the selection marker" class="zoomable">
-        <p>Menu (selection)</p>
+        <img src="img/cockpit_big.jpg" alt="SW102 cockpit layout with a large whole-number speed" class="zoomable">
+        <p>Cockpit (large speed)</p>
       </div>
       <div class="shot-card">
-        <img src="img/4_menu_top.jpeg" alt="SW102 top-level settings menu" class="zoomable">
-        <p>Menu (top level)</p>
+        <img src="img/data_screen.jpg" alt="SW102 data screen listing trip statistics" class="zoomable">
+        <p>Data screen</p>
+      </div>
+      <div class="shot-card">
+        <img src="img/cockpit_pas_b.jpg" alt="SW102 cockpit with the arrow-style assist level indicator" class="zoomable">
+        <p>Assist level, Type B</p>
+      </div>
+      <div class="shot-card">
+        <img src="img/rotated.jpg" alt="SW102 screen rotated 180 degrees" class="zoomable">
+        <p>Rotated 180 degrees</p>
+      </div>
+      <div class="shot-card">
+        <img src="img/menu_top.jpg" alt="SW102 top-level settings menu" class="zoomable">
+        <p>Menu</p>
+      </div>
+      <div class="shot-card">
+        <img src="img/pas_programming.jpg" alt="SW102 Assist Level Programming screen" class="zoomable">
+        <p>Assist level programming</p>
       </div>
     </div>
   </section>
@@ -299,15 +315,16 @@
       <h2>Everything a factory display shows - redesigned.</h2>
       <ul>
         <li>Battery voltage and percentage (Standard, or Precise - computed locally from measured voltage)</li>
-        <li>Speed, in large digits, with a selectable second layout that shows just the whole-number speed even larger</li>
+        <li>Speed, in large digits - three layouts, cycled with a short press of M: standard, whole-number speed even larger, and a data screen</li>
         <li>Motor power, in watts</li>
         <li>Assist level - two selectable layouts, with a bar-graph or an arrow-based indicator, plus light/Bluetooth/brake status icons</li>
         <li>Trip distance, odometer, and an estimated range based on your own riding history</li>
         <li>Average and current energy consumption (Wh/km or Wh/mile)</li>
+        <li>Data screen: trip distance, average and top speed, total and moving time, maximum current and power, consumption, energy used</li>
       </ul>
     </div>
     <div class="shot-card" style="margin: 0;">
-      <img src="img/2_cockpit.jpeg" alt="SW102 cockpit screen close-up" class="zoomable">
+      <img src="img/cockpit_a.jpg" alt="SW102 cockpit screen close-up" class="zoomable">
     </div>
   </section>
 
@@ -321,12 +338,13 @@
         <li>Current and voltage calibration for shunt-modded controllers or an off-reading voltage divider</li>
         <li>Odometer correction, trip reset, and full factory reset</li>
         <li>Battery percentage mode (Standard or Precise) with configurable min/max pack voltage</li>
-        <li>Cockpit layout options - assist-level layout, indicator style, separators</li>
+        <li>Cockpit layout options - assist-level layout, indicator style, separators, and turning the whole display upside down</li>
+        <li>Assist Level Programming - read and edit the controller's own per-level current and speed limits, then save them back</li>
         <li>Screen test and firmware/hardware info</li>
       </ul>
     </div>
     <div class="shot-card" style="margin: 0; background: #1f2128;">
-      <img src="img/4_menu_top.jpeg" alt="SW102 settings menu close-up" class="zoomable">
+      <img src="img/menu_top.jpg" alt="SW102 settings menu close-up" class="zoomable">
     </div>
   </section>
 
