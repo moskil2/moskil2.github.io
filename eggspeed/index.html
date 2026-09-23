@@ -371,7 +371,7 @@
       <div class="eyebrow">BBS-FW support</div>
       <h2>Full BBS-FW configuration, right alongside OEM.</h2>
       <p>Switch to <strong>BBS-FW</strong> right in Settings, then configure everything through dedicated screens built to match the field names and layout of BBS-FW's own official Windows tool - Global settings, Throttle, Pedal Assist, Features, Speed Sensor, and Shift Sensor, all in one System screen.</p>
-      <p>Assist Levels get their own screen too - Standard and Sport pages, with Type (PAS/Throttle/Cruise), Variant, and per-level current/cadence/speed limits for all 10 levels.</p>
+      <p>Assist Levels get their own screen too - Standard and Sport pages, with Type (PAS/Throttle/Cruise), Variant, and per-level current/cadence/speed limits for all 10 levels. Switch between Normal and Sport right from the Cockpit.</p>
     </div>
     <div class="shot-row">
       <img src="img/14_BbsFwSettings.jpg" alt="Settings screen with the OEM Bafang / BBS-FW firmware switch">
@@ -399,10 +399,11 @@
   <!-- STREET/RACE HIGHLIGHT -->
   <section class="anydevice">
     <div>
-      <div class="eyebrow">STREET/RACE</div>
+      <div class="eyebrow">STREET/RACE &middot; Normal/Sport</div>
       <h2>Two bikes in one, one tap away.</h2>
       <p><strong>STREET/RACE</strong> gives OEM Bafang controllers a second, independent set of 10 assist levels - switch between STREET and RACE right from the Cockpit, and EggSPEED reprograms the controller on the fly, mid-ride.</p>
       <p>It's the EggRider Road/Offroad equivalent: keep a gentle, legal STREET profile for daily riding, and a full-power RACE profile ready whenever you need it - no reconnecting, no menus.</p>
+      <p>Both firmwares have their own version of this. On <strong>BBS-FW</strong> it's built into the firmware as <strong>Normal/Sport</strong>: two independent sets of 10 assist levels, edited in the Assist Levels screen and switched from the Cockpit - nothing is reprogrammed when you switch.</p>
     </div>
     <div class="shot-row">
       <img src="img/24_StreetRaceLevels.jpg" alt="STREET/RACE assist levels configuration screen">
@@ -415,8 +416,8 @@
     <div>
       <div class="eyebrow">Monitoring</div>
       <h2>Watch every number move, in real time.</h2>
-      <p>Power, current, voltage, and speed plotted live - sampled every 0.5s with a 10-minute rolling history, each chart independently toggleable.</p>
-      <p>Drag your finger across any chart to scrub back and read the exact value (and how long ago it was) at any point in the last 10 minutes.</p>
+      <p>Power, current, voltage, and speed plotted live - sampled every 0.5s, each chart independently toggleable, with one shared time window for all charts: 2, 5, 10, 30 or 60 minutes.</p>
+      <p>Drag your finger across any chart to scrub back and read the exact value (and how long ago it was) at any point in the chosen window.</p>
     </div>
     <div class="shot-row">
       <img src="img/18_Monitoring.jpg" alt="Monitoring screen with Power, Current, Voltage and Speed charts">
@@ -617,12 +618,17 @@
         <div class="feature-card">
           <span class="feature-glyph mono">/s</span>
           <div class="title">Live monitoring charts</div>
-          <p>Power, current, voltage, and speed plotted over time, sampled twice a second with a 10-minute rolling history - drag to scrub any point.</p>
+          <p>Power, current, voltage, and speed plotted over time, sampled twice a second, with a 2 to 60 minute window - drag to scrub any point.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">TRIP</span>
+          <div class="title">Trip history</div>
+          <p>Every trip you reset is saved with distance, time, average and max speed, energy, power, battery and range. Delete any time; optional auto-reset on connect or after a break in riding.</p>
         </div>
         <div class="feature-card">
           <span class="feature-glyph mono">S/R</span>
-          <div class="title">STREET/RACE dual profiles</div>
-          <p>Two full sets of 10 assist levels, switchable on the fly right from the Cockpit - the EggRider Road/Offroad equivalent. Switching reprograms the controller instantly.</p>
+          <div class="title">Dual profiles: STREET/RACE &amp; Normal/Sport</div>
+          <p>Two full sets of 10 assist levels, switchable on the fly right from the Cockpit - the EggRider Road/Offroad equivalent. STREET/RACE on OEM Bafang (switching reprograms the controller), Normal/Sport on BBS-FW (built into the firmware).</p>
         </div>
         <div class="feature-card">
           <span class="feature-glyph mono">ERR</span>
@@ -673,7 +679,7 @@
     <div class="final-cta">
       <div>
         <h2>Get EggSPEED.</h2>
-        <p>Free, open configuration tool for Bafang BBS01/BBS02/BBSHD. Available now on Google Play.</p>
+        <p>Free configuration tool for Bafang BBS01/BBS02/BBSHD. Available now on Google Play.</p>
         <div class="hero-ctas">
           <a class="btn-outline" href="https://play.google.com/store/apps/details?id=app.spotrobotics.eggspeed" target="_blank" rel="noopener">Get it on Google Play &rarr;</a>
           <a class="btn-github" href="https://github.com/moskil2/EggSPEED" target="_blank" rel="noopener">View on GitHub &rarr;</a>
