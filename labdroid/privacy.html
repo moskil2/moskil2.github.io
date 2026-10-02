@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LabDroid - Privacy Policy | Spot Robotics by Tomasz Pieczara</title>
+  <meta name="description" content="Privacy policy for LabDroid - an Android sensor, hardware and diagnostics app by Tomasz Pieczara / Spot Robotics.">
+  <meta name="author" content="Tomasz Pieczara">
+  <link rel="canonical" href="https://spotrobotics.app/labdroid/privacy.html">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #0f0f0f;
+      color: #e8e8e8;
+      line-height: 1.7;
+      padding: 2rem 1rem 4rem;
+    }
+    .container { max-width: 680px; margin: 0 auto; }
+    .back {
+      display: inline-block;
+      font-size: 0.85rem;
+      color: #6b9fff;
+      text-decoration: none;
+      margin-bottom: 2.5rem;
+    }
+    .back:hover { text-decoration: underline; }
+    .app-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #00e676;
+      margin-bottom: 0.5rem;
+    }
+    h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+    .updated {
+      font-size: 0.85rem;
+      color: #666;
+      margin-bottom: 2.5rem;
+    }
+    h2 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #fff;
+      margin-top: 2rem;
+      margin-bottom: 0.5rem;
+    }
+    p { color: #aaa; margin-bottom: 0.75rem; }
+    ul { color: #aaa; padding-left: 1.5rem; margin-bottom: 0.75rem; }
+    li { margin-bottom: 0.25rem; }
+    a { color: #6b9fff; }
+    .divider { border: none; border-top: 1px solid #222; margin: 2rem 0; }
+    .highlight {
+      background: #1a1a1a;
+      border: 1px solid #2a2a2a;
+      border-radius: 10px;
+      padding: 1rem 1.25rem;
+      margin-bottom: 1rem;
+      color: #ccc;
+      font-size: 0.95rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a class="back" href="/labdroid/">← LabDroid</a>
+
+    <div class="app-label">LabDroid</div>
+    <h1>Privacy Policy</h1>
+    <p class="updated">Last updated: October 2, 2026</p>
+
+    <div class="highlight">
+      LabDroid reads sensor and hardware information only on your own device. <strong style="color:#fff">It does not request internet access and sends no data to us or anyone else.</strong>
+    </div>
+
+    <hr class="divider">
+
+    <h2>1. What LabDroid Does</h2>
+    <p>LabDroid reads data from your phone's sensors, location, cameras, battery, connectivity and other hardware components through official, public Android APIs, and displays it inside the app. All reading and processing happens locally on your device.</p>
+
+    <h2>2. Permissions</h2>
+    <p>LabDroid asks for a permission from the screen that needs it. You can deny any of them - the related readings are then simply not available. The current state of every permission is visible in the app's Settings.</p>
+    <ul>
+      <li><strong>Location</strong> - GPS position, satellite radar and compass</li>
+      <li><strong>Camera</strong> - camera module specifications</li>
+      <li><strong>Body sensors</strong> and <strong>Physical activity</strong> - heart-rate and step sensors, if your device has them</li>
+      <li><strong>Microphone</strong> - the sound level meter; audio is measured live and never recorded or stored</li>
+      <li><strong>Phone state</strong> - cellular signal strength and SIM state</li>
+      <li><strong>Bluetooth</strong> - Bluetooth adapter information and the names of devices already paired with your phone, shown only on screen</li>
+      <li><strong>Network and Wi-Fi state</strong> - connection type and Wi-Fi details</li>
+      <li><strong>Notifications</strong> - listed in Settings; the current version does not post any notifications</li>
+    </ul>
+
+    <h2>3. Data We Do Not Collect</h2>
+    <p>LabDroid does not collect, store remotely, or transmit any data to us or anyone else. Specifically:</p>
+    <ul>
+      <li>No personal information of any kind</li>
+      <li>No sensor readings, location or device information sent anywhere</li>
+      <li>No usage statistics or analytics</li>
+      <li>No advertising</li>
+      <li>No internet permission is requested at all - this can be verified directly in the app's manifest and source code on GitHub</li>
+    </ul>
+
+    <h2>4. Data Stored Locally on Your Device</h2>
+    <p>LabDroid stores the following data in your device's local app storage:</p>
+    <ul>
+      <li><strong>App preferences</strong> - theme, language, units, default sampling speed and your chosen export folder</li>
+      <li><strong>Recordings</strong> - sensor sessions you choose to record in the Monitor tab</li>
+    </ul>
+    <p>The only data that leaves the app is a file you explicitly choose to export (CSV, JSON, XML, TXT or GPX) or share using your device's own share function. You can clear all stored data at any time from the app's Settings, by clearing the app's storage in your device settings, or by uninstalling the app.</p>
+    <p>If Android's own backup is turned on in your device settings, the system may include these app preferences and recordings in your personal device backup. This is handled by Android under your account, not by LabDroid.</p>
+
+    <h2>5. Location and Google Play services</h2>
+    <p>LabDroid gets your position through the Fused Location Provider of Google Play services already installed on your phone. LabDroid itself never sends your location anywhere. Google Play services is part of your device's system software and is governed by <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's Privacy Policy</a>.</p>
+
+    <h2>6. Third-Party Services</h2>
+    <p>LabDroid includes no advertising SDKs, no analytics libraries and no crash-reporting services.</p>
+    <p>LabDroid is not distributed through the Google Play Store; the official APK is available only from the <a href="https://github.com/moskil2/LabDroid" target="_blank" rel="noopener">LabDroid GitHub repository</a>.</p>
+
+    <h2>7. Children's Privacy</h2>
+    <p>LabDroid is not directed at children under the age of 13 and we do not knowingly collect any personal information from children.</p>
+
+    <h2>8. Changes to This Policy</h2>
+    <p>If we update this Privacy Policy, we will post the revised version on this page with an updated "Last updated" date.</p>
+
+    <h2>9. Contact</h2>
+    <p>Questions about this policy? Contact us at <a href="mailto:tomasz.pieczara@gazeta.pl">tomasz.pieczara@gazeta.pl</a> or through the <a href="/support/">support form</a>.</p>
+  </div>
+</body>
+</html>
