@@ -82,7 +82,8 @@
       position: fixed;
       inset: 0;
       width: 100%;
-      height: 100%;
+      height: 100vh;
+      height: 100lvh; /* tall viewport: no stretch when the mobile address bar hides */
       z-index: -1;
       pointer-events: none;
     }
@@ -213,7 +214,7 @@
           var y = y0 + (y1 - y0) * t + rand(-60, 60);
           var r = rand(80, 220);
           var g = b.createRadialGradient(x, y, 0, x, y, r);
-          var hue = Math.random() < 0.7 ? '150,170,255' : '255,200,170';
+          var hue = Math.random() < 0.7 ? '255,215,160' : '255,190,150';
           g.addColorStop(0, 'rgba(' + hue + ',0.018)');
           g.addColorStop(1, 'rgba(' + hue + ',0)');
           b.fillStyle = g;
@@ -225,7 +226,7 @@
         for (var j = 0; j < 500; j++) {
           var s = Math.random();
           var off = (Math.random() + Math.random() + Math.random() - 1.5) * 110;
-          b.fillStyle = 'rgba(220,225,255,' + rand(0.08, 0.35) + ')';
+          b.fillStyle = 'rgba(255,238,210,' + rand(0.08, 0.35) + ')';
           b.fillRect(x0 + (x1 - x0) * s + off * 0.5, y0 + (y1 - y0) * s + off, 0.7, 0.7);
         }
       }
@@ -233,7 +234,7 @@
       function init() {
         dpr = Math.min(window.devicePixelRatio || 1, 2);
         w = window.innerWidth;
-        h = window.innerHeight;
+        h = canvas.clientHeight || window.innerHeight;
         canvas.width = w * dpr;
         canvas.height = h * dpr;
         ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
@@ -251,7 +252,7 @@
               glow: !!L.glow,
               tw: Math.random() < 0.25 ? rand(0.5, 1.6) : 0,
               ph: Math.random() * Math.PI * 2,
-              c: warm < 0.12 ? '255,220,190' : warm < 0.3 ? '190,210,255' : '255,255,255'
+              c: warm < 0.05 ? '200,215,255' : warm < 0.15 ? '255,205,140' : warm < 0.45 ? '255,228,160' : '255,246,225'
             });
           }
         });
@@ -288,6 +289,8 @@
 
       var resizeTimer;
       window.addEventListener('resize', function () {
+        // Mobile address bar show/hide only changes the height - keep the same sky
+        if (window.innerWidth === w) return;
         clearTimeout(resizeTimer);
         resizeTimer = setTimeout(function () { init(); if (still) draw(0); }, 150);
       });
