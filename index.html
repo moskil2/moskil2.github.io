@@ -138,10 +138,42 @@
       transition: border-color .15s ease, background .15s ease;
     }
     .contact-btn:hover { border-color: #6b9fff; background: rgba(107,159,255,0.08); }
+    .sound-btn {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,228,160,0.25);
+      background: rgba(10,11,16,0.6);
+      color: rgba(255,228,160,0.85);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 10;
+      transition: border-color .15s ease, background .15s ease;
+    }
+    .sound-btn:hover { border-color: rgba(255,228,160,0.6); background: rgba(255,228,160,0.08); }
+    .sound-btn svg { width: 20px; height: 20px; }
+    .sound-btn .on { display: none; }
+    .sound-btn.playing .on { display: inline; }
+    .sound-btn.playing .off { display: none; }
+    /* Narrow phones: keep the logo clear of the speaker button */
+    @media (max-width: 400px) { body { padding-top: 4rem; } }
   </style>
 </head>
 <body>
   <canvas id="sky" aria-hidden="true"></canvas>
+  <audio id="bg-music" src="/Music/podklad.mp3" loop preload="none"></audio>
+  <button class="sound-btn" id="sound-btn" type="button" aria-label="Play background music" aria-pressed="false">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M11 5 6 9H3v6h3l5 4z" fill="currentColor"/>
+      <path class="on" d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/>
+      <path class="off" d="m16 9 6 6M22 9l-6 6"/>
+    </svg>
+  </button>
   <div class="logo"><span>Spot Robotics</span><img src="/icons/logo-header.png" alt="Spot Robotics logo"></div>
   <div class="tagline">Simple apps. Honest policies. The universe asks for nothing - neither do we.</div>
 
@@ -300,6 +332,94 @@
 
       init();
       if (still) draw(0); else requestAnimationFrame(loop);
+    })();
+
+    // Background music: browsers block autoplay, so it starts on the first click/tap/key
+    // anywhere on the page. The speaker button toggles it; "off" is remembered per browser.
+    (function () {
+      var audio = document.getElementById('bg-music');
+      var btn = document.getElementById('sound-btn');
+      var VOLUME = 0.4, FADE_IN = 2, FADE_OUT = 0.4;
+      var KEY = 'sr-sound';
+      var ctx, gain, playing = false, pauseTimer;
+
+      function getPref() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
+      function setPref(v) { try { localStorage.setItem(KEY, v); } catch (e) {} }
+
+      function setUi(on) {
+        playing = on;
+        btn.classList.toggle('playing', on);
+        btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+        btn.setAttribute('aria-label', on ? 'Mute background music' : 'Play background music');
+      }
+
+      // Web Audio gain works on iOS too, where audio.volume is read-only.
+      // Skipped on file:// previews, where a media element source would be silent.
+      function setupGain() {
+        if (ctx || location.protocol === 'file:') return;
+        var AC = window.AudioContext || window.webkitAudioContext;
+        if (!AC) return;
+        try {
+          ctx = new AC();
+          gain = ctx.createGain();
+          gain.gain.value = 0;
+          ctx.createMediaElementSource(audio).connect(gain).connect(ctx.destination);
+        } catch (e) { ctx = null; gain = null; }
+      }
+
+      function ramp(to, secs) {
+        if (gain) {
+          var now = ctx.currentTime;
+          gain.gain.cancelScheduledValues(now);
+          gain.gain.setValueAtTime(gain.gain.value, now);
+          gain.gain.linearRampToValueAtTime(to, now + secs);
+        } else {
+          var from = audio.volume, start = performance.now();
+          (function step(t) {
+            var k = Math.min((t - start) / (secs * 1000), 1);
+            audio.volume = from + (to - from) * k;
+            if (k < 1) requestAnimationFrame(step);
+          })(start);
+        }
+      }
+
+      function play() {
+        clearTimeout(pauseTimer);
+        setupGain();
+        if (ctx && ctx.state === 'suspended') ctx.resume();
+        if (!gain) audio.volume = 0;
+        var p = audio.play();
+        // Rejected (e.g. a touchend that ended a scroll): wait for the next interaction
+        if (p && p.catch) p.catch(function () { setUi(false); if (getPref() !== 'off') addFirst(); });
+        setUi(true);
+        ramp(VOLUME, FADE_IN);
+      }
+
+      function stop() {
+        setUi(false);
+        ramp(0, FADE_OUT);
+        pauseTimer = setTimeout(function () { audio.pause(); }, FADE_OUT * 1000);
+      }
+
+      function firstInteraction(e) {
+        if (btn.contains(e.target)) return;
+        removeFirst();
+        if (getPref() !== 'off') play();
+      }
+      var events = ['click', 'touchend', 'keydown'];
+      function removeFirst() {
+        events.forEach(function (ev) { document.removeEventListener(ev, firstInteraction, true); });
+      }
+      function addFirst() {
+        events.forEach(function (ev) { document.addEventListener(ev, firstInteraction, true); });
+      }
+      addFirst();
+
+      btn.addEventListener('click', function () {
+        removeFirst();
+        if (playing) { stop(); setPref('off'); }
+        else { play(); setPref('on'); }
+      });
     })();
   </script>
 </body>
