@@ -26,10 +26,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { background: #16171c; }
+    html { background: #07080c; }
     body {
       font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background: #16171c;
+      background: transparent;
       color: #f3f1ea;
       width: 100%;
       overflow-x: hidden;
@@ -115,7 +115,7 @@
     .shot-card p { margin: 0; color: #a8a49a; font-size: 14px; line-height: 1.4; text-align: center; }
 
     /* features */
-    .features-section { background: #1a1b21; padding: 96px 32px; }
+    .features-section { background: rgba(26,27,33,0.6); padding: 96px 32px; }
     .feature-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
     .feature-card { background: #1f2128; border-radius: 22px; padding: 26px; display: flex; flex-direction: column; gap: 14px; }
     .feature-glyph {
@@ -192,6 +192,13 @@
       .privacy-points { grid-template-columns: 1fr; }
       .final-cta { justify-content: center; text-align: center; padding: 48px 32px; }
     }
+    @media (max-width: 520px) {
+      .wrap, .hero, .anydevice, .topbar { padding-left: 16px; padding-right: 16px; }
+      .features-section { padding: 72px 16px; }
+      .feature-grid { grid-template-columns: 1fr; }
+      .privacy-wrap, .final-cta-wrap, .footnote-wrap { padding-left: 16px; padding-right: 16px; }
+      .footnote-pill { border-radius: 24px; padding: 16px 20px; }
+    }
 
     /* Lightbox - click any screenshot to zoom */
     img.zoomable { cursor: zoom-in; }
@@ -202,6 +209,15 @@
     }
     .lightbox-overlay.open { display: flex; }
     .lightbox-overlay img { max-width: 100%; max-height: 100%; border-radius: 12px; box-shadow: 0 20px 60px rgba(0,0,0,0.5); }
+    #sky {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100vh;
+      height: 100lvh; /* tall viewport: no stretch when the mobile address bar hides */
+      z-index: -1;
+      pointer-events: none;
+    }
   </style>
   <script type="application/ld+json">
   {
@@ -221,6 +237,7 @@
   </script>
 </head>
 <body>
+  <canvas id="sky" aria-hidden="true"></canvas>
 
   <div class="topbar">
     <a href="/">&larr; spotrobotics.app</a>
@@ -237,7 +254,7 @@
       </div>
       <div class="eyebrow">Custom firmware - Bafang SW102 display</div>
       <h1>Your Bafang SW102 display, completely reprogrammed.</h1>
-      <p class="lede">Open-source firmware that replaces the stock SW102 firmware entirely - a redesigned cockpit, a full settings menu, and Bluetooth OTA updates, built from scratch for genuine Bafang mid-drive controllers (BBS01/BBS02/BBSHD/M400/M420/M620).</p>
+      <p class="lede">Open-source firmware that replaces the stock SW102 firmware entirely - a redesigned cockpit, a full settings menu, and Bluetooth OTA updates, built from scratch for genuine Bafang mid-drive controllers (BBS01/<wbr>BBS02/<wbr>BBSHD/<wbr>M400/<wbr>M420/<wbr>M620).</p>
       <div class="hero-ctas">
         <a class="btn-github" href="https://github.com/moskil2/SW102_BAFANG_OSF" target="_blank" rel="noopener">View on GitHub &rarr;</a>
         <span class="badge-warn">v0.1.2</span>
@@ -472,5 +489,7 @@
     })();
   </script>
 
+  <script src="/sky.js"></script>
+  <script src="/site.js"></script>
 </body>
 </html>

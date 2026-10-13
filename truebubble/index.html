@@ -22,10 +22,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { background: #16171c; }
+    html { background: #07080c; }
     body {
       font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background: #16171c;
+      background: transparent;
       color: #f3f1ea;
       width: 100%;
       overflow-x: hidden;
@@ -130,7 +130,7 @@
     .step-card p { margin: 0; color: #a8a49a; font-size: 14.5px; line-height: 1.5; }
 
     /* features */
-    .features-section { background: #1a1b21; padding: 96px 32px; }
+    .features-section { background: rgba(26,27,33,0.6); padding: 96px 32px; }
     .feature-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
     .feature-card { background: #1f2128; border-radius: 22px; padding: 26px; display: flex; flex-direction: column; gap: 14px; }
     .feature-glyph {
@@ -221,6 +221,22 @@
       .privacy-points { grid-template-columns: 1fr; }
       .final-cta { justify-content: center; text-align: center; padding: 48px 32px; }
     }
+    @media (max-width: 520px) {
+      .wrap, .hero, .anydevice, .topbar { padding-left: 16px; padding-right: 16px; }
+      .features-section { padding: 72px 16px; }
+      .feature-grid { grid-template-columns: 1fr; }
+      .privacy-wrap, .final-cta-wrap, .footnote-wrap { padding-left: 16px; padding-right: 16px; }
+      .footnote-pill { border-radius: 24px; padding: 16px 20px; }
+    }
+    #sky {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100vh;
+      height: 100lvh; /* tall viewport: no stretch when the mobile address bar hides */
+      z-index: -1;
+      pointer-events: none;
+    }
   </style>
   <script type="application/ld+json">
   {
@@ -239,6 +255,7 @@
   </script>
 </head>
 <body>
+  <canvas id="sky" aria-hidden="true"></canvas>
 
   <div class="topbar">
     <a href="/">&larr; spotrobotics.app</a>
@@ -424,5 +441,7 @@
     <a href="/">spotrobotics.app</a> &middot; <a href="/truebubble/privacy.html">Privacy Policy</a> &middot; &copy; 2026 Spot Robotics - Tomasz Pieczara
   </footer>
 
+  <script src="/sky.js"></script>
+  <script src="/site.js"></script>
 </body>
 </html>
