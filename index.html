@@ -74,6 +74,7 @@
       line-height: 1.6;
       color: #fff;
       text-align: center;
+      white-space: nowrap;
     }
     .divider {
       width: min(900px, 100%);
@@ -91,6 +92,7 @@
     }
     @media (max-width: 480px) {
       .tagline { font-size: 0.95rem; }
+      .motto { font-size: 1.15rem; }
     }
     .apps {
       display: flex;
@@ -123,6 +125,9 @@
       margin: 0 auto 0.75rem;
       display: block;
     }
+    .app-icon-link { display: block; width: fit-content; margin: 0 auto; border-radius: 18px; }
+    .app-icon-link .app-icon { transition: transform .15s ease; }
+    .app-icon-link:hover .app-icon { transform: scale(1.06); }
     .app-name {
       font-size: 1.1rem;
       font-weight: 600;
@@ -164,43 +169,43 @@
 <body>
   <canvas id="sky" aria-hidden="true"></canvas>
   <div class="logo"><img src="/icons/logo-header.png" alt="Spot Robotics logo"><span>Spot Robotics</span></div>
-  <div class="motto">Useful apps.<br>Honest policies.</div>
+  <div class="motto">Useful apps. Honest policies.</div>
   <div class="divider"></div>
   <div class="tagline">The universe asks for nothing - neither do we.</div>
 
   <div class="apps">
     <div class="app-card">
-      <img class="app-icon" src="/icons/directdrop.png" alt="DirectDrop icon">
+      <a class="app-icon-link" href="/directdrop/"><img class="app-icon" src="/icons/directdrop.png" alt="DirectDrop icon"></a>
       <div class="app-name">DirectDrop</div>
       <a href="/directdrop/" style="font-weight:600;">Open app page</a><br>
       <a href="/directdrop/privacy.html">Privacy Policy</a>
     </div>
     <div class="app-card">
-      <img class="app-icon" src="/icons/truebubble.jpg" alt="TrueBubble icon">
+      <a class="app-icon-link" href="/truebubble/"><img class="app-icon" src="/icons/truebubble.jpg" alt="TrueBubble icon"></a>
       <div class="app-name">TrueBubble</div>
       <a href="/truebubble/" style="font-weight:600;">Open app page</a><br>
       <a href="/truebubble/privacy.html">Privacy Policy</a>
     </div>
     <div class="app-card">
-      <img class="app-icon" src="/icons/fogrider.png" alt="FogRider icon">
+      <a class="app-icon-link" href="/fogrider/"><img class="app-icon" src="/icons/fogrider.png" alt="FogRider icon"></a>
       <div class="app-name">FogRider</div>
       <a href="/fogrider/" style="font-weight:600;">Open app page</a><br>
       <a href="/fogrider/privacy.html">Privacy Policy</a>
     </div>
     <div class="app-card">
-      <img class="app-icon" src="/icons/eggspeed.png" alt="EggSPEED icon">
+      <a class="app-icon-link" href="/eggspeed/"><img class="app-icon" src="/icons/eggspeed.png" alt="EggSPEED icon"></a>
       <div class="app-name">EggSPEED</div>
       <a href="/eggspeed/" style="font-weight:600;">Open app page</a><br>
       <a href="/eggspeed/privacy.html">Privacy Policy</a>
     </div>
     <div class="app-card">
-      <img class="app-icon" src="/sw102/img/logo.jpg" alt="SW102 firmware icon">
+      <a class="app-icon-link" href="/sw102/"><img class="app-icon" src="/sw102/img/logo.jpg" alt="SW102 firmware icon"></a>
       <div class="app-name">SW102 Firmware</div>
       <a href="/sw102/" style="font-weight:600;">Open app page</a><br>
       <a href="/sw102/privacy.html">Privacy Policy</a>
     </div>
     <div class="app-card">
-      <img class="app-icon" src="/icons/labdroid.png" alt="LabDroid icon">
+      <a class="app-icon-link" href="/labdroid/"><img class="app-icon" src="/icons/labdroid.png" alt="LabDroid icon"></a>
       <div class="app-name">LabDroid</div>
       <a href="/labdroid/" style="font-weight:600;">Open app page</a><br>
       <a href="/labdroid/privacy.html">Privacy Policy</a>
