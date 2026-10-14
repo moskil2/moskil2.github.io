@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>EggSPEED – Program your Bafang BBS01/BBS02/BBSHD controller (OEM or BBS-FW) from your phone | Spot Robotics</title>
-  <meta name="description" content="EggSPEED reads and programs your Bafang BBS01/BBS02/BBSHD controller over USB - on factory OEM firmware or BBS-FW. Live cockpit, full configuration, assist-level tuning. A modern alternative to the Speeed Bafang app. Validated writes, no firmware flashing.">
+  <meta name="description" content="EggSPEED reads and programs your Bafang BBS01/BBS02/BBSHD controller over USB or Bluetooth - on factory OEM firmware or BBS-FW. Live cockpit, full configuration, assist-level tuning. A modern alternative to the Speeed Bafang app. Validated writes, no firmware flashing.">
   <meta name="author" content="Tomasz Pieczara">
   <meta property="og:title" content="EggSPEED – Bafang BBS01/BBS02/BBSHD configuration tool (OEM & BBS-FW)">
   <meta property="og:description" content="Live cockpit, full controller configuration, and assist-level tuning for Bafang mid-drives, on OEM or BBS-FW firmware - over a simple USB cable.">
@@ -276,7 +276,7 @@
     "name": "EggSPEED",
     "operatingSystem": "ANDROID",
     "applicationCategory": "UtilitiesApplication",
-    "description": "EggSPEED reads and programs your Bafang BBS01/BBS02/BBSHD controller over USB - on factory OEM firmware or BBS-FW. Live cockpit, full configuration, assist-level tuning. Validated writes, no firmware flashing.",
+    "description": "EggSPEED reads and programs your Bafang BBS01/BBS02/BBSHD controller over USB or Bluetooth - on factory OEM firmware or BBS-FW. Live cockpit, full configuration, assist-level tuning. Validated writes, no firmware flashing.",
     "url": "https://spotrobotics.app/eggspeed/",
     "image": "https://spotrobotics.app/icons/eggspeed.png",
     "installUrl": "https://play.google.com/store/apps/details?id=app.spotrobotics.eggspeed",
@@ -313,7 +313,7 @@
         <span class="badge-warn">USB OTG or Bluetooth module required</span>
       </div>
       <div class="hero-foot mono">
-        <span>~2 MB</span>
+        <span>~3 MB</span>
         <span>&middot;</span>
         <span>Android 8.0+</span>
         <span>&middot;</span>
@@ -346,7 +346,7 @@
     <div class="steps">
       <div class="step-card">
         <div class="step-head"><span class="step-num">1</span><span class="title">Connect</span></div>
-        <div class="step-shot"><img src="img/02_Connect.jpg" alt="Connect screen with USB OTG programming cable instructions" width="480" height="1040"></div>
+        <div class="step-shot"><img src="img/30_ConnectBluetooth.jpg" alt="Connect screen with Bluetooth selected" width="480" height="1040"></div>
         <p>Plug the Bafang programming cable between your phone and the controller over USB OTG, or pick your paired Bluetooth module in Settings - EggSPEED identifies the controller automatically.</p>
       </div>
       <div class="step-card">
@@ -388,13 +388,15 @@
       <div class="eyebrow">BBS-FW support</div>
       <h2>Full BBS-FW configuration, right alongside OEM.</h2>
       <p>Switch to <strong>BBS-FW</strong> right in Settings, then configure everything through dedicated screens built to match the field names and layout of BBS-FW's own official Windows tool - Global settings, Throttle, Pedal Assist, Features, Speed Sensor, and Shift Sensor, all in one System screen.</p>
-      <p>Assist Levels get their own screen too - Standard and Sport pages, with Type (PAS/Throttle/Cruise), Variant, and per-level current/cadence/speed limits for all 10 levels. Switch between Normal and Sport right from the Cockpit.</p>
+      <p>Assist Levels get their own screen too - Standard and Sport pages, with Type (PAS/Throttle/Cruise), Variant, and per-level current/cadence/speed limits for all 10 levels - every parameter has a short description one tap away.</p>
+      <p>Normal/Sport follows the firmware's own <strong>Operation Mode Toggle</strong>: the Sport button on the Cockpit, the light button, or the brake held while the app connects - EggSPEED's Cockpit buttons behave exactly the way the firmware expects. When the Sport button isn't needed you can hide it, and a small N or S next to the speed shows the current mode.</p>
+      <p>After saving, EggSPEED lists any changed settings that BBS-FW only applies after a power restart, so you know when to switch the bike off and on.</p>
     </div>
     <div class="shot-row">
       <img src="img/14_BbsFwSettings.jpg" alt="Settings screen with the OEM Bafang / BBS-FW firmware switch">
       <img src="img/15_BbsFwSystemGlobal.jpg" alt="BBS-FW System screen, Global and Throttle settings">
       <img src="img/16_BbsFwSystemFeatures.jpg" alt="BBS-FW System screen, Features and Speed Sensor settings">
-      <img src="img/17_BbsFwAssistLevels.jpg" alt="BBS-FW Assist Levels screen, Standard/Sport pages">
+      <img src="img/32_BbsFwAssistLevelsInfo.jpg" alt="BBS-FW Assist Levels screen with parameter descriptions, Operation Mode Toggle and the Hide Normal/Sport button option">
       <img src="img/22_BbsFwCockpit.jpg" alt="Cockpit with the bbs-fw Tc temperature tile">
       <img src="img/23_TemperatureControl.jpg" alt="BBS-FW Temperature control screen">
     </div>
@@ -434,7 +436,7 @@
       <h2>Two bikes in one, one tap away.</h2>
       <p><strong>STREET/RACE</strong> gives OEM Bafang controllers a second, independent set of 10 assist levels - switch between STREET and RACE right from the Cockpit, and EggSPEED reprograms the controller on the fly, mid-ride.</p>
       <p>It's the EggRider Road/Offroad equivalent: keep a gentle, legal STREET profile for daily riding, and a full-power RACE profile ready whenever you need it - no reconnecting, no menus.</p>
-      <p>Both firmwares have their own version of this. On <strong>BBS-FW</strong> it's built into the firmware as <strong>Normal/Sport</strong>: two independent sets of 10 assist levels, edited in the Assist Levels screen and switched from the Cockpit - nothing is reprogrammed when you switch.</p>
+      <p>Both firmwares have their own version of this. On <strong>BBS-FW</strong> it's built into the firmware as <strong>Normal/Sport</strong>: two independent sets of 10 assist levels, edited in the Assist Levels screen and switched the way the firmware's Operation Mode Toggle is set (Sport button, light button or brake at connect) - nothing is reprogrammed when you switch.</p>
     </div>
     <div class="shot-row">
       <img src="img/24_StreetRaceLevels.jpg" alt="STREET/RACE assist levels configuration screen">
@@ -533,7 +535,7 @@
     </div>
     <div class="shot-row">
       <img src="img/11_Profiles.jpg" alt="Profiles screen with save, import and export">
-      <img src="img/08_Settings.jpg" alt="Settings screen with units, odometer and test mode">
+      <img src="img/31_SettingsConnection.jpg" alt="Settings screen with controller firmware, connection type and units">
     </div>
   </section>
 
@@ -548,6 +550,20 @@
     <div class="shot-row shot-row--match-height">
       <img src="img/19_LightTheme.jpg" alt="EggSPEED Cockpit in Light theme">
       <img src="img/29_AOD.jpg" alt="Lock screen AOD showing speed, power and assist level">
+    </div>
+  </section>
+
+  <!-- WIRELESS CONNECTION HIGHLIGHT -->
+  <section class="anydevice">
+    <div>
+      <div class="eyebrow">Wireless connection</div>
+      <h2>No cable between your phone and the bike.</h2>
+      <p>Besides the USB OTG programming cable, EggSPEED can talk to your controller over <strong>Bluetooth</strong>, through an additional Bluetooth module connected in place of the display. Pair it once in your phone's Bluetooth settings, pick it in Settings &gt; Connection, and everything works wirelessly - cockpit, configuration and writes. Tested on OEM Bafang and BBS-FW.</p>
+      <p>Need a module? The build guide is on <a href="https://github.com/moskil2/UART-BT-Konwerter" target="_blank" rel="noopener" class="link-muted" style="font-size:17px;">GitHub</a>.</p>
+    </div>
+    <div class="shot-row">
+      <img src="img/31_SettingsConnection.jpg" alt="Settings, Connection: USB OTG Wire or Bluetooth">
+      <img src="img/30_ConnectBluetooth.jpg" alt="Connect screen with Bluetooth selected">
     </div>
   </section>
 
@@ -630,7 +646,7 @@
         <div class="feature-card">
           <span class="feature-glyph mono">&check;</span>
           <div class="title">Validated writes</div>
-          <p>Every value is clamped to a safe range before it's sent, and the controller's own confirmation code is decoded and shown to you - never a silent failure. No firmware flashing, ever.</p>
+          <p>Every value is clamped to a safe range before it's sent, and the controller's own confirmation code is decoded and shown to you - never a silent failure. After every write the configuration is read back and compared with what was sent. No firmware flashing, ever.</p>
         </div>
         <div class="feature-card">
           <span class="feature-glyph mono">LOCK</span>
@@ -660,7 +676,7 @@
         <div class="feature-card">
           <span class="feature-glyph mono">S/R</span>
           <div class="title">Dual profiles: STREET/RACE &amp; Normal/Sport</div>
-          <p>Two full sets of 10 assist levels, switchable on the fly right from the Cockpit - the EggRider Road/Offroad equivalent. STREET/RACE on OEM Bafang (switching reprograms the controller), Normal/Sport on BBS-FW (built into the firmware).</p>
+          <p>Two full sets of 10 assist levels, switchable on the fly right from the Cockpit - the EggRider Road/Offroad equivalent. STREET/RACE on OEM Bafang (switching reprograms the controller), Normal/Sport on BBS-FW (built into the firmware, switched the way its Operation Mode Toggle is set).</p>
         </div>
         <div class="feature-card">
           <span class="feature-glyph mono">ERR</span>
@@ -705,7 +721,7 @@
       <span class="sep">|</span>
       <span>Android 8.0+</span>
       <span class="sep">|</span>
-      <span>~2 MB</span>
+      <span>~3 MB</span>
       <span class="sep">|</span>
       <span>USB OTG + Bafang programming cable, or a Bluetooth module</span>
     </div>
