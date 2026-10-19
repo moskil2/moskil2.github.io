@@ -171,6 +171,11 @@
     .shot-row--match-height img {
       width: auto; height: 347px;
     }
+    /* Cockpit styles section only - 7 screenshots: text above, one centered row of smaller shots
+       (in the shared two-column layout they would wrap 3 + 3 + 1). */
+    .anydevice--wide { grid-template-columns: 1fr; gap: 32px; }
+    .shot-row--seven { gap: 12px; justify-content: center; }
+    .shot-row--seven img { width: 140px; }
 
     /* privacy */
     .privacy-wrap { max-width: 1200px; margin: 32px auto 96px; padding: 0 32px; }
@@ -540,17 +545,21 @@
   </section>
 
   <!-- COCKPIT STYLES HIGHLIGHT -->
-  <section class="anydevice">
+  <section class="anydevice anydevice--wide">
     <div>
       <div class="eyebrow">Cockpit styles</div>
       <h2>Pick the cockpit that suits your ride.</h2>
-      <p>Besides the default cockpit, three analog looks to choose in Settings &gt; Cockpit: Sport Classic, Modern Performance and Technical Instrument. Speed, power, current and voltage on real gauges, with the same buttons and readings as the default.</p>
-      <p>Needles move smoothly and sweep the full scale every time you open the Cockpit.</p>
+      <p>Seven looks to choose in Settings &gt; Cockpit: the default digital cockpit and six analog styles - Sport Classic, Modern Performance, Technical Instrument, Modern Minimalist, Dark Cockpit and Outdoor. Same buttons and readings in every style.</p>
+      <p>Needles move smoothly and sweep the full scale every time you open the Cockpit. Modern Minimalist, Dark Cockpit and Outdoor add a speed chart for the current trip, with the trip average as a dashed line.</p>
     </div>
-    <div class="shot-row">
+    <div class="shot-row shot-row--seven">
+      <img src="img/01_Cockpit.jpg" alt="Default digital cockpit style">
       <img src="img/33_CockpitSportClassic.jpg" alt="Sport Classic cockpit style with chrome analog gauges">
       <img src="img/34_CockpitModernPerformance.jpg" alt="Modern Performance cockpit style with a glowing speed arc">
       <img src="img/35_CockpitTechnicalInstrument.jpg" alt="Technical Instrument cockpit style with orange-rimmed gauges">
+      <img src="img/36_CockpitModernMinimalist.jpg" alt="Modern Minimalist cockpit style with the trip speed chart">
+      <img src="img/37_CockpitDarkCockpit.jpg" alt="Dark Cockpit style with a chrome gauge and the trip speed chart">
+      <img src="img/38_CockpitOutdoor.jpg" alt="Outdoor cockpit style with a forest background and the trip speed chart">
     </div>
   </section>
 
