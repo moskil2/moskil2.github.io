@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LabDroid - Voyez tout ce que rapportent les capteurs et le matériel de votre téléphone Android | Spot Robotics</title>
+  <meta name="description" content="LabDroid montre ce que votre téléphone Android contient vraiment : capteurs en direct avec graphiques, détails CPU et GPU, caméras, santé de la batterie, satellites GPS et connectivité. Sans publicité, sans compte, sans autorisation Internet.">
+  <meta name="author" content="Tomasz Pieczara">
+  <meta property="og:title" content="LabDroid - appli Android de capteurs, matériel et diagnostic">
+  <meta property="og:description" content="Capteurs en direct avec graphiques, détails CPU et GPU, caméras, santé de la batterie, satellites GPS et connectivité - tout sur l'appareil, sans publicité, sans collecte de données.">
+  <meta property="og:url" content="https://spotrobotics.app/fr/labdroid/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://spotrobotics.app/icons/labdroid.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="LabDroid - appli Android de capteurs, matériel et diagnostic">
+  <meta name="twitter:description" content="Capteurs en direct avec graphiques, détails CPU et GPU, caméras, santé de la batterie, satellites GPS et connectivité - tout sur l'appareil, sans publicité, sans collecte de données.">
+  <meta name="twitter:image" content="https://spotrobotics.app/icons/labdroid.png">
+  <link rel="canonical" href="https://spotrobotics.app/fr/labdroid/">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="/icons/favicon-512x512.png">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { background: #07080c; }
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: transparent;
+      color: #f3f1ea;
+      width: 100%;
+      overflow-x: hidden;
+      line-height: 1.4;
+    }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; }
+    .mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+    .wrap { max-width: 1200px; margin: 0 auto; padding-left: 32px; padding-right: 32px; }
+    .eyebrow {
+      color: #00E676; font-weight: 700; font-size: 14px;
+      letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 14px;
+    }
+
+    /* topbar */
+    .topbar {
+      max-width: 1200px; margin: 0 auto; padding: 24px 32px 0;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .topbar a { color: #6f6a5f; font-size: 13.5px; font-weight: 600; }
+    .topbar a:hover { color: #a8a49a; }
+
+    /* buttons */
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: #1f6feb; color: #ffffff; font-weight: 700; font-size: 17px;
+      padding: 16px 28px; border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(31,111,235,0.4);
+      transition: background .15s ease;
+    }
+    .btn-primary:hover { background: #3a82f5; }
+    .btn-github {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: #FFC107; color: #1a1408; font-weight: 700; font-size: 17px;
+      padding: 16px 28px; border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(255,193,7,0.4);
+      transition: background .15s ease;
+    }
+    .btn-github:hover { background: #ffce3d; }
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: transparent; color: #1f6feb; font-weight: 700; font-size: 17px;
+      padding: 15px 27px; border-radius: 16px; border: 1.5px solid #1f6feb;
+      transition: background .15s ease, color .15s ease;
+    }
+    .btn-outline:hover { background: rgba(31,111,235,0.1); }
+    .badge-warn {
+      display: inline-flex; align-items: center;
+      font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 700;
+      letter-spacing: 0.05em; text-transform: uppercase; color: #4f8cff;
+      background: rgba(79,140,255,0.14); border: 1px solid rgba(79,140,255,0.4);
+      border-radius: 100px; padding: 7px 14px;
+    }
+
+    /* hero */
+    .hero {
+      max-width: 1200px; margin: 0 auto; padding: 56px 32px 80px;
+      display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 64px; align-items: center;
+    }
+    .hero-brand { display: flex; align-items: center; gap: 16px; margin-bottom: 28px; }
+    .hero-brand img { width: 56px; height: 56px; border-radius: 16px; box-shadow: 0 8px 24px rgba(0,230,118,0.3); }
+    .hero-brand span { font-size: 20px; font-weight: 700; letter-spacing: 0.01em; }
+    .hero h1 { font-size: 52px; line-height: 1.1; font-weight: 800; margin: 0 0 24px; letter-spacing: -0.02em; text-wrap: balance; }
+    .hero p.lede { font-size: 20px; line-height: 1.55; color: #a8a49a; margin: 0 0 36px; max-width: 520px; }
+    .hero-ctas { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+    .hero-foot {
+      display: flex; gap: 28px; margin-top: 44px; color: #6f6a5f;
+      font-family: 'JetBrains Mono', monospace; font-size: 13px; flex-wrap: wrap;
+    }
+    .hero-shot { display: flex; justify-content: center; }
+    .hero-shot .bezel {
+      border-radius: 36px; padding: 10px; background: #1f2128;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.55), inset 0 0 0 1px #2c2e36;
+    }
+    .hero-shot img { width: 280px; height: auto; display: block; border-radius: 28px; }
+
+    /* how it works */
+    .section-head { text-align: center; margin-bottom: 56px; }
+    .section-head h2 { font-size: 38px; font-weight: 800; margin: 0; letter-spacing: -0.01em; text-wrap: balance; }
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; max-width: 1080px; margin: 0 auto; }
+    .step-card { background: #1f2128; border-radius: 26px; padding: 24px; display: flex; flex-direction: column; gap: 18px; }
+    .step-head { display: flex; align-items: center; gap: 10px; }
+    .step-num {
+      width: 28px; height: 28px; border-radius: 9px; background: rgba(0,230,118,0.14);
+      color: #00E676; font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 13px;
+      display: flex; align-items: center; justify-content: center; flex: none;
+    }
+    .step-head span.title { font-weight: 700; font-size: 16px; }
+    .step-shot { border-radius: 20px; overflow: hidden; background: #16171c; box-shadow: inset 0 0 0 1px #2c2e36; }
+    .step-shot img { width: 100%; height: auto; display: block; }
+    .step-card p { margin: 0; color: #a8a49a; font-size: 14.5px; line-height: 1.5; }
+
+    /* features */
+    .features-section { background: rgba(26,27,33,0.6); padding: 96px 32px; }
+    .feature-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+    .feature-card { background: #1f2128; border-radius: 22px; padding: 26px; display: flex; flex-direction: column; gap: 14px; }
+    .feature-glyph {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 44px; height: 44px; border-radius: 13px; background: rgba(0,230,118,0.12);
+      color: #00E676; font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 13px;
+    }
+    .feature-card .title { font-weight: 700; font-size: 16px; }
+    .feature-card p { margin: 0; color: #a8a49a; font-size: 14px; line-height: 1.5; }
+
+    /* two-column highlight sections */
+    .anydevice {
+      max-width: 1200px; margin: 0 auto; padding: 88px 32px;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;
+    }
+    .anydevice h2 { font-size: 34px; font-weight: 800; margin: 0 0 20px; letter-spacing: -0.01em; text-wrap: balance; }
+    .anydevice p { font-size: 17px; line-height: 1.6; color: #a8a49a; margin: 0 0 20px; }
+    .anydevice p:last-child { margin-bottom: 0; }
+    .anydevice p strong { color: #f3f1ea; }
+    .shot-row {
+      display: flex; align-items: flex-start; justify-content: flex-start;
+      gap: 16px; flex-wrap: wrap;
+    }
+    .shot-row img {
+      width: 260px; height: auto; display: block; flex: none;
+      border-radius: 16px; box-shadow: 0 16px 40px rgba(0,0,0,0.45);
+    }
+
+    /* privacy */
+    .privacy-wrap { max-width: 1200px; margin: 32px auto 96px; padding: 0 32px; }
+    .privacy {
+      background: linear-gradient(135deg, rgba(0,230,118,0.12), rgba(0,230,118,0.04));
+      border-radius: 32px; padding: 64px;
+      display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 56px; align-items: center;
+      box-shadow: inset 0 0 0 1px rgba(0,230,118,0.22);
+    }
+    .privacy-badge {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 56px; height: 56px; border-radius: 16px; background: rgba(0,230,118,0.16);
+      color: #00E676; font-size: 24px; font-weight: 800; margin-bottom: 24px;
+    }
+    .privacy h2 { font-size: 34px; font-weight: 800; margin: 0 0 16px; letter-spacing: -0.01em; text-wrap: balance; }
+    .privacy p { font-size: 17px; line-height: 1.6; color: #a8a49a; margin: 0; }
+    .privacy-points { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .privacy-points div { display: flex; align-items: flex-start; gap: 12px; }
+    .privacy-points .check { color: #00E676; font-weight: 800; flex-shrink: 0; }
+    .privacy-points span.label { font-size: 15.5px; line-height: 1.5; color: #f3f1ea; }
+
+    /* footnote strip */
+    .footnote-wrap { max-width: 1200px; margin: 0 auto; padding: 0 32px 96px; text-align: center; }
+    .footnote-pill {
+      display: inline-flex; align-items: center; gap: 24px; flex-wrap: wrap; justify-content: center;
+      color: #6f6a5f; font-family: 'JetBrains Mono', monospace; font-size: 13.5px;
+      background: #1f2128; border-radius: 100px; padding: 16px 32px;
+    }
+    .footnote-pill span.sep { color: #3a3b42; }
+
+    /* final cta */
+    .final-cta-wrap { max-width: 1200px; margin: 0 auto 64px; padding: 0 32px; }
+    .final-cta {
+      background: #1f2128; border-radius: 32px; padding: 72px;
+      display: flex; align-items: center; justify-content: space-between; gap: 48px; flex-wrap: wrap;
+    }
+    .final-cta h2 { font-size: 36px; font-weight: 800; margin: 0 0 14px; letter-spacing: -0.01em; }
+    .final-cta p { font-size: 17px; color: #a8a49a; margin: 0 0 28px; }
+    .final-cta-qr { text-align: center; }
+    .final-cta-qr img { width: 150px; height: 150px; border-radius: 16px; background: #ffffff; padding: 12px; opacity: 0.7; }
+    .final-cta-qr .caption { color: #6f6a5f; font-family: 'JetBrains Mono', monospace; font-size: 12px; margin-top: 10px; }
+
+    footer.site-footer {
+      text-align: center; padding: 0 24px 48px; color: #444; font-size: 12.5px;
+    }
+    footer.site-footer a { color: #6b9fff; }
+    footer.site-footer a:hover { text-decoration: underline; }
+
+    @media (max-width: 880px) {
+      .hero { grid-template-columns: 1fr; padding-top: 40px; gap: 40px; }
+      .hero-shot { order: -1; }
+      .hero h1 { font-size: 36px; }
+      .steps { grid-template-columns: 1fr; }
+      .feature-grid { grid-template-columns: repeat(2, 1fr); }
+      .anydevice { grid-template-columns: 1fr; gap: 32px; }
+      .shot-row { justify-content: flex-start; }
+      .privacy { grid-template-columns: 1fr; padding: 40px; }
+      .privacy-points { grid-template-columns: 1fr; }
+      .final-cta { justify-content: center; text-align: center; padding: 48px 32px; }
+    }
+    @media (max-width: 520px) {
+      .wrap, .hero, .anydevice, .topbar { padding-left: 16px; padding-right: 16px; }
+      .features-section { padding: 72px 16px; }
+      .feature-grid { grid-template-columns: 1fr; }
+      .privacy-wrap, .final-cta-wrap, .footnote-wrap { padding-left: 16px; padding-right: 16px; }
+      .footnote-pill { border-radius: 24px; padding: 16px 20px; }
+    }
+
+    /* Lightbox - click any screenshot to zoom */
+    img.zoomable { cursor: zoom-in; }
+    .lightbox-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(10, 11, 15, 0.92);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      cursor: zoom-out;
+    }
+    .lightbox-overlay.open { display: flex; }
+    .lightbox-overlay img {
+      max-width: 100%;
+      max-height: 100%;
+      border-radius: 12px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    }
+    #sky {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100vh;
+      height: 100lvh; /* tall viewport: no stretch when the mobile address bar hides */
+      z-index: -1;
+      pointer-events: none;
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "LabDroid",
+    "operatingSystem": "ANDROID",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "LabDroid montre ce que votre téléphone Android contient vraiment : capteurs en direct avec graphiques, détails CPU et GPU, caméras, santé de la batterie, satellites GPS et connectivité. Sans publicité, sans compte, sans autorisation Internet.",
+    "url": "https://spotrobotics.app/labdroid/",
+    "image": "https://spotrobotics.app/icons/labdroid.png",
+    "installUrl": "https://github.com/moskil2/LabDroid/releases",
+    "softwareVersion": "0.3.0",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "author": { "@type": "Person", "name": "Tomasz Pieczara" },
+    "publisher": { "@type": "Organization", "name": "Spot Robotics", "url": "https://spotrobotics.app" }
+  }
+  </script>
+<!-- i18n:head --><link rel="alternate" hreflang="en" href="https://spotrobotics.app/labdroid/"><link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/labdroid/"><link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/labdroid/"><link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/labdroid/"><link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/labdroid/"><link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/labdroid/"><style>.lang-ctl{position:fixed;top:calc(1rem + 48px);right:1rem;z-index:50;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}.lang-ctl summary{list-style:none;width:40px;height:40px;border-radius:50%;box-sizing:border-box;border:1px solid rgba(255,228,160,0.25);background:rgba(10,11,16,0.6);color:rgba(255,228,160,0.85);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:12px;font-weight:700;letter-spacing:.04em;transition:border-color .15s ease,background .15s ease}.lang-ctl summary::-webkit-details-marker{display:none}.lang-ctl summary:hover,.lang-ctl[open] summary{border-color:rgba(255,228,160,0.6);background:rgba(255,228,160,0.08)}.lang-ctl .lang-list{position:absolute;top:46px;right:0;display:flex;flex-direction:column;min-width:120px;padding:6px;border-radius:12px;background:rgba(10,11,16,0.92);border:1px solid rgba(255,228,160,0.25)}.lang-ctl .lang-list a{display:flex;justify-content:space-between;gap:12px;padding:8px 10px;border-radius:8px;color:#e8e8e8;text-decoration:none;font-size:14px}.lang-ctl .lang-list a b{color:rgba(255,228,160,0.85);font-size:12px}.lang-ctl .lang-list a:hover,.lang-ctl .lang-list a[aria-current]{background:rgba(255,228,160,0.08)}</style><!-- /i18n:head -->
+</head>
+<body>
+<!-- i18n:switch --><details class="lang-ctl"><summary aria-label="Language">FR</summary><div class="lang-list"><a href="/labdroid/" hreflang="en" lang="en">English <b>EN</b></a><a href="/de/labdroid/" hreflang="de" lang="de">Deutsch <b>DE</b></a><a href="/fr/labdroid/" hreflang="fr" lang="fr" aria-current="true">Français <b>FR</b></a><a href="/pl/labdroid/" hreflang="pl" lang="pl">Polski <b>PL</b></a><a href="/no/labdroid/" hreflang="no" lang="no">Norsk <b>NO</b></a></div></details><!-- /i18n:switch -->
+  <canvas id="sky" aria-hidden="true"></canvas>
+
+  <div class="topbar">
+    <a href="/fr/">&larr; spotrobotics.app</a>
+    <a href="https://github.com/moskil2/LabDroid" target="_blank" rel="noopener">GitHub</a>
+    <a href="/fr/labdroid/privacy.html">Confidentialité</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div>
+      <div class="hero-brand">
+        <img src="/icons/labdroid.png" alt="Icône LabDroid">
+        <span>LabDroid</span>
+      </div>
+      <div class="eyebrow">Capteurs, matériel &amp; diagnostic Android</div>
+      <h1>Découvrez ce que votre téléphone a vraiment dans le ventre.</h1>
+      <p class="lede">Chaque capteur en direct avec graphiques, détails CPU et GPU, caméras, santé de la batterie, satellites GPS et connectivité - lus directement depuis Android sur votre propre appareil. Sans publicité, sans compte, sans autorisation Internet.</p>
+      <div class="hero-ctas">
+        <a class="btn-primary" href="https://github.com/moskil2/LabDroid/releases/download/v0.3.0/LabDroid_v0.3.0.apk" target="_blank" rel="noopener">Télécharger l'APK &rarr;</a>
+        <a class="btn-github" href="https://github.com/moskil2/LabDroid" target="_blank" rel="noopener">Voir sur GitHub &rarr;</a>
+      </div>
+      <div class="hero-foot mono">
+        <span>Android 8.0+</span>
+        <span>&middot;</span>
+        <span>Anglais &amp; polonais</span>
+        <span>&middot;</span>
+        <span>Gratuit, sans publicité</span>
+      </div>
+    </div>
+    <div class="hero-shot">
+      <div class="bezel">
+        <img src="/labdroid/img/01_Dashboard.jpg" alt="Tableau de bord LabDroid avec modèle, version d'Android, correctif de sécurité et noyau" width="280" height="607">
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="wrap" style="padding-top:32px; padding-bottom:96px;">
+    <div class="section-head">
+      <div class="eyebrow">Comment ça marche</div>
+      <h2>Ouvrez. Choisissez une catégorie. Regardez en direct.</h2>
+    </div>
+    <div class="steps">
+      <div class="step-card">
+        <div class="step-head"><span class="step-num">1</span><span class="title">Connaissez votre appareil</span></div>
+        <div class="step-shot"><img src="/labdroid/img/01_Dashboard.jpg" alt="Tableau de bord avec modèle et détails Android" width="480" height="1040"></div>
+        <p>Le tableau de bord affiche d'un coup d'œil le modèle, le fabricant, la version et le nom de code d'Android, le correctif de sécurité et le noyau.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-head"><span class="step-num">2</span><span class="title">Parcourez tous les capteurs</span></div>
+        <div class="step-shot"><img src="/labdroid/img/03_Sensors.jpg" alt="Liste des capteurs avec valeurs en direct" width="480" height="1040"></div>
+        <p>Chaque capteur que votre téléphone expose, avec le vrai nom de sa puce et une valeur en direct - plus le niveau sonore et le signal GSM.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-head"><span class="step-num">3</span><span class="title">Plongez dans les données</span></div>
+        <div class="step-shot"><img src="/labdroid/img/04_SensorDetail.jpg" alt="Détail d'un capteur avec graphique en direct et statistiques" width="480" height="1040"></div>
+        <p>Touchez un capteur pour un graphique en direct, min/max/moyenne et écart type, puis exportez votre enregistrement.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HARDWARE HIGHLIGHT -->
+  <section class="anydevice">
+    <div>
+      <div class="eyebrow">Matériel</div>
+      <h2>CPU, GPU, mémoire - les vraies caractéristiques.</h2>
+      <p>Nombre de cœurs <strong>CPU</strong>, groupes de cœurs avec leurs fréquences, ABI, fréquence maximale, plateforme matérielle et SoC.</p>
+      <p>Moteur de rendu <strong>GPU</strong>, fabricant, versions OpenGL ES / GLSL / EGL et nombre d'extensions GL prises en charge - plus les détails de mémoire, stockage, écran et audio dans le même onglet.</p>
+    </div>
+    <div class="shot-row">
+      <img src="/labdroid/img/02_Hardware.jpg" alt="Écran Matériel avec détails CPU et GPU">
+    </div>
+  </section>
+
+  <!-- SENSORS HIGHLIGHT -->
+  <section class="anydevice">
+    <div>
+      <div class="eyebrow">Capteurs</div>
+      <h2>Chaque capteur, en direct, avec le vrai nom de sa puce.</h2>
+      <p>Lumière, baromètre, gyroscope, magnétomètre, orientation, accéléromètre et plus - chacun avec le nom de capteur du fabricant et une valeur en direct.</p>
+      <p>La vue détaillée trace un <strong>graphique en direct</strong>, garde le minimum, le maximum, la moyenne et l'écart type, et permet de changer la fréquence d'échantillonnage (Fast, Normal, Slow), de mettre en pause, de réinitialiser ou d'exporter.</p>
+    </div>
+    <div class="shot-row">
+      <img src="/labdroid/img/03_Sensors.jpg" alt="Liste des capteurs avec valeurs en direct">
+      <img src="/labdroid/img/04_SensorDetail.jpg" alt="Détail du capteur de lumière avec graphique en direct et statistiques">
+    </div>
+  </section>
+
+  <!-- CAMERAS HIGHLIGHT -->
+  <section class="anydevice">
+    <div>
+      <div class="eyebrow">Caméras</div>
+      <h2>Ce que chaque objectif sait vraiment faire.</h2>
+      <p>Chaque module photo listé séparément - grand-angle, ultra grand-angle, téléobjectif, avant - avec taille du capteur, matrice de pixels, focale, champ de vision, plage de zoom, OIS, flash, prise en charge RAW, fréquence d'images max et multi-caméra logique.</p>
+    </div>
+    <div class="shot-row">
+      <img src="/labdroid/img/05_Cameras.jpg" alt="Écran Caméras avec caractéristiques par caméra">
+    </div>
+  </section>
+
+  <!-- GPS HIGHLIGHT -->
+  <section class="anydevice">
+    <div>
+      <div class="eyebrow">GPS &amp; boussole</div>
+      <h2>Chaque satellite au-dessus de vous, en direct.</h2>
+      <p>Un <strong>radar satellite</strong> montre où se trouve chaque satellite dans le ciel, avec la force du signal par satellite pour GPS, GLONASS, Galileo, BeiDou, QZSS, SBAS et IRNSS.</p>
+      <p>Position précise, altitude, vitesse, cap et précision, une boussole corrigée vers le nord géographique, et l'enregistrement de traces avec export GPX / CSV.</p>
+    </div>
+    <div class="shot-row">
+      <img src="/labdroid/img/08_GPS_Radar.jpg" alt="Radar satellite GPS avec force du signal par satellite">
+    </div>
+  </section>
+
+  <!-- BATTERY HIGHLIGHT -->
+  <section class="anydevice">
+    <div>
+      <div class="eyebrow">Batterie</div>
+      <h2>Votre batterie, au-delà du pourcentage.</h2>
+      <p>Niveau, état, source de charge, santé et technologie, plus le côté électrique : température, tension, courant, charge restante, capacité nominale et nombre de cycles.</p>
+      <p>Certaines valeurs, comme le nombre de cycles, ne sont fournies que par les versions récentes d'Android ou certains appareils - LabDroid les indique clairement comme indisponibles quand votre téléphone ne les fournit pas.</p>
+    </div>
+    <div class="shot-row">
+      <img src="/labdroid/img/06_Battery.jpg" alt="Écran Batterie avec niveau, santé, tension et capacité">
+    </div>
+  </section>
+
+  <!-- SETTINGS HIGHLIGHT -->
+  <section class="anydevice">
+    <div>
+      <div class="eyebrow">Réglages &amp; autorisations</div>
+      <h2>Votre téléphone, vos règles.</h2>
+      <p>Thème sombre ou clair, unités métriques ou impériales et fréquence d'échantillonnage par défaut des capteurs - modifiables à tout moment.</p>
+      <p>Chaque autorisation que LabDroid peut utiliser est listée avec son état actuel, pour voir toujours exactement à quoi l'application a accès.</p>
+    </div>
+    <div class="shot-row">
+      <img src="/labdroid/img/07_Settings.jpg" alt="Écran Réglages avec thème, unités, fréquence d'échantillonnage et autorisations">
+    </div>
+  </section>
+
+  <!-- ALL FEATURES AT A GLANCE -->
+  <section class="features-section">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Fonctions</div>
+        <h2>Une seule appli pour tout ce qu'il y a dans votre téléphone.</h2>
+      </div>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <span class="feature-glyph mono">OS</span>
+          <div class="title">Tableau de bord de l'appareil</div>
+          <p>Modèle, fabricant, version et nom de code d'Android, niveau de correctif de sécurité et version du noyau sur un seul écran.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">CPU</span>
+          <div class="title">CPU &amp; GPU</div>
+          <p>Cœurs, groupes et fréquences, SoC et ABI, plus moteur de rendu GPU, fabricant et versions OpenGL ES / GLSL / EGL.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">RAM</span>
+          <div class="title">Mémoire, stockage &amp; écran</div>
+          <p>Utilisation de la mémoire et du stockage, plus détails de l'écran et de l'audio, dans l'onglet Matériel.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">~</span>
+          <div class="title">Capteurs en direct</div>
+          <p>Chaque capteur matériel avec le vrai nom de sa puce, une valeur en direct et son état, en échantillonnage Fast, Normal ou Slow.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">/s</span>
+          <div class="title">Graphiques &amp; statistiques</div>
+          <p>Graphique en direct pour n'importe quel capteur avec minimum, maximum, moyenne et écart type - pause ou réinitialisation à tout moment.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">REC</span>
+          <div class="title">Moniteur &amp; enregistrement</div>
+          <p>Épinglez les capteurs qui vous intéressent dans l'onglet Moniteur et enregistrez-les tous ensemble en une session.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">CSV</span>
+          <div class="title">Export</div>
+          <p>Exportez les enregistrements en CSV, JSON, XML, TXT ou GPX et partagez-les avec l'appli de votre choix.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">GPS</span>
+          <div class="title">GPS &amp; boussole</div>
+          <p>Radar satellite avec force du signal pour GPS, GLONASS, Galileo et BeiDou, position précise, une boussole corrigée vers le nord géographique et l'enregistrement de traces GPX.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">CAM</span>
+          <div class="title">Caméras</div>
+          <p>Taille du capteur, résolution, focale, champ de vision, plage de zoom, OIS, flash, RAW et fréquence d'images max pour chaque caméra.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">%</span>
+          <div class="title">Batterie</div>
+          <p>Niveau, santé, source de charge, température, tension, courant, charge restante, capacité nominale et nombre de cycles.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">dB</span>
+          <div class="title">Niveau sonore &amp; signal GSM</div>
+          <p>Un sonomètre basé sur le microphone et la force du signal cellulaire en direct, chacun avec son écran de détail.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">NET</span>
+          <div class="title">Connectivité</div>
+          <p>Wi-Fi, réseau mobile, état de la SIM et détails du réseau pour la connexion utilisée en ce moment.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">?</span>
+          <div class="title">Recherche</div>
+          <p>Trouvez instantanément n'importe quel capteur, section matérielle ou réglage depuis un seul champ de recherche.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">PL</span>
+          <div class="title">Anglais &amp; polonais</div>
+          <p>Changez la langue de l'appli directement depuis la barre du haut, indépendamment de la langue du système.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">&#9680;</span>
+          <div class="title">Thème sombre &amp; clair</div>
+          <p>Démarre en thème sombre, passez en clair à tout moment depuis le menu ou les Réglages.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">&lt;/&gt;</span>
+          <div class="title">Ouvert à la consultation</div>
+          <p>Le code source complet est publié sur GitHub, pour voir exactement ce que fait l'appli sur votre téléphone.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRIVACY -->
+  <section class="privacy-wrap">
+    <div class="privacy">
+      <div>
+        <span class="privacy-badge">&check;</span>
+        <h2>Rien ne quitte votre téléphone.</h2>
+        <p>LabDroid lit tout localement et ne demande aucun accès à Internet. Les seules données qui quittent votre appareil sont les fichiers que vous exportez vous-même.</p>
+      </div>
+      <div class="privacy-points">
+        <div><span class="check">&check;</span><span class="label">Aucun accès Internet demandé</span></div>
+        <div><span class="check">&check;</span><span class="label">Pas de compte, pas d'analyse, pas de pistage</span></div>
+        <div><span class="check">&check;</span><span class="label">Pas de publicité, pas de SDK d'analyse</span></div>
+        <div><span class="check">&check;</span><span class="label">Enregistrements &amp; réglages restent sur votre appareil</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTNOTE -->
+  <section class="footnote-wrap">
+    <div class="footnote-pill">
+      <span>2 langues : EN &middot; PL</span>
+      <span class="sep">|</span>
+      <span>Android 8.0+</span>
+      <span class="sep">|</span>
+      <span>Les valeurs disponibles dépendent de votre appareil</span>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final-cta-wrap">
+    <div class="final-cta">
+      <div>
+        <h2>Obtenez LabDroid.</h2>
+        <p>Appli Android gratuite de capteurs, matériel et diagnostic. Téléchargez l'APK sur GitHub.</p>
+        <div class="hero-ctas">
+          <a class="btn-outline" href="https://github.com/moskil2/LabDroid/releases/download/v0.3.0/LabDroid_v0.3.0.apk" target="_blank" rel="noopener">Télécharger l'APK &rarr;</a>
+          <a class="btn-github" href="https://github.com/moskil2/LabDroid" target="_blank" rel="noopener">Voir sur GitHub &rarr;</a>
+        </div>
+      </div>
+      <div class="final-cta-qr">
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=260x260&margin=0&color=16-17-28&data=https%3A%2F%2Fgithub.com%2Fmoskil2%2FLabDroid%2Freleases%2Fdownload%2Fv0.3.0%2FLabDroid_v0.3.0.apk" alt="QR code vers les téléchargements LabDroid sur GitHub" width="150" height="150">
+        <div class="caption mono">Scannez pour télécharger sur votre téléphone</div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <a href="/fr/">spotrobotics.app</a> &middot; <a href="/fr/labdroid/privacy.html">Politique de confidentialité</a> &middot; &copy; 2026 Spot Robotics - Tomasz Pieczara
+  </footer>
+
+  <div class="lightbox-overlay" id="lightbox">
+    <img id="lightbox-img" src="" alt="">
+  </div>
+  <script>
+    (function () {
+      var overlay = document.getElementById('lightbox');
+      var overlayImg = document.getElementById('lightbox-img');
+      document.querySelectorAll('img[src^="img/"]').forEach(function (img) {
+        img.classList.add('zoomable');
+        img.addEventListener('click', function () {
+          overlayImg.src = img.src;
+          overlayImg.alt = img.alt;
+          overlay.classList.add('open');
+        });
+      });
+      overlay.addEventListener('click', function () {
+        overlay.classList.remove('open');
+        overlayImg.src = '';
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') {
+          overlay.classList.remove('open');
+          overlayImg.src = '';
+        }
+      });
+    })();
+  </script>
+
+  <script src="/sky.js"></script>
+  <script src="/site.js"></script>
+</body>
+</html>

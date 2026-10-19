@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FogRider - Politique de confidentialité | Spot Robotics par Tomasz Pieczara</title>
+  <meta name="description" content="Politique de confidentialité de FogRider - visionneuse et analyseur de traces GPX pour Windows, par Tomasz Pieczara / Spot Robotics.">
+  <meta name="author" content="Tomasz Pieczara">
+  <link rel="canonical" href="https://spotrobotics.app/fr/fogrider/privacy.html">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { background: #07080c; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: transparent;
+      color: #e8e8e8;
+      line-height: 1.7;
+      padding: 2rem 1rem 4rem;
+    }
+    .container { max-width: 680px; margin: 0 auto; }
+    .back {
+      display: inline-block;
+      font-size: 0.85rem;
+      color: #6b9fff;
+      text-decoration: none;
+      margin-bottom: 2.5rem;
+    }
+    .back:hover { text-decoration: underline; }
+    .app-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #6b9fff;
+      margin-bottom: 0.5rem;
+    }
+    h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+    .updated {
+      font-size: 0.85rem;
+      color: #666;
+      margin-bottom: 2.5rem;
+    }
+    h2 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #fff;
+      margin-top: 2rem;
+      margin-bottom: 0.5rem;
+    }
+    p { color: #aaa; margin-bottom: 0.75rem; }
+    ul { color: #aaa; padding-left: 1.5rem; margin-bottom: 0.75rem; }
+    li { margin-bottom: 0.25rem; }
+    a { color: #6b9fff; }
+    .divider { border: none; border-top: 1px solid #222; margin: 2rem 0; }
+    .highlight {
+      background: #1a1a1a;
+      border: 1px solid #2a2a2a;
+      border-radius: 10px;
+      padding: 1rem 1.25rem;
+      margin-bottom: 1rem;
+      color: #ccc;
+      font-size: 0.95rem;
+    }
+    #sky {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100vh;
+      height: 100lvh; /* tall viewport: no stretch when the mobile address bar hides */
+      z-index: -1;
+      pointer-events: none;
+    }
+  </style>
+<!-- i18n:head --><link rel="alternate" hreflang="en" href="https://spotrobotics.app/fogrider/privacy.html"><link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/fogrider/privacy.html"><link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/fogrider/privacy.html"><link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/fogrider/privacy.html"><link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/fogrider/privacy.html"><link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/fogrider/privacy.html"><style>.lang-ctl{position:fixed;top:calc(1rem + 48px);right:1rem;z-index:50;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}.lang-ctl summary{list-style:none;width:40px;height:40px;border-radius:50%;box-sizing:border-box;border:1px solid rgba(255,228,160,0.25);background:rgba(10,11,16,0.6);color:rgba(255,228,160,0.85);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:12px;font-weight:700;letter-spacing:.04em;transition:border-color .15s ease,background .15s ease}.lang-ctl summary::-webkit-details-marker{display:none}.lang-ctl summary:hover,.lang-ctl[open] summary{border-color:rgba(255,228,160,0.6);background:rgba(255,228,160,0.08)}.lang-ctl .lang-list{position:absolute;top:46px;right:0;display:flex;flex-direction:column;min-width:120px;padding:6px;border-radius:12px;background:rgba(10,11,16,0.92);border:1px solid rgba(255,228,160,0.25)}.lang-ctl .lang-list a{display:flex;justify-content:space-between;gap:12px;padding:8px 10px;border-radius:8px;color:#e8e8e8;text-decoration:none;font-size:14px}.lang-ctl .lang-list a b{color:rgba(255,228,160,0.85);font-size:12px}.lang-ctl .lang-list a:hover,.lang-ctl .lang-list a[aria-current]{background:rgba(255,228,160,0.08)}</style><!-- /i18n:head -->
+</head>
+<body>
+<!-- i18n:switch --><details class="lang-ctl"><summary aria-label="Language">FR</summary><div class="lang-list"><a href="/fogrider/privacy.html" hreflang="en" lang="en">English <b>EN</b></a><a href="/de/fogrider/privacy.html" hreflang="de" lang="de">Deutsch <b>DE</b></a><a href="/fr/fogrider/privacy.html" hreflang="fr" lang="fr" aria-current="true">Français <b>FR</b></a><a href="/pl/fogrider/privacy.html" hreflang="pl" lang="pl">Polski <b>PL</b></a><a href="/no/fogrider/privacy.html" hreflang="no" lang="no">Norsk <b>NO</b></a></div></details><!-- /i18n:switch -->
+  <canvas id="sky" aria-hidden="true"></canvas>
+  <div class="container">
+    <a class="back" href="/fr/">← spotrobotics.app</a>
+
+    <div class="app-label">FogRider</div>
+    <h1>Politique de confidentialité</h1>
+    <p class="updated">Dernière mise à jour : 7 septembre 2026</p>
+    <p class="updated">Ceci est une traduction. Seule la version anglaise de cette politique de confidentialité fait foi.</p>
+
+    <div class="highlight">
+      FogRider est une application Windows native. <strong style="color:#fff">Les traces GPX que vous chargez et les profils que vous enregistrez restent sur votre PC - rien n'est jamais envoyé sur nos serveurs.</strong>
+    </div>
+
+    <hr class="divider">
+
+    <h2>1. Ce que fait FogRider</h2>
+    <p>FogRider est une application Windows native (réalisée avec Tauri) pour visualiser et analyser des traces GPX sur une carte interactive. Elle permet de charger des fichiers GPX, de voir le Fog of War se dissiper le long des routes parcourues et d'analyser la vitesse, le dénivelé et le revêtement de vos traces.</p>
+
+    <h2>2. Données stockées localement sur votre appareil</h2>
+    <p>FogRider enregistre les données suivantes uniquement sur votre PC. Aucune ne nous est transmise :</p>
+    <ul>
+      <li>Les traces GPX et les "profils" (collections nommées de traces, avec couleurs et réglages d'affichage) que vous enregistrez explicitement - écrits sous forme de fichiers JSON à l'emplacement de votre choix, via une boîte de dialogue d'enregistrement standard. Rien n'est enregistré automatiquement, sauf si vous enregistrez un profil.</li>
+      <li>Les préférences et la progression conservées entre les sessions - succès débloqués, taille d'hexagone choisie pour le Fog of War et réglages de disposition du panneau latéral, conservés dans le stockage local de l'application.</li>
+    </ul>
+    <p>Vous pouvez supprimer à tout moment un fichier de profil directement sur le disque. Les préférences et la progression des succès peuvent être réinitialisées depuis l'application, ou entièrement effacées en supprimant le dossier de données locales de l'application.</p>
+
+    <h2>3. Services tiers contactés par FogRider</h2>
+    <p>FogRider n'a pas de serveur à lui. Lorsque certaines fonctions sont utilisées, l'application se connecte directement aux services tiers suivants :</p>
+    <ul>
+      <li><strong>OpenStreetMap / Overpass API</strong> - pour récupérer des points d'intérêt touristiques et classer le revêtement de vos traces (asphalte, gravier, chemin forestier, etc.). Seules des coordonnées géographiques sont envoyées ; aucune donnée personnelle n'est incluse.</li>
+      <li><strong>Komoot API</strong> - si vous choisissez d'importer des activités depuis Komoot, l'application se connecte directement à l'API de Komoot avec les identifiants que vous fournissez. Vos identifiants et votre jeton de session ne servent que pendant votre session et ne sont jamais envoyés ni enregistrés sur nos serveurs.</li>
+      <li><strong>Tuiles de carte</strong> - les images du fond de carte sont chargées depuis OpenStreetMap et CARTO, soumis à leurs propres pratiques de confidentialité.</li>
+    </ul>
+
+    <h2>4. Données que nous ne collectons pas</h2>
+    <p>Comme FogRider n'a pas de serveur, nous ne collectons, n'enregistrons et n'avons accès à aucune des données suivantes :</p>
+    <ul>
+      <li>Vos traces GPX ou vos données de localisation</li>
+      <li>Vos identifiants Komoot</li>
+      <li>Statistiques d'utilisation, analyses ou rapports de plantage</li>
+    </ul>
+
+    <h2>5. Protection des enfants</h2>
+    <p>FogRider ne s'adresse pas aux enfants de moins de 13 ans et nous ne collectons pas sciemment d'informations personnelles concernant des enfants.</p>
+
+    <h2>6. Modifications de cette politique</h2>
+    <p>Si nous mettons à jour cette politique de confidentialité, nous publierons la version révisée sur cette page avec une nouvelle date de « Dernière mise à jour ».</p>
+
+    <h2>7. Contact</h2>
+    <p>Des questions sur cette politique ? Contactez-nous via le <a href="/fr/support/">formulaire d'assistance</a>.</p>
+  </div>
+  <script src="/sky.js"></script>
+  <script src="/site.js"></script>
+</body>
+</html>

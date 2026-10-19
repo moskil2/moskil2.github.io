@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Module Bluetooth EggSPEED – liaison sans fil pour contrôleurs Bafang BBS01/BBS02/BBSHD (à monter soi-même) | Spot Robotics</title>
+  <meta name="description" content="Module Bluetooth EggSPEED - un convertisseur Bluetooth à monter soi-même, branché sur le contrôleur Bafang BBS01/BBS02/BBSHD à la place de l'écran, pour que l'appli EggSPEED lise, programme et affiche le cockpit en direct en Bluetooth. OEM et BBS-FW. Guide de montage et vidéo gratuits.">
+  <meta name="author" content="Tomasz Pieczara">
+  <meta property="og:title" content="Module Bluetooth EggSPEED – liaison sans fil pour contrôleurs Bafang">
+  <meta property="og:description" content="Branchez-le à la place de l'écran et utilisez EggSPEED en Bluetooth - lisez, programmez et roulez avec le cockpit en direct, sans câble. Guide de montage gratuit.">
+  <meta property="og:url" content="https://spotrobotics.app/fr/eggspeed-bt/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://spotrobotics.app/eggspeed-bt/img/logo.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Module Bluetooth EggSPEED – liaison sans fil pour contrôleurs Bafang">
+  <meta name="twitter:description" content="Branchez-le à la place de l'écran et utilisez EggSPEED en Bluetooth - lisez, programmez et roulez avec le cockpit en direct, sans câble. Guide de montage gratuit.">
+  <meta name="twitter:image" content="https://spotrobotics.app/eggspeed-bt/img/logo.png">
+  <link rel="canonical" href="https://spotrobotics.app/fr/eggspeed-bt/">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="/icons/favicon-512x512.png">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { background: #07080c; }
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: transparent;
+      color: #f3f1ea;
+      width: 100%;
+      overflow-x: hidden;
+      line-height: 1.4;
+    }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; }
+    .mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+    .wrap { max-width: 1200px; margin: 0 auto; padding-left: 32px; padding-right: 32px; }
+    .eyebrow {
+      color: #FF9142; font-weight: 700; font-size: 14px;
+      letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 14px;
+    }
+
+    /* topbar */
+    .topbar {
+      max-width: 1200px; margin: 0 auto; padding: 24px 32px 0;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .topbar a { color: #6f6a5f; font-size: 13.5px; font-weight: 600; }
+    .topbar a:hover { color: #a8a49a; }
+
+    /* buttons */
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: #1f6feb; color: #ffffff; font-weight: 700; font-size: 17px;
+      padding: 16px 28px; border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(31,111,235,0.4);
+      transition: background .15s ease;
+    }
+    .btn-primary:hover { background: #3a82f5; }
+    .btn-github {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: #FFC107; color: #1a1408; font-weight: 700; font-size: 17px;
+      padding: 16px 28px; border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(255,193,7,0.4);
+      transition: background .15s ease;
+    }
+    .btn-github:hover { background: #ffce3d; }
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: transparent; color: #1f6feb; font-weight: 700; font-size: 17px;
+      padding: 15px 27px; border-radius: 16px; border: 1.5px solid #1f6feb;
+      transition: background .15s ease, color .15s ease;
+    }
+    .btn-outline:hover { background: rgba(31,111,235,0.1); }
+    .badge-warn {
+      display: inline-flex; align-items: center;
+      font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 700;
+      letter-spacing: 0.05em; text-transform: uppercase; color: #4f8cff;
+      background: rgba(79,140,255,0.14); border: 1px solid rgba(79,140,255,0.4);
+      border-radius: 100px; padding: 7px 14px;
+    }
+    .link-muted {
+      color: #a8a49a; font-weight: 600; font-size: 15px;
+      border-bottom: 1px solid #3a3b42; padding-bottom: 2px;
+      transition: color .15s ease;
+    }
+    .link-muted:hover { color: #f3f1ea; }
+
+    /* hero */
+    .hero {
+      max-width: 1200px; margin: 0 auto; padding: 56px 32px 80px;
+      display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 64px; align-items: center;
+    }
+    .hero-brand { display: flex; align-items: center; gap: 16px; margin-bottom: 28px; }
+    .hero-brand img { width: 56px; height: 56px; border-radius: 16px; box-shadow: 0 8px 24px rgba(255,145,66,0.35); }
+    .hero-brand span { font-size: 20px; font-weight: 700; letter-spacing: 0.01em; }
+    .hero h1 { font-size: 52px; line-height: 1.1; font-weight: 800; margin: 0 0 24px; letter-spacing: -0.02em; text-wrap: balance; }
+    .hero p.lede { font-size: 20px; line-height: 1.55; color: #a8a49a; margin: 0 0 36px; max-width: 520px; }
+    .hero-ctas { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+    .hero-foot {
+      display: flex; gap: 28px; margin-top: 44px; color: #6f6a5f;
+      font-family: 'JetBrains Mono', monospace; font-size: 13px; flex-wrap: wrap;
+    }
+    .hero-note {
+      margin: 16px 0 0; color: #a8a49a; font-size: 14.5px; line-height: 1.5;
+    }
+    .hero-note a { color: #FF9142; font-weight: 600; }
+    .hero-note a:hover { text-decoration: underline; }
+    .hero-shot { display: flex; justify-content: center; }
+    .hero-shot .bezel {
+      border-radius: 36px; padding: 10px; background: #1f2128;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.55), inset 0 0 0 1px #2c2e36;
+    }
+    .hero-shot img { width: 280px; height: auto; display: block; border-radius: 28px; }
+
+    /* how it works */
+    .section-head { text-align: center; margin-bottom: 56px; }
+    .section-head h2 { font-size: 38px; font-weight: 800; margin: 0; letter-spacing: -0.01em; text-wrap: balance; }
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; max-width: 1080px; margin: 0 auto; }
+    .step-card { background: #1f2128; border-radius: 26px; padding: 24px; display: flex; flex-direction: column; gap: 18px; }
+    .step-head { display: flex; align-items: center; gap: 10px; }
+    .step-num {
+      width: 28px; height: 28px; border-radius: 9px; background: rgba(255,145,66,0.16);
+      color: #FF9142; font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 13px;
+      display: flex; align-items: center; justify-content: center; flex: none;
+    }
+    .step-head span.title { font-weight: 700; font-size: 16px; }
+    .step-shot { border-radius: 20px; overflow: hidden; background: #16171c; box-shadow: inset 0 0 0 1px #2c2e36; }
+    .step-shot img { width: 100%; height: auto; display: block; }
+    .step-card p { margin: 0; color: #a8a49a; font-size: 14.5px; line-height: 1.5; }
+
+    /* features */
+    .features-section { background: rgba(26,27,33,0.6); padding: 96px 32px; }
+    .feature-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+    .feature-card { background: #1f2128; border-radius: 22px; padding: 26px; display: flex; flex-direction: column; gap: 14px; }
+    .feature-glyph {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 44px; height: 44px; border-radius: 13px; background: rgba(255,145,66,0.14);
+      color: #FF9142; font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 13px;
+    }
+    .feature-card .title { font-weight: 700; font-size: 16px; }
+    .feature-card p { margin: 0; color: #a8a49a; font-size: 14px; line-height: 1.5; }
+
+    /* two-column highlight sections */
+    .anydevice {
+      max-width: 1200px; margin: 0 auto; padding: 88px 32px;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;
+    }
+    .anydevice h2 { font-size: 34px; font-weight: 800; margin: 0 0 20px; letter-spacing: -0.01em; text-wrap: balance; }
+    .anydevice p { font-size: 17px; line-height: 1.6; color: #a8a49a; margin: 0 0 20px; }
+    .anydevice p:last-child { margin-bottom: 0; }
+    .anydevice p strong { color: #f3f1ea; }
+    /* Uniform screenshot row - every image the same fixed size, top-aligned in a single line,
+       regardless of how many screenshots the section has (1, 2 or 3) - a flat "table row" of
+       shots instead of a staggered/oversized collage. */
+    .shot-row {
+      display: flex; align-items: flex-start; justify-content: flex-start;
+      gap: 16px; flex-wrap: wrap;
+    }
+    .shot-row img {
+      width: 160px; height: auto; display: block; flex: none;
+      border-radius: 16px; box-shadow: 0 16px 40px rgba(0,0,0,0.45);
+    }
+    /* Display & lock screen section only - 19_LightTheme.jpg and 29_AOD.jpg have different aspect
+       ratios, so the shared width-based sizing above renders them at different heights; match by
+       height instead just for this pair, width follows each image's own ratio. */
+    .shot-row--match-height img {
+      width: auto; height: 347px;
+    }
+
+    /* privacy */
+    .privacy-wrap { max-width: 1200px; margin: 32px auto 96px; padding: 0 32px; }
+    .privacy {
+      background: linear-gradient(135deg, rgba(255,145,66,0.14), rgba(255,145,66,0.06));
+      border-radius: 32px; padding: 64px;
+      display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 56px; align-items: center;
+      box-shadow: inset 0 0 0 1px rgba(255,145,66,0.25);
+    }
+    .privacy-badge {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 56px; height: 56px; border-radius: 16px; background: rgba(255,145,66,0.18);
+      color: #FF9142; font-size: 24px; font-weight: 800; margin-bottom: 24px;
+    }
+    .privacy h2 { font-size: 34px; font-weight: 800; margin: 0 0 16px; letter-spacing: -0.01em; text-wrap: balance; }
+    .privacy p { font-size: 17px; line-height: 1.6; color: #a8a49a; margin: 0; }
+    .privacy-points { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .privacy-points div { display: flex; align-items: flex-start; gap: 12px; }
+    .privacy-points .check { color: #FF9142; font-weight: 800; flex-shrink: 0; }
+    .privacy-points span.label { font-size: 15.5px; line-height: 1.5; color: #f3f1ea; }
+
+    /* footnote strip */
+    .footnote-wrap { max-width: 1200px; margin: 0 auto; padding: 0 32px 96px; text-align: center; }
+    .footnote-pill {
+      display: inline-flex; align-items: center; gap: 24px; flex-wrap: wrap; justify-content: center;
+      color: #6f6a5f; font-family: 'JetBrains Mono', monospace; font-size: 13.5px;
+      background: #1f2128; border-radius: 100px; padding: 16px 32px;
+    }
+    .footnote-pill span.sep { color: #3a3b42; }
+
+    /* final cta */
+    .final-cta-wrap { max-width: 1200px; margin: 0 auto 64px; padding: 0 32px; }
+    .final-cta {
+      background: #1f2128; border-radius: 32px; padding: 72px;
+      display: flex; align-items: center; justify-content: space-between; gap: 48px; flex-wrap: wrap;
+    }
+    .final-cta h2 { font-size: 36px; font-weight: 800; margin: 0 0 14px; letter-spacing: -0.01em; }
+    .final-cta p { font-size: 17px; color: #a8a49a; margin: 0 0 28px; }
+    .final-cta-qr { text-align: center; }
+    .final-cta-qr img { width: 150px; height: 150px; border-radius: 16px; background: #ffffff; padding: 12px; opacity: 0.7; }
+    .final-cta-qr .caption { color: #6f6a5f; font-family: 'JetBrains Mono', monospace; font-size: 12px; margin-top: 10px; }
+
+    footer.site-footer {
+      text-align: center; padding: 0 24px 48px; color: #444; font-size: 12.5px;
+    }
+    footer.site-footer a { color: #6b9fff; }
+    footer.site-footer a:hover { text-decoration: underline; }
+
+    @media (max-width: 880px) {
+      .hero { grid-template-columns: 1fr; padding-top: 40px; gap: 40px; }
+      .hero-shot { order: -1; }
+      .hero h1 { font-size: 36px; }
+      .steps { grid-template-columns: 1fr; }
+      .feature-grid { grid-template-columns: repeat(2, 1fr); }
+      .anydevice { grid-template-columns: 1fr; gap: 32px; }
+      .shot-row { justify-content: flex-start; }
+      .privacy { grid-template-columns: 1fr; padding: 40px; }
+      .privacy-points { grid-template-columns: 1fr; }
+      .final-cta { justify-content: center; text-align: center; padding: 48px 32px; }
+    }
+    @media (max-width: 520px) {
+      .wrap, .hero, .anydevice, .topbar { padding-left: 16px; padding-right: 16px; }
+      .features-section { padding: 72px 16px; }
+      .feature-grid { grid-template-columns: 1fr; }
+      .privacy-wrap, .final-cta-wrap, .footnote-wrap { padding-left: 16px; padding-right: 16px; }
+      .footnote-pill { border-radius: 24px; padding: 16px 20px; }
+    }
+
+    /* Lightbox - click any screenshot to zoom */
+    img.zoomable { cursor: zoom-in; }
+    .lightbox-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(10, 11, 15, 0.92);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      cursor: zoom-out;
+    }
+    .lightbox-overlay.open { display: flex; }
+    .lightbox-overlay img {
+      max-width: 100%;
+      max-height: 100%;
+      border-radius: 12px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    }
+    #sky {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100vh;
+      height: 100lvh; /* tall viewport: no stretch when the mobile address bar hides */
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    /* EggSPEED Bluetooth Module page */
+    .hero-shot .hero-logo { width: 420px; height: auto; border-radius: 0; filter: drop-shadow(0 30px 60px rgba(0,0,0,0.6)) drop-shadow(0 0 40px rgba(255,145,66,0.18)); }
+    /* How it works: trzy obrazy tej samej wysokości - kwadrat; zrzuty ekranu pokazują górną część ekranu, zdjęcie środek */
+    .steps .step-shot img { aspect-ratio: 1 / 1; object-fit: cover; object-position: top; }
+    .steps .photo-shot img { object-position: center; }
+    .photo-row img { width: 100%; height: auto; display: block; border-radius: 24px; box-shadow: 0 24px 60px rgba(0,0,0,0.5); }
+    @media (max-width: 880px) { .hero-shot .hero-logo { width: 300px; } }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "Module Bluetooth EggSPEED",
+    "description": "Convertisseur Bluetooth à monter soi-même pour contrôleurs Bafang BBS01/BBS02/BBSHD, qui permet à l'appli EggSPEED de lire, programmer et afficher le cockpit en direct en Bluetooth, en firmware OEM et BBS-FW.",
+    "url": "https://spotrobotics.app/eggspeed-bt/",
+    "image": "https://spotrobotics.app/eggspeed-bt/img/logo.png",
+    "video": { "@type": "VideoObject", "name": "Module Bluetooth EggSPEED - connexion, appairage et programmation en Bluetooth", "embedUrl": "https://www.youtube.com/embed/2S8ZIboOqes", "thumbnailUrl": "https://img.youtube.com/vi/2S8ZIboOqes/maxresdefault.jpg", "uploadDate": "2026-10-13" },
+    "step": [
+      { "@type": "HowToStep", "name": "Program the BT-06", "text": "Set the Bluetooth module to 1200 baud, name and PIN once from a Windows PC with the Bafang programming cable." },
+      { "@type": "HowToStep", "name": "Build the converter", "text": "Solder the step-down converter, the 10k/22k divider and the module to a cable with a HIGO 5-pin plug." },
+      { "@type": "HowToStep", "name": "Connect EggSPEED", "text": "Plug it into the controller, pair EggSPEED-BT and select Bluetooth in EggSPEED Settings > Connection." }
+    ],
+    "author": { "@type": "Person", "name": "Tomasz Pieczara" },
+    "publisher": { "@type": "Organization", "name": "Spot Robotics", "url": "https://spotrobotics.app" }
+  }
+  </script>
+<!-- i18n:head --><link rel="alternate" hreflang="en" href="https://spotrobotics.app/eggspeed-bt/"><link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/eggspeed-bt/"><link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/eggspeed-bt/"><link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/eggspeed-bt/"><link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/eggspeed-bt/"><link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/eggspeed-bt/"><style>.lang-ctl{position:fixed;top:calc(1rem + 48px);right:1rem;z-index:50;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}.lang-ctl summary{list-style:none;width:40px;height:40px;border-radius:50%;box-sizing:border-box;border:1px solid rgba(255,228,160,0.25);background:rgba(10,11,16,0.6);color:rgba(255,228,160,0.85);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:12px;font-weight:700;letter-spacing:.04em;transition:border-color .15s ease,background .15s ease}.lang-ctl summary::-webkit-details-marker{display:none}.lang-ctl summary:hover,.lang-ctl[open] summary{border-color:rgba(255,228,160,0.6);background:rgba(255,228,160,0.08)}.lang-ctl .lang-list{position:absolute;top:46px;right:0;display:flex;flex-direction:column;min-width:120px;padding:6px;border-radius:12px;background:rgba(10,11,16,0.92);border:1px solid rgba(255,228,160,0.25)}.lang-ctl .lang-list a{display:flex;justify-content:space-between;gap:12px;padding:8px 10px;border-radius:8px;color:#e8e8e8;text-decoration:none;font-size:14px}.lang-ctl .lang-list a b{color:rgba(255,228,160,0.85);font-size:12px}.lang-ctl .lang-list a:hover,.lang-ctl .lang-list a[aria-current]{background:rgba(255,228,160,0.08)}</style><!-- /i18n:head -->
+</head>
+<body>
+<!-- i18n:switch --><details class="lang-ctl"><summary aria-label="Language">FR</summary><div class="lang-list"><a href="/eggspeed-bt/" hreflang="en" lang="en">English <b>EN</b></a><a href="/de/eggspeed-bt/" hreflang="de" lang="de">Deutsch <b>DE</b></a><a href="/fr/eggspeed-bt/" hreflang="fr" lang="fr" aria-current="true">Français <b>FR</b></a><a href="/pl/eggspeed-bt/" hreflang="pl" lang="pl">Polski <b>PL</b></a><a href="/no/eggspeed-bt/" hreflang="no" lang="no">Norsk <b>NO</b></a></div></details><!-- /i18n:switch -->
+  <canvas id="sky" aria-hidden="true"></canvas>
+
+  <div class="topbar">
+    <a href="/fr/">&larr; spotrobotics.app</a>
+    <a href="https://github.com/moskil2/UART-BT-Konwerter" target="_blank" rel="noopener">GitHub</a>
+    <a href="/fr/eggspeed-bt/privacy.html">Confidentialité</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div>
+      <div class="hero-brand">
+        <img src="/eggspeed-bt/img/logo.png" alt="Icône du module Bluetooth EggSPEED">
+        <span>Module Bluetooth EggSPEED</span>
+      </div>
+      <div class="eyebrow">Liaison sans fil pour Bafang BBS01 / BBS02 / BBSHD - OEM &amp; BBS-FW</div>
+      <h1>Coupez le câble. Gardez toutes les fonctions.</h1>
+      <p class="lede">Un petit convertisseur qui se branche sur votre contrôleur Bafang à la place de l'écran et permet à l'appli <a href="/fr/eggspeed/" style="color:#FF9142; font-weight:600;">EggSPEED</a> de communiquer avec lui en Bluetooth. Lisez et programmez chaque réglage, roulez avec le cockpit en direct - sans câble entre votre téléphone et le vélo.</p>
+      <div class="hero-ctas">
+        <a class="btn-github" href="https://github.com/moskil2/UART-BT-Konwerter" target="_blank" rel="noopener">Guide de montage sur GitHub &rarr;</a>
+        <a class="btn-primary" href="/fr/eggspeed/">Appli EggSPEED &rarr;</a>
+        <span class="badge-warn">À monter soi-même</span>
+      </div>
+      <div class="hero-foot mono">
+        <span>Bluetooth Classic (SPP)</span>
+        <span>&middot;</span>
+        <span>Alimenté par la batterie du vélo</span>
+        <span>&middot;</span>
+        <span>EggSPEED v0.6.1+</span>
+      </div>
+      <p style="margin-top:16px; color:#6f6a5f; font-size:13.5px; max-width:520px;">Le module n'est pas vendu - c'est un guide de montage gratuit, pas à pas, avec photos, schémas de câblage et vidéo. Des composants courants, un fer à souder et un multimètre suffisent.</p>
+    </div>
+    <div class="hero-shot">
+      <img class="hero-logo" src="/eggspeed-bt/img/logo.png" alt="Module Bluetooth EggSPEED" width="420" height="416">
+    </div>
+  </section>
+
+  <!-- VIDEO -->
+  <section class="wrap" style="padding-top:0; padding-bottom:64px;">
+    <div class="section-head" style="margin-bottom:32px;">
+      <div class="eyebrow">Voyez-le fonctionner</div>
+      <h2>Toute l'installation, dans une courte vidéo.</h2>
+    </div>
+    <div style="max-width:800px; margin:0 auto;">
+      <div style="position:relative; padding-bottom:56.25%; height:0; border-radius:24px; overflow:hidden; box-shadow:0 30px 80px rgba(0,0,0,0.55);">
+        <iframe src="https://www.youtube.com/embed/2S8ZIboOqes" title="Module Bluetooth EggSPEED - connexion, appairage et programmation en Bluetooth" style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="wrap" style="padding-top:64px; padding-bottom:96px;">
+    <div class="section-head">
+      <div class="eyebrow">Comment ça marche</div>
+      <h2>Branchez. Appairez une fois. Roulez sans fil.</h2>
+    </div>
+    <div class="steps">
+      <div class="step-card">
+        <div class="step-head"><span class="step-num">1</span><span class="title">Branchez-le</span></div>
+        <div class="step-shot photo-shot"><img src="/eggspeed-bt/img/enclosure.jpg" alt="Le convertisseur dans son boîtier imprimé en 3D" width="1200" height="850"></div>
+        <p>Le module se branche sur le connecteur HIGO 5 broches du contrôleur - celui qu'utilise votre écran ou votre câble de programmation. Il est alimenté par la batterie du vélo : pas de piles, pas de recharge.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-head"><span class="step-num">2</span><span class="title">Appairez une fois</span></div>
+        <div class="step-shot"><img src="/eggspeed-bt/img/31_SettingsConnection.jpg" alt="Réglages EggSPEED, Connexion : câble USB OTG ou Bluetooth" width="480" height="1040"></div>
+        <p>Appairez <span class="mono">EggSPEED-BT</span> dans les réglages Bluetooth du téléphone, puis choisissez-le dans EggSPEED sous Réglages &gt; Connexion. C'est tout.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-head"><span class="step-num">3</span><span class="title">Roulez avec les données en direct</span></div>
+        <div class="step-shot"><img src="/eggspeed-bt/img/01_Cockpit.jpg" alt="Cockpit EggSPEED en direct" width="480" height="1040"></div>
+        <p>Touchez Connecter et c'est parti : cockpit en direct, configuration complète et écritures vérifiées - exactement comme avec le câble, avec le téléphone où vous voulez.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT IT IS -->
+  <section class="anydevice">
+    <div>
+      <div class="eyebrow">Ce que c'est</div>
+      <h2>À peu près de la taille du module Bluetooth lui-même.</h2>
+      <p>À l'intérieur, seulement trois éléments : un <strong>module série Bluetooth</strong> (DSD TECH BT-06 ou un HC-06 générique), un <strong>convertisseur abaisseur</strong> qui transforme la tension de la batterie en 5V, et <strong>deux résistances</strong> qui ramènent le signal 5V du contrôleur à un niveau sûr pour le module.</p>
+      <p>Entouré de ruban Kapton ou glissé dans un petit boîtier imprimé en 3D, il reste à demeure sur le vélo - là où se brancheraient l'écran ou le câble de programmation.</p>
+    </div>
+    <div class="photo-row">
+      <img src="/eggspeed-bt/img/converter.jpg" alt="Le convertisseur terminé, entouré de ruban Kapton, à côté d'une pièce de 2 euros pour l'échelle">
+    </div>
+  </section>
+
+  <!-- EVERYTHING OVER BLUETOOTH -->
+  <section class="anydevice">
+    <div>
+      <div class="eyebrow">Tout en Bluetooth</div>
+      <h2>Aucune fonction laissée de côté.</h2>
+      <p>Tout ce qu'EggSPEED fait avec le câble USB OTG fonctionne de la même façon avec le module : <strong>lire et programmer</strong> chaque réglage Basic, Pedal Assist, Throttle et niveau d'assistance, rouler avec le <strong>cockpit en direct</strong> - vitesse, puissance, courant, tension, batterie, autonomie - et utiliser le Monitoring, l'historique des trajets, PROTECT et le reste.</p>
+      <p>Fini le téléphone qui pend au bout d'un câble relié au contrôleur : fixez-le au guidon, gardez-le en poche ou programmez le vélo depuis l'établi.</p>
+    </div>
+    <div class="shot-row">
+      <img src="/eggspeed-bt/img/31_SettingsConnection.jpg" alt="Réglages, Connexion : Bluetooth sélectionné">
+      <img src="/eggspeed-bt/img/30_ConnectBluetooth.jpg" alt="Écran de connexion avec Bluetooth sélectionné">
+    </div>
+  </section>
+
+  <!-- BUILD IT -->
+  <section class="anydevice">
+    <div>
+      <div class="eyebrow">Montez-le vous-même</div>
+      <h2>Des composants courants, un fer à souder, un multimètre.</h2>
+      <p>Il vous faut un module Bluetooth BT-06 (ou HC-06), un convertisseur abaisseur 5-60V vers 5V, un câble avec une fiche HIGO 5 broches, une résistance de 10k&Omega; et une de 22k&Omega;, un peu de fil et de gaine thermorétractable. Outils : un fer à souder et un multimètre.</p>
+      <p><strong>Étape 1</strong> - réglez une fois le module à 1200 bauds, depuis un PC Windows avec le câble de programmation Bafang que vous avez déjà. <strong>Étape 2</strong> - soudez le convertisseur en suivant les photos. <strong>Étape 3</strong> - appairez-le et connectez EggSPEED.</p>
+      <p>Les deux manuels, le brochage, le schéma de câblage et des conseils de dépannage sont sur <a href="https://github.com/moskil2/UART-BT-Konwerter" target="_blank" rel="noopener" class="link-muted" style="font-size:17px;">GitHub</a>.</p>
+    </div>
+    <div class="photo-row">
+      <img src="/eggspeed-bt/img/parts.jpg" alt="Composants : câble avec fiche HIGO 5 broches, deux résistances, convertisseur abaisseur et module Bluetooth">
+    </div>
+  </section>
+
+  <!-- AT A GLANCE -->
+  <section class="features-section">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">En un coup d'œil</div>
+        <h2>Conçu pour le vélo, testé sur le vélo.</h2>
+      </div>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <span class="feature-glyph mono">BT</span>
+          <div class="title">Entièrement sans fil</div>
+          <p>Toute la communication entre EggSPEED et le contrôleur passe par Bluetooth - aucun câble entre le téléphone et le vélo.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">FW</span>
+          <div class="title">OEM &amp; BBS-FW</div>
+          <p>Testé avec le firmware OEM d'origine Bafang et avec <a href="https://github.com/danielnilsson9/bbs-fw" target="_blank" rel="noopener" class="link-muted" style="font-size:14px;">BBS-FW</a> (sur un BBSHD), pour les moteurs pédaliers BBS01 / BBS02 / BBSHD.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">5V</span>
+          <div class="title">Alimenté par le vélo</div>
+          <p>Fonctionne sur la batterie via le connecteur du contrôleur - pas de pile, rien à recharger.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">PIN</span>
+          <div class="title">Votre propre code PIN</div>
+          <p>Définissez votre propre nom Bluetooth et votre code PIN lors de la programmation du module, pour que personne à proximité ne puisse s'appairer avec votre vélo.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">HIGO</span>
+          <div class="title">Connecteur standard</div>
+          <p>Se branche sur la même prise HIGO 5 broches que l'écran et le câble de programmation - rien à couper ni à modifier sur le vélo.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">&Omega;</span>
+          <div class="title">Conception qui protège le signal</div>
+          <p>Un pont diviseur 10k&Omega;/22k&Omega; mesuré maintient le signal 5V du contrôleur à un niveau propre et sûr pour le module 3,3V.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">&#9654;</span>
+          <div class="title">Guide pas à pas</div>
+          <p>Deux manuels avec photos de chaque étape de soudure, un schéma de câblage, des conseils de dépannage et une vidéo d'installation.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">0.6.1</span>
+          <div class="title">Fonctionne avec EggSPEED</div>
+          <p>Pris en charge par EggSPEED v0.6.1 et versions ultérieures - gratuit sur Google Play pour Android 8.0+.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SAFETY -->
+  <section class="anydevice">
+    <div>
+      <div class="eyebrow">La sécurité d'abord</div>
+      <h2>Trois règles à respecter.</h2>
+      <p><strong>Isolez tout.</strong> La ligne P+ porte toute la tension de la batterie et reste sous tension même contrôleur éteint - elle ne doit jamais toucher les broches de signal.</p>
+      <p><strong>Éteignez la batterie après la sortie.</strong> Tant qu'il est branché, le module garde le contrôleur éveillé et consomme un peu de courant tant que la batterie est allumée.</p>
+      <p><strong>Changez le code PIN par défaut.</strong> Avec <span class="mono">1234</span>, n'importe qui à proximité pourrait s'appairer avec le module tant que la batterie est allumée.</p>
+    </div>
+    <div class="photo-row">
+      <img src="/eggspeed-bt/img/logo.png" alt="Module Bluetooth EggSPEED" style="max-width:420px;">
+    </div>
+  </section>
+
+  <!-- PRIVACY -->
+  <section class="privacy-wrap">
+    <div class="privacy">
+      <div>
+        <span class="privacy-badge">&check;</span>
+        <h2>Juste votre téléphone et votre vélo.</h2>
+        <p>Le module est un simple pont Bluetooth-série : il transmet les données entre EggSPEED et le contrôleur, rien d'autre. Il n'a pas de connexion Internet, pas d'appli à lui et n'enregistre rien sur vous.</p>
+      </div>
+      <div class="privacy-points">
+        <div><span class="check">&check;</span><span class="label">Liaison Bluetooth locale uniquement</span></div>
+        <div><span class="check">&check;</span><span class="label">Pas d'Internet, pas de cloud, pas de compte</span></div>
+        <div><span class="check">&check;</span><span class="label">Aucune donnée collectée ni enregistrée</span></div>
+        <div><span class="check">&check;</span><span class="label">Votre propre code PIN protège l'appairage</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTNOTE -->
+  <section class="footnote-wrap">
+    <div class="footnote-pill">
+      <span>Bafang BBS01 &middot; BBS02 &middot; BBSHD</span>
+      <span class="sep">|</span>
+      <span>OEM &amp; BBS-FW</span>
+      <span class="sep">|</span>
+      <span>BT-06 / HC-06, 1200 bauds</span>
+      <span class="sep">|</span>
+      <span>EggSPEED v0.6.1+</span>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final-cta-wrap">
+    <div class="final-cta">
+      <div>
+        <h2>Montez votre module Bluetooth EggSPEED.</h2>
+        <p>Guide gratuit pas à pas avec photos, schéma de câblage et vidéo - sur GitHub.</p>
+        <div class="hero-ctas">
+          <a class="btn-github" href="https://github.com/moskil2/UART-BT-Konwerter" target="_blank" rel="noopener">Guide de montage sur GitHub &rarr;</a>
+          <a class="btn-outline" href="/fr/eggspeed/">Appli EggSPEED &rarr;</a>
+        </div>
+      </div>
+      <div class="final-cta-qr">
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=260x260&margin=0&color=16-17-28&data=https%3A%2F%2Fgithub.com%2Fmoskil2%2FUART-BT-Konwerter" alt="QR code vers le guide de montage sur GitHub" width="150" height="150">
+        <div class="caption mono">Scannez pour ouvrir le guide de montage</div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <a href="/fr/">spotrobotics.app</a> &middot; <a href="/fr/eggspeed-bt/privacy.html">Politique de confidentialité</a> &middot; &copy; 2026 Spot Robotics - Tomasz Pieczara
+  </footer>
+
+  <div class="lightbox-overlay" id="lightbox">
+    <img id="lightbox-img" src="" alt="">
+  </div>
+  <script>
+    (function () {
+      var overlay = document.getElementById('lightbox');
+      var overlayImg = document.getElementById('lightbox-img');
+      document.querySelectorAll('img[src^="img/"]').forEach(function (img) {
+        img.classList.add('zoomable');
+        img.addEventListener('click', function () {
+          overlayImg.src = img.src;
+          overlayImg.alt = img.alt;
+          overlay.classList.add('open');
+        });
+      });
+      overlay.addEventListener('click', function () {
+        overlay.classList.remove('open');
+        overlayImg.src = '';
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') {
+          overlay.classList.remove('open');
+          overlayImg.src = '';
+        }
+      });
+    })();
+  </script>
+
+  <script src="/sky.js"></script>
+  <script src="/site.js"></script>
+</body>
+</html>

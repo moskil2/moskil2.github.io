@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LabDroid - Personvernerklæring | Spot Robotics av Tomasz Pieczara</title>
+  <meta name="description" content="Personvernerklæring for LabDroid - en Android-app for sensorer, maskinvare og diagnostikk av Tomasz Pieczara / Spot Robotics.">
+  <meta name="author" content="Tomasz Pieczara">
+  <link rel="canonical" href="https://spotrobotics.app/no/labdroid/privacy.html">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { background: #07080c; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: transparent;
+      color: #e8e8e8;
+      line-height: 1.7;
+      padding: 2rem 1rem 4rem;
+    }
+    .container { max-width: 680px; margin: 0 auto; }
+    .back {
+      display: inline-block;
+      font-size: 0.85rem;
+      color: #6b9fff;
+      text-decoration: none;
+      margin-bottom: 2.5rem;
+    }
+    .back:hover { text-decoration: underline; }
+    .app-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #00e676;
+      margin-bottom: 0.5rem;
+    }
+    h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+    .updated {
+      font-size: 0.85rem;
+      color: #666;
+      margin-bottom: 2.5rem;
+    }
+    h2 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #fff;
+      margin-top: 2rem;
+      margin-bottom: 0.5rem;
+    }
+    p { color: #aaa; margin-bottom: 0.75rem; }
+    ul { color: #aaa; padding-left: 1.5rem; margin-bottom: 0.75rem; }
+    li { margin-bottom: 0.25rem; }
+    a { color: #6b9fff; }
+    .divider { border: none; border-top: 1px solid #222; margin: 2rem 0; }
+    .highlight {
+      background: #1a1a1a;
+      border: 1px solid #2a2a2a;
+      border-radius: 10px;
+      padding: 1rem 1.25rem;
+      margin-bottom: 1rem;
+      color: #ccc;
+      font-size: 0.95rem;
+    }
+    #sky {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100vh;
+      height: 100lvh; /* tall viewport: no stretch when the mobile address bar hides */
+      z-index: -1;
+      pointer-events: none;
+    }
+  </style>
+<!-- i18n:head --><link rel="alternate" hreflang="en" href="https://spotrobotics.app/labdroid/privacy.html"><link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/labdroid/privacy.html"><link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/labdroid/privacy.html"><link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/labdroid/privacy.html"><link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/labdroid/privacy.html"><link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/labdroid/privacy.html"><style>.lang-ctl{position:fixed;top:calc(1rem + 48px);right:1rem;z-index:50;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}.lang-ctl summary{list-style:none;width:40px;height:40px;border-radius:50%;box-sizing:border-box;border:1px solid rgba(255,228,160,0.25);background:rgba(10,11,16,0.6);color:rgba(255,228,160,0.85);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:12px;font-weight:700;letter-spacing:.04em;transition:border-color .15s ease,background .15s ease}.lang-ctl summary::-webkit-details-marker{display:none}.lang-ctl summary:hover,.lang-ctl[open] summary{border-color:rgba(255,228,160,0.6);background:rgba(255,228,160,0.08)}.lang-ctl .lang-list{position:absolute;top:46px;right:0;display:flex;flex-direction:column;min-width:120px;padding:6px;border-radius:12px;background:rgba(10,11,16,0.92);border:1px solid rgba(255,228,160,0.25)}.lang-ctl .lang-list a{display:flex;justify-content:space-between;gap:12px;padding:8px 10px;border-radius:8px;color:#e8e8e8;text-decoration:none;font-size:14px}.lang-ctl .lang-list a b{color:rgba(255,228,160,0.85);font-size:12px}.lang-ctl .lang-list a:hover,.lang-ctl .lang-list a[aria-current]{background:rgba(255,228,160,0.08)}</style><!-- /i18n:head -->
+</head>
+<body>
+<!-- i18n:switch --><details class="lang-ctl"><summary aria-label="Language">NO</summary><div class="lang-list"><a href="/labdroid/privacy.html" hreflang="en" lang="en">English <b>EN</b></a><a href="/de/labdroid/privacy.html" hreflang="de" lang="de">Deutsch <b>DE</b></a><a href="/fr/labdroid/privacy.html" hreflang="fr" lang="fr">Français <b>FR</b></a><a href="/pl/labdroid/privacy.html" hreflang="pl" lang="pl">Polski <b>PL</b></a><a href="/no/labdroid/privacy.html" hreflang="no" lang="no" aria-current="true">Norsk <b>NO</b></a></div></details><!-- /i18n:switch -->
+  <canvas id="sky" aria-hidden="true"></canvas>
+  <div class="container">
+    <a class="back" href="/no/labdroid/">← LabDroid</a>
+
+    <div class="app-label">LabDroid</div>
+    <h1>Personvernerklæring</h1>
+    <p class="updated">Sist oppdatert: 2. oktober 2026</p>
+    <p class="updated">Dette er en oversettelse. Den engelske versjonen av denne personvernerklæringen er den gjeldende.</p>
+
+    <div class="highlight">
+      LabDroid leser sensor- og maskinvareinformasjon bare på din egen enhet. <strong style="color:#fff">Appen ber ikke om internettilgang og sender ingen data til oss eller noen andre.</strong>
+    </div>
+
+    <hr class="divider">
+
+    <h2>1. Hva LabDroid gjør</h2>
+    <p>LabDroid leser data fra telefonens sensorer, posisjon, kameraer, batteri, tilkobling og andre maskinvarekomponenter gjennom offisielle, offentlige Android-grensesnitt, og viser dem i appen. All lesing og behandling skjer lokalt på enheten din.</p>
+
+    <h2>2. Tillatelser</h2>
+    <p>LabDroid ber om en tillatelse fra skjermen som trenger den. Du kan avslå hvilken som helst - de tilhørende verdiene er da rett og slett ikke tilgjengelige. Gjeldende status for hver tillatelse vises i appens Innstillinger.</p>
+    <ul>
+      <li><strong>Posisjon</strong> - GPS-posisjon, satellittradar og kompass</li>
+      <li><strong>Kamera</strong> - spesifikasjoner for kameramodulene</li>
+      <li><strong>Kroppssensorer</strong> og <strong>Fysisk aktivitet</strong> - puls- og skrittsensorer, hvis enheten har dem</li>
+      <li><strong>Mikrofon</strong> - lydnivåmåleren; lyd måles live og blir aldri tatt opp eller lagret</li>
+      <li><strong>Telefonstatus</strong> - mobilsignalstyrke og SIM-status</li>
+      <li><strong>Bluetooth</strong> - informasjon om Bluetooth-adapteren og navnene på enheter som allerede er paret med telefonen, bare vist på skjermen</li>
+      <li><strong>Nettverks- og Wi-Fi-status</strong> - tilkoblingstype og Wi-Fi-detaljer</li>
+      <li><strong>Varsler</strong> - listet i Innstillinger; gjeldende versjon viser ingen varsler</li>
+    </ul>
+
+    <h2>3. Data vi ikke samler inn</h2>
+    <p>LabDroid samler ikke inn, lagrer eksternt eller overfører data til oss eller noen andre. Konkret:</p>
+    <ul>
+      <li>Ingen personopplysninger av noe slag</li>
+      <li>Ingen sensormålinger, posisjon eller enhetsinformasjon sendt noe sted</li>
+      <li>Ingen bruksstatistikk eller analyse</li>
+      <li>Ingen reklame</li>
+      <li>Appen ber ikke om internettillatelse i det hele tatt - dette kan bekreftes direkte i appens manifest og i kildekoden på GitHub</li>
+    </ul>
+
+    <h2>4. Data lagret lokalt på enheten</h2>
+    <p>LabDroid lagrer følgende data i appens lokale lagring på enheten:</p>
+    <ul>
+      <li><strong>Appinnstillinger</strong> - tema, språk, enheter, standard samplingsfrekvens og valgt eksportmappe</li>
+      <li><strong>Opptak</strong> - sensorøkter du velger å ta opp i Monitor-fanen</li>
+    </ul>
+    <p>De eneste dataene som forlater appen, er en fil du uttrykkelig velger å eksportere (CSV, JSON, XML, TXT eller GPX) eller dele med enhetens egen delingsfunksjon. Du kan slette alle lagrede data når som helst fra appens Innstillinger, ved å tømme appens lagring i enhetsinnstillingene eller ved å avinstallere appen.</p>
+    <p>Hvis Androids egen sikkerhetskopiering er slått på i enhetsinnstillingene, kan systemet ta med disse appinnstillingene og opptakene i din personlige sikkerhetskopi. Dette håndteres av Android under kontoen din, ikke av LabDroid.</p>
+
+    <h2>5. Posisjon og Google Play-tjenester</h2>
+    <p>LabDroid får posisjonen din gjennom Fused Location Provider i Google Play-tjenester, som allerede er installert på telefonen. LabDroid sender aldri selv posisjonen din noe sted. Google Play-tjenester er en del av enhetens systemprogramvare og er underlagt <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Googles personvernerklæring</a>.</p>
+
+    <h2>6. Tredjepartstjenester</h2>
+    <p>LabDroid inneholder ingen reklame-SDK-er, ingen analysebiblioteker og ingen tjenester for krasjrapportering.</p>
+    <p>LabDroid distribueres ikke gjennom Google Play Store; den offisielle APK-en finnes bare i <a href="https://github.com/moskil2/LabDroid" target="_blank" rel="noopener">LabDroids GitHub-repositorium</a>.</p>
+
+    <h2>7. Barns personvern</h2>
+    <p>LabDroid er ikke rettet mot barn under 13 år, og vi samler ikke bevisst inn personopplysninger fra barn.</p>
+
+    <h2>8. Endringer i denne erklæringen</h2>
+    <p>Hvis vi oppdaterer denne personvernerklæringen, legger vi ut den reviderte versjonen på denne siden med en oppdatert dato under «Sist oppdatert».</p>
+
+    <h2>9. Kontakt</h2>
+    <p>Spørsmål om denne erklæringen? Kontakt oss på <a href="mailto:tomasz.pieczara@gazeta.pl">tomasz.pieczara@gazeta.pl</a> eller via <a href="/no/support/">supportskjemaet</a>.</p>
+  </div>
+  <script src="/sky.js"></script>
+  <script src="/site.js"></script>
+</body>
+</html>

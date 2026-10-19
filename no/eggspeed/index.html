@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EggSPEED – Programmer Bafang BBS01/BBS02/BBSHD-kontrolleren (OEM eller BBS-FW) fra telefonen | Spot Robotics</title>
+  <meta name="description" content="EggSPEED leser og programmerer Bafang BBS01/BBS02/BBSHD-kontrolleren din over USB eller Bluetooth - med original OEM-fastvare eller BBS-FW. Live-cockpit, full konfigurasjon, justering av assistnivåer. Et moderne alternativ til Speeed-appen for Bafang. Kontrollert skriving, ingen fastvareflashing.">
+  <meta name="author" content="Tomasz Pieczara">
+  <meta property="og:title" content="EggSPEED – konfigurasjonsverktøy for Bafang BBS01/BBS02/BBSHD (OEM og BBS-FW)">
+  <meta property="og:description" content="Live-cockpit, full kontrollerkonfigurasjon og justering av assistnivåer for Bafang-midtmotorer, med OEM- eller BBS-FW-fastvare - over en enkel USB-kabel.">
+  <meta property="og:url" content="https://spotrobotics.app/no/eggspeed/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://spotrobotics.app/icons/eggspeed.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="EggSPEED – konfigurasjonsverktøy for Bafang BBS01/BBS02/BBSHD (OEM og BBS-FW)">
+  <meta name="twitter:description" content="Live-cockpit, full kontrollerkonfigurasjon og justering av assistnivåer for Bafang-midtmotorer, med OEM- eller BBS-FW-fastvare - over en enkel USB-kabel.">
+  <meta name="twitter:image" content="https://spotrobotics.app/icons/eggspeed.png">
+  <link rel="canonical" href="https://spotrobotics.app/no/eggspeed/">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="/icons/favicon-512x512.png">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { background: #07080c; }
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: transparent;
+      color: #f3f1ea;
+      width: 100%;
+      overflow-x: hidden;
+      line-height: 1.4;
+    }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; }
+    .mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+    .wrap { max-width: 1200px; margin: 0 auto; padding-left: 32px; padding-right: 32px; }
+    .eyebrow {
+      color: #FF9142; font-weight: 700; font-size: 14px;
+      letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 14px;
+    }
+
+    /* topbar */
+    .topbar {
+      max-width: 1200px; margin: 0 auto; padding: 24px 32px 0;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .topbar a { color: #6f6a5f; font-size: 13.5px; font-weight: 600; }
+    .topbar a:hover { color: #a8a49a; }
+
+    /* buttons */
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: #1f6feb; color: #ffffff; font-weight: 700; font-size: 17px;
+      padding: 16px 28px; border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(31,111,235,0.4);
+      transition: background .15s ease;
+    }
+    .btn-primary:hover { background: #3a82f5; }
+    .btn-github {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: #FFC107; color: #1a1408; font-weight: 700; font-size: 17px;
+      padding: 16px 28px; border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(255,193,7,0.4);
+      transition: background .15s ease;
+    }
+    .btn-github:hover { background: #ffce3d; }
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: transparent; color: #1f6feb; font-weight: 700; font-size: 17px;
+      padding: 15px 27px; border-radius: 16px; border: 1.5px solid #1f6feb;
+      transition: background .15s ease, color .15s ease;
+    }
+    .btn-outline:hover { background: rgba(31,111,235,0.1); }
+    .badge-warn {
+      display: inline-flex; align-items: center;
+      font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 700;
+      letter-spacing: 0.05em; text-transform: uppercase; color: #4f8cff;
+      background: rgba(79,140,255,0.14); border: 1px solid rgba(79,140,255,0.4);
+      border-radius: 100px; padding: 7px 14px;
+    }
+    .link-muted {
+      color: #a8a49a; font-weight: 600; font-size: 15px;
+      border-bottom: 1px solid #3a3b42; padding-bottom: 2px;
+      transition: color .15s ease;
+    }
+    .link-muted:hover { color: #f3f1ea; }
+
+    /* hero */
+    .hero {
+      max-width: 1200px; margin: 0 auto; padding: 56px 32px 80px;
+      display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 64px; align-items: center;
+    }
+    .hero-brand { display: flex; align-items: center; gap: 16px; margin-bottom: 28px; }
+    .hero-brand img { width: 56px; height: 56px; border-radius: 16px; box-shadow: 0 8px 24px rgba(255,145,66,0.35); }
+    .hero-brand span { font-size: 20px; font-weight: 700; letter-spacing: 0.01em; }
+    .hero h1 { font-size: 52px; line-height: 1.1; font-weight: 800; margin: 0 0 24px; letter-spacing: -0.02em; text-wrap: balance; }
+    .hero p.lede { font-size: 20px; line-height: 1.55; color: #a8a49a; margin: 0 0 36px; max-width: 520px; }
+    .hero-ctas { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+    .hero-foot {
+      display: flex; gap: 28px; margin-top: 44px; color: #6f6a5f;
+      font-family: 'JetBrains Mono', monospace; font-size: 13px; flex-wrap: wrap;
+    }
+    .hero-note {
+      margin: 16px 0 0; color: #a8a49a; font-size: 14.5px; line-height: 1.5;
+    }
+    .hero-note a { color: #FF9142; font-weight: 600; }
+    .hero-note a:hover { text-decoration: underline; }
+    .hero-shot { display: flex; justify-content: center; }
+    .hero-shot .bezel {
+      border-radius: 36px; padding: 10px; background: #1f2128;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.55), inset 0 0 0 1px #2c2e36;
+    }
+    .hero-shot img { width: 280px; height: auto; display: block; border-radius: 28px; }
+
+    /* how it works */
+    .section-head { text-align: center; margin-bottom: 56px; }
+    .section-head h2 { font-size: 38px; font-weight: 800; margin: 0; letter-spacing: -0.01em; text-wrap: balance; }
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; max-width: 1080px; margin: 0 auto; }
+    .step-card { background: #1f2128; border-radius: 26px; padding: 24px; display: flex; flex-direction: column; gap: 18px; }
+    .step-head { display: flex; align-items: center; gap: 10px; }
+    .step-num {
+      width: 28px; height: 28px; border-radius: 9px; background: rgba(255,145,66,0.16);
+      color: #FF9142; font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 13px;
+      display: flex; align-items: center; justify-content: center; flex: none;
+    }
+    .step-head span.title { font-weight: 700; font-size: 16px; }
+    .step-shot { border-radius: 20px; overflow: hidden; background: #16171c; box-shadow: inset 0 0 0 1px #2c2e36; }
+    .step-shot img { width: 100%; height: auto; display: block; }
+    .step-card p { margin: 0; color: #a8a49a; font-size: 14.5px; line-height: 1.5; }
+
+    /* features */
+    .features-section { background: rgba(26,27,33,0.6); padding: 96px 32px; }
+    .feature-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+    .feature-card { background: #1f2128; border-radius: 22px; padding: 26px; display: flex; flex-direction: column; gap: 14px; }
+    .feature-glyph {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 44px; height: 44px; border-radius: 13px; background: rgba(255,145,66,0.14);
+      color: #FF9142; font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 13px;
+    }
+    .feature-card .title { font-weight: 700; font-size: 16px; }
+    .feature-card p { margin: 0; color: #a8a49a; font-size: 14px; line-height: 1.5; }
+
+    /* two-column highlight sections */
+    .anydevice {
+      max-width: 1200px; margin: 0 auto; padding: 88px 32px;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;
+    }
+    .anydevice h2 { font-size: 34px; font-weight: 800; margin: 0 0 20px; letter-spacing: -0.01em; text-wrap: balance; }
+    .anydevice p { font-size: 17px; line-height: 1.6; color: #a8a49a; margin: 0 0 20px; }
+    .anydevice p:last-child { margin-bottom: 0; }
+    .anydevice p strong { color: #f3f1ea; }
+    /* Uniform screenshot row - every image the same fixed size, top-aligned in a single line,
+       regardless of how many screenshots the section has (1, 2 or 3) - a flat "table row" of
+       shots instead of a staggered/oversized collage. */
+    .shot-row {
+      display: flex; align-items: flex-start; justify-content: flex-start;
+      gap: 16px; flex-wrap: wrap;
+    }
+    .shot-row img {
+      width: 160px; height: auto; display: block; flex: none;
+      border-radius: 16px; box-shadow: 0 16px 40px rgba(0,0,0,0.45);
+    }
+    /* Display & lock screen section only - 19_LightTheme.jpg and 29_AOD.jpg have different aspect
+       ratios, so the shared width-based sizing above renders them at different heights; match by
+       height instead just for this pair, width follows each image's own ratio. */
+    .shot-row--match-height img {
+      width: auto; height: 347px;
+    }
+    /* Cockpit styles section only - 7 screenshots: text above, one centered row of smaller shots
+       (in the shared two-column layout they would wrap 3 + 3 + 1). */
+    .anydevice--wide { grid-template-columns: 1fr; gap: 32px; }
+    .shot-row--seven { gap: 12px; justify-content: center; }
+    .shot-row--seven img { width: 140px; }
+
+    /* privacy */
+    .privacy-wrap { max-width: 1200px; margin: 32px auto 96px; padding: 0 32px; }
+    .privacy {
+      background: linear-gradient(135deg, rgba(255,145,66,0.14), rgba(255,145,66,0.06));
+      border-radius: 32px; padding: 64px;
+      display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 56px; align-items: center;
+      box-shadow: inset 0 0 0 1px rgba(255,145,66,0.25);
+    }
+    .privacy-badge {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 56px; height: 56px; border-radius: 16px; background: rgba(255,145,66,0.18);
+      color: #FF9142; font-size: 24px; font-weight: 800; margin-bottom: 24px;
+    }
+    .privacy h2 { font-size: 34px; font-weight: 800; margin: 0 0 16px; letter-spacing: -0.01em; text-wrap: balance; }
+    .privacy p { font-size: 17px; line-height: 1.6; color: #a8a49a; margin: 0; }
+    .privacy-points { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .privacy-points div { display: flex; align-items: flex-start; gap: 12px; }
+    .privacy-points .check { color: #FF9142; font-weight: 800; flex-shrink: 0; }
+    .privacy-points span.label { font-size: 15.5px; line-height: 1.5; color: #f3f1ea; }
+
+    /* footnote strip */
+    .footnote-wrap { max-width: 1200px; margin: 0 auto; padding: 0 32px 96px; text-align: center; }
+    .footnote-pill {
+      display: inline-flex; align-items: center; gap: 24px; flex-wrap: wrap; justify-content: center;
+      color: #6f6a5f; font-family: 'JetBrains Mono', monospace; font-size: 13.5px;
+      background: #1f2128; border-radius: 100px; padding: 16px 32px;
+    }
+    .footnote-pill span.sep { color: #3a3b42; }
+
+    /* final cta */
+    .final-cta-wrap { max-width: 1200px; margin: 0 auto 64px; padding: 0 32px; }
+    .final-cta {
+      background: #1f2128; border-radius: 32px; padding: 72px;
+      display: flex; align-items: center; justify-content: space-between; gap: 48px; flex-wrap: wrap;
+    }
+    .final-cta h2 { font-size: 36px; font-weight: 800; margin: 0 0 14px; letter-spacing: -0.01em; }
+    .final-cta p { font-size: 17px; color: #a8a49a; margin: 0 0 28px; }
+    .final-cta-qr { text-align: center; }
+    .final-cta-qr img { width: 150px; height: 150px; border-radius: 16px; background: #ffffff; padding: 12px; opacity: 0.7; }
+    .final-cta-qr .caption { color: #6f6a5f; font-family: 'JetBrains Mono', monospace; font-size: 12px; margin-top: 10px; }
+
+    footer.site-footer {
+      text-align: center; padding: 0 24px 48px; color: #444; font-size: 12.5px;
+    }
+    footer.site-footer a { color: #6b9fff; }
+    footer.site-footer a:hover { text-decoration: underline; }
+
+    @media (max-width: 880px) {
+      .hero { grid-template-columns: 1fr; padding-top: 40px; gap: 40px; }
+      .hero-shot { order: -1; }
+      .hero h1 { font-size: 36px; }
+      .steps { grid-template-columns: 1fr; }
+      .feature-grid { grid-template-columns: repeat(2, 1fr); }
+      .anydevice { grid-template-columns: 1fr; gap: 32px; }
+      .shot-row { justify-content: flex-start; }
+      .privacy { grid-template-columns: 1fr; padding: 40px; }
+      .privacy-points { grid-template-columns: 1fr; }
+      .final-cta { justify-content: center; text-align: center; padding: 48px 32px; }
+    }
+    @media (max-width: 520px) {
+      .wrap, .hero, .anydevice, .topbar { padding-left: 16px; padding-right: 16px; }
+      .features-section { padding: 72px 16px; }
+      .feature-grid { grid-template-columns: 1fr; }
+      .privacy-wrap, .final-cta-wrap, .footnote-wrap { padding-left: 16px; padding-right: 16px; }
+      .footnote-pill { border-radius: 24px; padding: 16px 20px; }
+    }
+
+    /* Lightbox - click any screenshot to zoom */
+    img.zoomable { cursor: zoom-in; }
+    .lightbox-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(10, 11, 15, 0.92);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      cursor: zoom-out;
+    }
+    .lightbox-overlay.open { display: flex; }
+    .lightbox-overlay img {
+      max-width: 100%;
+      max-height: 100%;
+      border-radius: 12px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    }
+    #sky {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100vh;
+      height: 100lvh; /* tall viewport: no stretch when the mobile address bar hides */
+      z-index: -1;
+      pointer-events: none;
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "EggSPEED",
+    "operatingSystem": "ANDROID",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "EggSPEED leser og programmerer Bafang BBS01/BBS02/BBSHD-kontrolleren din over USB eller Bluetooth - med original OEM-fastvare eller BBS-FW. Live-cockpit, full konfigurasjon, justering av assistnivåer. Kontrollert skriving, ingen fastvareflashing.",
+    "url": "https://spotrobotics.app/eggspeed/",
+    "image": "https://spotrobotics.app/icons/eggspeed.png",
+    "installUrl": "https://play.google.com/store/apps/details?id=app.spotrobotics.eggspeed",
+    "softwareVersion": "0.3.63",
+    "fileSize": "2MB",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "author": { "@type": "Person", "name": "Tomasz Pieczara" },
+    "publisher": { "@type": "Organization", "name": "Spot Robotics", "url": "https://spotrobotics.app" }
+  }
+  </script>
+<!-- i18n:head --><link rel="alternate" hreflang="en" href="https://spotrobotics.app/eggspeed/"><link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/eggspeed/"><link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/eggspeed/"><link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/eggspeed/"><link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/eggspeed/"><link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/eggspeed/"><style>.lang-ctl{position:fixed;top:calc(1rem + 48px);right:1rem;z-index:50;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}.lang-ctl summary{list-style:none;width:40px;height:40px;border-radius:50%;box-sizing:border-box;border:1px solid rgba(255,228,160,0.25);background:rgba(10,11,16,0.6);color:rgba(255,228,160,0.85);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:12px;font-weight:700;letter-spacing:.04em;transition:border-color .15s ease,background .15s ease}.lang-ctl summary::-webkit-details-marker{display:none}.lang-ctl summary:hover,.lang-ctl[open] summary{border-color:rgba(255,228,160,0.6);background:rgba(255,228,160,0.08)}.lang-ctl .lang-list{position:absolute;top:46px;right:0;display:flex;flex-direction:column;min-width:120px;padding:6px;border-radius:12px;background:rgba(10,11,16,0.92);border:1px solid rgba(255,228,160,0.25)}.lang-ctl .lang-list a{display:flex;justify-content:space-between;gap:12px;padding:8px 10px;border-radius:8px;color:#e8e8e8;text-decoration:none;font-size:14px}.lang-ctl .lang-list a b{color:rgba(255,228,160,0.85);font-size:12px}.lang-ctl .lang-list a:hover,.lang-ctl .lang-list a[aria-current]{background:rgba(255,228,160,0.08)}</style><!-- /i18n:head -->
+</head>
+<body>
+<!-- i18n:switch --><details class="lang-ctl"><summary aria-label="Language">NO</summary><div class="lang-list"><a href="/eggspeed/" hreflang="en" lang="en">English <b>EN</b></a><a href="/de/eggspeed/" hreflang="de" lang="de">Deutsch <b>DE</b></a><a href="/fr/eggspeed/" hreflang="fr" lang="fr">Français <b>FR</b></a><a href="/pl/eggspeed/" hreflang="pl" lang="pl">Polski <b>PL</b></a><a href="/no/eggspeed/" hreflang="no" lang="no" aria-current="true">Norsk <b>NO</b></a></div></details><!-- /i18n:switch -->
+  <canvas id="sky" aria-hidden="true"></canvas>
+
+  <div class="topbar">
+    <a href="/no/">&larr; spotrobotics.app</a>
+    <a href="https://github.com/moskil2/EggSPEED" target="_blank" rel="noopener">GitHub</a>
+    <a href="/no/eggspeed/privacy.html">Personvern</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div>
+      <div class="hero-brand">
+        <img src="/icons/eggspeed.png" alt="EggSPEED-ikon">
+        <span>EggSPEED</span>
+      </div>
+      <div class="eyebrow">Programmeringsverktøy for Bafang BBS01 / BBS02 / BBSHD - OEM og BBS-FW</div>
+      <h1>Programmer Bafang-kontrolleren rett fra telefonen.</h1>
+      <p class="lede">Koble til med en enkel USB-kabel eller trådløst over Bluetooth og se alt kontrolleren har lagret - live-cockpit, full konfigurasjon og justering av assistnivåer for BBS01/BBS02/BBSHD, med original OEM-fastvare eller BBS-FW. Ingen PC trengs.</p>
+      <div class="hero-ctas">
+        <a class="btn-primary" href="https://play.google.com/store/apps/details?id=app.spotrobotics.eggspeed" target="_blank" rel="noopener">Last ned på Google Play &rarr;</a>
+        <a class="btn-github" href="https://github.com/moskil2/EggSPEED" target="_blank" rel="noopener">Se på GitHub &rarr;</a>
+        <span class="badge-warn">Krever USB OTG eller Bluetooth-modul</span>
+      </div>
+      <div class="hero-foot mono">
+        <span>~3 MB</span>
+        <span>&middot;</span>
+        <span>Android 8.0+</span>
+        <span>&middot;</span>
+        <span>Gratis på Google Play</span>
+      </div>
+      <p style="margin-top:16px; color:#6f6a5f; font-size:13.5px; max-width:520px;">Kommer du fra Speeed-appen for Bafang? EggSPEED støtter de samme BBS01/BBS02/BBSHD-kontrollerne med et moderne grensesnitt som utvikles aktivt.</p>
+    </div>
+    <div class="hero-shot">
+      <div class="bezel">
+        <img src="/eggspeed/img/01_Cockpit.jpg" alt="EggSPEED live-cockpit med fart, effekt og rekkevidde" width="280" height="607">
+      </div>
+    </div>
+  </section>
+
+  <!-- DEMO VIDEO -->
+  <section class="wrap" style="padding-top:0; padding-bottom:64px;">
+    <div style="max-width:800px; margin:0 auto;">
+      <div style="position:relative; padding-bottom:56.25%; height:0; border-radius:24px; overflow:hidden; box-shadow:0 30px 80px rgba(0,0,0,0.55);">
+        <iframe src="https://www.youtube.com/embed/36AEC7tj11M" title="EggSPEED demovideo" style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="wrap" style="padding-top:64px; padding-bottom:96px;">
+    <div class="section-head">
+      <div class="eyebrow">Slik fungerer det</div>
+      <h2>Koble til. Les alt. Kjør.</h2>
+    </div>
+    <div class="steps">
+      <div class="step-card">
+        <div class="step-head"><span class="step-num">1</span><span class="title">Koble til</span></div>
+        <div class="step-shot"><img src="/eggspeed/img/30_ConnectBluetooth.jpg" alt="Tilkoblingsskjerm med Bluetooth valgt" width="480" height="1040"></div>
+        <p>Koble Bafang-programmeringskabelen mellom telefonen og kontrolleren via USB OTG, eller velg den parede Bluetooth-modulen din i Innstillinger - EggSPEED gjenkjenner kontrolleren automatisk.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-head"><span class="step-num">2</span><span class="title">Les alt</span></div>
+        <div class="step-shot"><img src="/eggspeed/img/10_AllInView.jpg" alt="Skjermen «Alt på ett sted» med alle parametere" width="480" height="1040"></div>
+        <p>Alle Basic-, Pedal- og Throttle-parametere pluss alle 10 assistnivåer i én rullbar visning som bare kan leses - kopier alt med ett trykk.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-head"><span class="step-num">3</span><span class="title">Kjør med live-data</span></div>
+        <div class="step-shot"><img src="/eggspeed/img/01_Cockpit.jpg" alt="Live-cockpit under kjøring" width="480" height="1040"></div>
+        <p>Fart, effekt, strøm, spenning, distanse, snittfart, forbruk i Wh/km og beregnet rekkevidde - oppdatert live mens du kjører.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <!-- FULL CONFIG HIGHLIGHT -->
+  <section class="anydevice">
+    <div>
+      <div class="eyebrow">Full konfigurasjon</div>
+      <h2>Hver parameter, akkurat slik kontrolleren har den.</h2>
+      <p>Basic (batteribeskyttelse, strømgrense, hjul- og speedometeroppsett), Pedal Assist (sensortype, startstrøm, myk start, arbeidsmodus) og Throttle (start-/sluttspenning, fart- eller strømmodus) - alt lest direkte fra kontrolleren og vist slik originaldisplayet ville gjort det.</p>
+      <p><strong>Les og skriv, trygt</strong> - endre en hvilken som helst verdi og send den til kontrolleren; den begrenses først til et trygt område, og kontrollerens egen bekreftelse dekodes og vises for deg.</p>
+    </div>
+    <div class="shot-row">
+      <img src="/eggspeed/img/03_BafangBasic.jpg" alt="Bafang Basic-konfigurasjonsskjerm">
+      <img src="/eggspeed/img/04_BafangPedal.jpg" alt="Bafang Pedal Assist (PAS)-konfigurasjonsskjerm">
+      <img src="/eggspeed/img/05_BafangThrottle.jpg" alt="Bafang Throttle-konfigurasjonsskjerm">
+    </div>
+  </section>
+
+  <!-- BBS-FW HIGHLIGHT -->
+  <!-- align-items:flex-start override: this section has 4 screenshots (vs. 1-3 elsewhere), so the
+       shot-row wraps to two rows and gets noticeably taller than the text column - with the shared
+       .anydevice center-alignment that pushed the text down to look vertically misaligned against
+       the images, which start at the top. -->
+  <section class="anydevice" style="align-items: flex-start;">
+    <div>
+      <div class="eyebrow">BBS-FW-støtte</div>
+      <h2>Full BBS-FW-konfigurasjon, rett ved siden av OEM.</h2>
+      <p>Bytt til <strong>BBS-FW</strong> rett i Innstillinger, og konfigurer alt via egne skjermer som følger feltnavnene og oppsettet i BBS-FWs offisielle Windows-verktøy - Global settings, Throttle, Pedal Assist, Features, Speed Sensor og Shift Sensor, alt på én System-skjerm.</p>
+      <p>Assistnivåene har også sin egen skjerm - Standard- og Sport-sider med Type (PAS/Throttle/Cruise), Variant og grenser for strøm, tråkkfrekvens og fart for alle 10 nivåer - hver parameter har en kort beskrivelse ett trykk unna.</p>
+      <p>Normal/Sport følger fastvarens <strong>Operation Mode Toggle</strong>: Sport-knappen i cockpiten, lysknappen eller bremsen holdt inne mens appen kobler til - cockpitknappene i EggSPEED oppfører seg akkurat slik fastvaren forventer. Trenger du ikke Sport-knappen, kan du skjule den, og en liten N eller S ved farten viser gjeldende modus.</p>
+      <p>Etter lagring lister EggSPEED opp endrede innstillinger som BBS-FW først tar i bruk etter en omstart av strømmen, så du vet når sykkelen må slås av og på igjen.</p>
+    </div>
+    <div class="shot-row">
+      <img src="/eggspeed/img/14_BbsFwSettings.jpg" alt="Innstillinger med valg av fastvare OEM Bafang / BBS-FW">
+      <img src="/eggspeed/img/15_BbsFwSystemGlobal.jpg" alt="BBS-FW System-skjerm, Global- og Throttle-innstillinger">
+      <img src="/eggspeed/img/16_BbsFwSystemFeatures.jpg" alt="BBS-FW System-skjerm, Features- og Speed Sensor-innstillinger">
+      <img src="/eggspeed/img/32_BbsFwAssistLevelsInfo.jpg" alt="BBS-FW assistnivåer med parameterbeskrivelser, Operation Mode Toggle og valget for å skjule Normal/Sport-knappen">
+      <img src="/eggspeed/img/22_BbsFwCockpit.jpg" alt="Cockpit med bbs-fw-temperaturflisen Tc">
+      <img src="/eggspeed/img/23_TemperatureControl.jpg" alt="BBS-FW-skjerm for temperaturkontroll">
+    </div>
+  </section>
+
+  <!-- TEMPERATURE CONTROL HIGHLIGHT -->
+  <section class="anydevice">
+    <div>
+      <div class="eyebrow">Temperaturkontroll &middot; BBS-FW</div>
+      <h2>Hold øye med varmen i kontrolleren.</h2>
+      <p>Med <strong>BBS-FW</strong> viser en valgfri Tc-flis i cockpiten kontrollertemperaturen live. Sett dine egne grenser for <strong>Varsel</strong> og <strong>Alarm</strong> - flisen skifter farge og blinker når en grense passeres, med et valgfritt engangspip ved Alarm.</p>
+      <p>Fastvarens egen Temperature Sensor-innstilling vises ved siden av, bare til lesing - den styrer kun hvordan fastvaren selv reagerer på overoppheting (f.eks. ved å begrense effekten), ikke hva appen viser.</p>
+    </div>
+    <div class="shot-row">
+      <img src="/eggspeed/img/22_BbsFwCockpit.jpg" alt="Cockpit med bbs-fw-temperaturflisen Tc">
+      <img src="/eggspeed/img/23_TemperatureControl.jpg" alt="BBS-FW temperaturkontroll med grenser for Varsel og Alarm">
+    </div>
+  </section>
+
+  <!-- ASSIST LEVELS HIGHLIGHT -->
+  <section class="anydevice">
+    <div>
+      <div class="eyebrow">Assistnivåer</div>
+      <h2>Still inn hvert nivå og se hvordan turen blir.</h2>
+      <p>Fartsgrense og strømgrense for hvert av de 10 assistnivåene (0-9), pluss diagrammer over effekt- og fartsfordeling på alle nivåer i ett blikk.</p>
+      <p>Se nøyaktig hvor mye kraftigere nivå 7 er enn nivå 3 - før du allerede kjører på det.</p>
+    </div>
+    <div class="shot-row">
+      <img src="/eggspeed/img/06_AssistLevels.jpg" alt="Assistnivåer med diagrammer over effekt- og fartsfordeling">
+    </div>
+  </section>
+
+  <!-- STREET/RACE HIGHLIGHT -->
+  <section class="anydevice">
+    <div>
+      <div class="eyebrow">STREET/RACE &middot; Normal/Sport</div>
+      <h2>To sykler i én, ett trykk unna.</h2>
+      <p><strong>STREET/RACE</strong> gir OEM Bafang-kontrollere et andre, uavhengig sett med 10 assistnivåer - bytt mellom STREET og RACE rett fra cockpiten, og EggSPEED omprogrammerer kontrolleren i farten, også midt på turen.</p>
+      <p>Det tilsvarer EggRider Road/Offroad: hold en mild, lovlig STREET-profil til hverdags og en RACE-profil med full effekt klar når du trenger den - uten ny tilkobling, uten menyer.</p>
+      <p>Begge fastvarene har sin egen versjon av dette. I <strong>BBS-FW</strong> er det innebygd i fastvaren som <strong>Normal/Sport</strong>: to uavhengige sett med 10 assistnivåer, redigert på assistnivåskjermen og byttet slik fastvarens Operation Mode Toggle er satt (Sport-knapp, lysknapp eller brems ved tilkobling) - ingenting omprogrammeres når du bytter.</p>
+    </div>
+    <div class="shot-row">
+      <img src="/eggspeed/img/24_StreetRaceLevels.jpg" alt="Konfigurasjonsskjerm for STREET/RACE-assistnivåer">
+      <img src="/eggspeed/img/25_CockpitStreet.jpg" alt="Cockpit med STREET/RACE-byttknappen">
+    </div>
+  </section>
+
+  <!-- MONITORING HIGHLIGHT -->
+  <section class="anydevice">
+    <div>
+      <div class="eyebrow">Overvåking</div>
+      <h2>Se hvert tall bevege seg, i sanntid.</h2>
+      <p>Effekt, strøm, spenning og fart tegnet live - målt hvert 0,5 s, hvert diagram kan slås av og på hver for seg, med ett felles tidsvindu for alle: 2, 5, 10, 30 eller 60 minutter.</p>
+      <p>Dra fingeren over et diagram for å spole tilbake og lese nøyaktig verdi (og hvor lenge siden det var) på et hvilket som helst punkt i det valgte vinduet.</p>
+    </div>
+    <div class="shot-row">
+      <img src="/eggspeed/img/18_Monitoring.jpg" alt="Overvåkingsskjerm med diagrammer for effekt, strøm, spenning og fart">
+    </div>
+  </section>
+
+  <!-- BATTERY HIGHLIGHT -->
+  <section class="anydevice">
+    <div>
+      <div class="eyebrow">Batteri og rekkevidde</div>
+      <h2>Rekkevidde du faktisk kan stole på.</h2>
+      <p>Fortell EggSPEED antall celler og kapasitet én gang, så kombinerer rekkeviddeberegningen i cockpiten kjørehistorikken din med kjørestilen din nå - jo lengre turen er, desto mer tilpasser den seg måten du kjører på akkurat nå.</p>
+    </div>
+    <div class="shot-row">
+      <img src="/eggspeed/img/07_Battery.jpg" alt="Batteriskjerm med antall celler og kapasitet">
+    </div>
+  </section>
+
+  <!-- CALIBRATION HIGHLIGHT -->
+  <section class="anydevice">
+    <div>
+      <div class="eyebrow">Kalibrering</div>
+      <h2>Tre justeringer, akkurat der kontrolleren tar feil.</h2>
+      <p><strong>Current Calibration Factor</strong> korrigerer strøm- (og effekt-) avlesningen for kontrollere med shunt-modifikasjon - ofte kalt AmpMax-kontrollere på nettet - der råverdien kontrolleren rapporterer er for lav eller for høy.</p>
+      <p><strong>Voltage Correction</strong> justerer for en kontroller som leser batterispenningen litt for høyt eller lavt, så SAG, rekkevidde og batteriprosent holder seg nøyaktige.</p>
+      <p><strong>Speed Calibration</strong> retter opp en hjulstørrelse som er litt feil, uten å røre innstillingen for hjuldiameter i kontrolleren.</p>
+      <p>Alle tre virker bare i appen - ingenting endres noen gang i selve kontrolleren, og hver har sin egen sammenleggbare live-forhåndsvisning.</p>
+    </div>
+    <div class="shot-row">
+      <img src="/eggspeed/img/09_Calibration.jpg" alt="Kalibreringsskjerm med korrigering av strøm, spenning og fart">
+    </div>
+  </section>
+
+  <!-- SAG MEASUREMENT HIGHLIGHT -->
+  <section class="anydevice">
+    <div>
+      <div class="eyebrow">SAG-måling</div>
+      <h2>Kjenn den virkelige tilstanden til batteriet.</h2>
+      <p>En <strong>beregnet SAG</strong> regnes ut fortløpende i bakgrunnen fra vanlig kjøring - uten oppsett.</p>
+      <p>For et kontrollert, sammenlignbart tall kan du kjøre den veiledede <strong>SAG-målingen</strong>: 2 min hvile, 30 s full belastning, 2 min hvile igjen - EggSPEED tar tiden og regner, og vurderer deretter batterikvaliteten etter en tydelig forklaring.</p>
+    </div>
+    <div class="shot-row">
+      <img src="/eggspeed/img/20_SAG.jpg" alt="SAG-måling av batteriet med kvalitetsforklaring og veiledet fremgangsmåte">
+    </div>
+  </section>
+
+  <!-- PROTECT (ANTI-COP) HIGHLIGHT -->
+  <section class="anydevice">
+    <div>
+      <div class="eyebrow">Sikkerhet</div>
+      <h2>Lås den uten at noen merker det.</h2>
+      <p><strong>PROTECT (Anti-COP)</strong> er en panikknapp i cockpiten: ett trykk setter motoren stille til assistnivå 0, mens skjermen oppfører seg som normalt og later som du fortsatt kan endre assistnivå.</p>
+      <p>Opplåsing krever at du åpner den egne PROTECT-fanen og trykker på opplåsingsknappen - eventuelt bak en egen PIN, så fanen holdes låst til riktig kode er tastet inn. Et SAFE-ikon i cockpiten er det eneste tegnet på at låsen er aktiv.</p>
+    </div>
+    <div class="shot-row">
+      <img src="/eggspeed/img/21_Protect.jpg" alt="PROTECT-skjerm med Anti-COP-bryter og PIN-lås">
+    </div>
+  </section>
+
+  <!-- CONTROLLER ERROR DETECTION HIGHLIGHT -->
+  <section class="anydevice">
+    <div>
+      <div class="eyebrow">Diagnostikk</div>
+      <h2>Få vite med en gang når noe er galt.</h2>
+      <p><strong>Feildeteksjon for kontrolleren</strong> dekoder Bafangs statusregister til navngitte feilkoder og viser en gul varseltrekant rett i cockpiten i det øyeblikket en Bafang-kontrollerfeil er aktiv - trykk på den for å gå rett til Diagnostikk med full kode og beskrivelse.</p>
+      <p>Valgfritt og av som standard - slå det på i Innstillinger når du vil.</p>
+      <p>Ser du uvanlige verdier? Den valgfrie <strong>kommunikasjonsloggen</strong> tar opp noen minutter med datautveksling med kontrolleren og lagrer den i en fil du kan sende på e-post - bare tekniske data, ingen GPS og ingen personopplysninger.</p>
+    </div>
+    <div class="shot-row">
+      <img src="/eggspeed/img/25_CockpitStreet.jpg" alt="Cockpit med et aktivt varselikon for kontrollerfeil">
+      <img src="/eggspeed/img/26_DiagnosticsErrors.jpg" alt="Diagnostikkskjerm med en aktiv feilkode fra kontrolleren og beskrivelse">
+    </div>
+  </section>
+
+  <!-- PROFILES & SETTINGS HIGHLIGHT -->
+  <section class="anydevice">
+    <div>
+      <div class="eyebrow">Profiler og innstillinger</div>
+      <h2>Lagre oppsettet ditt og ta det med overalt.</h2>
+      <p>Lagre gjeldende konfigurasjon som en navngitt profil, eksporter den til en <strong>.ini</strong>-fil eller importer en tilbake.</p>
+      <p>Bytt mellom km/t og mph, sett riktig kilometerstand, eller tving fram ekstremverdier med testmodus for å sjekke cockpitoppsettet på din egen enhet.</p>
+    </div>
+    <div class="shot-row">
+      <img src="/eggspeed/img/11_Profiles.jpg" alt="Profilskjerm med lagring, import og eksport">
+      <img src="/eggspeed/img/31_SettingsConnection.jpg" alt="Innstillinger med kontrollerfastvare, tilkoblingstype og enheter">
+    </div>
+  </section>
+
+  <!-- COCKPIT STYLES HIGHLIGHT -->
+  <section class="anydevice anydevice--wide">
+    <div>
+      <div class="eyebrow">Cockpitstiler</div>
+      <h2>Velg cockpiten som passer turen din.</h2>
+      <p>Sju utseender å velge mellom i Innstillinger &gt; Cockpit: den digitale standardcockpiten og seks analoge stiler - Sport Classic, Modern Performance, Technical Instrument, Modern Minimalist, Dark Cockpit og Outdoor. Samme knapper og verdier i alle stiler.</p>
+      <p>Viserne beveger seg jevnt og går over hele skalaen hver gang du åpner cockpiten. Modern Minimalist, Dark Cockpit og Outdoor har i tillegg et fartsdiagram for gjeldende tur, med tursnittet som stiplet linje.</p>
+    </div>
+    <div class="shot-row shot-row--seven">
+      <img src="/eggspeed/img/01_Cockpit.jpg" alt="Digital standard-cockpitstil">
+      <img src="/eggspeed/img/33_CockpitSportClassic.jpg" alt="Cockpitstilen Sport Classic med forkrommede analoge målere">
+      <img src="/eggspeed/img/34_CockpitModernPerformance.jpg" alt="Cockpitstilen Modern Performance med lysende fartsbue">
+      <img src="/eggspeed/img/35_CockpitTechnicalInstrument.jpg" alt="Cockpitstilen Technical Instrument med oransjekantede målere">
+      <img src="/eggspeed/img/36_CockpitModernMinimalist.jpg" alt="Cockpitstilen Modern Minimalist med fartsdiagram for turen">
+      <img src="/eggspeed/img/37_CockpitDarkCockpit.jpg" alt="Stilen Dark Cockpit med krommåler og fartsdiagram for turen">
+      <img src="/eggspeed/img/38_CockpitOutdoor.jpg" alt="Cockpitstilen Outdoor med skogbakgrunn og fartsdiagram for turen">
+    </div>
+  </section>
+
+  <!-- THEME & AOD HIGHLIGHT -->
+  <section class="anydevice">
+    <div>
+      <div class="eyebrow">Skjerm og låseskjerm</div>
+      <h2>Kjør på din måte, dag og natt.</h2>
+      <p>Mørkt eller lyst tema, pluss en Høy kontrast-modus som gjør blek tekst lysere for lesbarhet i full sol - kan byttes når som helst i Innstillinger.</p>
+      <p>Vis om du vil fart, effekt og assistnivå rett på låseskjermen/AOD, så telefonen faktisk kan sove i stedet for å lyse hele turen - en reell batteribesparelse.</p>
+    </div>
+    <div class="shot-row shot-row--match-height">
+      <img src="/eggspeed/img/19_LightTheme.jpg" alt="EggSPEED-cockpit i lyst tema">
+      <img src="/eggspeed/img/29_AOD.jpg" alt="Låseskjerm-AOD med fart, effekt og assistnivå">
+    </div>
+  </section>
+
+  <!-- WIRELESS CONNECTION HIGHLIGHT -->
+  <section class="anydevice">
+    <div>
+      <div class="eyebrow">Trådløs tilkobling</div>
+      <h2>Ingen kabel mellom telefonen og sykkelen.</h2>
+      <p>I tillegg til USB OTG-programmeringskabelen kan EggSPEED snakke med kontrolleren over <strong>Bluetooth</strong>, gjennom en ekstra Bluetooth-modul koblet til i stedet for displayet. Par den én gang i telefonens Bluetooth-innstillinger, velg den i Innstillinger &gt; Tilkobling, og alt fungerer trådløst - cockpit, konfigurasjon og skriving. Testet på OEM Bafang og BBS-FW.</p>
+      <p>Trenger du en modul? Byggeveiledningen ligger på <a href="https://github.com/moskil2/UART-BT-Konwerter" target="_blank" rel="noopener" class="link-muted" style="font-size:17px;">GitHub</a>.</p>
+    </div>
+    <div class="shot-row">
+      <img src="/eggspeed/img/31_SettingsConnection.jpg" alt="Innstillinger, Tilkobling: USB OTG-kabel eller Bluetooth">
+      <img src="/eggspeed/img/30_ConnectBluetooth.jpg" alt="Tilkoblingsskjerm med Bluetooth valgt">
+    </div>
+  </section>
+
+  <!-- BLUETOOTH REMOTE HIGHLIGHT -->
+  <section class="anydevice">
+    <div>
+      <div class="eyebrow">Bluetooth-fjernkontroll</div>
+      <h2>Styr uten å slippe styret.</h2>
+      <p><strong>Tilordne en Bluetooth-mediefjernkontroll</strong> til assistnivå, lys, PROTECT eller STREET/RACE - Vol+ og Vol- får den funksjonen du gir dem, rett fra styret. Fungerer likt på OEM Bafang og BBS-FW.</p>
+      <p>Spill av/Pause, Neste og Forrige kan ikke tilordnes - Android sender dem alltid til telefonens musikkapp, en begrensning i systemet som EggSPEED ikke kan styre.</p>
+    </div>
+    <div class="shot-row">
+      <img src="/eggspeed/img/27_BluetoothButton.jpg" alt="Konfigurasjon av Bluetooth-knapp med tilordning av Vol+/Vol-">
+      <img src="/eggspeed/img/28_BluetoothRemote.png" alt="Bluetooth-fjernkontroll for styret">
+    </div>
+  </section>
+
+  <!-- LANGUAGE & TRANSPARENCY HIGHLIGHT -->
+  <section class="anydevice">
+    <div>
+      <div class="eyebrow">Åpen fra starten</div>
+      <h2>Snakker språket ditt, og er ærlig om alt annet.</h2>
+      <p>19 innebygde språk - polsk, engelsk, tysk, fransk, spansk, portugisisk, italiensk, nederlandsk, svensk, tsjekkisk, slovakisk, dansk, russisk, norsk, estisk, latvisk, japansk, finsk og ungarsk - kan byttes når som helst fra menyen.</p>
+      <p>Om-fanen har alltid gjeldende personvernerklæring og vilkår for bruk, pluss en direkte lenke for å melde en feil eller foreslå en funksjon - hver melding leses personlig.</p>
+    </div>
+    <div class="shot-row">
+      <img src="/eggspeed/img/12_Language.jpg" alt="Skjerm for språkvalg">
+      <img src="/eggspeed/img/13_About.jpg" alt="Om-skjerm med personvernerklæring, vilkår for bruk og kontakt">
+    </div>
+  </section>
+
+  <!-- ALL FEATURES AT A GLANCE (moved to bottom) -->
+  <section class="features-section">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Funksjoner</div>
+        <h2>Alt originaldisplayet viser - og mer.</h2>
+      </div>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <span class="feature-glyph mono">km/t</span>
+          <div class="title">Live-cockpit</div>
+          <p>Fart, effekt, strøm, spenning, distanse, tur, snittfart, forbruk i Wh/km og beregnet rekkevidde, alt på én skjerm.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">FW</span>
+          <div class="title">Støtte for OEM og BBS-FW</div>
+          <p>Bytt mellom Bafangs originale OEM-fastvare og <a href="https://github.com/danielnilsson9/bbs-fw" target="_blank" rel="noopener" class="link-muted" style="font-size:14px;">BBS-FW</a> rett i Innstillinger - EggSPEED snakker begge konfigurasjonsprotokollene direkte.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">USB</span>
+          <div class="title">USB OTG eller Bluetooth</div>
+          <p>Én kabel til Bafangs programmeringsport, eller en <a href="https://github.com/moskil2/UART-BT-Konwerter" target="_blank" rel="noopener" class="link-muted" style="font-size:14px;">hjemmebygd Bluetooth-modul</a> koblet til i stedet for displayet - helt trådløst, testet på OEM Bafang og BBS-FW.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">CFG</span>
+          <div class="title">Full lesing av konfigurasjonen</div>
+          <p>Basic, Pedal Assist (PAS) og Throttle - hver parameter lest direkte fra kontrolleren, i sine egne enheter.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">0-9</span>
+          <div class="title">Assistnivåer og diagrammer</div>
+          <p>Fart- og strømgrenser for alle 10 assistnivåer, med diagrammer over effekt- og fartsfordeling over hele området.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">%</span>
+          <div class="title">Batteri og rekkevidde</div>
+          <p>Angi antall celler og kapasitet én gang - cockpiten kombinerer kjørehistorikk og kjørestil nå til en live rekkeviddeberegning.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">&plusmn;</span>
+          <div class="title">Kalibrering</div>
+          <p>Korrigering av strøm, spenning og fart i appen for kontrollere med shunt-modifikasjon (AmpMax) eller en hjulstørrelse som er litt feil - ingenting endres i selve kontrolleren.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">.ini</span>
+          <div class="title">Profiler</div>
+          <p>Lagre oppsettet ditt, eksporter det til en .ini-fil, eller importer en på en annen enhet.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">&check;</span>
+          <div class="title">Kontrollert skriving</div>
+          <p>Hver verdi begrenses til et trygt område før den sendes, og kontrollerens egen bekreftelseskode dekodes og vises - aldri en stille feil. Etter hver skriving leses konfigurasjonen tilbake og sammenlignes med det som ble sendt. Aldri fastvareflashing.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">LOCK</span>
+          <div class="title">PROTECT (Anti-COP)</div>
+          <p>Ett trykk låser assistansen stille til 0 mens cockpiten fortsatt ser normal ut og svarer som vanlig - opplåsing bare fra en PIN-beskyttet skjerm. Ser uendret ut ved første øyekast.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">GPS</span>
+          <div class="title">GPS-fart</div>
+          <p>Valgfri GPS-fart fra telefonen vist rett i cockpiten ved siden av kontrollerens egen verdi, for en uavhengig sammenligning.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">~V</span>
+          <div class="title">SAG-måling</div>
+          <p>En passivt beregnet SAG fra vanlig kjøring, pluss en veiledet SAG-måling for en kontrollert, sammenlignbar vurdering av batterikvaliteten.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">/s</span>
+          <div class="title">Live overvåkingsdiagrammer</div>
+          <p>Effekt, strøm, spenning og fart over tid, målt to ganger i sekundet, med et vindu på 2 til 60 minutter - dra for å lese et hvilket som helst punkt.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">TRIP</span>
+          <div class="title">Turhistorikk</div>
+          <p>Hver tur du nullstiller lagres med distanse, tid, snitt- og toppfart, energi, effekt, batteri og rekkevidde. Kan slettes når som helst; valgfri automatisk nullstilling ved tilkobling eller etter en pause i kjøringen.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">S/R</span>
+          <div class="title">To profiler: STREET/RACE og Normal/Sport</div>
+          <p>To fulle sett med 10 assistnivåer, kan byttes i farten rett fra cockpiten - tilsvarer EggRider Road/Offroad. STREET/RACE på OEM Bafang (byttet omprogrammerer kontrolleren), Normal/Sport på BBS-FW (innebygd i fastvaren, byttet etter innstillingen i Operation Mode Toggle).</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">ERR</span>
+          <div class="title">Feildeteksjon for kontrolleren</div>
+          <p>Valgfri live overvåking av maskinvarefeil - en gul varseltrekant vises i cockpiten i det øyeblikket en Bafang-kontrollerfeil oppstår; trykk på den for å gå rett til full feilkode og beskrivelse.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">BT</span>
+          <div class="title">Bluetooth-fjernkontroll</div>
+          <p>Tilordne Vol+/Vol- på en Bluetooth-fjernkontroll på styret til assistnivå, lys, PROTECT eller STREET/RACE - styr turen uten å røre telefonen.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">&deg;C</span>
+          <div class="title">Kontrollertemperatur (BBS-FW)</div>
+          <p>Valgfri Tc-flis i cockpiten med egne grenser for Varsel og Alarm - farge, blinking og et valgfritt pip når kontrolleren blir varm.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRIVACY -->
+  <section class="privacy-wrap">
+    <div class="privacy">
+      <div>
+        <span class="privacy-badge">&check;</span>
+        <h2>Ingenting forlater telefonen din.</h2>
+        <p>EggSPEED snakker med kontrolleren bare via USB-kabelen eller din egen Bluetooth-modul - appen ber ikke om tilgang til internett i det hele tatt. Det bekreftes i appens egen personvernerklæring.</p>
+      </div>
+      <div class="privacy-points">
+        <div><span class="check">&check;</span><span class="label">Ber ikke om internettilgang</span></div>
+        <div><span class="check">&check;</span><span class="label">Ingen konto, ingen analyse, ingen sporing</span></div>
+        <div><span class="check">&check;</span><span class="label">Aldri fastvareflashing</span></div>
+        <div><span class="check">&check;</span><span class="label">Profiler og innstillinger blir på enheten din</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTNOTE -->
+  <section class="footnote-wrap">
+    <div class="footnote-pill">
+      <span>19 språk: PL &middot; EN &middot; DE &middot; FR &middot; ES &middot; PT &middot; IT &middot; NL &middot; SV &middot; CS &middot; SK &middot; DA &middot; RU &middot; NO &middot; ET &middot; LV &middot; JA &middot; FI &middot; HU</span>
+      <span class="sep">|</span>
+      <span>Android 8.0+</span>
+      <span class="sep">|</span>
+      <span>~3 MB</span>
+      <span class="sep">|</span>
+      <span>USB OTG + Bafang-programmeringskabel, eller en Bluetooth-modul</span>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final-cta-wrap">
+    <div class="final-cta">
+      <div>
+        <h2>Skaff deg EggSPEED.</h2>
+        <p>Gratis konfigurasjonsverktøy for Bafang BBS01/BBS02/BBSHD. Tilgjengelig nå på Google Play.</p>
+        <div class="hero-ctas">
+          <a class="btn-outline" href="https://play.google.com/store/apps/details?id=app.spotrobotics.eggspeed" target="_blank" rel="noopener">Last ned på Google Play &rarr;</a>
+          <a class="btn-github" href="https://github.com/moskil2/EggSPEED" target="_blank" rel="noopener">Se på GitHub &rarr;</a>
+        </div>
+      </div>
+      <div class="final-cta-qr">
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=260x260&margin=0&color=16-17-28&data=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dapp.spotrobotics.eggspeed" alt="QR-kode til Google Play-siden" width="150" height="150">
+        <div class="caption mono">Skann for å åpne Google Play</div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <a href="/no/">spotrobotics.app</a> &middot; <a href="/no/eggspeed/privacy.html">Personvernerklæring</a> &middot; &copy; 2026 Spot Robotics - Tomasz Pieczara
+  </footer>
+
+  <div class="lightbox-overlay" id="lightbox">
+    <img id="lightbox-img" src="" alt="">
+  </div>
+  <script>
+    (function () {
+      var overlay = document.getElementById('lightbox');
+      var overlayImg = document.getElementById('lightbox-img');
+      document.querySelectorAll('img[src^="img/"]').forEach(function (img) {
+        img.classList.add('zoomable');
+        img.addEventListener('click', function () {
+          overlayImg.src = img.src;
+          overlayImg.alt = img.alt;
+          overlay.classList.add('open');
+        });
+      });
+      overlay.addEventListener('click', function () {
+        overlay.classList.remove('open');
+        overlayImg.src = '';
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') {
+          overlay.classList.remove('open');
+          overlayImg.src = '';
+        }
+      });
+    })();
+  </script>
+
+  <script src="/sky.js"></script>
+  <script src="/site.js"></script>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TrueBubble – Personvernerklæring | Spot Robotics av Tomasz Pieczara</title>
+  <meta name="description" content="Personvernerklæring for TrueBubble – en vaterapp av Tomasz Pieczara / Spot Robotics.">
+  <meta name="author" content="Tomasz Pieczara">
+  <link rel="canonical" href="https://spotrobotics.app/no/truebubble/privacy.html">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { background: #07080c; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: transparent;
+      color: #e8e8e8;
+      line-height: 1.7;
+      padding: 2rem 1rem 4rem;
+    }
+    .container { max-width: 680px; margin: 0 auto; }
+    .back {
+      display: inline-block;
+      font-size: 0.85rem;
+      color: #6b9fff;
+      text-decoration: none;
+      margin-bottom: 2.5rem;
+    }
+    .back:hover { text-decoration: underline; }
+    .app-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #6b9fff;
+      margin-bottom: 0.5rem;
+    }
+    h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+    .updated {
+      font-size: 0.85rem;
+      color: #666;
+      margin-bottom: 2.5rem;
+    }
+    h2 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #fff;
+      margin-top: 2rem;
+      margin-bottom: 0.5rem;
+    }
+    p { color: #aaa; margin-bottom: 0.75rem; }
+    ul { color: #aaa; padding-left: 1.5rem; margin-bottom: 0.75rem; }
+    li { margin-bottom: 0.25rem; }
+    a { color: #6b9fff; }
+    .divider { border: none; border-top: 1px solid #222; margin: 2rem 0; }
+    .highlight {
+      background: #1a1a1a;
+      border: 1px solid #2a2a2a;
+      border-radius: 10px;
+      padding: 1rem 1.25rem;
+      margin-bottom: 1rem;
+      color: #ccc;
+      font-size: 0.95rem;
+    }
+    #sky {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100vh;
+      height: 100lvh; /* tall viewport: no stretch when the mobile address bar hides */
+      z-index: -1;
+      pointer-events: none;
+    }
+  </style>
+<!-- i18n:head --><link rel="alternate" hreflang="en" href="https://spotrobotics.app/truebubble/privacy.html"><link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/truebubble/privacy.html"><link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/truebubble/privacy.html"><link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/truebubble/privacy.html"><link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/truebubble/privacy.html"><link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/truebubble/privacy.html"><style>.lang-ctl{position:fixed;top:calc(1rem + 48px);right:1rem;z-index:50;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}.lang-ctl summary{list-style:none;width:40px;height:40px;border-radius:50%;box-sizing:border-box;border:1px solid rgba(255,228,160,0.25);background:rgba(10,11,16,0.6);color:rgba(255,228,160,0.85);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:12px;font-weight:700;letter-spacing:.04em;transition:border-color .15s ease,background .15s ease}.lang-ctl summary::-webkit-details-marker{display:none}.lang-ctl summary:hover,.lang-ctl[open] summary{border-color:rgba(255,228,160,0.6);background:rgba(255,228,160,0.08)}.lang-ctl .lang-list{position:absolute;top:46px;right:0;display:flex;flex-direction:column;min-width:120px;padding:6px;border-radius:12px;background:rgba(10,11,16,0.92);border:1px solid rgba(255,228,160,0.25)}.lang-ctl .lang-list a{display:flex;justify-content:space-between;gap:12px;padding:8px 10px;border-radius:8px;color:#e8e8e8;text-decoration:none;font-size:14px}.lang-ctl .lang-list a b{color:rgba(255,228,160,0.85);font-size:12px}.lang-ctl .lang-list a:hover,.lang-ctl .lang-list a[aria-current]{background:rgba(255,228,160,0.08)}</style><!-- /i18n:head -->
+</head>
+<body>
+<!-- i18n:switch --><details class="lang-ctl"><summary aria-label="Language">NO</summary><div class="lang-list"><a href="/truebubble/privacy.html" hreflang="en" lang="en">English <b>EN</b></a><a href="/de/truebubble/privacy.html" hreflang="de" lang="de">Deutsch <b>DE</b></a><a href="/fr/truebubble/privacy.html" hreflang="fr" lang="fr">Français <b>FR</b></a><a href="/pl/truebubble/privacy.html" hreflang="pl" lang="pl">Polski <b>PL</b></a><a href="/no/truebubble/privacy.html" hreflang="no" lang="no" aria-current="true">Norsk <b>NO</b></a></div></details><!-- /i18n:switch -->
+  <canvas id="sky" aria-hidden="true"></canvas>
+  <div class="container">
+    <a class="back" href="/no/">← spotrobotics.app</a>
+
+    <div class="app-label">TrueBubble</div>
+    <h1>Personvernerklæring</h1>
+    <p class="updated">Sist oppdatert: 21. juni 2026</p>
+    <p class="updated">Dette er en oversettelse. Den engelske versjonen av denne personvernerklæringen er den gjeldende.</p>
+
+    <div class="highlight">
+      TrueBubble er en vaterapp som fungerer helt på enheten din. <strong style="color:#fff">Den har ingen internettilgang og overfører ingen data av noe slag.</strong>
+    </div>
+
+    <hr class="divider">
+
+    <h2>1. Hva TrueBubble gjør</h2>
+    <p>TrueBubble bruker enhetens innebygde bevegelsessensorer (akselerometer og rotasjonsvektorsensor) til å måle helningen og retningen til enheten og vise den som et vater. All behandling av sensordata skjer lokalt på enheten i sanntid.</p>
+
+    <h2>2. Sensordata</h2>
+    <p>TrueBubble leser følgende sensorer for å fungere:</p>
+    <ul>
+      <li><strong>Akselerometer</strong> - måler tyngdekraften langs hver akse for å finne enhetens helning</li>
+      <li><strong>Rotasjonsvektorsensor</strong> - gir et mer nøyaktig anslag av retningen når den finnes</li>
+    </ul>
+    <p>Sensormålingene brukes bare til å tegne vateret. De behandles i minnet og forkastes med en gang - de lagres aldri på disk eller overføres noe sted.</p>
+
+    <h2>3. Data vi ikke samler inn</h2>
+    <p>TrueBubble samler ikke inn, lagrer eller overfører noen data. Konkret:</p>
+    <ul>
+      <li>Ingen personopplysninger av noe slag</li>
+      <li>Ingen sensormålinger eller målehistorikk</li>
+      <li>Ingen posisjonsdata</li>
+      <li>Ingen bruksstatistikk eller analyse</li>
+      <li>Ingen krasjrapporter sendt til våre servere</li>
+    </ul>
+
+    <h2>4. Data lagret lokalt på enheten</h2>
+    <p>TrueBubble lagrer følgende data i appens lokale lagring på enheten. Disse dataene forlater aldri enheten din:</p>
+    <ul>
+      <li><strong>Kalibreringsavvik</strong> - hvis du kalibrerer vateret på en kjent plan flate, lagres korreksjonsverdiene lokalt så appen husker dem mellom øktene</li>
+      <li><strong>Appinnstillinger</strong> - valgene dine (f.eks. lyd/vibrasjon av/på, visningsvalg)</li>
+    </ul>
+    <p>Du kan slette disse dataene når som helst ved å tømme appens lagring i enhetsinnstillingene eller ved å avinstallere appen. Merk: TrueBubble er uttrykkelig unntatt fra Androids automatiske sikkerhetskopiering, så disse dataene lastes aldri opp til Googles skybackup.</p>
+
+    <h2>5. Vibrasjon</h2>
+    <p>TrueBubble bruker enhetens vibrasjonsmotor til å gi haptisk tilbakemelding når enheten står i vater. Dette skjer bare på enheten og innebærer ingen innsamling eller overføring av data.</p>
+
+    <h2>6. Nettverkstilgang</h2>
+    <p>TrueBubble ber ikke om og bruker ikke internettilgang eller tilgang til lokalt nettverk av noe slag. Den fungerer helt uten nett.</p>
+
+    <h2>7. Tredjepartstjenester</h2>
+    <p>TrueBubble inneholder ingen reklame-SDK-er, analysebiblioteker eller tjenester for krasjrapportering. Appen distribueres gjennom:</p>
+    <ul>
+      <li><strong>Google Play Store</strong> - underlagt Googles egen personvernerklæring</li>
+    </ul>
+
+    <h2>8. Barns personvern</h2>
+    <p>TrueBubble er ikke rettet mot barn under 13 år, og vi samler ikke bevisst inn personopplysninger fra barn.</p>
+
+    <h2>9. Endringer i denne erklæringen</h2>
+    <p>Hvis vi oppdaterer denne personvernerklæringen, legger vi ut den reviderte versjonen på denne siden med en oppdatert dato under «Sist oppdatert».</p>
+
+    <h2>10. Kontakt</h2>
+    <p>Spørsmål om denne erklæringen? Kontakt oss via <a href="/no/support/">supportskjemaet</a>.</p>
+  </div>
+  <script src="/sky.js"></script>
+  <script src="/site.js"></script>
+</body>
+</html>

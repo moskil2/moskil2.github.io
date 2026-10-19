@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Firmware SW102 - Polityka prywatności | Spot Robotics, Tomasz Pieczara</title>
+  <meta name="description" content="Polityka prywatności firmware SW102 - otwartego firmware dla wyświetlacza Bafang SW102 autorstwa Tomasza Pieczary / Spot Robotics.">
+  <meta name="author" content="Tomasz Pieczara">
+  <link rel="canonical" href="https://spotrobotics.app/pl/sw102/privacy.html">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { background: #07080c; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: transparent;
+      color: #e8e8e8;
+      line-height: 1.7;
+      padding: 2rem 1rem 4rem;
+    }
+    .container { max-width: 680px; margin: 0 auto; }
+    .back {
+      display: inline-block;
+      font-size: 0.85rem;
+      color: #6b9fff;
+      text-decoration: none;
+      margin-bottom: 2.5rem;
+    }
+    .back:hover { text-decoration: underline; }
+    .app-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #6b9fff;
+      margin-bottom: 0.5rem;
+    }
+    h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+    .updated {
+      font-size: 0.85rem;
+      color: #666;
+      margin-bottom: 2.5rem;
+    }
+    h2 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #fff;
+      margin-top: 2rem;
+      margin-bottom: 0.5rem;
+    }
+    p { color: #aaa; margin-bottom: 0.75rem; }
+    ul { color: #aaa; padding-left: 1.5rem; margin-bottom: 0.75rem; }
+    li { margin-bottom: 0.25rem; }
+    a { color: #6b9fff; }
+    .divider { border: none; border-top: 1px solid #222; margin: 2rem 0; }
+    .highlight {
+      background: #1a1a1a;
+      border: 1px solid #2a2a2a;
+      border-radius: 10px;
+      padding: 1rem 1.25rem;
+      margin-bottom: 1rem;
+      color: #ccc;
+      font-size: 0.95rem;
+    }
+    #sky {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100vh;
+      height: 100lvh; /* tall viewport: no stretch when the mobile address bar hides */
+      z-index: -1;
+      pointer-events: none;
+    }
+  </style>
+<!-- i18n:head --><link rel="alternate" hreflang="en" href="https://spotrobotics.app/sw102/privacy.html"><link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/sw102/privacy.html"><link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/sw102/privacy.html"><link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/sw102/privacy.html"><link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/sw102/privacy.html"><link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/sw102/privacy.html"><style>.lang-ctl{position:fixed;top:calc(1rem + 48px);right:1rem;z-index:50;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}.lang-ctl summary{list-style:none;width:40px;height:40px;border-radius:50%;box-sizing:border-box;border:1px solid rgba(255,228,160,0.25);background:rgba(10,11,16,0.6);color:rgba(255,228,160,0.85);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:12px;font-weight:700;letter-spacing:.04em;transition:border-color .15s ease,background .15s ease}.lang-ctl summary::-webkit-details-marker{display:none}.lang-ctl summary:hover,.lang-ctl[open] summary{border-color:rgba(255,228,160,0.6);background:rgba(255,228,160,0.08)}.lang-ctl .lang-list{position:absolute;top:46px;right:0;display:flex;flex-direction:column;min-width:120px;padding:6px;border-radius:12px;background:rgba(10,11,16,0.92);border:1px solid rgba(255,228,160,0.25)}.lang-ctl .lang-list a{display:flex;justify-content:space-between;gap:12px;padding:8px 10px;border-radius:8px;color:#e8e8e8;text-decoration:none;font-size:14px}.lang-ctl .lang-list a b{color:rgba(255,228,160,0.85);font-size:12px}.lang-ctl .lang-list a:hover,.lang-ctl .lang-list a[aria-current]{background:rgba(255,228,160,0.08)}</style><!-- /i18n:head -->
+</head>
+<body>
+<!-- i18n:switch --><details class="lang-ctl"><summary aria-label="Language">PL</summary><div class="lang-list"><a href="/sw102/privacy.html" hreflang="en" lang="en">English <b>EN</b></a><a href="/de/sw102/privacy.html" hreflang="de" lang="de">Deutsch <b>DE</b></a><a href="/fr/sw102/privacy.html" hreflang="fr" lang="fr">Français <b>FR</b></a><a href="/pl/sw102/privacy.html" hreflang="pl" lang="pl" aria-current="true">Polski <b>PL</b></a><a href="/no/sw102/privacy.html" hreflang="no" lang="no">Norsk <b>NO</b></a></div></details><!-- /i18n:switch -->
+  <canvas id="sky" aria-hidden="true"></canvas>
+  <div class="container">
+    <a class="back" href="/pl/">← spotrobotics.app</a>
+
+    <div class="app-label">Firmware SW102</div>
+    <h1>Polityka prywatności</h1>
+    <p class="updated">Ostatnia aktualizacja: 17 września 2026</p>
+    <p class="updated">To jest tłumaczenie. Wiążąca jest angielska wersja tej polityki prywatności.</p>
+
+    <div class="highlight">
+      Firmware SW102 to nie aplikacja - to oprogramowanie działające w całości na sprzęcie wyświetlacza. <strong style="color:#fff">Nie ma żadnego połączenia z internetem i nic nigdy nie jest wysyłane do sieci.</strong>
+    </div>
+
+    <hr class="divider">
+
+    <h2>1. Co robi ten firmware</h2>
+    <p>To otwarty firmware dla wyświetlacza Bafang SW102, który całkowicie zastępuje fabryczny firmware. Odczytuje telemetrię na żywo z oryginalnego sterownika silnika centralnego Bafang przez przewodowe połączenie UART i pokazuje ją na ekranie wyświetlacza - prędkość, moc, baterię, poziom wspomagania, trip i zasięg.</p>
+
+    <h2>2. Dane zapisane w wyświetlaczu</h2>
+    <p>Firmware zapisuje niewielką ilość danych bezpośrednio w pamięci flash wyświetlacza - nigdy nigdzie indziej:</p>
+    <ul>
+      <li>Twoje ustawienia (jednostki, rozmiar koła, wartości kalibracji, wybór układu kokpitu)</li>
+      <li>Dystans trasy, licznik całkowity i wyuczone dane z jazdy używane do szacowania zasięgu</li>
+    </ul>
+    <p>Te dane nigdy nie opuszczają wyświetlacza. Reset do ustawień fabrycznych z menu na ekranie je usuwa.</p>
+
+    <h2>3. Bluetooth</h2>
+    <p>Bluetooth wyświetlacza służy wyłącznie do instalowania aktualizacji firmware (DFU) z telefonu. Nie łączy się z internetem, nie paruje się z żadną aplikacją w celu wymiany danych i nie przesyła przez Bluetooth żadnych danych z jazdy.</p>
+
+    <h2>4. Dane, których nie zbieramy</h2>
+    <p>Ponieważ firmware nie ma połączenia z internetem ani serwera, nie zbieramy, nie rejestrujemy i nie mamy dostępu do żadnych z poniższych danych:</p>
+    <ul>
+      <li>Twoich danych z jazdy, lokalizacji ani sposobu korzystania</li>
+      <li>Żadnych informacji o sterowniku ani baterii</li>
+      <li>Statystyk użycia, analityki ani raportów o awariach</li>
+    </ul>
+
+    <h2>5. Prywatność dzieci</h2>
+    <p>Ten firmware nie jest skierowany do dzieci poniżej 13 lat i świadomie nie zbieramy żadnych danych osobowych dzieci.</p>
+
+    <h2>6. Zmiany tej polityki</h2>
+    <p>Jeśli zaktualizujemy tę politykę prywatności, opublikujemy nową wersję na tej stronie ze zaktualizowaną datą „Ostatnia aktualizacja”.</p>
+
+    <h2>7. Kontakt</h2>
+    <p>Pytania dotyczące tej polityki? Napisz do nas przez <a href="/pl/support/">formularz wsparcia</a>.</p>
+  </div>
+  <script src="/sky.js"></script>
+  <script src="/site.js"></script>
+</body>
+</html>

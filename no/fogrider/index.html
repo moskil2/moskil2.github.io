@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FogRider - GPS-sporanalyse for syklister, Windows-app | Spot Robotics</title>
+  <meta name="description" content="FogRider viser og analyserer GPS-turene dine på et interaktivt kart: terrengoppdagelse med Fog of War, SpeedMap, HeatMap, analyse av underlag og Komoot-import med ett klikk. Gratis Windows-app.">
+  <meta name="author" content="Tomasz Pieczara">
+  <meta property="og:title" content="FogRider - GPS-sporanalyse for syklister">
+  <meta property="og:description" content="Terrengoppdagelse med Fog of War, SpeedMap, HeatMap, analyse av underlag og Komoot-import med ett klikk - gratis Windows-app.">
+  <meta property="og:url" content="https://spotrobotics.app/no/fogrider/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://spotrobotics.app/icons/fogrider.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="FogRider - GPS-sporanalyse for syklister">
+  <meta name="twitter:description" content="Terrengoppdagelse med Fog of War, SpeedMap, HeatMap, analyse av underlag og Komoot-import med ett klikk - gratis Windows-app.">
+  <meta name="twitter:image" content="https://spotrobotics.app/icons/fogrider.png">
+  <link rel="canonical" href="https://spotrobotics.app/no/fogrider/">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="/icons/favicon-512x512.png">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { background: #07080c; }
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: transparent;
+      color: #f3f1ea;
+      width: 100%;
+      overflow-x: hidden;
+      line-height: 1.4;
+    }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; }
+    .mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+    .wrap { max-width: 1200px; margin: 0 auto; padding-left: 32px; padding-right: 32px; }
+    .eyebrow {
+      color: #4f9eff; font-weight: 700; font-size: 14px;
+      letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 14px;
+    }
+
+    /* topbar */
+    .topbar {
+      max-width: 1200px; margin: 0 auto; padding: 24px 32px 0;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .topbar a { color: #6f6a5f; font-size: 13.5px; font-weight: 600; }
+    .topbar a:hover { color: #a8a49a; }
+
+    /* buttons */
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: #4f9eff; color: #06101f; font-weight: 700; font-size: 17px;
+      padding: 16px 28px; border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(79,158,255,0.4);
+      transition: background .15s ease;
+    }
+    .btn-primary:hover { background: #6fb0ff; }
+    .btn-github {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: #FFC107; color: #1a1408; font-weight: 700; font-size: 17px;
+      padding: 16px 28px; border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(255,193,7,0.4);
+      transition: background .15s ease;
+    }
+    .btn-github:hover { background: #ffce3d; }
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: transparent; color: #4f9eff; font-weight: 700; font-size: 17px;
+      padding: 15px 27px; border-radius: 16px; border: 1.5px solid #4f9eff;
+      transition: background .15s ease, color .15s ease;
+    }
+    .btn-outline:hover { background: rgba(79,158,255,0.1); }
+    .badge-warn {
+      display: inline-flex; align-items: center;
+      font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 700;
+      letter-spacing: 0.05em; text-transform: uppercase; color: #F2A33C;
+      background: rgba(242,163,60,0.14); border: 1px solid rgba(242,163,60,0.4);
+      border-radius: 100px; padding: 7px 14px;
+    }
+
+    /* hero */
+    .hero { max-width: 820px; margin: 0 auto; padding: 56px 32px 0; text-align: center; }
+    .hero-brand { display: flex; align-items: center; justify-content: center; gap: 16px; margin-bottom: 28px; }
+    .hero-brand img { width: 56px; height: 56px; border-radius: 16px; box-shadow: 0 8px 24px rgba(79,158,255,0.35); }
+    .hero-brand span { font-size: 20px; font-weight: 700; letter-spacing: 0.01em; }
+    .hero h1 { font-size: 48px; line-height: 1.12; font-weight: 800; margin: 0 0 20px; letter-spacing: -0.02em; text-wrap: balance; }
+    .hero p.lede { font-size: 19px; line-height: 1.55; color: #a8a49a; margin: 0 auto 32px; max-width: 620px; }
+    .hero-ctas { display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap; }
+    .hero-foot {
+      display: flex; justify-content: center; gap: 28px; margin-top: 28px; color: #6f6a5f;
+      font-family: 'JetBrains Mono', monospace; font-size: 13px; flex-wrap: wrap;
+    }
+
+    /* desktop screenshot frame */
+    .desktop-shot-wrap { max-width: 1120px; margin: 48px auto 0; padding: 0 32px 72px; }
+    .desktop-shot {
+      border-radius: 16px; overflow: hidden; background: #1f2128;
+      box-shadow: 0 40px 100px rgba(0,0,0,0.55), inset 0 0 0 1px #2c2e36;
+    }
+    .desktop-shot-bar { height: 34px; display: flex; align-items: center; gap: 7px; padding: 0 14px; }
+    .desktop-shot-dot { width: 11px; height: 11px; border-radius: 50%; }
+    .desktop-shot img { display: block; width: 100%; height: auto; }
+    .desktop-shot-caption {
+      text-align: center; margin-top: 18px; color: #6f6a5f;
+      font-family: 'JetBrains Mono', monospace; font-size: 12.5px;
+    }
+
+    /* screenshot gallery */
+    .gallery-section { padding: 96px 32px; }
+    .gallery-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    .gallery-card { background: #1f2128; border-radius: 18px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.35); }
+    .gallery-card a { display: block; }
+    .gallery-card img { display: block; width: 100%; height: auto; transition: transform .2s ease; }
+    .gallery-card a:hover img { transform: scale(1.03); }
+    .gallery-card-body { padding: 18px 20px 22px; }
+    .gallery-card-title { font-weight: 700; font-size: 15.5px; margin-bottom: 6px; }
+    .gallery-card-body p { margin: 0; color: #a8a49a; font-size: 13.5px; line-height: 1.5; }
+
+    /* how it works */
+    .section-head { text-align: center; margin-bottom: 56px; }
+    .section-head h2 { font-size: 38px; font-weight: 800; margin: 0; letter-spacing: -0.01em; text-wrap: balance; }
+
+    /* features */
+    .features-section { background: rgba(26,27,33,0.6); padding: 96px 32px; }
+    .feature-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+    .feature-card { background: #1f2128; border-radius: 22px; padding: 26px; display: flex; flex-direction: column; gap: 14px; }
+    .feature-glyph {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 44px; height: 44px; border-radius: 13px; background: rgba(79,158,255,0.14);
+      color: #4f9eff; font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 13px;
+    }
+    .feature-card .title { font-weight: 700; font-size: 16px; }
+    .feature-card p { margin: 0; color: #a8a49a; font-size: 14px; line-height: 1.5; }
+
+    /* two-column highlight sections */
+    .anydevice {
+      max-width: 1200px; margin: 0 auto; padding: 88px 32px;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;
+    }
+    .anydevice h2 { font-size: 34px; font-weight: 800; margin: 0 0 20px; letter-spacing: -0.01em; text-wrap: balance; }
+    .anydevice p { font-size: 17px; line-height: 1.6; color: #a8a49a; margin: 0 0 20px; }
+    .anydevice p:last-child { margin-bottom: 0; }
+    .anydevice p strong { color: #f3f1ea; }
+    .import-visual {
+      display: flex; align-items: center; justify-content: center; gap: 28px;
+      background: #1f2128; border-radius: 26px; padding: 48px 24px;
+    }
+    .import-visual img { width: 84px; height: 84px; border-radius: 20px; box-shadow: 0 16px 40px rgba(0,0,0,0.45); }
+    .import-visual .plus { color: #6f6a5f; font-size: 24px; font-weight: 800; }
+
+    /* privacy */
+    .privacy-wrap { max-width: 1200px; margin: 32px auto 96px; padding: 0 32px; }
+    .privacy {
+      background: linear-gradient(135deg, rgba(79,158,255,0.14), rgba(79,158,255,0.06));
+      border-radius: 32px; padding: 64px;
+      display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 56px; align-items: center;
+      box-shadow: inset 0 0 0 1px rgba(79,158,255,0.25);
+    }
+    .privacy-badge {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 56px; height: 56px; border-radius: 16px; background: rgba(79,158,255,0.18);
+      color: #4f9eff; font-size: 24px; font-weight: 800; margin-bottom: 24px;
+    }
+    .privacy h2 { font-size: 34px; font-weight: 800; margin: 0 0 16px; letter-spacing: -0.01em; text-wrap: balance; }
+    .privacy p { font-size: 17px; line-height: 1.6; color: #a8a49a; margin: 0; }
+    .privacy-points { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .privacy-points div { display: flex; align-items: flex-start; gap: 12px; }
+    .privacy-points .check { color: #4f9eff; font-weight: 800; flex-shrink: 0; }
+    .privacy-points span.label { font-size: 15.5px; line-height: 1.5; color: #f3f1ea; }
+
+    /* footnote strip */
+    .footnote-wrap { max-width: 1200px; margin: 0 auto; padding: 0 32px 96px; text-align: center; }
+    .footnote-pill {
+      display: inline-flex; align-items: center; gap: 24px; flex-wrap: wrap; justify-content: center;
+      color: #6f6a5f; font-family: 'JetBrains Mono', monospace; font-size: 13.5px;
+      background: #1f2128; border-radius: 100px; padding: 16px 32px;
+    }
+    .footnote-pill span.sep { color: #3a3b42; }
+
+    /* final cta */
+    .final-cta-wrap { max-width: 1200px; margin: 0 auto 64px; padding: 0 32px; }
+    .final-cta {
+      background: #1f2128; border-radius: 32px; padding: 72px; text-align: center;
+    }
+    .final-cta h2 { font-size: 36px; font-weight: 800; margin: 0 0 14px; letter-spacing: -0.01em; }
+    .final-cta p { font-size: 17px; color: #a8a49a; margin: 0 0 28px; }
+
+    footer.site-footer {
+      text-align: center; padding: 0 24px 48px; color: #444; font-size: 12.5px;
+    }
+    footer.site-footer a { color: #6b9fff; }
+    footer.site-footer a:hover { text-decoration: underline; }
+
+    @media (max-width: 880px) {
+      .hero h1 { font-size: 34px; }
+      .feature-grid { grid-template-columns: repeat(2, 1fr); }
+      .gallery-grid { grid-template-columns: 1fr; }
+      .anydevice { grid-template-columns: 1fr; gap: 32px; }
+      .import-visual { padding: 32px 16px; }
+      .privacy { grid-template-columns: 1fr; padding: 40px; }
+      .privacy-points { grid-template-columns: 1fr; }
+      .final-cta { padding: 48px 32px; }
+    }
+    @media (max-width: 520px) {
+      .wrap, .hero, .anydevice, .topbar { padding-left: 16px; padding-right: 16px; }
+      .features-section { padding: 72px 16px; }
+      .feature-grid { grid-template-columns: 1fr; }
+      .privacy-wrap, .final-cta-wrap, .footnote-wrap { padding-left: 16px; padding-right: 16px; }
+      .footnote-pill { border-radius: 24px; padding: 16px 20px; }
+    }
+    #sky {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100vh;
+      height: 100lvh; /* tall viewport: no stretch when the mobile address bar hides */
+      z-index: -1;
+      pointer-events: none;
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "FogRider",
+    "operatingSystem": "WINDOWS",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "FogRider viser og analyserer GPS-turene dine på et interaktivt kart: terrengoppdagelse med Fog of War, SpeedMap, HeatMap, analyse av underlag og Komoot-import med ett klikk.",
+    "url": "https://spotrobotics.app/fogrider/",
+    "image": "https://spotrobotics.app/icons/fogrider.png",
+    "installUrl": "https://spotrobotics.app/fogrider/FogRider_0.7.3_x64-setup.exe",
+    "softwareVersion": "0.7.3",
+    "fileSize": "4.4MB",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "author": { "@type": "Person", "name": "Tomasz Pieczara" },
+    "publisher": { "@type": "Organization", "name": "Spot Robotics", "url": "https://spotrobotics.app" }
+  }
+  </script>
+<!-- i18n:head --><link rel="alternate" hreflang="en" href="https://spotrobotics.app/fogrider/"><link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/fogrider/"><link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/fogrider/"><link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/fogrider/"><link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/fogrider/"><link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/fogrider/"><style>.lang-ctl{position:fixed;top:calc(1rem + 48px);right:1rem;z-index:50;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}.lang-ctl summary{list-style:none;width:40px;height:40px;border-radius:50%;box-sizing:border-box;border:1px solid rgba(255,228,160,0.25);background:rgba(10,11,16,0.6);color:rgba(255,228,160,0.85);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:12px;font-weight:700;letter-spacing:.04em;transition:border-color .15s ease,background .15s ease}.lang-ctl summary::-webkit-details-marker{display:none}.lang-ctl summary:hover,.lang-ctl[open] summary{border-color:rgba(255,228,160,0.6);background:rgba(255,228,160,0.08)}.lang-ctl .lang-list{position:absolute;top:46px;right:0;display:flex;flex-direction:column;min-width:120px;padding:6px;border-radius:12px;background:rgba(10,11,16,0.92);border:1px solid rgba(255,228,160,0.25)}.lang-ctl .lang-list a{display:flex;justify-content:space-between;gap:12px;padding:8px 10px;border-radius:8px;color:#e8e8e8;text-decoration:none;font-size:14px}.lang-ctl .lang-list a b{color:rgba(255,228,160,0.85);font-size:12px}.lang-ctl .lang-list a:hover,.lang-ctl .lang-list a[aria-current]{background:rgba(255,228,160,0.08)}</style><!-- /i18n:head -->
+</head>
+<body>
+<!-- i18n:switch --><details class="lang-ctl"><summary aria-label="Language">NO</summary><div class="lang-list"><a href="/fogrider/" hreflang="en" lang="en">English <b>EN</b></a><a href="/de/fogrider/" hreflang="de" lang="de">Deutsch <b>DE</b></a><a href="/fr/fogrider/" hreflang="fr" lang="fr">Français <b>FR</b></a><a href="/pl/fogrider/" hreflang="pl" lang="pl">Polski <b>PL</b></a><a href="/no/fogrider/" hreflang="no" lang="no" aria-current="true">Norsk <b>NO</b></a></div></details><!-- /i18n:switch -->
+  <canvas id="sky" aria-hidden="true"></canvas>
+
+  <div class="topbar">
+    <a href="/no/">&larr; spotrobotics.app</a>
+    <a href="https://github.com/moskil2/FogRider" target="_blank" rel="noopener">GitHub</a>
+    <a href="/no/support/">Støtte</a>
+    <a href="/no/fogrider/privacy.html">Personvern</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-brand">
+      <img src="/icons/fogrider.png" alt="FogRider-ikon">
+      <span>FogRider</span>
+    </div>
+    <div class="eyebrow">GPS-sporanalyse for syklister</div>
+    <h1>Se hver tur du noen gang har kjørt, på ett kart.</h1>
+    <p class="lede">Last inn GPX-sporene dine og se tåken lette over hver vei du har syklet. Analyser fart, underlag og høyde, eller hent turhistorikken rett fra Komoot - ingen konto, ingen opplasting, alt blir på PC-en din.</p>
+    <div class="hero-ctas">
+      <a class="btn-primary" href="/fogrider/FogRider_0.7.3_x64-setup.exe">Last ned for Windows &rarr;</a>
+      <a class="btn-github" href="https://github.com/moskil2/FogRider" target="_blank" rel="noopener">Se på GitHub &rarr;</a>
+      <span class="badge-warn">Windows 10/11</span>
+    </div>
+    <div class="hero-foot mono">
+      <span>~4,4 MB</span>
+      <span>&middot;</span>
+      <span>Windows 10/11</span>
+      <span>&middot;</span>
+      <span>Gratis</span>
+    </div>
+  </section>
+
+  <div class="desktop-shot-wrap">
+    <div class="desktop-shot">
+      <div class="desktop-shot-bar">
+        <span class="desktop-shot-dot" style="background:#ef4444;"></span>
+        <span class="desktop-shot-dot" style="background:#f2a33c;"></span>
+        <span class="desktop-shot-dot" style="background:#35D07F;"></span>
+      </div>
+      <img src="/fogrider/img/03_HeatMap_Region.jpg" alt="FogRider med et HeatMap av 99 innlastede turer, med verktøypanelet til venstre, sporlisten og statistikklinjen">
+    </div>
+    <div class="desktop-shot-caption">HeatMap-visning - 99 spor lastet inn, farget etter hvor ofte hvert område er besøkt</div>
+  </div>
+
+  <!-- SCREENSHOT GALLERY -->
+  <section class="gallery-section">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Skjermbilder</div>
+        <h2>Hver skjerm på nært hold.</h2>
+      </div>
+      <div class="gallery-grid">
+        <div class="gallery-card">
+          <a href="/fogrider/img/02_Overview.jpg" target="_blank" rel="noopener noreferrer">
+            <img src="/fogrider/img/02_Overview.jpg" alt="FogRiders hovedvisning med verktøylinje og full sporliste" loading="lazy">
+          </a>
+          <div class="gallery-card-body">
+            <div class="gallery-card-title">Hovedvisning og sporliste</div>
+            <p>Dette er basen: hver innlastet tur listet med distanse, kjøretid, snitt- og toppfart, sortert etter dato, distanse eller fart. Hvert spor har sin egen farge og en synlighetsbryter med ett klikk, så du kan skille ut én tur eller sammenligne dusinvis rett på kartet.</p>
+          </div>
+        </div>
+        <div class="gallery-card">
+          <a href="/fogrider/img/04_FogOfWar.jpg" target="_blank" rel="noopener noreferrer">
+            <img src="/fogrider/img/04_FogOfWar.jpg" alt="Fog of War-sekskantrutenett med statistikkpanel for oppdagelse" loading="lazy">
+          </a>
+          <div class="gallery-card-body">
+            <div class="gallery-card-title">Fog of War</div>
+            <p>Kartet starter dekket av tåke og klarner sekskant for sekskant langs veiene og stiene du faktisk har syklet. Sidepanelet teller oppdagede sekskanter og utforsket areal, lar deg bytte sekskantstørrelse for grovere eller finere oppdagelse, og viser hva som er nytt siden forrige GPX-import.</p>
+          </div>
+        </div>
+        <div class="gallery-card">
+          <a href="/fogrider/img/05_Achievements.jpg" target="_blank" rel="noopener noreferrer">
+            <img src="/fogrider/img/05_Achievements.jpg" alt="Prestasjonspanel med varsel om et opplåst merke" loading="lazy">
+          </a>
+          <div class="gallery-card-body">
+            <div class="gallery-card-title">Prestasjoner</div>
+            <p>Dusinvis av merker å låse opp belønner distansemilepæler, utforskningsrekker og jevn sykling, gruppert i kategorier som Explorer og Roads. Når du låser opp et, vises et varsel rett på kartet, og panelet viser fortløpende hvor nær du er det neste.</p>
+          </div>
+        </div>
+        <div class="gallery-card">
+          <a href="/fogrider/img/06_RiderDNA.jpg" target="_blank" rel="noopener noreferrer">
+            <img src="/fogrider/img/06_RiderDNA.jpg" alt="Rider DNA-panel med et radardiagram over syklistpersonlighet" loading="lazy">
+          </a>
+          <div class="gallery-card-body">
+            <div class="gallery-card-title">Rider DNA</div>
+            <p>FogRider lager en syklistprofil ut fra turhistorikken din og viser den i et radardiagram med egenskaper som Explorer, Adventure, Climber, Speed og Consistency. Hver egenskap har de faktiske tallene bak, som nye sekskanter oppdaget per 100 km eller din lengste aktive rekke.</p>
+          </div>
+        </div>
+        <div class="gallery-card">
+          <a href="/fogrider/img/07_YearInReview.jpg" target="_blank" rel="noopener noreferrer">
+            <img src="/fogrider/img/07_YearInReview.jpg" alt="Delbart kort med årsoppsummering" loading="lazy">
+          </a>
+          <div class="gallery-card-body">
+            <div class="gallery-card-title">Årsoppsummering</div>
+            <p>Et kort som oppsummerer sesongen: total distanse, høydemeter, antall turer, lengste tur, snittfart og hvor mye nytt terreng du har oppdaget sammenlignet med tidligere år. Ett klikk eksporterer det som PNG, klart til deling.</p>
+          </div>
+        </div>
+        <div class="gallery-card">
+          <a href="/fogrider/img/08_ChartsPreview.jpg" target="_blank" rel="noopener noreferrer">
+            <img src="/fogrider/img/08_ChartsPreview.jpg" alt="Forhåndsvisning av diagrammer med utvikling i ukentlig distanse og snittfart" loading="lazy">
+          </a>
+          <div class="gallery-card-body">
+            <div class="gallery-card-title">Aktivitetsdiagrammer</div>
+            <p>Distanse, snittfart og kjøretid fordelt på uke, måned eller år, hvert diagram med trenden mot forrige periode, så du ser om du sykler mer eller mindre enn før. Nyttig for å finne treningsblokker, rolige måneder eller en sesong som bygger mot et mål.</p>
+          </div>
+        </div>
+        <div class="gallery-card">
+          <a href="/fogrider/img/09_CalendarHeatmap.jpg" target="_blank" rel="noopener noreferrer">
+            <img src="/fogrider/img/09_CalendarHeatmap.jpg" alt="Kalender-heatmap, en aktivitetskalender i GitHub-stil" loading="lazy">
+          </a>
+          <div class="gallery-card-body">
+            <div class="gallery-card-title">Kalender-heatmap</div>
+            <p>En aktivitetskalender i GitHub-stil som farger hver dag du syklet, så årsmønsteret ditt synes med ett blikk. Ved siden av: nåværende og lengste rekke, aktive og inaktive dager, mest aktive ukedag og måned, og gjennomsnittlig antall turer per uke.</p>
+          </div>
+        </div>
+        <div class="gallery-card">
+          <a href="/fogrider/img/10_ElevationMap.jpg" target="_blank" rel="noopener noreferrer">
+            <img src="/fogrider/img/10_ElevationMap.jpg" alt="ElevationMap som farger spor etter stigning" loading="lazy">
+          </a>
+          <div class="gallery-card-body">
+            <div class="gallery-card-title">ElevationMap</div>
+            <p>Farger hver del av sporet etter stigning, fra flatt grønt via oransje til bratt rødt, så de tøffeste bakkene og utforkjøringene på en rute springer i øynene med en gang. En rask måte å speide ut en ukjent vei før du gir deg i kast med den.</p>
+          </div>
+        </div>
+        <div class="gallery-card">
+          <a href="/fogrider/img/11_POIPoints.jpg" target="_blank" rel="noopener noreferrer">
+            <img src="/fogrider/img/11_POIPoints.jpg" alt="POI-lag som viser slott, kirker og museer på kartet" loading="lazy">
+          </a>
+          <div class="gallery-card-body">
+            <div class="gallery-card-title">POI-punkter</div>
+            <p>Legg over kategorier som slott, kirker, monumenter, museer, utsiktspunkter og turstier rett fra OpenStreetMap, hver av og på for seg. Praktisk for å planlegge en rute forbi severdigheter, eller bare legge merke til hva du har syklet forbi hele tiden.</p>
+          </div>
+        </div>
+        <div class="gallery-card">
+          <a href="/fogrider/img/12_KomootImport.jpg" target="_blank" rel="noopener noreferrer">
+            <img src="/fogrider/img/12_KomootImport.jpg" alt="Komoot-importpanel med en liste over aktiviteter klare for import" loading="lazy">
+          </a>
+          <div class="gallery-card-body">
+            <div class="gallery-card-title">Komoot-import</div>
+            <p>Logg inn med Komoot-kontoen din rett i FogRider og bla gjennom de registrerte aktivitetene dine i en avkrysningsliste med datoer og distanser. Velg dem du vil ha, trykk importer, så lastes de rett inn - ingen manuell GPX-eksport fra Komoot nødvendig.</p>
+          </div>
+        </div>
+        <div class="gallery-card">
+          <a href="/fogrider/img/13_SatelliteHeatMap.jpg" target="_blank" rel="noopener noreferrer">
+            <img src="/fogrider/img/13_SatelliteHeatMap.jpg" alt="Satellittkart kombinert med HeatMap-laget" loading="lazy">
+          </a>
+          <div class="gallery-card-body">
+            <div class="gallery-card-title">Karttyper</div>
+            <p>Bytt bakgrunnskart mellom stiler, også satellittbilder, og alle lag fungerer fortsatt oppå - Fog of War, HeatMap, SpeedMap og ElevationMap vises likt uansett hvilken kartstil du foretrekker.</p>
+          </div>
+        </div>
+        <div class="gallery-card">
+          <a href="/fogrider/img/14_StatsBar.jpg" target="_blank" rel="noopener noreferrer">
+            <img src="/fogrider/img/14_StatsBar.jpg" alt="Nedre statistikklinje med fordeling på underlag, samlet statistikk og aktivitetsdiagrammer" loading="lazy">
+          </a>
+          <div class="gallery-card-body">
+            <div class="gallery-card-title">Nedre statistikklinje</div>
+            <p>Et sammenleggbart panel under kartet med fem faner: fordeling på underlag, samlet statistikk for alle innlastede turer (stigninger, utforkjøringer, stopp, helninger), Fog of War-summer, aktivitetsdiagrammer og histogrammer over kjørevaner som starttid, ukedag og typisk distanse.</p>
+          </div>
+        </div>
+        <div class="gallery-card">
+          <a href="/fogrider/img/15_FogOfWar_Satellite.jpg" target="_blank" rel="noopener noreferrer">
+            <img src="/fogrider/img/15_FogOfWar_Satellite.jpg" alt="Fog of War-sekskantrutenett over en annen kartstil" loading="lazy">
+          </a>
+          <div class="gallery-card-body">
+            <div class="gallery-card-title">Fog of War, alle kartstiler</div>
+            <p>Sekskantrutenettet fungerer over alle karttyper, ikke bare standard veikart. Sporing av oppdagelser, antall sekskanter og utforsket areal er nøyaktig det samme under - du får bare se på dem slik du vil.</p>
+          </div>
+        </div>
+        <div class="gallery-card">
+          <a href="/fogrider/img/16_MyTrackType.jpg" target="_blank" rel="noopener noreferrer">
+            <img src="/fogrider/img/16_MyTrackType.jpg" alt="My Track Type-panel med fordeling av syklede underlag" loading="lazy">
+          </a>
+          <div class="gallery-card-body">
+            <div class="gallery-card-title">My Track Type</div>
+            <p>Kjører hver syklet del gjennom OpenStreetMap-data og klassifiserer den som asfalt, grus, jordvei, skogsvei, singletrack eller ukjent, med total distanse og snittfart per underlag. En rask "Quick"-runde gir tall fort, eller kjør "Detailed" for en grundigere analyse per del.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="features-section">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Funksjoner</div>
+        <h2>Alt du trenger for å forstå syklingen din.</h2>
+      </div>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <span class="feature-glyph mono">&#9729;</span>
+          <div class="title">Fog of War</div>
+          <p>Kartet starter dekket av tåke og klarner langs hver vei du faktisk har syklet - et sekskantrutenett (H3) holder oversikt over oppdaget terreng.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">GPX</span>
+          <div class="title">Import/eksport av GPX og ZIP</div>
+          <p>Dra og slipp enkeltfiler eller hele ZIP-arkiver; eksporter alt tilbake til en ZIP med ett klikk.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">&rarr;</span>
+          <div class="title">Komoot-import</div>
+          <p>Logg inn med Komoot-kontoen din og hent registrerte aktiviteter rett inn i FogRider - ingen manuell eksport, ikke noe filstyr.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">%</span>
+          <div class="title">My Track Type</div>
+          <p>Klassifiserer hver del som asfalt, grus, skogssti med mer, ut fra OpenStreetMap-data.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">km/t</span>
+          <div class="title">SpeedMap og ElevationMap</div>
+          <p>Farger sporene dine på kartet etter tempo eller bratthet, så de varme punktene synes med en gang.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">&#9632;</span>
+          <div class="title">HeatMap</div>
+          <p>Se med ett blikk hvilke veier og stier du faktisk sykler mest.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">&Sigma;</span>
+          <div class="title">Statistikk og diagrammer</div>
+          <p>Distanse, fart, høydemeter, stigninger og utforkjøringer, pluss aktivitetsdiagrammer per uke, måned og år.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">&#127942;</span>
+          <div class="title">Prestasjoner, Rider DNA og årsoppsummering</div>
+          <p>Merker å låse opp, en syklistprofil bygd fra turene dine og en årsoppsummering du kan dele.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KOMOOT IMPORT HIGHLIGHT -->
+  <section class="anydevice">
+    <div>
+      <div class="eyebrow">Import med ett klikk</div>
+      <h2>Registrerer du allerede turene dine i Komoot? Ta dem alle med hit.</h2>
+      <p><strong>Komoot</strong> - logg inn med Komoot-kontoen din rett i FogRider og velg hvilke registrerte aktiviteter som skal hentes, uten manuell eksport. Importer så mange turer du vil på én gang, og hvert spor er straks klart for Fog of War, HeatMap og resten av FogRiders analyseverktøy.</p>
+      <p>Jobber du heller med filer? Dra enkeltstående GPX-filer eller hele ZIP-arkiver inn i appvinduet når som helst, uten importveiviser.</p>
+    </div>
+    <div class="import-visual">
+      <img src="/fogrider/img/icon-komoot.png" alt="Komoot">
+    </div>
+  </section>
+
+  <!-- PRIVACY -->
+  <section class="privacy-wrap">
+    <div class="privacy">
+      <div>
+        <span class="privacy-badge">&check;</span>
+        <h2>Lokalt først, åpen om resten.</h2>
+        <p>FogRider har ingen egen server. Sporene og de lagrede profilene dine ligger bare på PC-en din - appen kontakter bare en tjeneste når en bestemt funksjon trenger det, og forteller deg hvilken.</p>
+      </div>
+      <div class="privacy-points">
+        <div><span class="check">&check;</span><span class="label">Ingen konto, ingen opplasting av sporene dine</span></div>
+        <div><span class="check">&check;</span><span class="label">Ingen analyse eller sporing</span></div>
+        <div><span class="check">&check;</span><span class="label">Kontakter OpenStreetMap bare for kartdata og analyse av underlag</span></div>
+        <div><span class="check">&check;</span><span class="label">Komoot-innloggingen blir i økten din, lagres aldri av oss</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTNOTE -->
+  <section class="footnote-wrap">
+    <div class="footnote-pill">
+      <span>Windows 10/11</span>
+      <span class="sep">|</span>
+      <span>~4,4 MB</span>
+      <span class="sep">|</span>
+      <span>Gratis</span>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final-cta-wrap">
+    <div class="final-cta">
+      <h2>Skaff deg FogRider.</h2>
+      <p>Gratis visning og analyse av GPS-spor for Windows. Last inn turene dine og se tåken lette.</p>
+      <div class="hero-ctas">
+        <a class="btn-primary" href="/fogrider/FogRider_0.7.3_x64-setup.exe">Last ned for Windows &rarr;</a>
+        <a class="btn-github" href="https://github.com/moskil2/FogRider" target="_blank" rel="noopener">Se på GitHub &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <a href="/no/">spotrobotics.app</a> &middot; <a href="https://github.com/moskil2/FogRider" target="_blank" rel="noopener">GitHub</a> &middot; <a href="/no/support/">Støtte</a> &middot; <a href="/no/fogrider/privacy.html">Personvernerklæring</a> &middot; &copy; 2026 Spot Robotics - Tomasz Pieczara
+  </footer>
+
+  <script src="/sky.js"></script>
+  <script src="/site.js"></script>
+</body>
+</html>

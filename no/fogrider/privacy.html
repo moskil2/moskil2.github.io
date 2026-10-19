@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FogRider - Personvernerklæring | Spot Robotics av Tomasz Pieczara</title>
+  <meta name="description" content="Personvernerklæring for FogRider - visning og analyse av GPX-spor for Windows av Tomasz Pieczara / Spot Robotics.">
+  <meta name="author" content="Tomasz Pieczara">
+  <link rel="canonical" href="https://spotrobotics.app/no/fogrider/privacy.html">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { background: #07080c; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: transparent;
+      color: #e8e8e8;
+      line-height: 1.7;
+      padding: 2rem 1rem 4rem;
+    }
+    .container { max-width: 680px; margin: 0 auto; }
+    .back {
+      display: inline-block;
+      font-size: 0.85rem;
+      color: #6b9fff;
+      text-decoration: none;
+      margin-bottom: 2.5rem;
+    }
+    .back:hover { text-decoration: underline; }
+    .app-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #6b9fff;
+      margin-bottom: 0.5rem;
+    }
+    h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+    .updated {
+      font-size: 0.85rem;
+      color: #666;
+      margin-bottom: 2.5rem;
+    }
+    h2 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #fff;
+      margin-top: 2rem;
+      margin-bottom: 0.5rem;
+    }
+    p { color: #aaa; margin-bottom: 0.75rem; }
+    ul { color: #aaa; padding-left: 1.5rem; margin-bottom: 0.75rem; }
+    li { margin-bottom: 0.25rem; }
+    a { color: #6b9fff; }
+    .divider { border: none; border-top: 1px solid #222; margin: 2rem 0; }
+    .highlight {
+      background: #1a1a1a;
+      border: 1px solid #2a2a2a;
+      border-radius: 10px;
+      padding: 1rem 1.25rem;
+      margin-bottom: 1rem;
+      color: #ccc;
+      font-size: 0.95rem;
+    }
+    #sky {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100vh;
+      height: 100lvh; /* tall viewport: no stretch when the mobile address bar hides */
+      z-index: -1;
+      pointer-events: none;
+    }
+  </style>
+<!-- i18n:head --><link rel="alternate" hreflang="en" href="https://spotrobotics.app/fogrider/privacy.html"><link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/fogrider/privacy.html"><link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/fogrider/privacy.html"><link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/fogrider/privacy.html"><link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/fogrider/privacy.html"><link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/fogrider/privacy.html"><style>.lang-ctl{position:fixed;top:calc(1rem + 48px);right:1rem;z-index:50;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}.lang-ctl summary{list-style:none;width:40px;height:40px;border-radius:50%;box-sizing:border-box;border:1px solid rgba(255,228,160,0.25);background:rgba(10,11,16,0.6);color:rgba(255,228,160,0.85);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:12px;font-weight:700;letter-spacing:.04em;transition:border-color .15s ease,background .15s ease}.lang-ctl summary::-webkit-details-marker{display:none}.lang-ctl summary:hover,.lang-ctl[open] summary{border-color:rgba(255,228,160,0.6);background:rgba(255,228,160,0.08)}.lang-ctl .lang-list{position:absolute;top:46px;right:0;display:flex;flex-direction:column;min-width:120px;padding:6px;border-radius:12px;background:rgba(10,11,16,0.92);border:1px solid rgba(255,228,160,0.25)}.lang-ctl .lang-list a{display:flex;justify-content:space-between;gap:12px;padding:8px 10px;border-radius:8px;color:#e8e8e8;text-decoration:none;font-size:14px}.lang-ctl .lang-list a b{color:rgba(255,228,160,0.85);font-size:12px}.lang-ctl .lang-list a:hover,.lang-ctl .lang-list a[aria-current]{background:rgba(255,228,160,0.08)}</style><!-- /i18n:head -->
+</head>
+<body>
+<!-- i18n:switch --><details class="lang-ctl"><summary aria-label="Language">NO</summary><div class="lang-list"><a href="/fogrider/privacy.html" hreflang="en" lang="en">English <b>EN</b></a><a href="/de/fogrider/privacy.html" hreflang="de" lang="de">Deutsch <b>DE</b></a><a href="/fr/fogrider/privacy.html" hreflang="fr" lang="fr">Français <b>FR</b></a><a href="/pl/fogrider/privacy.html" hreflang="pl" lang="pl">Polski <b>PL</b></a><a href="/no/fogrider/privacy.html" hreflang="no" lang="no" aria-current="true">Norsk <b>NO</b></a></div></details><!-- /i18n:switch -->
+  <canvas id="sky" aria-hidden="true"></canvas>
+  <div class="container">
+    <a class="back" href="/no/">← spotrobotics.app</a>
+
+    <div class="app-label">FogRider</div>
+    <h1>Personvernerklæring</h1>
+    <p class="updated">Sist oppdatert: 7. september 2026</p>
+    <p class="updated">Dette er en oversettelse. Den engelske versjonen av denne personvernerklæringen er den gjeldende.</p>
+
+    <div class="highlight">
+      FogRider er en innebygd Windows-app. <strong style="color:#fff">GPX-spor du laster inn og profiler du lagrer, blir på din egen PC - ingenting lastes noen gang opp til våre servere.</strong>
+    </div>
+
+    <hr class="divider">
+
+    <h2>1. Hva FogRider gjør</h2>
+    <p>FogRider er en innebygd Windows-app (laget med Tauri) for å vise og analysere GPX-spor på et interaktivt kart. Du kan laste inn GPX-filer, se Fog of War lette langs veiene du har syklet, og analysere fart, høyde og underlag på sporene dine.</p>
+
+    <h2>2. Data lagret lokalt på enheten</h2>
+    <p>FogRider lagrer følgende data bare på din egen PC. Ingenting av det overføres til oss:</p>
+    <ul>
+      <li>GPX-spor og "profiler" (navngitte samlinger av spor, med farger og visningsinnstillinger) som du uttrykkelig lagrer - skrevet som JSON-filer til et sted du velger, via en vanlig lagringsdialog. Ingenting lagres automatisk med mindre du lagrer en profil.</li>
+      <li>Appinnstillinger og fremdrift som huskes mellom øktene - opplåste prestasjoner, valgt sekskantstørrelse for Fog of War og oppsett av sidepanelet, i appens lokale datalagring.</li>
+    </ul>
+    <p>Du kan når som helst slette en lagret profilfil direkte fra disken. Innstillinger og prestasjonsfremdrift kan nullstilles i appen, eller slettes helt ved å fjerne appens lokale datamappe.</p>
+
+    <h2>3. Tredjepartstjenester FogRider kobler seg til</h2>
+    <p>FogRider har ingen egen server. Når visse funksjoner brukes, kobler appen seg direkte til følgende tredjepartstjenester:</p>
+    <ul>
+      <li><strong>OpenStreetMap / Overpass API</strong> - brukes til å hente turistattraksjoner og til å klassifisere underlaget på sporene dine (asfalt, grus, skogssti osv.). Bare geografiske koordinater sendes; ingen personopplysninger er med.</li>
+      <li><strong>Komoot API</strong> - hvis du velger å importere aktiviteter fra Komoot, kobler appen seg direkte til Komoots API med innloggingsopplysningene du oppgir. Innloggingsopplysningene og økttokenet brukes bare i appøkten din og sendes eller lagres aldri på våre servere.</li>
+      <li><strong>Kartfliser</strong> - bakgrunnskartet lastes fra OpenStreetMap og CARTO, som har sine egne personvernrutiner.</li>
+    </ul>
+
+    <h2>4. Data vi ikke samler inn</h2>
+    <p>Fordi FogRider ikke har noen server, samler vi ikke inn, logger eller har tilgang til noe av følgende:</p>
+    <ul>
+      <li>GPX-sporene dine eller posisjonsdata</li>
+      <li>Innloggingsopplysningene dine til Komoot</li>
+      <li>Bruksstatistikk, analyse eller krasjrapporter</li>
+    </ul>
+
+    <h2>5. Barns personvern</h2>
+    <p>FogRider er ikke rettet mot barn under 13 år, og vi samler ikke bevisst inn personopplysninger fra barn.</p>
+
+    <h2>6. Endringer i denne erklæringen</h2>
+    <p>Hvis vi oppdaterer denne personvernerklæringen, legger vi ut den reviderte versjonen på denne siden med en oppdatert dato under «Sist oppdatert».</p>
+
+    <h2>7. Kontakt</h2>
+    <p>Spørsmål om denne erklæringen? Kontakt oss via <a href="/no/support/">supportskjemaet</a>.</p>
+  </div>
+  <script src="/sky.js"></script>
+  <script src="/site.js"></script>
+</body>
+</html>

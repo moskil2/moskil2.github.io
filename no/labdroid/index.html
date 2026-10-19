@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LabDroid - Se alt sensorene og maskinvaren i Android-telefonen din rapporterer | Spot Robotics</title>
+  <meta name="description" content="LabDroid viser hva Android-telefonen din faktisk har inni: live-sensorer med diagrammer, CPU- og GPU-detaljer, kameraer, batterihelse, GPS-satellitter og tilkobling. Ingen reklame, ingen konto, ingen internettillatelse.">
+  <meta name="author" content="Tomasz Pieczara">
+  <meta property="og:title" content="LabDroid - Android-app for sensorer, maskinvare og diagnostikk">
+  <meta property="og:description" content="Live-sensorer med diagrammer, CPU- og GPU-detaljer, kameraer, batterihelse, GPS-satellitter og tilkobling - alt på enheten, ingen reklame, ingen datainnsamling.">
+  <meta property="og:url" content="https://spotrobotics.app/no/labdroid/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://spotrobotics.app/icons/labdroid.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="LabDroid - Android-app for sensorer, maskinvare og diagnostikk">
+  <meta name="twitter:description" content="Live-sensorer med diagrammer, CPU- og GPU-detaljer, kameraer, batterihelse, GPS-satellitter og tilkobling - alt på enheten, ingen reklame, ingen datainnsamling.">
+  <meta name="twitter:image" content="https://spotrobotics.app/icons/labdroid.png">
+  <link rel="canonical" href="https://spotrobotics.app/no/labdroid/">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="/icons/favicon-512x512.png">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { background: #07080c; }
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: transparent;
+      color: #f3f1ea;
+      width: 100%;
+      overflow-x: hidden;
+      line-height: 1.4;
+    }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; }
+    .mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+    .wrap { max-width: 1200px; margin: 0 auto; padding-left: 32px; padding-right: 32px; }
+    .eyebrow {
+      color: #00E676; font-weight: 700; font-size: 14px;
+      letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 14px;
+    }
+
+    /* topbar */
+    .topbar {
+      max-width: 1200px; margin: 0 auto; padding: 24px 32px 0;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .topbar a { color: #6f6a5f; font-size: 13.5px; font-weight: 600; }
+    .topbar a:hover { color: #a8a49a; }
+
+    /* buttons */
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: #1f6feb; color: #ffffff; font-weight: 700; font-size: 17px;
+      padding: 16px 28px; border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(31,111,235,0.4);
+      transition: background .15s ease;
+    }
+    .btn-primary:hover { background: #3a82f5; }
+    .btn-github {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: #FFC107; color: #1a1408; font-weight: 700; font-size: 17px;
+      padding: 16px 28px; border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(255,193,7,0.4);
+      transition: background .15s ease;
+    }
+    .btn-github:hover { background: #ffce3d; }
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: transparent; color: #1f6feb; font-weight: 700; font-size: 17px;
+      padding: 15px 27px; border-radius: 16px; border: 1.5px solid #1f6feb;
+      transition: background .15s ease, color .15s ease;
+    }
+    .btn-outline:hover { background: rgba(31,111,235,0.1); }
+    .badge-warn {
+      display: inline-flex; align-items: center;
+      font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 700;
+      letter-spacing: 0.05em; text-transform: uppercase; color: #4f8cff;
+      background: rgba(79,140,255,0.14); border: 1px solid rgba(79,140,255,0.4);
+      border-radius: 100px; padding: 7px 14px;
+    }
+
+    /* hero */
+    .hero {
+      max-width: 1200px; margin: 0 auto; padding: 56px 32px 80px;
+      display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 64px; align-items: center;
+    }
+    .hero-brand { display: flex; align-items: center; gap: 16px; margin-bottom: 28px; }
+    .hero-brand img { width: 56px; height: 56px; border-radius: 16px; box-shadow: 0 8px 24px rgba(0,230,118,0.3); }
+    .hero-brand span { font-size: 20px; font-weight: 700; letter-spacing: 0.01em; }
+    .hero h1 { font-size: 52px; line-height: 1.1; font-weight: 800; margin: 0 0 24px; letter-spacing: -0.02em; text-wrap: balance; }
+    .hero p.lede { font-size: 20px; line-height: 1.55; color: #a8a49a; margin: 0 0 36px; max-width: 520px; }
+    .hero-ctas { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+    .hero-foot {
+      display: flex; gap: 28px; margin-top: 44px; color: #6f6a5f;
+      font-family: 'JetBrains Mono', monospace; font-size: 13px; flex-wrap: wrap;
+    }
+    .hero-shot { display: flex; justify-content: center; }
+    .hero-shot .bezel {
+      border-radius: 36px; padding: 10px; background: #1f2128;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.55), inset 0 0 0 1px #2c2e36;
+    }
+    .hero-shot img { width: 280px; height: auto; display: block; border-radius: 28px; }
+
+    /* how it works */
+    .section-head { text-align: center; margin-bottom: 56px; }
+    .section-head h2 { font-size: 38px; font-weight: 800; margin: 0; letter-spacing: -0.01em; text-wrap: balance; }
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; max-width: 1080px; margin: 0 auto; }
+    .step-card { background: #1f2128; border-radius: 26px; padding: 24px; display: flex; flex-direction: column; gap: 18px; }
+    .step-head { display: flex; align-items: center; gap: 10px; }
+    .step-num {
+      width: 28px; height: 28px; border-radius: 9px; background: rgba(0,230,118,0.14);
+      color: #00E676; font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 13px;
+      display: flex; align-items: center; justify-content: center; flex: none;
+    }
+    .step-head span.title { font-weight: 700; font-size: 16px; }
+    .step-shot { border-radius: 20px; overflow: hidden; background: #16171c; box-shadow: inset 0 0 0 1px #2c2e36; }
+    .step-shot img { width: 100%; height: auto; display: block; }
+    .step-card p { margin: 0; color: #a8a49a; font-size: 14.5px; line-height: 1.5; }
+
+    /* features */
+    .features-section { background: rgba(26,27,33,0.6); padding: 96px 32px; }
+    .feature-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+    .feature-card { background: #1f2128; border-radius: 22px; padding: 26px; display: flex; flex-direction: column; gap: 14px; }
+    .feature-glyph {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 44px; height: 44px; border-radius: 13px; background: rgba(0,230,118,0.12);
+      color: #00E676; font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 13px;
+    }
+    .feature-card .title { font-weight: 700; font-size: 16px; }
+    .feature-card p { margin: 0; color: #a8a49a; font-size: 14px; line-height: 1.5; }
+
+    /* two-column highlight sections */
+    .anydevice {
+      max-width: 1200px; margin: 0 auto; padding: 88px 32px;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;
+    }
+    .anydevice h2 { font-size: 34px; font-weight: 800; margin: 0 0 20px; letter-spacing: -0.01em; text-wrap: balance; }
+    .anydevice p { font-size: 17px; line-height: 1.6; color: #a8a49a; margin: 0 0 20px; }
+    .anydevice p:last-child { margin-bottom: 0; }
+    .anydevice p strong { color: #f3f1ea; }
+    .shot-row {
+      display: flex; align-items: flex-start; justify-content: flex-start;
+      gap: 16px; flex-wrap: wrap;
+    }
+    .shot-row img {
+      width: 260px; height: auto; display: block; flex: none;
+      border-radius: 16px; box-shadow: 0 16px 40px rgba(0,0,0,0.45);
+    }
+
+    /* privacy */
+    .privacy-wrap { max-width: 1200px; margin: 32px auto 96px; padding: 0 32px; }
+    .privacy {
+      background: linear-gradient(135deg, rgba(0,230,118,0.12), rgba(0,230,118,0.04));
+      border-radius: 32px; padding: 64px;
+      display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 56px; align-items: center;
+      box-shadow: inset 0 0 0 1px rgba(0,230,118,0.22);
+    }
+    .privacy-badge {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 56px; height: 56px; border-radius: 16px; background: rgba(0,230,118,0.16);
+      color: #00E676; font-size: 24px; font-weight: 800; margin-bottom: 24px;
+    }
+    .privacy h2 { font-size: 34px; font-weight: 800; margin: 0 0 16px; letter-spacing: -0.01em; text-wrap: balance; }
+    .privacy p { font-size: 17px; line-height: 1.6; color: #a8a49a; margin: 0; }
+    .privacy-points { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .privacy-points div { display: flex; align-items: flex-start; gap: 12px; }
+    .privacy-points .check { color: #00E676; font-weight: 800; flex-shrink: 0; }
+    .privacy-points span.label { font-size: 15.5px; line-height: 1.5; color: #f3f1ea; }
+
+    /* footnote strip */
+    .footnote-wrap { max-width: 1200px; margin: 0 auto; padding: 0 32px 96px; text-align: center; }
+    .footnote-pill {
+      display: inline-flex; align-items: center; gap: 24px; flex-wrap: wrap; justify-content: center;
+      color: #6f6a5f; font-family: 'JetBrains Mono', monospace; font-size: 13.5px;
+      background: #1f2128; border-radius: 100px; padding: 16px 32px;
+    }
+    .footnote-pill span.sep { color: #3a3b42; }
+
+    /* final cta */
+    .final-cta-wrap { max-width: 1200px; margin: 0 auto 64px; padding: 0 32px; }
+    .final-cta {
+      background: #1f2128; border-radius: 32px; padding: 72px;
+      display: flex; align-items: center; justify-content: space-between; gap: 48px; flex-wrap: wrap;
+    }
+    .final-cta h2 { font-size: 36px; font-weight: 800; margin: 0 0 14px; letter-spacing: -0.01em; }
+    .final-cta p { font-size: 17px; color: #a8a49a; margin: 0 0 28px; }
+    .final-cta-qr { text-align: center; }
+    .final-cta-qr img { width: 150px; height: 150px; border-radius: 16px; background: #ffffff; padding: 12px; opacity: 0.7; }
+    .final-cta-qr .caption { color: #6f6a5f; font-family: 'JetBrains Mono', monospace; font-size: 12px; margin-top: 10px; }
+
+    footer.site-footer {
+      text-align: center; padding: 0 24px 48px; color: #444; font-size: 12.5px;
+    }
+    footer.site-footer a { color: #6b9fff; }
+    footer.site-footer a:hover { text-decoration: underline; }
+
+    @media (max-width: 880px) {
+      .hero { grid-template-columns: 1fr; padding-top: 40px; gap: 40px; }
+      .hero-shot { order: -1; }
+      .hero h1 { font-size: 36px; }
+      .steps { grid-template-columns: 1fr; }
+      .feature-grid { grid-template-columns: repeat(2, 1fr); }
+      .anydevice { grid-template-columns: 1fr; gap: 32px; }
+      .shot-row { justify-content: flex-start; }
+      .privacy { grid-template-columns: 1fr; padding: 40px; }
+      .privacy-points { grid-template-columns: 1fr; }
+      .final-cta { justify-content: center; text-align: center; padding: 48px 32px; }
+    }
+    @media (max-width: 520px) {
+      .wrap, .hero, .anydevice, .topbar { padding-left: 16px; padding-right: 16px; }
+      .features-section { padding: 72px 16px; }
+      .feature-grid { grid-template-columns: 1fr; }
+      .privacy-wrap, .final-cta-wrap, .footnote-wrap { padding-left: 16px; padding-right: 16px; }
+      .footnote-pill { border-radius: 24px; padding: 16px 20px; }
+    }
+
+    /* Lightbox - click any screenshot to zoom */
+    img.zoomable { cursor: zoom-in; }
+    .lightbox-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(10, 11, 15, 0.92);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      cursor: zoom-out;
+    }
+    .lightbox-overlay.open { display: flex; }
+    .lightbox-overlay img {
+      max-width: 100%;
+      max-height: 100%;
+      border-radius: 12px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    }
+    #sky {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100vh;
+      height: 100lvh; /* tall viewport: no stretch when the mobile address bar hides */
+      z-index: -1;
+      pointer-events: none;
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "LabDroid",
+    "operatingSystem": "ANDROID",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "LabDroid viser hva Android-telefonen din faktisk har inni: live-sensorer med diagrammer, CPU- og GPU-detaljer, kameraer, batterihelse, GPS-satellitter og tilkobling. Ingen reklame, ingen konto, ingen internettillatelse.",
+    "url": "https://spotrobotics.app/labdroid/",
+    "image": "https://spotrobotics.app/icons/labdroid.png",
+    "installUrl": "https://github.com/moskil2/LabDroid/releases",
+    "softwareVersion": "0.3.0",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "author": { "@type": "Person", "name": "Tomasz Pieczara" },
+    "publisher": { "@type": "Organization", "name": "Spot Robotics", "url": "https://spotrobotics.app" }
+  }
+  </script>
+<!-- i18n:head --><link rel="alternate" hreflang="en" href="https://spotrobotics.app/labdroid/"><link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/labdroid/"><link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/labdroid/"><link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/labdroid/"><link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/labdroid/"><link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/labdroid/"><style>.lang-ctl{position:fixed;top:calc(1rem + 48px);right:1rem;z-index:50;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}.lang-ctl summary{list-style:none;width:40px;height:40px;border-radius:50%;box-sizing:border-box;border:1px solid rgba(255,228,160,0.25);background:rgba(10,11,16,0.6);color:rgba(255,228,160,0.85);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:12px;font-weight:700;letter-spacing:.04em;transition:border-color .15s ease,background .15s ease}.lang-ctl summary::-webkit-details-marker{display:none}.lang-ctl summary:hover,.lang-ctl[open] summary{border-color:rgba(255,228,160,0.6);background:rgba(255,228,160,0.08)}.lang-ctl .lang-list{position:absolute;top:46px;right:0;display:flex;flex-direction:column;min-width:120px;padding:6px;border-radius:12px;background:rgba(10,11,16,0.92);border:1px solid rgba(255,228,160,0.25)}.lang-ctl .lang-list a{display:flex;justify-content:space-between;gap:12px;padding:8px 10px;border-radius:8px;color:#e8e8e8;text-decoration:none;font-size:14px}.lang-ctl .lang-list a b{color:rgba(255,228,160,0.85);font-size:12px}.lang-ctl .lang-list a:hover,.lang-ctl .lang-list a[aria-current]{background:rgba(255,228,160,0.08)}</style><!-- /i18n:head -->
+</head>
+<body>
+<!-- i18n:switch --><details class="lang-ctl"><summary aria-label="Language">NO</summary><div class="lang-list"><a href="/labdroid/" hreflang="en" lang="en">English <b>EN</b></a><a href="/de/labdroid/" hreflang="de" lang="de">Deutsch <b>DE</b></a><a href="/fr/labdroid/" hreflang="fr" lang="fr">Français <b>FR</b></a><a href="/pl/labdroid/" hreflang="pl" lang="pl">Polski <b>PL</b></a><a href="/no/labdroid/" hreflang="no" lang="no" aria-current="true">Norsk <b>NO</b></a></div></details><!-- /i18n:switch -->
+  <canvas id="sky" aria-hidden="true"></canvas>
+
+  <div class="topbar">
+    <a href="/no/">&larr; spotrobotics.app</a>
+    <a href="https://github.com/moskil2/LabDroid" target="_blank" rel="noopener">GitHub</a>
+    <a href="/no/labdroid/privacy.html">Personvern</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div>
+      <div class="hero-brand">
+        <img src="/icons/labdroid.png" alt="LabDroid-ikon">
+        <span>LabDroid</span>
+      </div>
+      <div class="eyebrow">Android-sensorer, maskinvare og diagnostikk</div>
+      <h1>Se hva telefonen din faktisk har inni.</h1>
+      <p class="lede">Hver sensor live med diagrammer, CPU- og GPU-detaljer, kameraer, batterihelse, GPS-satellitter og tilkobling - lest rett fra Android på din egen enhet. Ingen reklame, ingen konto, ingen internettillatelse.</p>
+      <div class="hero-ctas">
+        <a class="btn-primary" href="https://github.com/moskil2/LabDroid/releases/download/v0.3.0/LabDroid_v0.3.0.apk" target="_blank" rel="noopener">Last ned APK &rarr;</a>
+        <a class="btn-github" href="https://github.com/moskil2/LabDroid" target="_blank" rel="noopener">Se på GitHub &rarr;</a>
+      </div>
+      <div class="hero-foot mono">
+        <span>Android 8.0+</span>
+        <span>&middot;</span>
+        <span>Engelsk og polsk</span>
+        <span>&middot;</span>
+        <span>Gratis, ingen reklame</span>
+      </div>
+    </div>
+    <div class="hero-shot">
+      <div class="bezel">
+        <img src="/labdroid/img/01_Dashboard.jpg" alt="LabDroid-dashbord med enhetsmodell, Android-versjon, sikkerhetsoppdatering og kjerne" width="280" height="607">
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="wrap" style="padding-top:32px; padding-bottom:96px;">
+    <div class="section-head">
+      <div class="eyebrow">Slik fungerer det</div>
+      <h2>Åpne. Velg en kategori. Følg med live.</h2>
+    </div>
+    <div class="steps">
+      <div class="step-card">
+        <div class="step-head"><span class="step-num">1</span><span class="title">Kjenn enheten din</span></div>
+        <div class="step-shot"><img src="/labdroid/img/01_Dashboard.jpg" alt="Dashbord med enhetsmodell og Android-detaljer" width="480" height="1040"></div>
+        <p>Dashbordet viser modell, produsent, Android-versjon og kodenavn, sikkerhetsoppdatering og kjerne i ett blikk.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-head"><span class="step-num">2</span><span class="title">Bla gjennom alle sensorer</span></div>
+        <div class="step-shot"><img src="/labdroid/img/03_Sensors.jpg" alt="Sensorliste med live-verdier" width="480" height="1040"></div>
+        <p>Hver sensor telefonen din har, med det ekte brikkenavnet og en live-verdi - pluss lydnivå og GSM-signal.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-head"><span class="step-num">3</span><span class="title">Dykk ned i dataene</span></div>
+        <div class="step-shot"><img src="/labdroid/img/04_SensorDetail.jpg" alt="Sensordetalj med live-diagram og statistikk" width="480" height="1040"></div>
+        <p>Trykk på en sensor for et live-diagram, min./maks./snitt og standardavvik, og eksporter så det du har tatt opp.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HARDWARE HIGHLIGHT -->
+  <section class="anydevice">
+    <div>
+      <div class="eyebrow">Maskinvare</div>
+      <h2>CPU, GPU, minne - de ekte spesifikasjonene.</h2>
+      <p>Antall <strong>CPU</strong>-kjerner, kjerneklynger med klokkefrekvenser, ABI, maks. frekvens, maskinvareplattform og SoC.</p>
+      <p><strong>GPU</strong>-renderer, produsent, versjoner av OpenGL ES / GLSL / EGL og antall støttede GL-utvidelser - pluss detaljer om minne, lagring, skjerm og lyd i samme fane.</p>
+    </div>
+    <div class="shot-row">
+      <img src="/labdroid/img/02_Hardware.jpg" alt="Maskinvareskjerm med CPU- og GPU-detaljer">
+    </div>
+  </section>
+
+  <!-- SENSORS HIGHLIGHT -->
+  <section class="anydevice">
+    <div>
+      <div class="eyebrow">Sensorer</div>
+      <h2>Hver sensor, live, med det ekte brikkenavnet.</h2>
+      <p>Lys, barometer, gyroskop, magnetometer, retning, akselerometer og mer - hver vist med produsentens eget sensornavn og en live-verdi.</p>
+      <p>Detaljvisningen tegner et <strong>live-diagram</strong>, holder på minimum, maksimum, snitt og standardavvik, og lar deg bytte samplingsfrekvens (Fast, Normal, Slow), pause, nullstille eller eksportere.</p>
+    </div>
+    <div class="shot-row">
+      <img src="/labdroid/img/03_Sensors.jpg" alt="Sensorliste med live-verdier">
+      <img src="/labdroid/img/04_SensorDetail.jpg" alt="Detalj for lyssensoren med live-diagram og statistikk">
+    </div>
+  </section>
+
+  <!-- CAMERAS HIGHLIGHT -->
+  <section class="anydevice">
+    <div>
+      <div class="eyebrow">Kameraer</div>
+      <h2>Hva hvert objektiv faktisk kan.</h2>
+      <p>Hver kameramodul listet for seg - vidvinkel, ultravidvinkel, tele, front - med sensorstørrelse, pikselmatrise, brennvidde, synsfelt, zoomområde, OIS, blits, RAW-støtte, maks. bildefrekvens og logisk multikamera.</p>
+    </div>
+    <div class="shot-row">
+      <img src="/labdroid/img/05_Cameras.jpg" alt="Kameraskjerm med spesifikasjoner per kamera">
+    </div>
+  </section>
+
+  <!-- GPS HIGHLIGHT -->
+  <section class="anydevice">
+    <div>
+      <div class="eyebrow">GPS og kompass</div>
+      <h2>Hver satellitt over deg, live.</h2>
+      <p>En <strong>satellittradar</strong> viser hvor hver satellitt er på himmelen, med signalstyrke per satellitt for GPS, GLONASS, Galileo, BeiDou, QZSS, SBAS og IRNSS.</p>
+      <p>Nøyaktig posisjon, høyde, fart, kurs og nøyaktighet, et kompass med korreksjon til geografisk nord, og sporopptak med eksport til GPX / CSV.</p>
+    </div>
+    <div class="shot-row">
+      <img src="/labdroid/img/08_GPS_Radar.jpg" alt="GPS-satellittradar med signalstyrke per satellitt">
+    </div>
+  </section>
+
+  <!-- BATTERY HIGHLIGHT -->
+  <section class="anydevice">
+    <div>
+      <div class="eyebrow">Batteri</div>
+      <h2>Batteriet ditt, mer enn prosenten.</h2>
+      <p>Nivå, status, ladekilde, helse og teknologi, pluss den elektriske siden: temperatur, spenning, strøm, gjenværende ladning, nominell kapasitet og antall sykluser.</p>
+      <p>Noen verdier, som antall sykluser, rapporteres bare av nyere Android-versjoner eller bestemte enheter - LabDroid merker dem tydelig som utilgjengelige når telefonen ikke oppgir dem.</p>
+    </div>
+    <div class="shot-row">
+      <img src="/labdroid/img/06_Battery.jpg" alt="Batteriskjerm med nivå, helse, spenning og kapasitet">
+    </div>
+  </section>
+
+  <!-- SETTINGS HIGHLIGHT -->
+  <section class="anydevice">
+    <div>
+      <div class="eyebrow">Innstillinger og tillatelser</div>
+      <h2>Din telefon, dine regler.</h2>
+      <p>Mørkt eller lyst tema, metriske eller imperiale enheter og en standard samplingsfrekvens for sensorer - kan byttes når som helst.</p>
+      <p>Hver tillatelse LabDroid kan bruke er listet med gjeldende status, så du alltid ser nøyaktig hva appen har tilgang til.</p>
+    </div>
+    <div class="shot-row">
+      <img src="/labdroid/img/07_Settings.jpg" alt="Innstillinger med tema, enheter, samplingsfrekvens og tillatelser">
+    </div>
+  </section>
+
+  <!-- ALL FEATURES AT A GLANCE -->
+  <section class="features-section">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Funksjoner</div>
+        <h2>Én app for alt inni telefonen din.</h2>
+      </div>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <span class="feature-glyph mono">OS</span>
+          <div class="title">Enhetsdashbord</div>
+          <p>Modell, produsent, Android-versjon og kodenavn, nivå på sikkerhetsoppdatering og kjerneversjon på én skjerm.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">CPU</span>
+          <div class="title">CPU og GPU</div>
+          <p>Kjerner, klynger og klokkefrekvenser, SoC og ABI, pluss GPU-renderer, produsent og versjoner av OpenGL ES / GLSL / EGL.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">RAM</span>
+          <div class="title">Minne, lagring og skjerm</div>
+          <p>Bruk av minne og lagring, pluss skjerm- og lyddetaljer, i Maskinvare-fanen.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">~</span>
+          <div class="title">Live-sensorer</div>
+          <p>Hver maskinvaresensor med ekte brikkenavn, live-verdi og status, med samplingsfrekvens Fast, Normal eller Slow.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">/s</span>
+          <div class="title">Diagrammer og statistikk</div>
+          <p>Live-diagram for hvilken som helst sensor med minimum, maksimum, snitt og standardavvik - pause eller nullstill når som helst.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">REC</span>
+          <div class="title">Monitor og opptak</div>
+          <p>Fest sensorene du bryr deg om til Monitor-fanen og ta opp en økt med alle sammen.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">CSV</span>
+          <div class="title">Eksport</div>
+          <p>Eksporter opptak til CSV, JSON, XML, TXT eller GPX og del dem med hvilken som helst app du vil.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">GPS</span>
+          <div class="title">GPS og kompass</div>
+          <p>Satellittradar med signalstyrke for GPS, GLONASS, Galileo og BeiDou, nøyaktig posisjon, et kompass med korreksjon til geografisk nord, og GPX-sporopptak.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">CAM</span>
+          <div class="title">Kameraer</div>
+          <p>Sensorstørrelse, oppløsning, brennvidde, synsfelt, zoomområde, OIS, blits, RAW og maks. bildefrekvens per kamera.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">%</span>
+          <div class="title">Batteri</div>
+          <p>Nivå, helse, ladekilde, temperatur, spenning, strøm, gjenværende ladning, nominell kapasitet og antall sykluser.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">dB</span>
+          <div class="title">Lydnivå og GSM-signal</div>
+          <p>En lydnivåmåler via mikrofonen og live mobilsignalstyrke, hver med sin egen detaljskjerm.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">NET</span>
+          <div class="title">Tilkobling</div>
+          <p>Wi-Fi, mobilnett, SIM-status og nettverksdetaljer for tilkoblingen telefonen bruker akkurat nå.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">?</span>
+          <div class="title">Søk</div>
+          <p>Finn hvilken som helst sensor, maskinvaredel eller innstilling umiddelbart fra én søkeboks.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">PL</span>
+          <div class="title">Engelsk og polsk</div>
+          <p>Bytt appspråk rett fra topplinjen, uavhengig av systemspråket.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">&#9680;</span>
+          <div class="title">Mørkt og lyst tema</div>
+          <p>Starter i mørkt tema, bytt til lyst når som helst fra menyen eller Innstillinger.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">&lt;/&gt;</span>
+          <div class="title">Åpen for innsyn</div>
+          <p>Hele kildekoden er publisert på GitHub, så du kan se nøyaktig hva appen gjør på telefonen din.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRIVACY -->
+  <section class="privacy-wrap">
+    <div class="privacy">
+      <div>
+        <span class="privacy-badge">&check;</span>
+        <h2>Ingenting forlater telefonen din.</h2>
+        <p>LabDroid leser alt lokalt og ber ikke om internettilgang i det hele tatt. De eneste dataene som noen gang forlater enheten din, er en fil du selv velger å eksportere.</p>
+      </div>
+      <div class="privacy-points">
+        <div><span class="check">&check;</span><span class="label">Ber ikke om internettilgang</span></div>
+        <div><span class="check">&check;</span><span class="label">Ingen konto, ingen analyse, ingen sporing</span></div>
+        <div><span class="check">&check;</span><span class="label">Ingen reklame, ingen analyse-SDK-er</span></div>
+        <div><span class="check">&check;</span><span class="label">Opptak og innstillinger blir på enheten din</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTNOTE -->
+  <section class="footnote-wrap">
+    <div class="footnote-pill">
+      <span>2 språk: EN &middot; PL</span>
+      <span class="sep">|</span>
+      <span>Android 8.0+</span>
+      <span class="sep">|</span>
+      <span>Tilgjengelige verdier avhenger av enheten din</span>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final-cta-wrap">
+    <div class="final-cta">
+      <div>
+        <h2>Skaff deg LabDroid.</h2>
+        <p>Gratis Android-app for sensorer, maskinvare og diagnostikk. Last ned APK-en fra GitHub.</p>
+        <div class="hero-ctas">
+          <a class="btn-outline" href="https://github.com/moskil2/LabDroid/releases/download/v0.3.0/LabDroid_v0.3.0.apk" target="_blank" rel="noopener">Last ned APK &rarr;</a>
+          <a class="btn-github" href="https://github.com/moskil2/LabDroid" target="_blank" rel="noopener">Se på GitHub &rarr;</a>
+        </div>
+      </div>
+      <div class="final-cta-qr">
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=260x260&margin=0&color=16-17-28&data=https%3A%2F%2Fgithub.com%2Fmoskil2%2FLabDroid%2Freleases%2Fdownload%2Fv0.3.0%2FLabDroid_v0.3.0.apk" alt="QR-kode til LabDroid-nedlastingene på GitHub" width="150" height="150">
+        <div class="caption mono">Skann for å laste ned på telefonen</div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <a href="/no/">spotrobotics.app</a> &middot; <a href="/no/labdroid/privacy.html">Personvernerklæring</a> &middot; &copy; 2026 Spot Robotics - Tomasz Pieczara
+  </footer>
+
+  <div class="lightbox-overlay" id="lightbox">
+    <img id="lightbox-img" src="" alt="">
+  </div>
+  <script>
+    (function () {
+      var overlay = document.getElementById('lightbox');
+      var overlayImg = document.getElementById('lightbox-img');
+      document.querySelectorAll('img[src^="img/"]').forEach(function (img) {
+        img.classList.add('zoomable');
+        img.addEventListener('click', function () {
+          overlayImg.src = img.src;
+          overlayImg.alt = img.alt;
+          overlay.classList.add('open');
+        });
+      });
+      overlay.addEventListener('click', function () {
+        overlay.classList.remove('open');
+        overlayImg.src = '';
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') {
+          overlay.classList.remove('open');
+          overlayImg.src = '';
+        }
+      });
+    })();
+  </script>
+
+  <script src="/sky.js"></script>
+  <script src="/site.js"></script>
+</body>
+</html>

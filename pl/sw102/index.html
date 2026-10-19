@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Firmware SW102 – własny, otwarty firmware dla wyświetlacza Bafang SW102 | Spot Robotics</title>
+  <meta name="description" content="Otwarty firmware dla wyświetlacza Bafang SW102, zbudowany dla oryginalnych sterowników silników centralnych Bafang (BBS01/BBS02/BBSHD/M400/M420/M620). Nowy kokpit, pełne menu, aktualizacje przez Bluetooth (OTA).">
+  <meta name="author" content="Tomasz Pieczara">
+  <meta property="og:title" content="Firmware SW102 – własny firmware dla wyświetlacza Bafang SW102">
+  <meta property="og:description" content="Otwarty firmware zastępujący fabryczny firmware SW102 - nowy kokpit, pełne menu, aktualizacje przez Bluetooth (OTA), dla oryginalnych sterowników silników centralnych Bafang.">
+  <meta property="og:url" content="https://spotrobotics.app/pl/sw102/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://spotrobotics.app/sw102/img/logo.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Firmware SW102 – własny firmware dla wyświetlacza Bafang SW102">
+  <meta name="twitter:description" content="Otwarty firmware zastępujący fabryczny firmware SW102 - nowy kokpit, pełne menu, aktualizacje przez Bluetooth (OTA), dla oryginalnych sterowników silników centralnych Bafang.">
+  <meta name="twitter:image" content="https://spotrobotics.app/sw102/img/logo.jpg">
+  <link rel="canonical" href="https://spotrobotics.app/pl/sw102/">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="/icons/favicon-512x512.png">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { background: #07080c; }
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: transparent;
+      color: #f3f1ea;
+      width: 100%;
+      overflow-x: hidden;
+      line-height: 1.4;
+    }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; }
+    .mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+    .wrap { max-width: 1200px; margin: 0 auto; padding-left: 32px; padding-right: 32px; }
+    .eyebrow {
+      color: #4f8cff; font-weight: 700; font-size: 14px;
+      letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 14px;
+    }
+
+    /* topbar */
+    .topbar {
+      max-width: 1200px; margin: 0 auto; padding: 24px 32px 0;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .topbar a { color: #6f6a5f; font-size: 13.5px; font-weight: 600; }
+    .topbar a:hover { color: #a8a49a; }
+
+    /* buttons */
+    .btn-github {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: #FFC107; color: #1a1408; font-weight: 700; font-size: 17px;
+      padding: 16px 28px; border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(255,193,7,0.4);
+      transition: background .15s ease;
+    }
+    .btn-github:hover { background: #ffce3d; }
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: transparent; color: #4f8cff; font-weight: 700; font-size: 17px;
+      padding: 15px 27px; border-radius: 16px; border: 1.5px solid #4f8cff;
+      transition: background .15s ease, color .15s ease;
+    }
+    .btn-outline:hover { background: rgba(79,140,255,0.1); }
+    .badge-warn {
+      display: inline-flex; align-items: center;
+      font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 700;
+      letter-spacing: 0.05em; text-transform: uppercase; color: #4f8cff;
+      background: rgba(79,140,255,0.14); border: 1px solid rgba(79,140,255,0.4);
+      border-radius: 100px; padding: 7px 14px;
+    }
+    .link-muted {
+      color: #a8a49a; font-weight: 600; font-size: 15px;
+      border-bottom: 1px solid #3a3b42; padding-bottom: 2px;
+      transition: color .15s ease;
+    }
+    .link-muted:hover { color: #f3f1ea; }
+
+    /* hero */
+    .hero {
+      max-width: 1200px; margin: 0 auto; padding: 56px 32px 80px;
+      display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 64px; align-items: center;
+    }
+    .hero-brand { display: flex; align-items: center; gap: 16px; margin-bottom: 28px; }
+    .hero-brand img { width: 56px; height: 56px; border-radius: 16px; box-shadow: 0 8px 24px rgba(79,140,255,0.35); object-fit: cover; }
+    .hero-brand span { font-size: 20px; font-weight: 700; letter-spacing: 0.01em; }
+    .hero h1 { font-size: 48px; line-height: 1.1; font-weight: 800; margin: 0 0 24px; letter-spacing: -0.02em; text-wrap: balance; }
+    .hero p.lede { font-size: 20px; line-height: 1.55; color: #a8a49a; margin: 0 0 36px; max-width: 520px; }
+    .hero-ctas { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+    .hero-foot {
+      display: flex; gap: 28px; margin-top: 44px; color: #6f6a5f;
+      font-family: 'JetBrains Mono', monospace; font-size: 13px; flex-wrap: wrap;
+    }
+    .hero-shot { display: flex; justify-content: center; }
+    .hero-shot .bezel {
+      border-radius: 36px; padding: 10px; background: #1f2128;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.55), inset 0 0 0 1px #2c2e36;
+    }
+    .hero-shot img { width: 300px; height: auto; display: block; border-radius: 28px; }
+
+    /* section heads */
+    .section-head { text-align: center; margin-bottom: 56px; }
+    .section-head h2 { font-size: 38px; font-weight: 800; margin: 0; letter-spacing: -0.01em; text-wrap: balance; }
+
+    /* real hardware shots */
+    .shots { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; max-width: 1080px; margin: 0 auto; }
+    .shot-card { background: #1f2128; border-radius: 26px; padding: 20px; display: flex; flex-direction: column; gap: 14px; }
+    .shot-card img { border-radius: 18px; width: 100%; height: auto; display: block; box-shadow: inset 0 0 0 1px #2c2e36; }
+    .shot-card p { margin: 0; color: #a8a49a; font-size: 14px; line-height: 1.4; text-align: center; }
+
+    /* features */
+    .features-section { background: rgba(26,27,33,0.6); padding: 96px 32px; }
+    .feature-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+    .feature-card { background: #1f2128; border-radius: 22px; padding: 26px; display: flex; flex-direction: column; gap: 14px; }
+    .feature-glyph {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 44px; height: 44px; border-radius: 13px; background: rgba(79,140,255,0.14);
+      color: #4f8cff; font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 13px;
+    }
+    .feature-card .title { font-weight: 700; font-size: 16px; }
+    .feature-card p { margin: 0; color: #a8a49a; font-size: 14px; line-height: 1.5; }
+
+    /* two-column highlight */
+    .anydevice {
+      max-width: 1200px; margin: 0 auto; padding: 88px 32px;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;
+    }
+    .anydevice h2 { font-size: 34px; font-weight: 800; margin: 0 0 20px; letter-spacing: -0.01em; text-wrap: balance; }
+    .anydevice p { font-size: 17px; line-height: 1.6; color: #a8a49a; margin: 0 0 20px; }
+    .anydevice p:last-child { margin-bottom: 0; }
+    .anydevice p strong { color: #f3f1ea; }
+    .anydevice ul { color: #a8a49a; font-size: 16px; line-height: 1.8; padding-left: 22px; }
+
+    /* privacy */
+    .privacy-wrap { max-width: 1200px; margin: 32px auto 96px; padding: 0 32px; }
+    .privacy {
+      background: linear-gradient(135deg, rgba(79,140,255,0.14), rgba(79,140,255,0.06));
+      border-radius: 32px; padding: 64px;
+      display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 56px; align-items: center;
+      box-shadow: inset 0 0 0 1px rgba(79,140,255,0.25);
+    }
+    .privacy-badge {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 56px; height: 56px; border-radius: 16px; background: rgba(79,140,255,0.18);
+      color: #4f8cff; font-size: 24px; font-weight: 800; margin-bottom: 24px;
+    }
+    .privacy h2 { font-size: 34px; font-weight: 800; margin: 0 0 16px; letter-spacing: -0.01em; text-wrap: balance; }
+    .privacy p { font-size: 17px; line-height: 1.6; color: #a8a49a; margin: 0; }
+    .privacy-points { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .privacy-points div { display: flex; align-items: flex-start; gap: 12px; }
+    .privacy-points .check { color: #4f8cff; font-weight: 800; flex-shrink: 0; }
+    .privacy-points span.label { font-size: 15.5px; line-height: 1.5; color: #f3f1ea; }
+
+    /* footnote strip */
+    .footnote-wrap { max-width: 1200px; margin: 0 auto; padding: 0 32px 96px; text-align: center; }
+    .footnote-pill {
+      display: inline-flex; align-items: center; gap: 24px; flex-wrap: wrap; justify-content: center;
+      color: #6f6a5f; font-family: 'JetBrains Mono', monospace; font-size: 13.5px;
+      background: #1f2128; border-radius: 100px; padding: 16px 32px;
+    }
+    .footnote-pill span.sep { color: #3a3b42; }
+
+    /* final cta */
+    .final-cta-wrap { max-width: 1200px; margin: 0 auto 64px; padding: 0 32px; }
+    .final-cta {
+      background: #1f2128; border-radius: 32px; padding: 72px;
+      display: flex; align-items: center; justify-content: space-between; gap: 48px; flex-wrap: wrap;
+    }
+    .final-cta h2 { font-size: 36px; font-weight: 800; margin: 0 0 14px; letter-spacing: -0.01em; }
+    .final-cta p { font-size: 17px; color: #a8a49a; margin: 0 0 28px; }
+
+    footer.site-footer {
+      text-align: center; padding: 0 24px 48px; color: #444; font-size: 12.5px;
+    }
+    footer.site-footer a { color: #6b9fff; }
+    footer.site-footer a:hover { text-decoration: underline; }
+
+    @media (max-width: 880px) {
+      .hero { grid-template-columns: 1fr; padding-top: 40px; gap: 40px; }
+      .hero-shot { order: -1; }
+      .hero h1 { font-size: 34px; }
+      .shots { grid-template-columns: repeat(2, 1fr); }
+      .feature-grid { grid-template-columns: repeat(2, 1fr); }
+      .anydevice { grid-template-columns: 1fr; gap: 32px; }
+      .privacy { grid-template-columns: 1fr; padding: 40px; }
+      .privacy-points { grid-template-columns: 1fr; }
+      .final-cta { justify-content: center; text-align: center; padding: 48px 32px; }
+    }
+    @media (max-width: 520px) {
+      .wrap, .hero, .anydevice, .topbar { padding-left: 16px; padding-right: 16px; }
+      .features-section { padding: 72px 16px; }
+      .feature-grid { grid-template-columns: 1fr; }
+      .privacy-wrap, .final-cta-wrap, .footnote-wrap { padding-left: 16px; padding-right: 16px; }
+      .footnote-pill { border-radius: 24px; padding: 16px 20px; }
+    }
+
+    /* Lightbox - click any screenshot to zoom */
+    img.zoomable { cursor: zoom-in; }
+    .lightbox-overlay {
+      display: none; position: fixed; inset: 0;
+      background: rgba(10, 11, 15, 0.92); z-index: 1000;
+      align-items: center; justify-content: center; padding: 24px; cursor: zoom-out;
+    }
+    .lightbox-overlay.open { display: flex; }
+    .lightbox-overlay img { max-width: 100%; max-height: 100%; border-radius: 12px; box-shadow: 0 20px 60px rgba(0,0,0,0.5); }
+    #sky {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100vh;
+      height: 100lvh; /* tall viewport: no stretch when the mobile address bar hides */
+      z-index: -1;
+      pointer-events: none;
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "SW102 Firmware",
+    "operatingSystem": "nRF51822",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "Otwarty firmware dla wyświetlacza Bafang SW102, zbudowany dla oryginalnych sterowników silników centralnych Bafang - nowy kokpit, pełne menu, aktualizacje przez Bluetooth (OTA).",
+    "url": "https://spotrobotics.app/sw102/",
+    "image": "https://spotrobotics.app/sw102/img/logo.jpg",
+    "softwareVersion": "0.1.2",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "author": { "@type": "Person", "name": "Tomasz Pieczara" },
+    "publisher": { "@type": "Organization", "name": "Spot Robotics", "url": "https://spotrobotics.app" }
+  }
+  </script>
+<!-- i18n:head --><link rel="alternate" hreflang="en" href="https://spotrobotics.app/sw102/"><link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/sw102/"><link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/sw102/"><link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/sw102/"><link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/sw102/"><link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/sw102/"><style>.lang-ctl{position:fixed;top:calc(1rem + 48px);right:1rem;z-index:50;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}.lang-ctl summary{list-style:none;width:40px;height:40px;border-radius:50%;box-sizing:border-box;border:1px solid rgba(255,228,160,0.25);background:rgba(10,11,16,0.6);color:rgba(255,228,160,0.85);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:12px;font-weight:700;letter-spacing:.04em;transition:border-color .15s ease,background .15s ease}.lang-ctl summary::-webkit-details-marker{display:none}.lang-ctl summary:hover,.lang-ctl[open] summary{border-color:rgba(255,228,160,0.6);background:rgba(255,228,160,0.08)}.lang-ctl .lang-list{position:absolute;top:46px;right:0;display:flex;flex-direction:column;min-width:120px;padding:6px;border-radius:12px;background:rgba(10,11,16,0.92);border:1px solid rgba(255,228,160,0.25)}.lang-ctl .lang-list a{display:flex;justify-content:space-between;gap:12px;padding:8px 10px;border-radius:8px;color:#e8e8e8;text-decoration:none;font-size:14px}.lang-ctl .lang-list a b{color:rgba(255,228,160,0.85);font-size:12px}.lang-ctl .lang-list a:hover,.lang-ctl .lang-list a[aria-current]{background:rgba(255,228,160,0.08)}</style><!-- /i18n:head -->
+</head>
+<body>
+<!-- i18n:switch --><details class="lang-ctl"><summary aria-label="Language">PL</summary><div class="lang-list"><a href="/sw102/" hreflang="en" lang="en">English <b>EN</b></a><a href="/de/sw102/" hreflang="de" lang="de">Deutsch <b>DE</b></a><a href="/fr/sw102/" hreflang="fr" lang="fr">Français <b>FR</b></a><a href="/pl/sw102/" hreflang="pl" lang="pl" aria-current="true">Polski <b>PL</b></a><a href="/no/sw102/" hreflang="no" lang="no">Norsk <b>NO</b></a></div></details><!-- /i18n:switch -->
+  <canvas id="sky" aria-hidden="true"></canvas>
+
+  <div class="topbar">
+    <a href="/pl/">&larr; spotrobotics.app</a>
+    <a href="https://github.com/moskil2/SW102_BAFANG_OSF" target="_blank" rel="noopener">GitHub</a>
+    <a href="/pl/sw102/privacy.html">Prywatność</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div>
+      <div class="hero-brand">
+        <img src="/sw102/img/logo.jpg" alt="Logo firmware SW102">
+        <span>Firmware SW102</span>
+      </div>
+      <div class="eyebrow">Własny firmware - wyświetlacz Bafang SW102</div>
+      <h1>Twój wyświetlacz Bafang SW102, całkowicie przeprogramowany.</h1>
+      <p class="lede">Otwarty firmware, który całkowicie zastępuje fabryczny firmware SW102 - nowy kokpit, pełne menu ustawień i aktualizacje przez Bluetooth (OTA), napisany od zera dla oryginalnych sterowników silników centralnych Bafang (BBS01/<wbr>BBS02/<wbr>BBSHD/<wbr>M400/<wbr>M420/<wbr>M620).</p>
+      <div class="hero-ctas">
+        <a class="btn-github" href="https://github.com/moskil2/SW102_BAFANG_OSF" target="_blank" rel="noopener">Zobacz na GitHubie &rarr;</a>
+        <span class="badge-warn">v0.1.4</span>
+      </div>
+      <div class="hero-foot mono">
+        <span>nRF51822</span>
+        <span>&middot;</span>
+        <span>Bezpłatny i otwarty</span>
+        <span>&middot;</span>
+        <span>Aktualizacje przez Bluetooth (OTA)</span>
+      </div>
+    </div>
+    <div class="hero-shot">
+      <div class="bezel">
+        <img src="/sw102/img/logo.jpg" alt="Wyświetlacz SW102 z własnym firmware, ekran kokpitu">
+      </div>
+    </div>
+  </section>
+
+  <!-- DEMO VIDEO -->
+  <section class="wrap" style="padding-top:0; padding-bottom:64px;">
+    <div style="max-width:800px; margin:0 auto;">
+      <div style="position:relative; padding-bottom:56.25%; height:0; border-radius:24px; overflow:hidden; box-shadow:0 30px 80px rgba(0,0,0,0.55);">
+        <iframe src="https://www.youtube.com/embed/YrcN-K4wGN4" title="Film demonstracyjny firmware SW102" style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- REAL HARDWARE SHOTS -->
+  <section class="wrap" style="padding-top:0; padding-bottom:96px;">
+    <div class="section-head">
+      <div class="eyebrow">Prawdziwy sprzęt</div>
+      <h2>Działa na prawdziwym wyświetlaczu SW102.</h2>
+    </div>
+    <div class="shots">
+      <div class="shot-card">
+        <img src="/sw102/img/boot.jpg" alt="Ekran startowy SW102 z nazwą i wersją firmware" class="zoomable">
+        <p>Ekran startowy</p>
+      </div>
+      <div class="shot-card">
+        <img src="/sw102/img/cockpit_a.jpg" alt="Kokpit SW102 z prędkością, mocą, poziomem wspomagania, tripem i zasięgiem" class="zoomable">
+        <p>Kokpit</p>
+      </div>
+      <div class="shot-card">
+        <img src="/sw102/img/cockpit_big.jpg" alt="Układ kokpitu SW102 z dużą prędkością bez części dziesiętnej" class="zoomable">
+        <p>Kokpit (duża prędkość)</p>
+      </div>
+      <div class="shot-card">
+        <img src="/sw102/img/data_screen.jpg" alt="Ekran danych SW102 ze statystykami trasy" class="zoomable">
+        <p>Ekran danych</p>
+      </div>
+      <div class="shot-card">
+        <img src="/sw102/img/cockpit_pas_b.jpg" alt="Kokpit SW102 ze wskaźnikiem poziomu wspomagania w formie strzałek" class="zoomable">
+        <p>Poziom wspomagania, typ B</p>
+      </div>
+      <div class="shot-card">
+        <img src="/sw102/img/rotated.jpg" alt="Ekran SW102 obrócony o 180 stopni" class="zoomable">
+        <p>Obrót o 180 stopni</p>
+      </div>
+      <div class="shot-card">
+        <img src="/sw102/img/menu_top.jpg" alt="Główne menu ustawień SW102" class="zoomable">
+        <p>Menu</p>
+      </div>
+      <div class="shot-card">
+        <img src="/sw102/img/pas_programming.jpg" alt="Ekran programowania poziomów wspomagania SW102" class="zoomable">
+        <p>Programowanie poziomów wspomagania</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- COCKPIT -->
+  <section class="anydevice">
+    <div>
+      <div class="eyebrow">Kokpit</div>
+      <h2>Wszystko, co pokazuje fabryczny wyświetlacz - na nowo.</h2>
+      <ul>
+        <li>Napięcie i procent baterii (Standard albo Precyzyjny - liczony lokalnie z mierzonego napięcia)</li>
+        <li>Prędkość dużymi cyframi - trzy układy przełączane krótkim naciśnięciem M: standardowy, jeszcze większa prędkość bez części dziesiętnej i ekran danych</li>
+        <li>Moc silnika w watach</li>
+        <li>Poziom wspomagania - dwa układy do wyboru, ze wskaźnikiem słupkowym albo ze strzałkami, plus ikony stanu światła, Bluetooth i hamulca</li>
+        <li>Dystans trasy z jednym miejscem po przecinku, liczony dokładnie przy każdej prędkości, oraz licznik całkowity i szacowany zasięg na podstawie Twojej historii jazdy</li>
+        <li>Średnie i bieżące zużycie energii (Wh/km albo Wh/milę)</li>
+        <li>Ekran danych: dystans trasy, średnia i maksymalna prędkość, czas całkowity i czas jazdy, maksymalny prąd i moc, zużycie, zużyta energia - zapamiętywane po wyłączeniu i kasowane tylko przez reset trasy</li>
+        <li>Na ekranie danych zmiana poziomu wspomagania pokazuje nowy poziom dużą cyfrą na środku, z napisem "PAS" pod spodem, przez 3 sekundy</li>
+      </ul>
+    </div>
+    <div class="shot-card" style="margin: 0;">
+      <img src="/sw102/img/cockpit_a.jpg" alt="Zbliżenie kokpitu SW102" class="zoomable">
+    </div>
+  </section>
+
+  <!-- MENU -->
+  <section class="anydevice" style="background:#1a1b21; border-radius:32px;">
+    <div>
+      <div class="eyebrow">Menu ustawień</div>
+      <h2>Pełne menu, napisane od zera.</h2>
+      <ul>
+        <li>Zmiana jednostek (km/h / mph), rozmiar koła, limit prędkości, automatyczne wyłączanie</li>
+        <li>Jasność - ręczna albo automatyczna, z podglądem na żywo podczas ustawiania poziomu</li>
+        <li>Kalibracja prądu i napięcia dla sterowników z modyfikacją bocznika albo źle mierzącego dzielnika napięcia</li>
+        <li>Korekta licznika całkowitego, reset trasy i pełny reset do ustawień fabrycznych</li>
+        <li>Tryb procentu baterii (Standard albo Precyzyjny) z ustawianym minimalnym/maksymalnym napięciem pakietu</li>
+        <li>Opcje układu kokpitu - układ poziomu wspomagania, styl wskaźnika, linie oddzielające i obrót całego wyświetlacza o 180 stopni (zapamiętywany po wyłączeniu)</li>
+        <li>Programowanie poziomów wspomagania - odczyt i edycja limitów prądu i prędkości sterownika dla każdego poziomu, a potem zapis z powrotem</li>
+        <li>Test ekranu i informacje o firmware/sprzęcie</li>
+      </ul>
+    </div>
+    <div class="shot-card" style="margin: 0; background: #1f2128;">
+      <img src="/sw102/img/menu_top.jpg" alt="Zbliżenie menu ustawień SW102" class="zoomable">
+    </div>
+  </section>
+
+  <!-- FEATURES AT A GLANCE -->
+  <section class="features-section">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Pod maską</div>
+        <h2>Zbudowany dla oryginalnych sterowników Bafang.</h2>
+      </div>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <span class="feature-glyph mono">UART</span>
+          <div class="title">Natywny protokół Bafang</div>
+          <p>Mówi bezpośrednio standardowym protokołem UART wyświetlaczy Bafang - bez pośredniej skrzynki, bez przejściówki.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">OTA</span>
+          <div class="title">Aktualizacje przez Bluetooth</div>
+          <p>Po pierwszym wgraniu aktualizujesz firmware przez Bluetooth - nie trzeba ponownie otwierać wyświetlacza. <a href="https://www.youtube.com/watch?v=GyanRPCOuG8" target="_blank" rel="noopener">Zobacz, jak to działa</a>.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">%</span>
+          <div class="title">Dokładny procent baterii</div>
+          <p>Napięcie baterii mierzone co 0,1 V. Opcjonalny tryb Precyzyjny liczy procent baterii lokalnie z tego napięcia, dla sterowników, które podają go niedokładnie.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">km</span>
+          <div class="title">Szacowanie zasięgu</div>
+          <p>Prawdziwy model zużycia energii łączy historię jazdy z aktualnym stylem w szacowany zasięg na żywo - nie stałą liczbę.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">GPL</span>
+          <div class="title">Otwarty kod</div>
+          <p>Zbudowany na społecznościowym forku <code class="mono">anszom/SW102_LCD</code>, który sam jest na licencji GPL-3.0.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">SIM</span>
+          <div class="title">Emulator terminalowy</div>
+          <p>Emulator napisany w Rust kompiluje i uruchamia prawdziwy kod C firmware na komputerze, do testowania układu i logiki bez sprzętu.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">MCU</span>
+          <div class="title">nRF51822</div>
+          <p>Działa na układzie BLE Nordic nRF51822, który już jest w wyświetlaczu - bez żadnych przeróbek sprzętu.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">FW</span>
+          <div class="title">Zgodne sterowniki</div>
+          <p>BBS01/BBS01B, BBS02/BBS02B, BBSHD, M400, M420, M620/G510 Ultra - rodzina ze standardowym protokołem wyświetlaczy Bafang.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRIVACY -->
+  <section class="privacy-wrap">
+    <div class="privacy">
+      <div>
+        <span class="privacy-badge">&check;</span>
+        <h2>Nic nie opuszcza wyświetlacza.</h2>
+        <p>To firmware, nie aplikacja - nie ma żadnego połączenia z internetem. Rozmawia ze sterownikiem silnika przez przewód UART, a z telefonem przez Bluetooth tylko przy aktualizacji firmware (DFU) - nic nigdy nie jest wysyłane do sieci.</p>
+      </div>
+      <div class="privacy-points">
+        <div><span class="check">&check;</span><span class="label">Nigdy połączenia z internetem</span></div>
+        <div><span class="check">&check;</span><span class="label">Bez konta, bez analityki, bez śledzenia</span></div>
+        <div><span class="check">&check;</span><span class="label">Bluetooth tylko do aktualizacji firmware</span></div>
+        <div><span class="check">&check;</span><span class="label">Dane z jazdy zostają w wyświetlaczu</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTNOTE -->
+  <section class="footnote-wrap">
+    <div class="footnote-pill">
+      <span>nRF51822</span>
+      <span class="sep">|</span>
+      <span>Bezpłatny i otwarty</span>
+      <span class="sep">|</span>
+      <span>BBS01 &middot; BBS02 &middot; BBSHD &middot; M400 &middot; M420 &middot; M620</span>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final-cta-wrap">
+    <div class="final-cta">
+      <div>
+        <h2>Pobierz firmware.</h2>
+        <p>Bezpłatny i otwarty, dla oryginalnych sterowników silników centralnych Bafang. Kod źródłowy, instrukcja instalacji i wydania na GitHubie.</p>
+        <div class="hero-ctas">
+          <a class="btn-github" href="https://github.com/moskil2/SW102_BAFANG_OSF" target="_blank" rel="noopener">Zobacz na GitHubie &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <a href="/pl/">spotrobotics.app</a> &middot; <a href="/pl/sw102/privacy.html">Polityka prywatności</a> &middot; &copy; 2026 Spot Robotics - Tomasz Pieczara
+  </footer>
+
+  <div class="lightbox-overlay" id="lightbox">
+    <img id="lightbox-img" src="" alt="">
+  </div>
+  <script>
+    (function () {
+      var overlay = document.getElementById('lightbox');
+      var overlayImg = document.getElementById('lightbox-img');
+      document.querySelectorAll('img.zoomable').forEach(function (img) {
+        img.addEventListener('click', function () {
+          overlayImg.src = img.src;
+          overlayImg.alt = img.alt;
+          overlay.classList.add('open');
+        });
+      });
+      overlay.addEventListener('click', function () {
+        overlay.classList.remove('open');
+        overlayImg.src = '';
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') {
+          overlay.classList.remove('open');
+          overlayImg.src = '';
+        }
+      });
+    })();
+  </script>
+
+  <script src="/sky.js"></script>
+  <script src="/site.js"></script>
+</body>
+</html>

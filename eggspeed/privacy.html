@@ -79,68 +79,74 @@
       pointer-events: none;
     }
   </style>
+<!-- i18n:head --><link rel="alternate" hreflang="en" href="https://spotrobotics.app/eggspeed/privacy.html"><link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/eggspeed/privacy.html"><link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/eggspeed/privacy.html"><link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/eggspeed/privacy.html"><link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/eggspeed/privacy.html"><link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/eggspeed/privacy.html"><style>.lang-ctl{position:fixed;top:calc(1rem + 48px);right:1rem;z-index:50;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}.lang-ctl summary{list-style:none;width:40px;height:40px;border-radius:50%;box-sizing:border-box;border:1px solid rgba(255,228,160,0.25);background:rgba(10,11,16,0.6);color:rgba(255,228,160,0.85);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:12px;font-weight:700;letter-spacing:.04em;transition:border-color .15s ease,background .15s ease}.lang-ctl summary::-webkit-details-marker{display:none}.lang-ctl summary:hover,.lang-ctl[open] summary{border-color:rgba(255,228,160,0.6);background:rgba(255,228,160,0.08)}.lang-ctl .lang-list{position:absolute;top:46px;right:0;display:flex;flex-direction:column;min-width:120px;padding:6px;border-radius:12px;background:rgba(10,11,16,0.92);border:1px solid rgba(255,228,160,0.25)}.lang-ctl .lang-list a{display:flex;justify-content:space-between;gap:12px;padding:8px 10px;border-radius:8px;color:#e8e8e8;text-decoration:none;font-size:14px}.lang-ctl .lang-list a b{color:rgba(255,228,160,0.85);font-size:12px}.lang-ctl .lang-list a:hover,.lang-ctl .lang-list a[aria-current]{background:rgba(255,228,160,0.08)}</style><!-- /i18n:head -->
 </head>
 <body>
+<!-- i18n:switch --><details class="lang-ctl"><summary aria-label="Language">EN</summary><div class="lang-list"><a href="/eggspeed/privacy.html" hreflang="en" lang="en" aria-current="true">English <b>EN</b></a><a href="/de/eggspeed/privacy.html" hreflang="de" lang="de">Deutsch <b>DE</b></a><a href="/fr/eggspeed/privacy.html" hreflang="fr" lang="fr">Français <b>FR</b></a><a href="/pl/eggspeed/privacy.html" hreflang="pl" lang="pl">Polski <b>PL</b></a><a href="/no/eggspeed/privacy.html" hreflang="no" lang="no">Norsk <b>NO</b></a></div></details><!-- /i18n:switch -->
   <canvas id="sky" aria-hidden="true"></canvas>
   <div class="container">
     <a class="back" href="/">← spotrobotics.app</a>
 
     <div class="app-label">EggSPEED</div>
     <h1>Privacy Policy</h1>
-    <p class="updated">Last updated: August 7, 2026</p>
+    <p class="updated">Last updated: October 19, 2026</p>
 
     <div class="highlight">
-      EggSPEED talks to your bike's controller only over a wired USB cable. <strong style="color:#fff">It has no internet access and transmits no data of any kind.</strong>
+      EggSPEED talks to your bike's controller over a USB-OTG cable or an optional Bluetooth module. <strong style="color:#fff">It has no internet access and sends no data to us or anyone else.</strong>
     </div>
 
     <hr class="divider">
 
     <h2>1. What EggSPEED Does</h2>
-    <p>EggSPEED reads and displays the configuration and live telemetry of a Bafang BBS01, BBS02, or BBSHD mid-drive controller connected to your phone with a USB-OTG programming cable (serial UART, 1200 baud). All communication and processing happens locally, directly between your phone and the controller.</p>
-    <p>In this release, EggSPEED sends the controller only read commands, plus the same transient display commands (assist level, light) a factory Bafang display sends during normal riding. No command that writes configuration to the controller's flash memory exists anywhere in the app.</p>
+    <p>EggSPEED reads and changes the configuration of a Bafang BBS01, BBS02 or BBSHD mid-drive controller (factory Bafang firmware or bbs-fw) and shows live riding data on its Cockpit screen. The phone connects to the controller with a USB-OTG programming cable or, optionally, through a Bluetooth serial module. All communication and processing happens locally, directly between your phone and the controller.</p>
+    <p>Configuration is written to the controller only when you ask for it - by confirming a write on one of the settings screens, or by switching between the STREET and RACE profiles.</p>
 
-    <h2>2. USB / Serial Access</h2>
-    <p>EggSPEED requests USB host access (<code>android.hardware.usb.host</code>) so it can talk to the controller over the wired USB-OTG cable. No Bluetooth, Wi-Fi, or any other wireless radio is used or requested.</p>
+    <h2>2. Permissions</h2>
+    <p>EggSPEED asks only for what a feature needs, and only when you turn that feature on:</p>
+    <ul>
+      <li><strong>USB host</strong> (<code>android.hardware.usb.host</code>) - to talk to the controller over the USB-OTG cable.</li>
+      <li><strong>Bluetooth</strong> (<code>BLUETOOTH_CONNECT</code>) - asked only when you choose Bluetooth as the connection type in Settings. Used only to connect to the Bluetooth module you select from the devices already paired with your phone; the list of paired devices is only shown on screen.</li>
+      <li><strong>Location</strong> - asked only when you turn on GPS speed in Settings. Your position is used live to show GPS speed next to the controller's speed; it is not stored and not sent anywhere.</li>
+      <li><strong>Notifications and a background service</strong> - used only for the optional lock screen (AOD) display of your riding data and for the optional Bluetooth remote button control.</li>
+    </ul>
 
     <h2>3. Data We Do Not Collect</h2>
-    <p>EggSPEED does not collect, store, or transmit any data to us or anyone else. Specifically:</p>
+    <p>EggSPEED does not collect or transmit any data to us or anyone else. Specifically:</p>
     <ul>
       <li>No personal information of any kind</li>
       <li>No riding data, telemetry, or configuration sent anywhere</li>
-      <li>No location data</li>
+      <li>No location history - GPS speed is calculated live on your device only</li>
       <li>No usage statistics or analytics</li>
       <li>No crash reports sent to our servers</li>
       <li>No internet permission is requested at all - this can be verified directly in the app's manifest</li>
     </ul>
 
     <h2>4. Data Stored Locally on Your Device</h2>
-    <p>EggSPEED stores the following data in your device's local app storage. This data never leaves your device:</p>
+    <p>EggSPEED stores the following data in your device's local app storage:</p>
     <ul>
-      <li><strong>App preferences</strong> - language (English/Polish) and speed unit (km/h or mph)</li>
-      <li><strong>Odometer &amp; trip data</strong> - your odometer offset and trip/energy-usage history, used to estimate average consumption and remaining range</li>
-      <li><strong>Battery setup</strong> - the cell count and capacity you enter, used only to calculate range on the Cockpit screen</li>
-      <li><strong>Calibration factors</strong> - optional current/voltage correction values you set on the Calibration screen</li>
+      <li><strong>App preferences</strong> - language (19 languages), units, Cockpit style, connection type and the other options you set in Settings</li>
+      <li><strong>Odometer &amp; trips</strong> - your odometer, the current trip (including its speed chart) and the history of saved trips, used for the Trip screens, average consumption and remaining range</li>
+      <li><strong>Battery setup</strong> - the cell count and capacity you enter, used only to calculate range</li>
+      <li><strong>Calibration factors</strong> - optional speed, current and voltage correction values you set</li>
       <li><strong>Saved profiles</strong> - configuration snapshots you choose to save, exported as <code>.ini</code> files only if you use the Export or Save current buttons</li>
+      <li><strong>Communication log</strong> (off by default) - when you turn it on in Diagnostics, the last few minutes of communication with the controller, together with the app version, Android version and phone model, are kept in an encrypted file. It leaves your phone only if you send it yourself, for example by e-mail to support, and only the app's developer can read it.</li>
     </ul>
     <p>You can clear this data at any time by clearing the app's storage in your device settings, or by uninstalling the app. EggSPEED explicitly opts out of Android's automatic backup system, so none of this data is ever uploaded to Google's cloud backup.</p>
 
-    <h2>5. Read-Only by Design</h2>
-    <p>This version of EggSPEED (Milestone 1) contains no code path capable of writing configuration to the controller's flash memory. The only commands sent are reads and the same volatile display commands (assist level, light) a factory display sends every ride - so there is no risk of the app corrupting your controller's saved settings.</p>
+    <h2>5. Network Access</h2>
+    <p>EggSPEED does not request or use internet access or local network access of any kind. It works entirely offline.</p>
 
-    <h2>6. Network Access</h2>
-    <p>EggSPEED does not request or use internet access or local network access of any kind. It functions entirely offline, over the USB cable only.</p>
-
-    <h2>7. Third-Party Services</h2>
+    <h2>6. Third-Party Services</h2>
     <p>EggSPEED uses the open-source <a href="https://github.com/mik3y/usb-serial-for-android" target="_blank" rel="noopener">usb-serial-for-android</a> library to communicate over USB - a local, on-device library that itself sends no data anywhere. The app includes no advertising SDKs, no analytics libraries, and no crash-reporting services.</p>
-    <p>EggSPEED is not currently distributed through the Google Play Store; it is downloaded directly as an APK file from this website.</p>
+    <p>EggSPEED is distributed through the Google Play Store, which is subject to Google's own privacy policy.</p>
 
-    <h2>8. Children's Privacy</h2>
+    <h2>7. Children's Privacy</h2>
     <p>EggSPEED is not directed at children under the age of 13 and we do not knowingly collect any personal information from children.</p>
 
-    <h2>9. Changes to This Policy</h2>
+    <h2>8. Changes to This Policy</h2>
     <p>If we update this Privacy Policy, we will post the revised version on this page with an updated "Last updated" date.</p>
 
-    <h2>10. Contact</h2>
+    <h2>9. Contact</h2>
     <p>Questions about this policy? Contact us at <a href="mailto:tomasz.pieczara@gazeta.pl">tomasz.pieczara@gazeta.pl</a> or through the <a href="/support/">support form</a>.</p>
   </div>
   <script src="/sky.js"></script>

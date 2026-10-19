@@ -1,92 +1,963 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://spotrobotics.app/</loc>
-    <lastmod>2026-07-05</lastmod>
+    <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://spotrobotics.app/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/"/>
+  </url>
+  <url>
+    <loc>https://spotrobotics.app/de/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://spotrobotics.app/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/"/>
+  </url>
+  <url>
+    <loc>https://spotrobotics.app/fr/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://spotrobotics.app/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/"/>
+  </url>
+  <url>
+    <loc>https://spotrobotics.app/pl/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://spotrobotics.app/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/"/>
+  </url>
+  <url>
+    <loc>https://spotrobotics.app/no/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://spotrobotics.app/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/"/>
   </url>
   <url>
     <loc>https://spotrobotics.app/directdrop/</loc>
-    <lastmod>2026-07-05</lastmod>
+    <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://spotrobotics.app/directdrop/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/directdrop/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/directdrop/"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/directdrop/"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/directdrop/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/directdrop/"/>
+  </url>
+  <url>
+    <loc>https://spotrobotics.app/de/directdrop/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://spotrobotics.app/directdrop/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/directdrop/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/directdrop/"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/directdrop/"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/directdrop/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/directdrop/"/>
+  </url>
+  <url>
+    <loc>https://spotrobotics.app/fr/directdrop/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://spotrobotics.app/directdrop/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/directdrop/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/directdrop/"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/directdrop/"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/directdrop/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/directdrop/"/>
+  </url>
+  <url>
+    <loc>https://spotrobotics.app/pl/directdrop/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://spotrobotics.app/directdrop/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/directdrop/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/directdrop/"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/directdrop/"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/directdrop/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/directdrop/"/>
+  </url>
+  <url>
+    <loc>https://spotrobotics.app/no/directdrop/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://spotrobotics.app/directdrop/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/directdrop/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/directdrop/"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/directdrop/"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/directdrop/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/directdrop/"/>
   </url>
   <url>
     <loc>https://spotrobotics.app/directdrop/privacy.html</loc>
+    <lastmod>2026-10-19</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://spotrobotics.app/directdrop/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/directdrop/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/directdrop/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/directdrop/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/directdrop/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/directdrop/privacy.html"/>
+  </url>
+  <url>
+    <loc>https://spotrobotics.app/de/directdrop/privacy.html</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://spotrobotics.app/directdrop/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/directdrop/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/directdrop/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/directdrop/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/directdrop/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/directdrop/privacy.html"/>
+  </url>
+  <url>
+    <loc>https://spotrobotics.app/fr/directdrop/privacy.html</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://spotrobotics.app/directdrop/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/directdrop/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/directdrop/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/directdrop/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/directdrop/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/directdrop/privacy.html"/>
+  </url>
+  <url>
+    <loc>https://spotrobotics.app/pl/directdrop/privacy.html</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://spotrobotics.app/directdrop/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/directdrop/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/directdrop/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/directdrop/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/directdrop/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/directdrop/privacy.html"/>
+  </url>
+  <url>
+    <loc>https://spotrobotics.app/no/directdrop/privacy.html</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://spotrobotics.app/directdrop/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/directdrop/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/directdrop/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/directdrop/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/directdrop/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/directdrop/privacy.html"/>
   </url>
   <url>
     <loc>https://spotrobotics.app/truebubble/</loc>
-    <lastmod>2026-07-05</lastmod>
+    <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://spotrobotics.app/truebubble/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/truebubble/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/truebubble/"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/truebubble/"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/truebubble/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/truebubble/"/>
+  </url>
+  <url>
+    <loc>https://spotrobotics.app/de/truebubble/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://spotrobotics.app/truebubble/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/truebubble/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/truebubble/"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/truebubble/"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/truebubble/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/truebubble/"/>
+  </url>
+  <url>
+    <loc>https://spotrobotics.app/fr/truebubble/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://spotrobotics.app/truebubble/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/truebubble/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/truebubble/"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/truebubble/"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/truebubble/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/truebubble/"/>
+  </url>
+  <url>
+    <loc>https://spotrobotics.app/pl/truebubble/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://spotrobotics.app/truebubble/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/truebubble/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/truebubble/"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/truebubble/"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/truebubble/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/truebubble/"/>
+  </url>
+  <url>
+    <loc>https://spotrobotics.app/no/truebubble/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://spotrobotics.app/truebubble/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/truebubble/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/truebubble/"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/truebubble/"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/truebubble/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/truebubble/"/>
   </url>
   <url>
     <loc>https://spotrobotics.app/truebubble/privacy.html</loc>
+    <lastmod>2026-10-19</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://spotrobotics.app/truebubble/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/truebubble/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/truebubble/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/truebubble/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/truebubble/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/truebubble/privacy.html"/>
+  </url>
+  <url>
+    <loc>https://spotrobotics.app/de/truebubble/privacy.html</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://spotrobotics.app/truebubble/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/truebubble/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/truebubble/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/truebubble/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/truebubble/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/truebubble/privacy.html"/>
+  </url>
+  <url>
+    <loc>https://spotrobotics.app/fr/truebubble/privacy.html</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://spotrobotics.app/truebubble/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/truebubble/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/truebubble/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/truebubble/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/truebubble/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/truebubble/privacy.html"/>
+  </url>
+  <url>
+    <loc>https://spotrobotics.app/pl/truebubble/privacy.html</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://spotrobotics.app/truebubble/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/truebubble/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/truebubble/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/truebubble/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/truebubble/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/truebubble/privacy.html"/>
+  </url>
+  <url>
+    <loc>https://spotrobotics.app/no/truebubble/privacy.html</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://spotrobotics.app/truebubble/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/truebubble/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/truebubble/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/truebubble/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/truebubble/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/truebubble/privacy.html"/>
   </url>
   <url>
     <loc>https://spotrobotics.app/fogrider/</loc>
-    <lastmod>2026-08-09</lastmod>
+    <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://spotrobotics.app/fogrider/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/fogrider/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/fogrider/"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/fogrider/"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/fogrider/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/fogrider/"/>
+  </url>
+  <url>
+    <loc>https://spotrobotics.app/de/fogrider/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://spotrobotics.app/fogrider/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/fogrider/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/fogrider/"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/fogrider/"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/fogrider/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/fogrider/"/>
+  </url>
+  <url>
+    <loc>https://spotrobotics.app/fr/fogrider/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://spotrobotics.app/fogrider/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/fogrider/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/fogrider/"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/fogrider/"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/fogrider/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/fogrider/"/>
+  </url>
+  <url>
+    <loc>https://spotrobotics.app/pl/fogrider/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://spotrobotics.app/fogrider/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/fogrider/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/fogrider/"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/fogrider/"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/fogrider/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/fogrider/"/>
+  </url>
+  <url>
+    <loc>https://spotrobotics.app/no/fogrider/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://spotrobotics.app/fogrider/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/fogrider/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/fogrider/"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/fogrider/"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/fogrider/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/fogrider/"/>
   </url>
   <url>
     <loc>https://spotrobotics.app/fogrider/privacy.html</loc>
+    <lastmod>2026-10-19</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://spotrobotics.app/fogrider/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/fogrider/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/fogrider/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/fogrider/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/fogrider/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/fogrider/privacy.html"/>
+  </url>
+  <url>
+    <loc>https://spotrobotics.app/de/fogrider/privacy.html</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://spotrobotics.app/fogrider/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/fogrider/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/fogrider/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/fogrider/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/fogrider/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/fogrider/privacy.html"/>
+  </url>
+  <url>
+    <loc>https://spotrobotics.app/fr/fogrider/privacy.html</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://spotrobotics.app/fogrider/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/fogrider/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/fogrider/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/fogrider/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/fogrider/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/fogrider/privacy.html"/>
+  </url>
+  <url>
+    <loc>https://spotrobotics.app/pl/fogrider/privacy.html</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://spotrobotics.app/fogrider/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/fogrider/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/fogrider/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/fogrider/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/fogrider/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/fogrider/privacy.html"/>
+  </url>
+  <url>
+    <loc>https://spotrobotics.app/no/fogrider/privacy.html</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://spotrobotics.app/fogrider/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/fogrider/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/fogrider/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/fogrider/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/fogrider/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/fogrider/privacy.html"/>
   </url>
   <url>
     <loc>https://spotrobotics.app/eggspeed/</loc>
-    <lastmod>2026-08-12</lastmod>
+    <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://spotrobotics.app/eggspeed/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/eggspeed/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/eggspeed/"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/eggspeed/"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/eggspeed/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/eggspeed/"/>
+  </url>
+  <url>
+    <loc>https://spotrobotics.app/de/eggspeed/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://spotrobotics.app/eggspeed/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/eggspeed/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/eggspeed/"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/eggspeed/"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/eggspeed/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/eggspeed/"/>
+  </url>
+  <url>
+    <loc>https://spotrobotics.app/fr/eggspeed/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://spotrobotics.app/eggspeed/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/eggspeed/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/eggspeed/"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/eggspeed/"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/eggspeed/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/eggspeed/"/>
+  </url>
+  <url>
+    <loc>https://spotrobotics.app/pl/eggspeed/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://spotrobotics.app/eggspeed/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/eggspeed/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/eggspeed/"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/eggspeed/"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/eggspeed/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/eggspeed/"/>
+  </url>
+  <url>
+    <loc>https://spotrobotics.app/no/eggspeed/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://spotrobotics.app/eggspeed/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/eggspeed/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/eggspeed/"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/eggspeed/"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/eggspeed/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/eggspeed/"/>
   </url>
   <url>
     <loc>https://spotrobotics.app/eggspeed/privacy.html</loc>
+    <lastmod>2026-10-19</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://spotrobotics.app/eggspeed/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/eggspeed/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/eggspeed/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/eggspeed/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/eggspeed/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/eggspeed/privacy.html"/>
+  </url>
+  <url>
+    <loc>https://spotrobotics.app/de/eggspeed/privacy.html</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://spotrobotics.app/eggspeed/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/eggspeed/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/eggspeed/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/eggspeed/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/eggspeed/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/eggspeed/privacy.html"/>
+  </url>
+  <url>
+    <loc>https://spotrobotics.app/fr/eggspeed/privacy.html</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://spotrobotics.app/eggspeed/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/eggspeed/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/eggspeed/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/eggspeed/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/eggspeed/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/eggspeed/privacy.html"/>
+  </url>
+  <url>
+    <loc>https://spotrobotics.app/pl/eggspeed/privacy.html</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://spotrobotics.app/eggspeed/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/eggspeed/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/eggspeed/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/eggspeed/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/eggspeed/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/eggspeed/privacy.html"/>
+  </url>
+  <url>
+    <loc>https://spotrobotics.app/no/eggspeed/privacy.html</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://spotrobotics.app/eggspeed/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/eggspeed/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/eggspeed/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/eggspeed/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/eggspeed/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/eggspeed/privacy.html"/>
   </url>
   <url>
     <loc>https://spotrobotics.app/labdroid/</loc>
-    <lastmod>2026-10-02</lastmod>
+    <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://spotrobotics.app/labdroid/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/labdroid/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/labdroid/"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/labdroid/"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/labdroid/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/labdroid/"/>
+  </url>
+  <url>
+    <loc>https://spotrobotics.app/de/labdroid/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://spotrobotics.app/labdroid/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/labdroid/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/labdroid/"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/labdroid/"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/labdroid/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/labdroid/"/>
+  </url>
+  <url>
+    <loc>https://spotrobotics.app/fr/labdroid/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://spotrobotics.app/labdroid/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/labdroid/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/labdroid/"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/labdroid/"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/labdroid/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/labdroid/"/>
+  </url>
+  <url>
+    <loc>https://spotrobotics.app/pl/labdroid/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://spotrobotics.app/labdroid/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/labdroid/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/labdroid/"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/labdroid/"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/labdroid/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/labdroid/"/>
+  </url>
+  <url>
+    <loc>https://spotrobotics.app/no/labdroid/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://spotrobotics.app/labdroid/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/labdroid/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/labdroid/"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/labdroid/"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/labdroid/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/labdroid/"/>
   </url>
   <url>
     <loc>https://spotrobotics.app/labdroid/privacy.html</loc>
+    <lastmod>2026-10-19</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://spotrobotics.app/labdroid/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/labdroid/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/labdroid/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/labdroid/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/labdroid/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/labdroid/privacy.html"/>
+  </url>
+  <url>
+    <loc>https://spotrobotics.app/de/labdroid/privacy.html</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://spotrobotics.app/labdroid/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/labdroid/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/labdroid/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/labdroid/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/labdroid/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/labdroid/privacy.html"/>
+  </url>
+  <url>
+    <loc>https://spotrobotics.app/fr/labdroid/privacy.html</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://spotrobotics.app/labdroid/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/labdroid/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/labdroid/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/labdroid/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/labdroid/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/labdroid/privacy.html"/>
+  </url>
+  <url>
+    <loc>https://spotrobotics.app/pl/labdroid/privacy.html</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://spotrobotics.app/labdroid/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/labdroid/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/labdroid/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/labdroid/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/labdroid/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/labdroid/privacy.html"/>
+  </url>
+  <url>
+    <loc>https://spotrobotics.app/no/labdroid/privacy.html</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://spotrobotics.app/labdroid/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/labdroid/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/labdroid/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/labdroid/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/labdroid/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/labdroid/privacy.html"/>
   </url>
   <url>
     <loc>https://spotrobotics.app/sw102/</loc>
-    <lastmod>2026-09-17</lastmod>
+    <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://spotrobotics.app/sw102/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/sw102/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/sw102/"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/sw102/"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/sw102/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/sw102/"/>
+  </url>
+  <url>
+    <loc>https://spotrobotics.app/de/sw102/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://spotrobotics.app/sw102/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/sw102/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/sw102/"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/sw102/"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/sw102/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/sw102/"/>
+  </url>
+  <url>
+    <loc>https://spotrobotics.app/fr/sw102/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://spotrobotics.app/sw102/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/sw102/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/sw102/"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/sw102/"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/sw102/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/sw102/"/>
+  </url>
+  <url>
+    <loc>https://spotrobotics.app/pl/sw102/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://spotrobotics.app/sw102/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/sw102/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/sw102/"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/sw102/"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/sw102/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/sw102/"/>
+  </url>
+  <url>
+    <loc>https://spotrobotics.app/no/sw102/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://spotrobotics.app/sw102/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/sw102/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/sw102/"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/sw102/"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/sw102/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/sw102/"/>
   </url>
   <url>
     <loc>https://spotrobotics.app/sw102/privacy.html</loc>
+    <lastmod>2026-10-19</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://spotrobotics.app/sw102/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/sw102/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/sw102/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/sw102/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/sw102/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/sw102/privacy.html"/>
+  </url>
+  <url>
+    <loc>https://spotrobotics.app/de/sw102/privacy.html</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://spotrobotics.app/sw102/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/sw102/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/sw102/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/sw102/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/sw102/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/sw102/privacy.html"/>
+  </url>
+  <url>
+    <loc>https://spotrobotics.app/fr/sw102/privacy.html</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://spotrobotics.app/sw102/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/sw102/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/sw102/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/sw102/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/sw102/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/sw102/privacy.html"/>
+  </url>
+  <url>
+    <loc>https://spotrobotics.app/pl/sw102/privacy.html</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://spotrobotics.app/sw102/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/sw102/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/sw102/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/sw102/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/sw102/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/sw102/privacy.html"/>
+  </url>
+  <url>
+    <loc>https://spotrobotics.app/no/sw102/privacy.html</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://spotrobotics.app/sw102/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/sw102/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/sw102/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/sw102/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/sw102/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/sw102/privacy.html"/>
   </url>
   <url>
     <loc>https://spotrobotics.app/eggspeed-bt/</loc>
-    <lastmod>2026-10-15</lastmod>
+    <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://spotrobotics.app/eggspeed-bt/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/eggspeed-bt/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/eggspeed-bt/"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/eggspeed-bt/"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/eggspeed-bt/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/eggspeed-bt/"/>
+  </url>
+  <url>
+    <loc>https://spotrobotics.app/de/eggspeed-bt/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://spotrobotics.app/eggspeed-bt/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/eggspeed-bt/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/eggspeed-bt/"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/eggspeed-bt/"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/eggspeed-bt/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/eggspeed-bt/"/>
+  </url>
+  <url>
+    <loc>https://spotrobotics.app/fr/eggspeed-bt/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://spotrobotics.app/eggspeed-bt/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/eggspeed-bt/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/eggspeed-bt/"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/eggspeed-bt/"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/eggspeed-bt/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/eggspeed-bt/"/>
+  </url>
+  <url>
+    <loc>https://spotrobotics.app/pl/eggspeed-bt/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://spotrobotics.app/eggspeed-bt/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/eggspeed-bt/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/eggspeed-bt/"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/eggspeed-bt/"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/eggspeed-bt/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/eggspeed-bt/"/>
+  </url>
+  <url>
+    <loc>https://spotrobotics.app/no/eggspeed-bt/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://spotrobotics.app/eggspeed-bt/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/eggspeed-bt/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/eggspeed-bt/"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/eggspeed-bt/"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/eggspeed-bt/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/eggspeed-bt/"/>
   </url>
   <url>
     <loc>https://spotrobotics.app/eggspeed-bt/privacy.html</loc>
+    <lastmod>2026-10-19</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://spotrobotics.app/eggspeed-bt/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/eggspeed-bt/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/eggspeed-bt/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/eggspeed-bt/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/eggspeed-bt/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/eggspeed-bt/privacy.html"/>
+  </url>
+  <url>
+    <loc>https://spotrobotics.app/de/eggspeed-bt/privacy.html</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://spotrobotics.app/eggspeed-bt/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/eggspeed-bt/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/eggspeed-bt/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/eggspeed-bt/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/eggspeed-bt/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/eggspeed-bt/privacy.html"/>
+  </url>
+  <url>
+    <loc>https://spotrobotics.app/fr/eggspeed-bt/privacy.html</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://spotrobotics.app/eggspeed-bt/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/eggspeed-bt/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/eggspeed-bt/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/eggspeed-bt/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/eggspeed-bt/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/eggspeed-bt/privacy.html"/>
+  </url>
+  <url>
+    <loc>https://spotrobotics.app/pl/eggspeed-bt/privacy.html</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://spotrobotics.app/eggspeed-bt/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/eggspeed-bt/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/eggspeed-bt/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/eggspeed-bt/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/eggspeed-bt/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/eggspeed-bt/privacy.html"/>
+  </url>
+  <url>
+    <loc>https://spotrobotics.app/no/eggspeed-bt/privacy.html</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://spotrobotics.app/eggspeed-bt/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/eggspeed-bt/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/eggspeed-bt/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/eggspeed-bt/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/eggspeed-bt/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/eggspeed-bt/privacy.html"/>
   </url>
   <url>
     <loc>https://spotrobotics.app/support/</loc>
-    <lastmod>2026-08-07</lastmod>
+    <lastmod>2026-10-19</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://spotrobotics.app/support/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/support/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/support/"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/support/"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/support/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/support/"/>
+  </url>
+  <url>
+    <loc>https://spotrobotics.app/de/support/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://spotrobotics.app/support/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/support/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/support/"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/support/"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/support/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/support/"/>
+  </url>
+  <url>
+    <loc>https://spotrobotics.app/fr/support/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://spotrobotics.app/support/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/support/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/support/"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/support/"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/support/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/support/"/>
+  </url>
+  <url>
+    <loc>https://spotrobotics.app/pl/support/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://spotrobotics.app/support/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/support/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/support/"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/support/"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/support/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/support/"/>
+  </url>
+  <url>
+    <loc>https://spotrobotics.app/no/support/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://spotrobotics.app/support/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/support/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/support/"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/support/"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/support/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/support/"/>
   </url>
 </urlset>

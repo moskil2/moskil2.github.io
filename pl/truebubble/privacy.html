@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TrueBubble – Polityka prywatności | Spot Robotics, Tomasz Pieczara</title>
+  <meta name="description" content="Polityka prywatności TrueBubble – aplikacji poziomicy autorstwa Tomasza Pieczary / Spot Robotics.">
+  <meta name="author" content="Tomasz Pieczara">
+  <link rel="canonical" href="https://spotrobotics.app/pl/truebubble/privacy.html">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { background: #07080c; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: transparent;
+      color: #e8e8e8;
+      line-height: 1.7;
+      padding: 2rem 1rem 4rem;
+    }
+    .container { max-width: 680px; margin: 0 auto; }
+    .back {
+      display: inline-block;
+      font-size: 0.85rem;
+      color: #6b9fff;
+      text-decoration: none;
+      margin-bottom: 2.5rem;
+    }
+    .back:hover { text-decoration: underline; }
+    .app-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #6b9fff;
+      margin-bottom: 0.5rem;
+    }
+    h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+    .updated {
+      font-size: 0.85rem;
+      color: #666;
+      margin-bottom: 2.5rem;
+    }
+    h2 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #fff;
+      margin-top: 2rem;
+      margin-bottom: 0.5rem;
+    }
+    p { color: #aaa; margin-bottom: 0.75rem; }
+    ul { color: #aaa; padding-left: 1.5rem; margin-bottom: 0.75rem; }
+    li { margin-bottom: 0.25rem; }
+    a { color: #6b9fff; }
+    .divider { border: none; border-top: 1px solid #222; margin: 2rem 0; }
+    .highlight {
+      background: #1a1a1a;
+      border: 1px solid #2a2a2a;
+      border-radius: 10px;
+      padding: 1rem 1.25rem;
+      margin-bottom: 1rem;
+      color: #ccc;
+      font-size: 0.95rem;
+    }
+    #sky {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100vh;
+      height: 100lvh; /* tall viewport: no stretch when the mobile address bar hides */
+      z-index: -1;
+      pointer-events: none;
+    }
+  </style>
+<!-- i18n:head --><link rel="alternate" hreflang="en" href="https://spotrobotics.app/truebubble/privacy.html"><link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/truebubble/privacy.html"><link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/truebubble/privacy.html"><link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/truebubble/privacy.html"><link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/truebubble/privacy.html"><link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/truebubble/privacy.html"><style>.lang-ctl{position:fixed;top:calc(1rem + 48px);right:1rem;z-index:50;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}.lang-ctl summary{list-style:none;width:40px;height:40px;border-radius:50%;box-sizing:border-box;border:1px solid rgba(255,228,160,0.25);background:rgba(10,11,16,0.6);color:rgba(255,228,160,0.85);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:12px;font-weight:700;letter-spacing:.04em;transition:border-color .15s ease,background .15s ease}.lang-ctl summary::-webkit-details-marker{display:none}.lang-ctl summary:hover,.lang-ctl[open] summary{border-color:rgba(255,228,160,0.6);background:rgba(255,228,160,0.08)}.lang-ctl .lang-list{position:absolute;top:46px;right:0;display:flex;flex-direction:column;min-width:120px;padding:6px;border-radius:12px;background:rgba(10,11,16,0.92);border:1px solid rgba(255,228,160,0.25)}.lang-ctl .lang-list a{display:flex;justify-content:space-between;gap:12px;padding:8px 10px;border-radius:8px;color:#e8e8e8;text-decoration:none;font-size:14px}.lang-ctl .lang-list a b{color:rgba(255,228,160,0.85);font-size:12px}.lang-ctl .lang-list a:hover,.lang-ctl .lang-list a[aria-current]{background:rgba(255,228,160,0.08)}</style><!-- /i18n:head -->
+</head>
+<body>
+<!-- i18n:switch --><details class="lang-ctl"><summary aria-label="Language">PL</summary><div class="lang-list"><a href="/truebubble/privacy.html" hreflang="en" lang="en">English <b>EN</b></a><a href="/de/truebubble/privacy.html" hreflang="de" lang="de">Deutsch <b>DE</b></a><a href="/fr/truebubble/privacy.html" hreflang="fr" lang="fr">Français <b>FR</b></a><a href="/pl/truebubble/privacy.html" hreflang="pl" lang="pl" aria-current="true">Polski <b>PL</b></a><a href="/no/truebubble/privacy.html" hreflang="no" lang="no">Norsk <b>NO</b></a></div></details><!-- /i18n:switch -->
+  <canvas id="sky" aria-hidden="true"></canvas>
+  <div class="container">
+    <a class="back" href="/pl/">← spotrobotics.app</a>
+
+    <div class="app-label">TrueBubble</div>
+    <h1>Polityka prywatności</h1>
+    <p class="updated">Ostatnia aktualizacja: 21 czerwca 2026</p>
+    <p class="updated">To jest tłumaczenie. Wiążąca jest angielska wersja tej polityki prywatności.</p>
+
+    <div class="highlight">
+      TrueBubble to aplikacja poziomicy, która działa w całości na urządzeniu. <strong style="color:#fff">Nie ma dostępu do internetu i nie przesyła żadnych danych.</strong>
+    </div>
+
+    <hr class="divider">
+
+    <h2>1. Co robi TrueBubble</h2>
+    <p>TrueBubble korzysta z wbudowanych czujników ruchu urządzenia (akcelerometru i czujnika wektora obrotu), żeby mierzyć pochylenie i położenie urządzenia i pokazywać je jako poziomicę. Całe przetwarzanie danych z czujników odbywa się lokalnie na urządzeniu, na bieżąco.</p>
+
+    <h2>2. Dane z czujników</h2>
+    <p>Do działania TrueBubble odczytuje następujące czujniki:</p>
+    <ul>
+      <li><strong>Akcelerometr</strong> - mierzy siłę ciężkości wzdłuż każdej osi, żeby określić pochylenie urządzenia</li>
+      <li><strong>Czujnik wektora obrotu</strong> - daje dokładniejsze oszacowanie położenia, jeśli jest dostępny</li>
+    </ul>
+    <p>Odczyty czujników służą tylko do wyświetlania poziomicy. Są przetwarzane w pamięci i od razu odrzucane - nigdy nie są zapisywane na dysku ani nigdzie przesyłane.</p>
+
+    <h2>3. Dane, których nie zbieramy</h2>
+    <p>TrueBubble nie zbiera, nie zapisuje i nie przesyła żadnych danych. W szczególności:</p>
+    <ul>
+      <li>Żadnych danych osobowych</li>
+      <li>Żadnych odczytów czujników ani historii pomiarów</li>
+      <li>Żadnych danych o lokalizacji</li>
+      <li>Żadnych statystyk użycia ani analityki</li>
+      <li>Żadnych raportów o awariach wysyłanych na nasze serwery</li>
+    </ul>
+
+    <h2>4. Dane zapisywane lokalnie na urządzeniu</h2>
+    <p>TrueBubble zapisuje w lokalnej pamięci aplikacji następujące dane. Te dane nigdy nie opuszczają urządzenia:</p>
+    <ul>
+      <li><strong>Przesunięcia kalibracji</strong> - jeśli skalibrujesz poziomicę na znanej płaskiej powierzchni, wartości korekty są zapisywane lokalnie, żeby aplikacja pamiętała je między sesjami</li>
+      <li><strong>Ustawienia aplikacji</strong> - Twoje preferencje (np. dźwięk/wibracja włączone lub wyłączone, opcje wyświetlania)</li>
+    </ul>
+    <p>Możesz w każdej chwili usunąć te dane, czyszcząc pamięć aplikacji w ustawieniach urządzenia albo odinstalowując aplikację. Uwaga: TrueBubble jest wyłączona z automatycznej kopii zapasowej Androida, więc te dane nigdy nie trafiają do kopii zapasowej Google w chmurze.</p>
+
+    <h2>5. Wibracja</h2>
+    <p>TrueBubble korzysta z silnika wibracji urządzenia, żeby dać sygnał dotykowy, gdy urządzenie jest w poziomie. Ta funkcja działa tylko na urządzeniu i nie wiąże się z żadnym zbieraniem ani przesyłaniem danych.</p>
+
+    <h2>6. Dostęp do sieci</h2>
+    <p>TrueBubble nie prosi o dostęp do internetu ani do sieci lokalnej i z niego nie korzysta. Działa całkowicie offline.</p>
+
+    <h2>7. Usługi zewnętrzne</h2>
+    <p>TrueBubble nie zawiera SDK reklamowych, bibliotek analitycznych ani usług raportowania awarii. Aplikacja jest dystrybuowana przez:</p>
+    <ul>
+      <li><strong>Sklep Google Play</strong> - podlega polityce prywatności Google</li>
+    </ul>
+
+    <h2>8. Prywatność dzieci</h2>
+    <p>TrueBubble nie jest skierowana do dzieci poniżej 13 lat i świadomie nie zbieramy żadnych danych osobowych dzieci.</p>
+
+    <h2>9. Zmiany tej polityki</h2>
+    <p>Jeśli zaktualizujemy tę politykę prywatności, opublikujemy nową wersję na tej stronie ze zaktualizowaną datą „Ostatnia aktualizacja”.</p>
+
+    <h2>10. Kontakt</h2>
+    <p>Pytania dotyczące tej polityki? Napisz do nas przez <a href="/pl/support/">formularz wsparcia</a>.</p>
+  </div>
+  <script src="/sky.js"></script>
+  <script src="/site.js"></script>
+</body>
+</html>

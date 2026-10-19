@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EggSPEED – programuj sterownik Bafang BBS01/BBS02/BBSHD (OEM lub BBS-FW) z telefonu | Spot Robotics</title>
+  <meta name="description" content="EggSPEED odczytuje i programuje sterownik Bafang BBS01/BBS02/BBSHD przez USB lub Bluetooth - na fabrycznym firmware OEM lub BBS-FW. Kokpit na żywo, pełna konfiguracja, ustawianie poziomów wspomagania. Nowoczesna alternatywa dla aplikacji Speeed dla Bafang. Sprawdzany zapis, bez wgrywania firmware.">
+  <meta name="author" content="Tomasz Pieczara">
+  <meta property="og:title" content="EggSPEED – narzędzie do konfiguracji Bafang BBS01/BBS02/BBSHD (OEM i BBS-FW)">
+  <meta property="og:description" content="Kokpit na żywo, pełna konfiguracja sterownika i ustawianie poziomów wspomagania dla silników centralnych Bafang, na firmware OEM lub BBS-FW - przez zwykły kabel USB.">
+  <meta property="og:url" content="https://spotrobotics.app/pl/eggspeed/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://spotrobotics.app/icons/eggspeed.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="EggSPEED – narzędzie do konfiguracji Bafang BBS01/BBS02/BBSHD (OEM i BBS-FW)">
+  <meta name="twitter:description" content="Kokpit na żywo, pełna konfiguracja sterownika i ustawianie poziomów wspomagania dla silników centralnych Bafang, na firmware OEM lub BBS-FW - przez zwykły kabel USB.">
+  <meta name="twitter:image" content="https://spotrobotics.app/icons/eggspeed.png">
+  <link rel="canonical" href="https://spotrobotics.app/pl/eggspeed/">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="/icons/favicon-512x512.png">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { background: #07080c; }
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: transparent;
+      color: #f3f1ea;
+      width: 100%;
+      overflow-x: hidden;
+      line-height: 1.4;
+    }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; }
+    .mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+    .wrap { max-width: 1200px; margin: 0 auto; padding-left: 32px; padding-right: 32px; }
+    .eyebrow {
+      color: #FF9142; font-weight: 700; font-size: 14px;
+      letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 14px;
+    }
+
+    /* topbar */
+    .topbar {
+      max-width: 1200px; margin: 0 auto; padding: 24px 32px 0;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .topbar a { color: #6f6a5f; font-size: 13.5px; font-weight: 600; }
+    .topbar a:hover { color: #a8a49a; }
+
+    /* buttons */
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: #1f6feb; color: #ffffff; font-weight: 700; font-size: 17px;
+      padding: 16px 28px; border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(31,111,235,0.4);
+      transition: background .15s ease;
+    }
+    .btn-primary:hover { background: #3a82f5; }
+    .btn-github {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: #FFC107; color: #1a1408; font-weight: 700; font-size: 17px;
+      padding: 16px 28px; border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(255,193,7,0.4);
+      transition: background .15s ease;
+    }
+    .btn-github:hover { background: #ffce3d; }
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: transparent; color: #1f6feb; font-weight: 700; font-size: 17px;
+      padding: 15px 27px; border-radius: 16px; border: 1.5px solid #1f6feb;
+      transition: background .15s ease, color .15s ease;
+    }
+    .btn-outline:hover { background: rgba(31,111,235,0.1); }
+    .badge-warn {
+      display: inline-flex; align-items: center;
+      font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 700;
+      letter-spacing: 0.05em; text-transform: uppercase; color: #4f8cff;
+      background: rgba(79,140,255,0.14); border: 1px solid rgba(79,140,255,0.4);
+      border-radius: 100px; padding: 7px 14px;
+    }
+    .link-muted {
+      color: #a8a49a; font-weight: 600; font-size: 15px;
+      border-bottom: 1px solid #3a3b42; padding-bottom: 2px;
+      transition: color .15s ease;
+    }
+    .link-muted:hover { color: #f3f1ea; }
+
+    /* hero */
+    .hero {
+      max-width: 1200px; margin: 0 auto; padding: 56px 32px 80px;
+      display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 64px; align-items: center;
+    }
+    .hero-brand { display: flex; align-items: center; gap: 16px; margin-bottom: 28px; }
+    .hero-brand img { width: 56px; height: 56px; border-radius: 16px; box-shadow: 0 8px 24px rgba(255,145,66,0.35); }
+    .hero-brand span { font-size: 20px; font-weight: 700; letter-spacing: 0.01em; }
+    .hero h1 { font-size: 52px; line-height: 1.1; font-weight: 800; margin: 0 0 24px; letter-spacing: -0.02em; text-wrap: balance; }
+    .hero p.lede { font-size: 20px; line-height: 1.55; color: #a8a49a; margin: 0 0 36px; max-width: 520px; }
+    .hero-ctas { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+    .hero-foot {
+      display: flex; gap: 28px; margin-top: 44px; color: #6f6a5f;
+      font-family: 'JetBrains Mono', monospace; font-size: 13px; flex-wrap: wrap;
+    }
+    .hero-note {
+      margin: 16px 0 0; color: #a8a49a; font-size: 14.5px; line-height: 1.5;
+    }
+    .hero-note a { color: #FF9142; font-weight: 600; }
+    .hero-note a:hover { text-decoration: underline; }
+    .hero-shot { display: flex; justify-content: center; }
+    .hero-shot .bezel {
+      border-radius: 36px; padding: 10px; background: #1f2128;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.55), inset 0 0 0 1px #2c2e36;
+    }
+    .hero-shot img { width: 280px; height: auto; display: block; border-radius: 28px; }
+
+    /* how it works */
+    .section-head { text-align: center; margin-bottom: 56px; }
+    .section-head h2 { font-size: 38px; font-weight: 800; margin: 0; letter-spacing: -0.01em; text-wrap: balance; }
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; max-width: 1080px; margin: 0 auto; }
+    .step-card { background: #1f2128; border-radius: 26px; padding: 24px; display: flex; flex-direction: column; gap: 18px; }
+    .step-head { display: flex; align-items: center; gap: 10px; }
+    .step-num {
+      width: 28px; height: 28px; border-radius: 9px; background: rgba(255,145,66,0.16);
+      color: #FF9142; font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 13px;
+      display: flex; align-items: center; justify-content: center; flex: none;
+    }
+    .step-head span.title { font-weight: 700; font-size: 16px; }
+    .step-shot { border-radius: 20px; overflow: hidden; background: #16171c; box-shadow: inset 0 0 0 1px #2c2e36; }
+    .step-shot img { width: 100%; height: auto; display: block; }
+    .step-card p { margin: 0; color: #a8a49a; font-size: 14.5px; line-height: 1.5; }
+
+    /* features */
+    .features-section { background: rgba(26,27,33,0.6); padding: 96px 32px; }
+    .feature-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+    .feature-card { background: #1f2128; border-radius: 22px; padding: 26px; display: flex; flex-direction: column; gap: 14px; }
+    .feature-glyph {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 44px; height: 44px; border-radius: 13px; background: rgba(255,145,66,0.14);
+      color: #FF9142; font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 13px;
+    }
+    .feature-card .title { font-weight: 700; font-size: 16px; }
+    .feature-card p { margin: 0; color: #a8a49a; font-size: 14px; line-height: 1.5; }
+
+    /* two-column highlight sections */
+    .anydevice {
+      max-width: 1200px; margin: 0 auto; padding: 88px 32px;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;
+    }
+    .anydevice h2 { font-size: 34px; font-weight: 800; margin: 0 0 20px; letter-spacing: -0.01em; text-wrap: balance; }
+    .anydevice p { font-size: 17px; line-height: 1.6; color: #a8a49a; margin: 0 0 20px; }
+    .anydevice p:last-child { margin-bottom: 0; }
+    .anydevice p strong { color: #f3f1ea; }
+    /* Uniform screenshot row - every image the same fixed size, top-aligned in a single line,
+       regardless of how many screenshots the section has (1, 2 or 3) - a flat "table row" of
+       shots instead of a staggered/oversized collage. */
+    .shot-row {
+      display: flex; align-items: flex-start; justify-content: flex-start;
+      gap: 16px; flex-wrap: wrap;
+    }
+    .shot-row img {
+      width: 160px; height: auto; display: block; flex: none;
+      border-radius: 16px; box-shadow: 0 16px 40px rgba(0,0,0,0.45);
+    }
+    /* Display & lock screen section only - 19_LightTheme.jpg and 29_AOD.jpg have different aspect
+       ratios, so the shared width-based sizing above renders them at different heights; match by
+       height instead just for this pair, width follows each image's own ratio. */
+    .shot-row--match-height img {
+      width: auto; height: 347px;
+    }
+    /* Cockpit styles section only - 7 screenshots: text above, one centered row of smaller shots
+       (in the shared two-column layout they would wrap 3 + 3 + 1). */
+    .anydevice--wide { grid-template-columns: 1fr; gap: 32px; }
+    .shot-row--seven { gap: 12px; justify-content: center; }
+    .shot-row--seven img { width: 140px; }
+
+    /* privacy */
+    .privacy-wrap { max-width: 1200px; margin: 32px auto 96px; padding: 0 32px; }
+    .privacy {
+      background: linear-gradient(135deg, rgba(255,145,66,0.14), rgba(255,145,66,0.06));
+      border-radius: 32px; padding: 64px;
+      display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 56px; align-items: center;
+      box-shadow: inset 0 0 0 1px rgba(255,145,66,0.25);
+    }
+    .privacy-badge {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 56px; height: 56px; border-radius: 16px; background: rgba(255,145,66,0.18);
+      color: #FF9142; font-size: 24px; font-weight: 800; margin-bottom: 24px;
+    }
+    .privacy h2 { font-size: 34px; font-weight: 800; margin: 0 0 16px; letter-spacing: -0.01em; text-wrap: balance; }
+    .privacy p { font-size: 17px; line-height: 1.6; color: #a8a49a; margin: 0; }
+    .privacy-points { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .privacy-points div { display: flex; align-items: flex-start; gap: 12px; }
+    .privacy-points .check { color: #FF9142; font-weight: 800; flex-shrink: 0; }
+    .privacy-points span.label { font-size: 15.5px; line-height: 1.5; color: #f3f1ea; }
+
+    /* footnote strip */
+    .footnote-wrap { max-width: 1200px; margin: 0 auto; padding: 0 32px 96px; text-align: center; }
+    .footnote-pill {
+      display: inline-flex; align-items: center; gap: 24px; flex-wrap: wrap; justify-content: center;
+      color: #6f6a5f; font-family: 'JetBrains Mono', monospace; font-size: 13.5px;
+      background: #1f2128; border-radius: 100px; padding: 16px 32px;
+    }
+    .footnote-pill span.sep { color: #3a3b42; }
+
+    /* final cta */
+    .final-cta-wrap { max-width: 1200px; margin: 0 auto 64px; padding: 0 32px; }
+    .final-cta {
+      background: #1f2128; border-radius: 32px; padding: 72px;
+      display: flex; align-items: center; justify-content: space-between; gap: 48px; flex-wrap: wrap;
+    }
+    .final-cta h2 { font-size: 36px; font-weight: 800; margin: 0 0 14px; letter-spacing: -0.01em; }
+    .final-cta p { font-size: 17px; color: #a8a49a; margin: 0 0 28px; }
+    .final-cta-qr { text-align: center; }
+    .final-cta-qr img { width: 150px; height: 150px; border-radius: 16px; background: #ffffff; padding: 12px; opacity: 0.7; }
+    .final-cta-qr .caption { color: #6f6a5f; font-family: 'JetBrains Mono', monospace; font-size: 12px; margin-top: 10px; }
+
+    footer.site-footer {
+      text-align: center; padding: 0 24px 48px; color: #444; font-size: 12.5px;
+    }
+    footer.site-footer a { color: #6b9fff; }
+    footer.site-footer a:hover { text-decoration: underline; }
+
+    @media (max-width: 880px) {
+      .hero { grid-template-columns: 1fr; padding-top: 40px; gap: 40px; }
+      .hero-shot { order: -1; }
+      .hero h1 { font-size: 36px; }
+      .steps { grid-template-columns: 1fr; }
+      .feature-grid { grid-template-columns: repeat(2, 1fr); }
+      .anydevice { grid-template-columns: 1fr; gap: 32px; }
+      .shot-row { justify-content: flex-start; }
+      .privacy { grid-template-columns: 1fr; padding: 40px; }
+      .privacy-points { grid-template-columns: 1fr; }
+      .final-cta { justify-content: center; text-align: center; padding: 48px 32px; }
+    }
+    @media (max-width: 520px) {
+      .wrap, .hero, .anydevice, .topbar { padding-left: 16px; padding-right: 16px; }
+      .features-section { padding: 72px 16px; }
+      .feature-grid { grid-template-columns: 1fr; }
+      .privacy-wrap, .final-cta-wrap, .footnote-wrap { padding-left: 16px; padding-right: 16px; }
+      .footnote-pill { border-radius: 24px; padding: 16px 20px; }
+    }
+
+    /* Lightbox - click any screenshot to zoom */
+    img.zoomable { cursor: zoom-in; }
+    .lightbox-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(10, 11, 15, 0.92);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      cursor: zoom-out;
+    }
+    .lightbox-overlay.open { display: flex; }
+    .lightbox-overlay img {
+      max-width: 100%;
+      max-height: 100%;
+      border-radius: 12px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    }
+    #sky {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100vh;
+      height: 100lvh; /* tall viewport: no stretch when the mobile address bar hides */
+      z-index: -1;
+      pointer-events: none;
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "EggSPEED",
+    "operatingSystem": "ANDROID",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "EggSPEED odczytuje i programuje sterownik Bafang BBS01/BBS02/BBSHD przez USB lub Bluetooth - na fabrycznym firmware OEM lub BBS-FW. Kokpit na żywo, pełna konfiguracja, ustawianie poziomów wspomagania. Sprawdzany zapis, bez wgrywania firmware.",
+    "url": "https://spotrobotics.app/eggspeed/",
+    "image": "https://spotrobotics.app/icons/eggspeed.png",
+    "installUrl": "https://play.google.com/store/apps/details?id=app.spotrobotics.eggspeed",
+    "softwareVersion": "0.3.63",
+    "fileSize": "2MB",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "author": { "@type": "Person", "name": "Tomasz Pieczara" },
+    "publisher": { "@type": "Organization", "name": "Spot Robotics", "url": "https://spotrobotics.app" }
+  }
+  </script>
+<!-- i18n:head --><link rel="alternate" hreflang="en" href="https://spotrobotics.app/eggspeed/"><link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/eggspeed/"><link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/eggspeed/"><link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/eggspeed/"><link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/eggspeed/"><link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/eggspeed/"><style>.lang-ctl{position:fixed;top:calc(1rem + 48px);right:1rem;z-index:50;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}.lang-ctl summary{list-style:none;width:40px;height:40px;border-radius:50%;box-sizing:border-box;border:1px solid rgba(255,228,160,0.25);background:rgba(10,11,16,0.6);color:rgba(255,228,160,0.85);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:12px;font-weight:700;letter-spacing:.04em;transition:border-color .15s ease,background .15s ease}.lang-ctl summary::-webkit-details-marker{display:none}.lang-ctl summary:hover,.lang-ctl[open] summary{border-color:rgba(255,228,160,0.6);background:rgba(255,228,160,0.08)}.lang-ctl .lang-list{position:absolute;top:46px;right:0;display:flex;flex-direction:column;min-width:120px;padding:6px;border-radius:12px;background:rgba(10,11,16,0.92);border:1px solid rgba(255,228,160,0.25)}.lang-ctl .lang-list a{display:flex;justify-content:space-between;gap:12px;padding:8px 10px;border-radius:8px;color:#e8e8e8;text-decoration:none;font-size:14px}.lang-ctl .lang-list a b{color:rgba(255,228,160,0.85);font-size:12px}.lang-ctl .lang-list a:hover,.lang-ctl .lang-list a[aria-current]{background:rgba(255,228,160,0.08)}</style><!-- /i18n:head -->
+</head>
+<body>
+<!-- i18n:switch --><details class="lang-ctl"><summary aria-label="Language">PL</summary><div class="lang-list"><a href="/eggspeed/" hreflang="en" lang="en">English <b>EN</b></a><a href="/de/eggspeed/" hreflang="de" lang="de">Deutsch <b>DE</b></a><a href="/fr/eggspeed/" hreflang="fr" lang="fr">Français <b>FR</b></a><a href="/pl/eggspeed/" hreflang="pl" lang="pl" aria-current="true">Polski <b>PL</b></a><a href="/no/eggspeed/" hreflang="no" lang="no">Norsk <b>NO</b></a></div></details><!-- /i18n:switch -->
+  <canvas id="sky" aria-hidden="true"></canvas>
+
+  <div class="topbar">
+    <a href="/pl/">&larr; spotrobotics.app</a>
+    <a href="https://github.com/moskil2/EggSPEED" target="_blank" rel="noopener">GitHub</a>
+    <a href="/pl/eggspeed/privacy.html">Prywatność</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div>
+      <div class="hero-brand">
+        <img src="/icons/eggspeed.png" alt="Ikona EggSPEED">
+        <span>EggSPEED</span>
+      </div>
+      <div class="eyebrow">Narzędzie do programowania Bafang BBS01 / BBS02 / BBSHD - OEM i BBS-FW</div>
+      <h1>Programuj sterownik Bafang prosto z telefonu.</h1>
+      <p class="lede">Połącz się zwykłym kablem USB albo bezprzewodowo przez Bluetooth i zobacz wszystko, co sterownik ma zapisane - kokpit na żywo, pełna konfiguracja i ustawianie poziomów wspomagania dla BBS01/BBS02/BBSHD, na fabrycznym firmware OEM lub BBS-FW. Bez komputera.</p>
+      <div class="hero-ctas">
+        <a class="btn-primary" href="https://play.google.com/store/apps/details?id=app.spotrobotics.eggspeed" target="_blank" rel="noopener">Pobierz z Google Play &rarr;</a>
+        <a class="btn-github" href="https://github.com/moskil2/EggSPEED" target="_blank" rel="noopener">Zobacz na GitHubie &rarr;</a>
+        <span class="badge-warn">Wymaga USB OTG lub modułu Bluetooth</span>
+      </div>
+      <div class="hero-foot mono">
+        <span>~3 MB</span>
+        <span>&middot;</span>
+        <span>Android 8.0+</span>
+        <span>&middot;</span>
+        <span>Bezpłatnie w Google Play</span>
+      </div>
+      <p style="margin-top:16px; color:#6f6a5f; font-size:13.5px; max-width:520px;">Przesiadasz się z aplikacji Speeed dla Bafang? EggSPEED obsługuje te same sterowniki BBS01/BBS02/BBSHD w nowoczesnym, stale rozwijanym interfejsie.</p>
+    </div>
+    <div class="hero-shot">
+      <div class="bezel">
+        <img src="/eggspeed/img/01_Cockpit.jpg" alt="Kokpit EggSPEED na żywo z prędkością, mocą i zasięgiem" width="280" height="607">
+      </div>
+    </div>
+  </section>
+
+  <!-- DEMO VIDEO -->
+  <section class="wrap" style="padding-top:0; padding-bottom:64px;">
+    <div style="max-width:800px; margin:0 auto;">
+      <div style="position:relative; padding-bottom:56.25%; height:0; border-radius:24px; overflow:hidden; box-shadow:0 30px 80px rgba(0,0,0,0.55);">
+        <iframe src="https://www.youtube.com/embed/36AEC7tj11M" title="Film demonstracyjny EggSPEED" style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="wrap" style="padding-top:64px; padding-bottom:96px;">
+    <div class="section-head">
+      <div class="eyebrow">Jak to działa</div>
+      <h2>Podłącz. Odczytaj wszystko. Jedź.</h2>
+    </div>
+    <div class="steps">
+      <div class="step-card">
+        <div class="step-head"><span class="step-num">1</span><span class="title">Połącz</span></div>
+        <div class="step-shot"><img src="/eggspeed/img/30_ConnectBluetooth.jpg" alt="Ekran Połącz z wybranym Bluetooth" width="480" height="1040"></div>
+        <p>Podłącz kabel programujący Bafang między telefonem a sterownikiem przez USB OTG albo wybierz sparowany moduł Bluetooth w Ustawieniach - EggSPEED sam rozpozna sterownik.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-head"><span class="step-num">2</span><span class="title">Odczytaj wszystko</span></div>
+        <div class="step-shot"><img src="/eggspeed/img/10_AllInView.jpg" alt="Ekran „Wszystko w jednym widoku” z listą parametrów" width="480" height="1040"></div>
+        <p>Wszystkie parametry Basic, Pedal i Throttle oraz wszystkie 10 poziomów wspomagania w jednym przewijanym widoku tylko do odczytu - całość skopiujesz jednym dotknięciem.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-head"><span class="step-num">3</span><span class="title">Jedź z danymi na żywo</span></div>
+        <div class="step-shot"><img src="/eggspeed/img/01_Cockpit.jpg" alt="Ekran kokpitu na żywo podczas jazdy" width="480" height="1040"></div>
+        <p>Prędkość, moc, prąd, napięcie, dystans, średnia prędkość, zużycie Wh/km i szacowany zasięg - aktualizowane na żywo w trakcie jazdy.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <!-- FULL CONFIG HIGHLIGHT -->
+  <section class="anydevice">
+    <div>
+      <div class="eyebrow">Pełna konfiguracja</div>
+      <h2>Każdy parametr dokładnie tak, jak ma go sterownik.</h2>
+      <p>Basic (ochrona baterii, limit prądu, ustawienia koła i licznika), Pedal Assist (typ czujnika, prąd startowy, łagodny start, tryb pracy) i Throttle (napięcie początkowe/końcowe, tryb prędkości lub prądu) - wszystko odczytane prosto ze sterownika i pokazane tak, jak zrobiłby to fabryczny wyświetlacz.</p>
+      <p><strong>Odczyt i zapis, bezpiecznie</strong> - zmień dowolną wartość i wyślij ją do sterownika; najpierw zostaje ograniczona do bezpiecznego zakresu, a potwierdzenie sterownika jest odczytywane i pokazywane.</p>
+    </div>
+    <div class="shot-row">
+      <img src="/eggspeed/img/03_BafangBasic.jpg" alt="Ekran konfiguracji Bafang Basic">
+      <img src="/eggspeed/img/04_BafangPedal.jpg" alt="Ekran konfiguracji Bafang Pedal Assist (PAS)">
+      <img src="/eggspeed/img/05_BafangThrottle.jpg" alt="Ekran konfiguracji Bafang Throttle">
+    </div>
+  </section>
+
+  <!-- BBS-FW HIGHLIGHT -->
+  <!-- align-items:flex-start override: this section has 4 screenshots (vs. 1-3 elsewhere), so the
+       shot-row wraps to two rows and gets noticeably taller than the text column - with the shared
+       .anydevice center-alignment that pushed the text down to look vertically misaligned against
+       the images, which start at the top. -->
+  <section class="anydevice" style="align-items: flex-start;">
+    <div>
+      <div class="eyebrow">Obsługa BBS-FW</div>
+      <h2>Pełna konfiguracja BBS-FW, tuż obok OEM.</h2>
+      <p>Przełącz na <strong>BBS-FW</strong> w Ustawieniach i konfiguruj wszystko na osobnych ekranach, które odwzorowują nazwy pól i układ oficjalnego narzędzia BBS-FW dla Windows - Global settings, Throttle, Pedal Assist, Features, Speed Sensor i Shift Sensor, wszystko na jednym ekranie System.</p>
+      <p>Poziomy wspomagania mają własny ekran - strony Standard i Sport, z Type (PAS/Throttle/Cruise), Variant oraz limitami prądu, kadencji i prędkości dla wszystkich 10 poziomów - każdy parametr ma krótki opis na wyciągnięcie palca.</p>
+      <p>Normal/Sport działa według ustawienia <strong>Operation Mode Toggle</strong> w firmware: przycisk Sport w kokpicie, przycisk światła albo hamulec wciśnięty podczas łączenia - przyciski kokpitu EggSPEED działają dokładnie tak, jak oczekuje firmware. Gdy przycisk Sport nie jest potrzebny, możesz go ukryć, a małe N albo S obok prędkości pokaże aktualny tryb.</p>
+      <p>Po zapisie EggSPEED wypisuje zmienione ustawienia, które BBS-FW stosuje dopiero po ponownym włączeniu zasilania - wiesz wtedy, kiedy wyłączyć i włączyć rower.</p>
+    </div>
+    <div class="shot-row">
+      <img src="/eggspeed/img/14_BbsFwSettings.jpg" alt="Ekran Ustawień z przełącznikiem firmware OEM Bafang / BBS-FW">
+      <img src="/eggspeed/img/15_BbsFwSystemGlobal.jpg" alt="Ekran System BBS-FW, ustawienia Global i Throttle">
+      <img src="/eggspeed/img/16_BbsFwSystemFeatures.jpg" alt="Ekran System BBS-FW, ustawienia Features i Speed Sensor">
+      <img src="/eggspeed/img/32_BbsFwAssistLevelsInfo.jpg" alt="Ekran poziomów wspomagania BBS-FW z opisami parametrów, Operation Mode Toggle i opcją ukrycia przycisku Normal/Sport">
+      <img src="/eggspeed/img/22_BbsFwCockpit.jpg" alt="Kokpit z kafelką temperatury Tc dla bbs-fw">
+      <img src="/eggspeed/img/23_TemperatureControl.jpg" alt="Ekran kontroli temperatury BBS-FW">
+    </div>
+  </section>
+
+  <!-- TEMPERATURE CONTROL HIGHLIGHT -->
+  <section class="anydevice">
+    <div>
+      <div class="eyebrow">Kontrola temperatury &middot; BBS-FW</div>
+      <h2>Pilnuj temperatury sterownika.</h2>
+      <p>Na <strong>BBS-FW</strong> opcjonalna kafelka Tc w kokpicie pokazuje temperaturę sterownika na żywo. Ustaw własne progi <strong>ostrzeżenia</strong> i <strong>alarmu</strong> - po przekroczeniu kafelka zmienia kolor i miga, a przy alarmie może raz zapiszczeć.</p>
+      <p>Ustawienie Temperature Sensor z firmware jest pokazane obok, tylko do odczytu - decyduje ono tylko o tym, jak sam firmware reaguje na przegrzanie (np. ogranicza moc), a nie o tym, co pokazuje aplikacja.</p>
+    </div>
+    <div class="shot-row">
+      <img src="/eggspeed/img/22_BbsFwCockpit.jpg" alt="Kokpit z kafelką temperatury Tc dla bbs-fw">
+      <img src="/eggspeed/img/23_TemperatureControl.jpg" alt="Ekran kontroli temperatury BBS-FW z progami ostrzeżenia i alarmu">
+    </div>
+  </section>
+
+  <!-- ASSIST LEVELS HIGHLIGHT -->
+  <section class="anydevice">
+    <div>
+      <div class="eyebrow">Poziomy wspomagania</div>
+      <h2>Ustaw każdy poziom i zobacz charakter swojej jazdy.</h2>
+      <p>Limit prędkości i prądu dla każdego z 10 poziomów wspomagania (0-9) oraz wykresy rozkładu mocy i prędkości na wszystkich poziomach, w jednym widoku.</p>
+      <p>Zobacz dokładnie, o ile mocniejszy jest poziom 7 od poziomu 3 - zanim na nim pojedziesz.</p>
+    </div>
+    <div class="shot-row">
+      <img src="/eggspeed/img/06_AssistLevels.jpg" alt="Ekran poziomów wspomagania z wykresami rozkładu mocy i prędkości">
+    </div>
+  </section>
+
+  <!-- STREET/RACE HIGHLIGHT -->
+  <section class="anydevice">
+    <div>
+      <div class="eyebrow">STREET/RACE &middot; Normal/Sport</div>
+      <h2>Dwa rowery w jednym, jednym dotknięciem.</h2>
+      <p><strong>STREET/RACE</strong> daje sterownikom Bafang OEM drugi, niezależny zestaw 10 poziomów wspomagania - przełączasz STREET i RACE prosto z kokpitu, a EggSPEED przeprogramowuje sterownik w locie, nawet w trakcie jazdy.</p>
+      <p>To odpowiednik Road/Offroad z EggRidera: łagodny, legalny profil STREET na co dzień i profil RACE z pełną mocą, gotowy, kiedy go potrzebujesz - bez ponownego łączenia i bez menu.</p>
+      <p>Oba firmware mają własną wersję tej funkcji. W <strong>BBS-FW</strong> jest wbudowana jako <strong>Normal/Sport</strong>: dwa niezależne zestawy 10 poziomów wspomagania, edytowane na ekranie poziomów wspomagania i przełączane tak, jak ustawiono Operation Mode Toggle w firmware (przycisk Sport, przycisk światła albo hamulec przy łączeniu) - przy przełączaniu nic nie jest przeprogramowywane.</p>
+    </div>
+    <div class="shot-row">
+      <img src="/eggspeed/img/24_StreetRaceLevels.jpg" alt="Ekran konfiguracji poziomów wspomagania STREET/RACE">
+      <img src="/eggspeed/img/25_CockpitStreet.jpg" alt="Kokpit z przyciskiem przełączania STREET/RACE">
+    </div>
+  </section>
+
+  <!-- MONITORING HIGHLIGHT -->
+  <section class="anydevice">
+    <div>
+      <div class="eyebrow">Monitoring</div>
+      <h2>Patrz, jak zmienia się każda wartość, na żywo.</h2>
+      <p>Moc, prąd, napięcie i prędkość na wykresach na żywo - próbkowane co 0,5 s, każdy wykres włączany osobno, ze wspólnym oknem czasu dla wszystkich: 2, 5, 10, 30 lub 60 minut.</p>
+      <p>Przeciągnij palcem po wykresie, żeby cofnąć się i odczytać dokładną wartość (i jak dawno to było) w dowolnym punkcie wybranego okna.</p>
+    </div>
+    <div class="shot-row">
+      <img src="/eggspeed/img/18_Monitoring.jpg" alt="Ekran Monitoring z wykresami mocy, prądu, napięcia i prędkości">
+    </div>
+  </section>
+
+  <!-- BATTERY HIGHLIGHT -->
+  <section class="anydevice">
+    <div>
+      <div class="eyebrow">Bateria i zasięg</div>
+      <h2>Zasięg, któremu naprawdę możesz ufać.</h2>
+      <p>Podaj raz liczbę ogniw i pojemność, a szacowany zasięg w kokpicie połączy historię Twojej jazdy z aktualnym stylem jazdy - im dłuższa trasa, tym bardziej dopasowuje się do tego, jak jedziesz teraz.</p>
+    </div>
+    <div class="shot-row">
+      <img src="/eggspeed/img/07_Battery.jpg" alt="Ekran Bateria z liczbą ogniw i pojemnością">
+    </div>
+  </section>
+
+  <!-- CALIBRATION HIGHLIGHT -->
+  <section class="anydevice">
+    <div>
+      <div class="eyebrow">Kalibracja</div>
+      <h2>Trzy pokrętła, dokładnie tam, gdzie sterownik się myli.</h2>
+      <p><strong>Current Calibration Factor</strong> koryguje odczyt prądu (i mocy) w sterownikach z modyfikacją bocznika - w sieci często nazywanych sterownikami AmpMax - w których surowa wartość podawana przez sterownik jest zaniżona albo zawyżona.</p>
+      <p><strong>Voltage Correction</strong> wyrównuje sterownik, który mierzy napięcie baterii trochę za wysoko albo za nisko, żeby SAG, zasięg i procent baterii były dokładne.</p>
+      <p><strong>Speed Calibration</strong> poprawia lekko niedokładny rozmiar koła, bez zmiany ustawienia średnicy koła w sterowniku.</p>
+      <p>Wszystkie trzy działają tylko w aplikacji - w samym sterowniku nic się nie zmienia, a każda ma własny rozwijany podgląd na żywo.</p>
+    </div>
+    <div class="shot-row">
+      <img src="/eggspeed/img/09_Calibration.jpg" alt="Ekran kalibracji z korekcją prądu, napięcia i prędkości">
+    </div>
+  </section>
+
+  <!-- SAG MEASUREMENT HIGHLIGHT -->
+  <section class="anydevice">
+    <div>
+      <div class="eyebrow">Pomiar SAG</div>
+      <h2>Poznaj prawdziwy stan swojej baterii.</h2>
+      <p><strong>Szacowany SAG</strong> jest liczony stale w tle na podstawie normalnej jazdy - bez żadnych ustawień.</p>
+      <p>Dla kontrolowanej, porównywalnej wartości uruchom prowadzony <strong>pomiar SAG</strong>: 2 min spoczynku, 30 s pełnego obciążenia, znów 2 min spoczynku - EggSPEED mierzy czas i liczy, a potem ocenia jakość baterii według czytelnej legendy.</p>
+    </div>
+    <div class="shot-row">
+      <img src="/eggspeed/img/20_SAG.jpg" alt="Ekran pomiaru SAG baterii z legendą jakości i prowadzoną procedurą">
+    </div>
+  </section>
+
+  <!-- PROTECT (ANTI-COP) HIGHLIGHT -->
+  <section class="anydevice">
+    <div>
+      <div class="eyebrow">Bezpieczeństwo</div>
+      <h2>Zablokuj tak, żeby nikt nie zauważył.</h2>
+      <p><strong>PROTECT (Anti-COP)</strong> to przycisk awaryjny w kokpicie: jedno dotknięcie po cichu przełącza silnik na poziom wspomagania 0, a ekran dalej zachowuje się normalnie i udaje, że poziom nadal można zmieniać.</p>
+      <p>Odblokowanie wymaga otwarcia osobnej zakładki PROTECT i naciśnięcia przycisku odblokowania - opcjonalnie za własnym PIN-em, więc zakładka pozostaje zablokowana do wpisania właściwego kodu. Ikona SAFE w kokpicie to jedyny znak, że blokada jest aktywna.</p>
+    </div>
+    <div class="shot-row">
+      <img src="/eggspeed/img/21_Protect.jpg" alt="Ekran PROTECT z włącznikiem Anti-COP i blokadą PIN">
+    </div>
+  </section>
+
+  <!-- CONTROLLER ERROR DETECTION HIGHLIGHT -->
+  <section class="anydevice">
+    <div>
+      <div class="eyebrow">Diagnostyka</div>
+      <h2>Dowiesz się od razu, gdy coś jest nie tak.</h2>
+      <p><strong>Wykrywanie błędów sterownika</strong> odczytuje rejestr stanu Bafang jako nazwane kody usterek i pokazuje żółty trójkąt ostrzegawczy prosto w kokpicie, gdy tylko pojawi się błąd sterownika Bafang - dotknij go, żeby przejść do Diagnostyki z pełnym kodem i opisem.</p>
+      <p>Opcjonalne i domyślnie wyłączone - włączysz je w Ustawieniach, kiedy zechcesz.</p>
+      <p>Widzisz nietypowe odczyty? Opcjonalny <strong>rejestr komunikacji</strong> zapisuje kilka minut wymiany danych ze sterownikiem do pliku, który możesz wysłać e-mailem - tylko dane techniczne, bez GPS i bez danych osobowych.</p>
+    </div>
+    <div class="shot-row">
+      <img src="/eggspeed/img/25_CockpitStreet.jpg" alt="Kokpit z aktywną ikoną ostrzeżenia o błędzie sterownika">
+      <img src="/eggspeed/img/26_DiagnosticsErrors.jpg" alt="Ekran Diagnostyki z aktywnym kodem błędu sterownika i opisem">
+    </div>
+  </section>
+
+  <!-- PROFILES & SETTINGS HIGHLIGHT -->
+  <section class="anydevice">
+    <div>
+      <div class="eyebrow">Profile i ustawienia</div>
+      <h2>Zapisz swoje ustawienia i zabierz je wszędzie.</h2>
+      <p>Zapisz bieżącą konfigurację jako nazwany profil, wyeksportuj ją do pliku <strong>.ini</strong> albo zaimportuj z powrotem.</p>
+      <p>Przełączaj km/h i mph, wpisz prawdziwy stan licznika albo wymuś skrajne wartości trybem testowym, żeby sprawdzić układ kokpitu na swoim telefonie.</p>
+    </div>
+    <div class="shot-row">
+      <img src="/eggspeed/img/11_Profiles.jpg" alt="Ekran Profile z zapisem, importem i eksportem">
+      <img src="/eggspeed/img/31_SettingsConnection.jpg" alt="Ekran Ustawień z firmware sterownika, typem połączenia i jednostkami">
+    </div>
+  </section>
+
+  <!-- COCKPIT STYLES HIGHLIGHT -->
+  <section class="anydevice anydevice--wide">
+    <div>
+      <div class="eyebrow">Style kokpitu</div>
+      <h2>Wybierz kokpit, który pasuje do Twojej jazdy.</h2>
+      <p>Siedem wyglądów do wyboru w Ustawieniach &gt; Kokpit: domyślny kokpit cyfrowy i sześć stylów analogowych - Sport Classic, Modern Performance, Technical Instrument, Modern Minimalist, Dark Cockpit i Outdoor. Te same przyciski i odczyty w każdym stylu.</p>
+      <p>Wskazówki poruszają się płynnie i przy każdym otwarciu kokpitu przejeżdżają całą skalę. Modern Minimalist, Dark Cockpit i Outdoor dodają wykres prędkości bieżącej trasy, ze średnią z trasy jako linią przerywaną.</p>
+    </div>
+    <div class="shot-row shot-row--seven">
+      <img src="/eggspeed/img/01_Cockpit.jpg" alt="Domyślny cyfrowy styl kokpitu">
+      <img src="/eggspeed/img/33_CockpitSportClassic.jpg" alt="Styl kokpitu Sport Classic z chromowanymi zegarami analogowymi">
+      <img src="/eggspeed/img/34_CockpitModernPerformance.jpg" alt="Styl kokpitu Modern Performance ze świecącym łukiem prędkości">
+      <img src="/eggspeed/img/35_CockpitTechnicalInstrument.jpg" alt="Styl kokpitu Technical Instrument z zegarami w pomarańczowych obręczach">
+      <img src="/eggspeed/img/36_CockpitModernMinimalist.jpg" alt="Styl kokpitu Modern Minimalist z wykresem prędkości trasy">
+      <img src="/eggspeed/img/37_CockpitDarkCockpit.jpg" alt="Styl Dark Cockpit z chromowanym zegarem i wykresem prędkości trasy">
+      <img src="/eggspeed/img/38_CockpitOutdoor.jpg" alt="Styl kokpitu Outdoor z leśnym tłem i wykresem prędkości trasy">
+    </div>
+  </section>
+
+  <!-- THEME & AOD HIGHLIGHT -->
+  <section class="anydevice">
+    <div>
+      <div class="eyebrow">Wyświetlanie i ekran blokady</div>
+      <h2>Jedź po swojemu, w dzień i w nocy.</h2>
+      <p>Ciemny lub jasny motyw oraz tryb Wysoki kontrast, który rozjaśnia blady tekst dla czytelności w pełnym słońcu - do przełączenia w każdej chwili w Ustawieniach.</p>
+      <p>Opcjonalnie prędkość, moc i poziom wspomagania prosto na ekranie blokady/AOD, żeby telefon mógł naprawdę uśpić ekran, zamiast świecić przez całą jazdę - realna oszczędność baterii.</p>
+    </div>
+    <div class="shot-row shot-row--match-height">
+      <img src="/eggspeed/img/19_LightTheme.jpg" alt="Kokpit EggSPEED w jasnym motywie">
+      <img src="/eggspeed/img/29_AOD.jpg" alt="Ekran blokady AOD z prędkością, mocą i poziomem wspomagania">
+    </div>
+  </section>
+
+  <!-- WIRELESS CONNECTION HIGHLIGHT -->
+  <section class="anydevice">
+    <div>
+      <div class="eyebrow">Połączenie bezprzewodowe</div>
+      <h2>Bez kabla między telefonem a rowerem.</h2>
+      <p>Oprócz kabla programującego USB OTG EggSPEED może łączyć się ze sterownikiem przez <strong>Bluetooth</strong> - za pomocą dodatkowego modułu Bluetooth podłączonego w miejsce wyświetlacza. Sparuj go raz w ustawieniach Bluetooth telefonu, wybierz w Ustawieniach &gt; Połączenie i wszystko działa bezprzewodowo - kokpit, konfiguracja i zapis. Przetestowane na Bafang OEM i BBS-FW.</p>
+      <p>Potrzebujesz modułu? Instrukcja budowy jest na <a href="https://github.com/moskil2/UART-BT-Konwerter" target="_blank" rel="noopener" class="link-muted" style="font-size:17px;">GitHubie</a>.</p>
+    </div>
+    <div class="shot-row">
+      <img src="/eggspeed/img/31_SettingsConnection.jpg" alt="Ustawienia, Połączenie: kabel USB OTG lub Bluetooth">
+      <img src="/eggspeed/img/30_ConnectBluetooth.jpg" alt="Ekran Połącz z wybranym Bluetooth">
+    </div>
+  </section>
+
+  <!-- BLUETOOTH REMOTE HIGHLIGHT -->
+  <section class="anydevice">
+    <div>
+      <div class="eyebrow">Pilot Bluetooth</div>
+      <h2>Steruj bez puszczania kierownicy.</h2>
+      <p><strong>Przypisz pilot multimedialny Bluetooth</strong> do poziomu wspomagania, światła, PROTECT albo STREET/RACE - Vol+ i Vol- wykonują funkcję, którą im ustawisz, prosto z kierownicy. Działa tak samo na Bafang OEM i BBS-FW.</p>
+      <p>Odtwórz/Pauza, Następny i Poprzedni nie dają się przypisać - Android zawsze przekazuje je do aplikacji muzycznej telefonu, to ograniczenie systemu, na które EggSPEED nie ma wpływu.</p>
+    </div>
+    <div class="shot-row">
+      <img src="/eggspeed/img/27_BluetoothButton.jpg" alt="Ekran konfiguracji przycisku Bluetooth z przypisaniem Vol+/Vol-">
+      <img src="/eggspeed/img/28_BluetoothRemote.png" alt="Pilot Bluetooth na kierownicę">
+    </div>
+  </section>
+
+  <!-- LANGUAGE & TRANSPARENCY HIGHLIGHT -->
+  <section class="anydevice">
+    <div>
+      <div class="eyebrow">Przejrzyście od początku</div>
+      <h2>Mówi w Twoim języku i o wszystkim innym też mówi otwarcie.</h2>
+      <p>19 wbudowanych języków - polski, angielski, niemiecki, francuski, hiszpański, portugalski, włoski, niderlandzki, szwedzki, czeski, słowacki, duński, rosyjski, norweski, estoński, łotewski, japoński, fiński i węgierski - do zmiany w każdej chwili z menu.</p>
+      <p>Zakładka O aplikacji zawsze zawiera aktualną politykę prywatności i warunki korzystania oraz bezpośredni link do zgłoszenia błędu albo pomysłu na funkcję - każdą wiadomość czytam osobiście.</p>
+    </div>
+    <div class="shot-row">
+      <img src="/eggspeed/img/12_Language.jpg" alt="Ekran wyboru języka">
+      <img src="/eggspeed/img/13_About.jpg" alt="Ekran O aplikacji z polityką prywatności, warunkami korzystania i kontaktem">
+    </div>
+  </section>
+
+  <!-- ALL FEATURES AT A GLANCE (moved to bottom) -->
+  <section class="features-section">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Funkcje</div>
+        <h2>Wszystko, co pokazuje fabryczny wyświetlacz - i więcej.</h2>
+      </div>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <span class="feature-glyph mono">km/h</span>
+          <div class="title">Kokpit na żywo</div>
+          <p>Prędkość, moc, prąd, napięcie, dystans, trip, średnia prędkość, zużycie Wh/km i szacowany zasięg, wszystko na jednym ekranie.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">FW</span>
+          <div class="title">Obsługa OEM i BBS-FW</div>
+          <p>Przełączaj w Ustawieniach między fabrycznym firmware Bafang OEM a <a href="https://github.com/danielnilsson9/bbs-fw" target="_blank" rel="noopener" class="link-muted" style="font-size:14px;">BBS-FW</a> - EggSPEED natywnie obsługuje oba protokoły konfiguracji.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">USB</span>
+          <div class="title">USB OTG lub Bluetooth</div>
+          <p>Jeden kabel do złącza programowania Bafang albo <a href="https://github.com/moskil2/UART-BT-Konwerter" target="_blank" rel="noopener" class="link-muted" style="font-size:14px;">moduł Bluetooth do samodzielnej budowy</a> podłączony w miejsce wyświetlacza - w pełni bezprzewodowo, przetestowane na Bafang OEM i BBS-FW.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">CFG</span>
+          <div class="title">Pełny odczyt konfiguracji</div>
+          <p>Basic, Pedal Assist (PAS) i Throttle - każdy parametr odczytany prosto ze sterownika, we własnych jednostkach.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">0-9</span>
+          <div class="title">Poziomy wspomagania i wykresy</div>
+          <p>Limity prędkości i prądu dla wszystkich 10 poziomów wspomagania, z wykresami rozkładu mocy i prędkości w całym zakresie.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">%</span>
+          <div class="title">Bateria i zasięg</div>
+          <p>Podaj raz liczbę ogniw i pojemność - kokpit łączy historię jazdy i aktualny styl w szacowany zasięg na żywo.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">&plusmn;</span>
+          <div class="title">Kalibracja</div>
+          <p>Korekcja prądu, napięcia i prędkości w aplikacji dla sterowników z modyfikacją bocznika (AmpMax) albo lekko niedokładnego rozmiaru koła - w samym sterowniku nic się nie zmienia.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">.ini</span>
+          <div class="title">Profile</div>
+          <p>Zapisz bieżące ustawienia, wyeksportuj je do pliku .ini albo zaimportuj na innym urządzeniu.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">&check;</span>
+          <div class="title">Sprawdzany zapis</div>
+          <p>Każda wartość jest ograniczana do bezpiecznego zakresu przed wysłaniem, a kod potwierdzenia sterownika jest odczytywany i pokazywany - nigdy cichy błąd. Po każdym zapisie konfiguracja jest odczytywana ponownie i porównywana z tym, co wysłano. Nigdy wgrywania firmware.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">LOCK</span>
+          <div class="title">PROTECT (Anti-COP)</div>
+          <p>Jedno dotknięcie po cichu blokuje wspomaganie na 0, a kokpit dalej wygląda i reaguje normalnie - odblokowanie tylko z ekranu chronionego PIN-em. Na pierwszy rzut oka bez zmian.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">GPS</span>
+          <div class="title">Prędkość z GPS</div>
+          <p>Opcjonalna prędkość z GPS telefonu pokazana w kokpicie obok odczytu sterownika, do niezależnego porównania.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">~V</span>
+          <div class="title">Pomiar SAG</div>
+          <p>Szacowany SAG liczony biernie podczas normalnej jazdy oraz prowadzony pomiar SAG dla kontrolowanej, porównywalnej oceny jakości baterii.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">/s</span>
+          <div class="title">Wykresy monitoringu na żywo</div>
+          <p>Moc, prąd, napięcie i prędkość w czasie, próbkowane dwa razy na sekundę, z oknem od 2 do 60 minut - przeciągnij, żeby odczytać dowolny punkt.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">TRIP</span>
+          <div class="title">Historia tras</div>
+          <p>Każda zresetowana trasa jest zapisywana z dystansem, czasem, średnią i maksymalną prędkością, energią, mocą, baterią i zasięgiem. Usuwanie w każdej chwili; opcjonalny automatyczny reset przy połączeniu albo po przerwie w jeździe.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">S/R</span>
+          <div class="title">Dwa profile: STREET/RACE i Normal/Sport</div>
+          <p>Dwa pełne zestawy 10 poziomów wspomagania, przełączane w locie prosto z kokpitu - odpowiednik Road/Offroad z EggRidera. STREET/RACE na Bafang OEM (przełączenie przeprogramowuje sterownik), Normal/Sport na BBS-FW (wbudowane w firmware, przełączane według ustawienia Operation Mode Toggle).</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">ERR</span>
+          <div class="title">Wykrywanie błędów sterownika</div>
+          <p>Opcjonalne monitorowanie usterek sprzętu na żywo - żółty trójkąt ostrzegawczy pojawia się w kokpicie, gdy tylko wystąpi błąd sterownika Bafang; dotknij go, żeby od razu zobaczyć pełny kod błędu z opisem.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">BT</span>
+          <div class="title">Pilot Bluetooth</div>
+          <p>Przypisz Vol+/Vol- pilota Bluetooth na kierownicę do poziomu wspomagania, światła, PROTECT albo STREET/RACE - steruj jazdą bez dotykania telefonu.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-glyph mono">&deg;C</span>
+          <div class="title">Temperatura sterownika (BBS-FW)</div>
+          <p>Opcjonalna kafelka Tc w kokpicie z własnymi progami ostrzeżenia i alarmu - kolor, miganie i opcjonalny dźwięk, gdy sterownik się grzeje.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRIVACY -->
+  <section class="privacy-wrap">
+    <div class="privacy">
+      <div>
+        <span class="privacy-badge">&check;</span>
+        <h2>Nic nie opuszcza Twojego telefonu.</h2>
+        <p>EggSPEED łączy się ze sterownikiem tylko kablem USB albo Twoim własnym modułem Bluetooth - aplikacja w ogóle nie prosi o dostęp do internetu. Potwierdza to jej polityka prywatności.</p>
+      </div>
+      <div class="privacy-points">
+        <div><span class="check">&check;</span><span class="label">Brak prośby o dostęp do internetu</span></div>
+        <div><span class="check">&check;</span><span class="label">Bez konta, bez analityki, bez śledzenia</span></div>
+        <div><span class="check">&check;</span><span class="label">Nigdy wgrywania firmware</span></div>
+        <div><span class="check">&check;</span><span class="label">Profile i ustawienia zostają na Twoim urządzeniu</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTNOTE -->
+  <section class="footnote-wrap">
+    <div class="footnote-pill">
+      <span>19 języków: PL &middot; EN &middot; DE &middot; FR &middot; ES &middot; PT &middot; IT &middot; NL &middot; SV &middot; CS &middot; SK &middot; DA &middot; RU &middot; NO &middot; ET &middot; LV &middot; JA &middot; FI &middot; HU</span>
+      <span class="sep">|</span>
+      <span>Android 8.0+</span>
+      <span class="sep">|</span>
+      <span>~3 MB</span>
+      <span class="sep">|</span>
+      <span>USB OTG + kabel programujący Bafang albo moduł Bluetooth</span>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final-cta-wrap">
+    <div class="final-cta">
+      <div>
+        <h2>Pobierz EggSPEED.</h2>
+        <p>Bezpłatne narzędzie do konfiguracji Bafang BBS01/BBS02/BBSHD. Już dostępne w Google Play.</p>
+        <div class="hero-ctas">
+          <a class="btn-outline" href="https://play.google.com/store/apps/details?id=app.spotrobotics.eggspeed" target="_blank" rel="noopener">Pobierz z Google Play &rarr;</a>
+          <a class="btn-github" href="https://github.com/moskil2/EggSPEED" target="_blank" rel="noopener">Zobacz na GitHubie &rarr;</a>
+        </div>
+      </div>
+      <div class="final-cta-qr">
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=260x260&margin=0&color=16-17-28&data=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dapp.spotrobotics.eggspeed" alt="Kod QR do strony aplikacji w Google Play" width="150" height="150">
+        <div class="caption mono">Zeskanuj, żeby otworzyć Google Play</div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <a href="/pl/">spotrobotics.app</a> &middot; <a href="/pl/eggspeed/privacy.html">Polityka prywatności</a> &middot; &copy; 2026 Spot Robotics - Tomasz Pieczara
+  </footer>
+
+  <div class="lightbox-overlay" id="lightbox">
+    <img id="lightbox-img" src="" alt="">
+  </div>
+  <script>
+    (function () {
+      var overlay = document.getElementById('lightbox');
+      var overlayImg = document.getElementById('lightbox-img');
+      document.querySelectorAll('img[src^="img/"]').forEach(function (img) {
+        img.classList.add('zoomable');
+        img.addEventListener('click', function () {
+          overlayImg.src = img.src;
+          overlayImg.alt = img.alt;
+          overlay.classList.add('open');
+        });
+      });
+      overlay.addEventListener('click', function () {
+        overlay.classList.remove('open');
+        overlayImg.src = '';
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') {
+          overlay.classList.remove('open');
+          overlayImg.src = '';
+        }
+      });
+    })();
+  </script>
+
+  <script src="/sky.js"></script>
+  <script src="/site.js"></script>
+</body>
+</html>

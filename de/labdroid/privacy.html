@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LabDroid - Datenschutzerklärung | Spot Robotics von Tomasz Pieczara</title>
+  <meta name="description" content="Datenschutzerklärung für LabDroid - eine Android-App für Sensoren, Hardware und Diagnose von Tomasz Pieczara / Spot Robotics.">
+  <meta name="author" content="Tomasz Pieczara">
+  <link rel="canonical" href="https://spotrobotics.app/de/labdroid/privacy.html">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { background: #07080c; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: transparent;
+      color: #e8e8e8;
+      line-height: 1.7;
+      padding: 2rem 1rem 4rem;
+    }
+    .container { max-width: 680px; margin: 0 auto; }
+    .back {
+      display: inline-block;
+      font-size: 0.85rem;
+      color: #6b9fff;
+      text-decoration: none;
+      margin-bottom: 2.5rem;
+    }
+    .back:hover { text-decoration: underline; }
+    .app-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #00e676;
+      margin-bottom: 0.5rem;
+    }
+    h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+    .updated {
+      font-size: 0.85rem;
+      color: #666;
+      margin-bottom: 2.5rem;
+    }
+    h2 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #fff;
+      margin-top: 2rem;
+      margin-bottom: 0.5rem;
+    }
+    p { color: #aaa; margin-bottom: 0.75rem; }
+    ul { color: #aaa; padding-left: 1.5rem; margin-bottom: 0.75rem; }
+    li { margin-bottom: 0.25rem; }
+    a { color: #6b9fff; }
+    .divider { border: none; border-top: 1px solid #222; margin: 2rem 0; }
+    .highlight {
+      background: #1a1a1a;
+      border: 1px solid #2a2a2a;
+      border-radius: 10px;
+      padding: 1rem 1.25rem;
+      margin-bottom: 1rem;
+      color: #ccc;
+      font-size: 0.95rem;
+    }
+    #sky {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100vh;
+      height: 100lvh; /* tall viewport: no stretch when the mobile address bar hides */
+      z-index: -1;
+      pointer-events: none;
+    }
+  </style>
+<!-- i18n:head --><link rel="alternate" hreflang="en" href="https://spotrobotics.app/labdroid/privacy.html"><link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/labdroid/privacy.html"><link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/labdroid/privacy.html"><link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/labdroid/privacy.html"><link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/labdroid/privacy.html"><link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/labdroid/privacy.html"><style>.lang-ctl{position:fixed;top:calc(1rem + 48px);right:1rem;z-index:50;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}.lang-ctl summary{list-style:none;width:40px;height:40px;border-radius:50%;box-sizing:border-box;border:1px solid rgba(255,228,160,0.25);background:rgba(10,11,16,0.6);color:rgba(255,228,160,0.85);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:12px;font-weight:700;letter-spacing:.04em;transition:border-color .15s ease,background .15s ease}.lang-ctl summary::-webkit-details-marker{display:none}.lang-ctl summary:hover,.lang-ctl[open] summary{border-color:rgba(255,228,160,0.6);background:rgba(255,228,160,0.08)}.lang-ctl .lang-list{position:absolute;top:46px;right:0;display:flex;flex-direction:column;min-width:120px;padding:6px;border-radius:12px;background:rgba(10,11,16,0.92);border:1px solid rgba(255,228,160,0.25)}.lang-ctl .lang-list a{display:flex;justify-content:space-between;gap:12px;padding:8px 10px;border-radius:8px;color:#e8e8e8;text-decoration:none;font-size:14px}.lang-ctl .lang-list a b{color:rgba(255,228,160,0.85);font-size:12px}.lang-ctl .lang-list a:hover,.lang-ctl .lang-list a[aria-current]{background:rgba(255,228,160,0.08)}</style><!-- /i18n:head -->
+</head>
+<body>
+<!-- i18n:switch --><details class="lang-ctl"><summary aria-label="Language">DE</summary><div class="lang-list"><a href="/labdroid/privacy.html" hreflang="en" lang="en">English <b>EN</b></a><a href="/de/labdroid/privacy.html" hreflang="de" lang="de" aria-current="true">Deutsch <b>DE</b></a><a href="/fr/labdroid/privacy.html" hreflang="fr" lang="fr">Français <b>FR</b></a><a href="/pl/labdroid/privacy.html" hreflang="pl" lang="pl">Polski <b>PL</b></a><a href="/no/labdroid/privacy.html" hreflang="no" lang="no">Norsk <b>NO</b></a></div></details><!-- /i18n:switch -->
+  <canvas id="sky" aria-hidden="true"></canvas>
+  <div class="container">
+    <a class="back" href="/de/labdroid/">← LabDroid</a>
+
+    <div class="app-label">LabDroid</div>
+    <h1>Datenschutzerklärung</h1>
+    <p class="updated">Zuletzt aktualisiert: 2. Oktober 2026</p>
+    <p class="updated">Dies ist eine Übersetzung. Maßgeblich ist die englische Fassung dieser Datenschutzerklärung.</p>
+
+    <div class="highlight">
+      LabDroid liest Sensor- und Hardware-Informationen nur auf deinem eigenen Gerät. <strong style="color:#fff">Die App fordert keinen Internetzugriff an und sendet keine Daten an uns oder an Dritte.</strong>
+    </div>
+
+    <hr class="divider">
+
+    <h2>1. Was LabDroid macht</h2>
+    <p>LabDroid liest Daten der Sensoren, des Standorts, der Kameras, des Akkus, der Verbindungen und anderer Hardware deines Smartphones über offizielle, öffentliche Android-Schnittstellen und zeigt sie in der App an. Das gesamte Auslesen und Verarbeiten findet lokal auf deinem Gerät statt.</p>
+
+    <h2>2. Berechtigungen</h2>
+    <p>LabDroid fragt eine Berechtigung auf dem Bildschirm an, der sie braucht. Du kannst jede ablehnen - die zugehörigen Werte sind dann einfach nicht verfügbar. Der aktuelle Status jeder Berechtigung ist in den Einstellungen der App sichtbar.</p>
+    <ul>
+      <li><strong>Standort</strong> - GPS-Position, Satellitenradar und Kompass</li>
+      <li><strong>Kamera</strong> - Daten der Kameramodule</li>
+      <li><strong>Körpersensoren</strong> und <strong>Körperliche Aktivität</strong> - Herzfrequenz- und Schrittsensoren, falls dein Gerät sie hat</li>
+      <li><strong>Mikrofon</strong> - der Schallpegelmesser; Ton wird live gemessen und nie aufgenommen oder gespeichert</li>
+      <li><strong>Telefonstatus</strong> - Mobilfunksignalstärke und SIM-Status</li>
+      <li><strong>Bluetooth</strong> - Informationen zum Bluetooth-Adapter und die Namen bereits mit deinem Smartphone gekoppelter Geräte, nur auf dem Bildschirm angezeigt</li>
+      <li><strong>Netzwerk- und WLAN-Status</strong> - Verbindungsart und WLAN-Details</li>
+      <li><strong>Benachrichtigungen</strong> - in den Einstellungen aufgeführt; die aktuelle Version sendet keine Benachrichtigungen</li>
+    </ul>
+
+    <h2>3. Daten, die wir nicht erheben</h2>
+    <p>LabDroid erhebt keinerlei Daten, speichert sie nicht auf fremden Servern und überträgt sie nicht an uns oder an Dritte. Im Einzelnen:</p>
+    <ul>
+      <li>Keine persönlichen Informationen jeglicher Art</li>
+      <li>Keine Sensorwerte, Standort- oder Geräteinformationen, die irgendwohin gesendet werden</li>
+      <li>Keine Nutzungsstatistiken oder Analysen</li>
+      <li>Keine Werbung</li>
+      <li>Es wird überhaupt keine Internet-Berechtigung angefragt - das lässt sich direkt im Manifest der App und im Quellcode auf GitHub überprüfen</li>
+    </ul>
+
+    <h2>4. Lokal auf deinem Gerät gespeicherte Daten</h2>
+    <p>LabDroid speichert folgende Daten im lokalen App-Speicher deines Geräts:</p>
+    <ul>
+      <li><strong>App-Einstellungen</strong> - Design, Sprache, Einheiten, Standard-Abtastrate und dein gewählter Exportordner</li>
+      <li><strong>Aufzeichnungen</strong> - Sensorsitzungen, die du im Monitor-Tab aufzeichnest</li>
+    </ul>
+    <p>Die einzigen Daten, die die App verlassen, sind Dateien, die du ausdrücklich exportierst (CSV, JSON, XML, TXT oder GPX) oder über die Teilen-Funktion deines Geräts teilst. Du kannst alle gespeicherten Daten jederzeit in den Einstellungen der App löschen, indem du den App-Speicher in den Geräteeinstellungen leerst oder die App deinstallierst.</p>
+    <p>Wenn die Android-eigene Sicherung in deinen Geräteeinstellungen aktiviert ist, kann das System diese App-Einstellungen und Aufzeichnungen in deine persönliche Gerätesicherung aufnehmen. Das übernimmt Android unter deinem Konto, nicht LabDroid.</p>
+
+    <h2>5. Standort und Google-Play-Dienste</h2>
+    <p>LabDroid ermittelt deine Position über den Fused Location Provider der Google-Play-Dienste, die bereits auf deinem Smartphone installiert sind. LabDroid selbst sendet deinen Standort nie irgendwohin. Die Google-Play-Dienste sind Teil der Systemsoftware deines Geräts, für sie gilt die <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Datenschutzerklärung von Google</a>.</p>
+
+    <h2>6. Dienste von Drittanbietern</h2>
+    <p>LabDroid enthält keine Werbe-SDKs, keine Analyse-Bibliotheken und keine Dienste für Absturzberichte.</p>
+    <p>LabDroid wird nicht über den Google Play Store vertrieben; die offizielle APK gibt es nur im <a href="https://github.com/moskil2/LabDroid" target="_blank" rel="noopener">GitHub-Repository von LabDroid</a>.</p>
+
+    <h2>7. Datenschutz von Kindern</h2>
+    <p>LabDroid richtet sich nicht an Kinder unter 13 Jahren, und wir erheben wissentlich keine persönlichen Informationen von Kindern.</p>
+
+    <h2>8. Änderungen dieser Erklärung</h2>
+    <p>Wenn wir diese Datenschutzerklärung aktualisieren, veröffentlichen wir die überarbeitete Fassung auf dieser Seite mit einem neuen Datum unter „Zuletzt aktualisiert“.</p>
+
+    <h2>9. Kontakt</h2>
+    <p>Fragen zu dieser Erklärung? Schreib uns an <a href="mailto:tomasz.pieczara@gazeta.pl">tomasz.pieczara@gazeta.pl</a> oder über das <a href="/de/support/">Support-Formular</a>.</p>
+  </div>
+  <script src="/sky.js"></script>
+  <script src="/site.js"></script>
+</body>
+</html>
