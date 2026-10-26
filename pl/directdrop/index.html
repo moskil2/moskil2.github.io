@@ -93,11 +93,8 @@
     }
     .hero-visual { display: flex; align-items: center; justify-content: center; gap: 8px; }
     .hero-shot { display: flex; justify-content: center; flex: none; margin-left: -72px; }
-    .hero-shot .bezel {
-      border-radius: 36px; padding: 10px; background: #1f2128;
-      box-shadow: 0 30px 80px rgba(0,0,0,0.55), inset 0 0 0 1px #2c2e36;
-    }
-    .hero-shot img { width: 280px; height: auto; display: block; border-radius: 28px; }
+    .hero-shot .bezel { padding: 0; background: none; }
+    .hero-shot img { width: 420px; max-width: 100%; height: auto; display: block; }
 
     /* device tree */
     .tree-arrow {
@@ -156,7 +153,7 @@
       display: flex; align-items: center; justify-content: center; flex: none;
     }
     .step-head span.title { font-weight: 700; font-size: 16px; }
-    .step-shot { border-radius: 20px; overflow: hidden; background: #16171c; box-shadow: inset 0 0 0 1px #2c2e36; }
+    .step-shot { background: none; }
     .step-shot img { width: 100%; height: auto; display: block; }
     .step-card p { margin: 0; color: #a8a49a; font-size: 14.5px; line-height: 1.5; }
 
@@ -366,7 +363,7 @@
     <div class="hero-visual">
       <div class="hero-shot">
         <div class="bezel">
-          <img src="/directdrop/img/home.jpg" alt="Ekran główny DirectDrop" width="280" height="606">
+          <img src="/directdrop/img/home.png" alt="Ekran główny DirectDrop" width="420" height="694">
         </div>
       </div>
       <div class="tree-arrow"><span class="arrow-line arrow-right"></span><span class="arrow-line arrow-left"></span></div>
@@ -402,22 +399,22 @@
     <div class="steps">
       <div class="step-card">
         <div class="step-head"><span class="step-num">1</span><span class="title">Wybierz pliki</span></div>
-        <div class="step-shot"><img src="/directdrop/img/selected-files.jpg" alt="Ekran wybranych plików" width="480" height="1040"></div>
+        <div class="step-shot"><img src="/directdrop/img/selected-files.png" alt="Ekran wybranych plików" width="600" height="992"></div>
         <p>Wybierz pliki w telefonie, sprawdź nazwę i rozmiar, a potem dotknij Udostępnij.</p>
       </div>
       <div class="step-card">
         <div class="step-head"><span class="step-num">2</span><span class="title">Udostępnij i połącz</span></div>
-        <div class="step-shot"><img src="/directdrop/img/sharing-qr.jpg" alt="Ekran udostępniania z kodem QR" width="480" height="1040"></div>
+        <div class="step-shot"><img src="/directdrop/img/sharing-qr.png" alt="Ekran udostępniania z kodem QR" width="600" height="992"></div>
         <p>Zeskanuj kod QR albo dotknij, żeby skopiować adres - bez wpisywania.</p>
       </div>
       <div class="step-card">
         <div class="step-head"><span class="step-num">3</span><span class="title">Przesyłanie na żywo</span></div>
-        <div class="step-shot"><img src="/directdrop/img/live-transfer.jpg" alt="Ekran postępu przesyłania na żywo" width="480" height="1040"></div>
+        <div class="step-shot"><img src="/directdrop/img/live-transfer.png" alt="Ekran postępu przesyłania na żywo" width="600" height="992"></div>
         <p>Obserwuj prędkość i postęp na żywo po obu stronach.</p>
       </div>
       <div class="step-card">
         <div class="step-head"><span class="step-num">4</span><span class="title">Wysłane</span></div>
-        <div class="step-shot"><img src="/directdrop/img/sent.jpg" alt="Ekran zakończonego przesyłania" width="480" height="1040"></div>
+        <div class="step-shot"><img src="/directdrop/img/sent.png" alt="Ekran zakończonego przesyłania" width="600" height="992"></div>
         <p>Pliki trafiają na drugie urządzenie - pobrane prosto z Twojego telefonu.</p>
       </div>
     </div>
