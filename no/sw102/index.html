@@ -229,7 +229,7 @@
     "description": "Fastvare med åpen kildekode for Bafang SW102-displayet, laget for originale Bafang-kontrollere for midtmotor - ny cockpit, full meny, Bluetooth OTA-oppdateringer.",
     "url": "https://spotrobotics.app/sw102/",
     "image": "https://spotrobotics.app/sw102/img/logo.jpg",
-    "softwareVersion": "0.1.2",
+    "softwareVersion": "0.1.5",
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
     "author": { "@type": "Person", "name": "Tomasz Pieczara" },
     "publisher": { "@type": "Organization", "name": "Spot Robotics", "url": "https://spotrobotics.app" }
@@ -259,7 +259,7 @@
       <p class="lede">Fastvare med åpen kildekode som erstatter den originale SW102-fastvaren fullstendig - en ny cockpit, en full innstillingsmeny og Bluetooth OTA-oppdateringer, bygd fra bunnen av for originale Bafang-kontrollere for midtmotor (BBS01/<wbr>BBS02/<wbr>BBSHD/<wbr>M400/<wbr>M420/<wbr>M620).</p>
       <div class="hero-ctas">
         <a class="btn-github" href="https://github.com/moskil2/SW102_BAFANG_OSF" target="_blank" rel="noopener">Se på GitHub &rarr;</a>
-        <span class="badge-warn">v0.1.4</span>
+        <span class="badge-warn">v0.1.5</span>
       </div>
       <div class="hero-foot mono">
         <span>nRF51822</span>
@@ -327,6 +327,17 @@
     </div>
   </section>
 
+  <!-- BUTTONS -->
+  <section class="wrap" style="padding-top:0; padding-bottom:96px;">
+    <div class="section-head">
+      <div class="eyebrow">Knapper</div>
+      <h2>Hva hver knapp gjør.</h2>
+    </div>
+    <div style="max-width:1080px; margin:0 auto;">
+      <img src="/sw102/img/buttons.png" alt="SW102-knapper: hva hver knapp gjør" class="zoomable" style="display:block; width:100%; height:auto; border-radius:18px;">
+    </div>
+  </section>
+
   <!-- COCKPIT -->
   <section class="anydevice">
     <div>
@@ -341,6 +352,7 @@
         <li>Gjennomsnittlig og nåværende energiforbruk (Wh/km eller Wh/mile)</li>
         <li>Dataskjerm: turdistanse, snitt- og toppfart, total tid og kjøretid, maks strøm og effekt, forbruk, brukt energi - huskes etter avslåing og slettes bare ved Trip-nullstilling</li>
         <li>På dataskjermen viser et bytte av assistnivå det nye nivået stort midt på skjermen, med "PAS" under, i 3 sekunder</li>
+        <li>STREET/RACE: en andre, uavhengig tabell med assistnivåer, lagret på displayet. Hold UP + DOWN i 3 sekunder for å bytte; den aktive profilen (S eller R) vises i topplinjen.</li>
       </ul>
     </div>
     <div class="shot-card" style="margin: 0;">
@@ -360,7 +372,7 @@
         <li>Korrigering av kilometerteller, Trip-nullstilling og full fabrikktilbakestilling</li>
         <li>Modus for batteriprosent (Standard eller Presis) med justerbar min./maks. pakkespenning</li>
         <li>Oppsettvalg for cockpit - oppsett for assistnivå, visningsstil, skillelinjer og å snu hele displayet opp ned (huskes etter avslåing)</li>
-        <li>Programmering av assistnivåer - les og endre kontrollerens egne strøm- og fartsgrenser per nivå, og lagre dem tilbake</li>
+        <li>Programmering av assistnivåer - les og endre kontrollerens egne strøm- og fartsgrenser per nivå, og lagre dem tilbake, pluss valget STREET/RACE (USE RACE)</li>
         <li>Skjermtest og info om fastvare/maskinvare</li>
       </ul>
     </div>

@@ -229,7 +229,7 @@
     "description": "Firmware open source pour l'écran Bafang SW102, conçu pour les contrôleurs de moteurs pédaliers Bafang d'origine - cockpit repensé, menu complet, mises à jour Bluetooth OTA.",
     "url": "https://spotrobotics.app/sw102/",
     "image": "https://spotrobotics.app/sw102/img/logo.jpg",
-    "softwareVersion": "0.1.2",
+    "softwareVersion": "0.1.5",
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
     "author": { "@type": "Person", "name": "Tomasz Pieczara" },
     "publisher": { "@type": "Organization", "name": "Spot Robotics", "url": "https://spotrobotics.app" }
@@ -259,7 +259,7 @@
       <p class="lede">Un firmware open source qui remplace entièrement celui d'origine du SW102 - un cockpit repensé, un menu de réglages complet et des mises à jour Bluetooth OTA, conçu de zéro pour les contrôleurs de moteurs pédaliers Bafang d'origine (BBS01/<wbr>BBS02/<wbr>BBSHD/<wbr>M400/<wbr>M420/<wbr>M620).</p>
       <div class="hero-ctas">
         <a class="btn-github" href="https://github.com/moskil2/SW102_BAFANG_OSF" target="_blank" rel="noopener">Voir sur GitHub &rarr;</a>
-        <span class="badge-warn">v0.1.4</span>
+        <span class="badge-warn">v0.1.5</span>
       </div>
       <div class="hero-foot mono">
         <span>nRF51822</span>
@@ -327,6 +327,17 @@
     </div>
   </section>
 
+  <!-- BUTTONS -->
+  <section class="wrap" style="padding-top:0; padding-bottom:96px;">
+    <div class="section-head">
+      <div class="eyebrow">Boutons</div>
+      <h2>Le rôle de chaque bouton.</h2>
+    </div>
+    <div style="max-width:1080px; margin:0 auto;">
+      <img src="/sw102/img/buttons.png" alt="Boutons du SW102 : le rôle de chaque bouton" class="zoomable" style="display:block; width:100%; height:auto; border-radius:18px;">
+    </div>
+  </section>
+
   <!-- COCKPIT -->
   <section class="anydevice">
     <div>
@@ -341,6 +352,7 @@
         <li>Consommation d'énergie moyenne et actuelle (Wh/km ou Wh/mile)</li>
         <li>Écran de données : distance du trajet, vitesse moyenne et maximale, temps total et en mouvement, courant et puissance maximum, consommation, énergie utilisée - conservés après l'extinction et effacés uniquement par la remise à zéro du trajet</li>
         <li>Sur l'écran de données, un changement de niveau d'assistance affiche le nouveau niveau en grand au centre, avec "PAS" en dessous, pendant 3 secondes</li>
+        <li>STREET/RACE : une seconde table indépendante de niveaux d'assistance, conservée sur l'écran. Maintenez UP + DOWN pendant 3 secondes pour changer ; le profil actif (S ou R) s'affiche dans la barre supérieure.</li>
       </ul>
     </div>
     <div class="shot-card" style="margin: 0;">
@@ -360,7 +372,7 @@
         <li>Correction du compteur total, remise à zéro du trajet et réinitialisation complète</li>
         <li>Mode du pourcentage de batterie (Standard ou Précis) avec tension minimale/maximale de la batterie réglable</li>
         <li>Options d'affichage du cockpit - disposition du niveau d'assistance, style d'indicateur, séparateurs et retournement complet de l'écran (conservé après l'extinction)</li>
-        <li>Programmation des niveaux d'assistance - lire et modifier les limites de courant et de vitesse du contrôleur pour chaque niveau, puis les réenregistrer</li>
+        <li>Programmation des niveaux d'assistance - lire et modifier les limites de courant et de vitesse du contrôleur pour chaque niveau, puis les réenregistrer, ainsi que l'option STREET/RACE (USE RACE)</li>
         <li>Test de l'écran et infos firmware/matériel</li>
       </ul>
     </div>

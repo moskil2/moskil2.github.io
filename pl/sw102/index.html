@@ -229,7 +229,7 @@
     "description": "Otwarty firmware dla wyświetlacza Bafang SW102, zbudowany dla oryginalnych sterowników silników centralnych Bafang - nowy kokpit, pełne menu, aktualizacje przez Bluetooth (OTA).",
     "url": "https://spotrobotics.app/sw102/",
     "image": "https://spotrobotics.app/sw102/img/logo.jpg",
-    "softwareVersion": "0.1.2",
+    "softwareVersion": "0.1.5",
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
     "author": { "@type": "Person", "name": "Tomasz Pieczara" },
     "publisher": { "@type": "Organization", "name": "Spot Robotics", "url": "https://spotrobotics.app" }
@@ -259,7 +259,7 @@
       <p class="lede">Otwarty firmware, który całkowicie zastępuje fabryczny firmware SW102 - nowy kokpit, pełne menu ustawień i aktualizacje przez Bluetooth (OTA), napisany od zera dla oryginalnych sterowników silników centralnych Bafang (BBS01/<wbr>BBS02/<wbr>BBSHD/<wbr>M400/<wbr>M420/<wbr>M620).</p>
       <div class="hero-ctas">
         <a class="btn-github" href="https://github.com/moskil2/SW102_BAFANG_OSF" target="_blank" rel="noopener">Zobacz na GitHubie &rarr;</a>
-        <span class="badge-warn">v0.1.4</span>
+        <span class="badge-warn">v0.1.5</span>
       </div>
       <div class="hero-foot mono">
         <span>nRF51822</span>
@@ -327,6 +327,17 @@
     </div>
   </section>
 
+  <!-- BUTTONS -->
+  <section class="wrap" style="padding-top:0; padding-bottom:96px;">
+    <div class="section-head">
+      <div class="eyebrow">Przyciski</div>
+      <h2>Do czego służy każdy przycisk.</h2>
+    </div>
+    <div style="max-width:1080px; margin:0 auto;">
+      <img src="/sw102/img/buttons.png" alt="Przyciski SW102: do czego służy każdy przycisk" class="zoomable" style="display:block; width:100%; height:auto; border-radius:18px;">
+    </div>
+  </section>
+
   <!-- COCKPIT -->
   <section class="anydevice">
     <div>
@@ -341,6 +352,7 @@
         <li>Średnie i bieżące zużycie energii (Wh/km albo Wh/milę)</li>
         <li>Ekran danych: dystans trasy, średnia i maksymalna prędkość, czas całkowity i czas jazdy, maksymalny prąd i moc, zużycie, zużyta energia - zapamiętywane po wyłączeniu i kasowane tylko przez reset trasy</li>
         <li>Na ekranie danych zmiana poziomu wspomagania pokazuje nowy poziom dużą cyfrą na środku, z napisem "PAS" pod spodem, przez 3 sekundy</li>
+        <li>STREET/RACE: druga, niezależna tabela poziomów wspomagania, przechowywana w wyświetlaczu. Przytrzymaj UP + DOWN przez 3 sekundy, żeby przełączyć; aktywny profil (S lub R) widać na górnym pasku.</li>
       </ul>
     </div>
     <div class="shot-card" style="margin: 0;">
@@ -360,7 +372,7 @@
         <li>Korekta licznika całkowitego, reset trasy i pełny reset do ustawień fabrycznych</li>
         <li>Tryb procentu baterii (Standard albo Precyzyjny) z ustawianym minimalnym/maksymalnym napięciem pakietu</li>
         <li>Opcje układu kokpitu - układ poziomu wspomagania, styl wskaźnika, linie oddzielające i obrót całego wyświetlacza o 180 stopni (zapamiętywany po wyłączeniu)</li>
-        <li>Programowanie poziomów wspomagania - odczyt i edycja limitów prądu i prędkości sterownika dla każdego poziomu, a potem zapis z powrotem</li>
+        <li>Programowanie poziomów wspomagania - odczyt i edycja limitów prądu i prędkości sterownika dla każdego poziomu, a potem zapis z powrotem, oraz opcja STREET/RACE (USE RACE)</li>
         <li>Test ekranu i informacje o firmware/sprzęcie</li>
       </ul>
     </div>

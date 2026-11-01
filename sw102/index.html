@@ -229,7 +229,7 @@
     "description": "Open-source firmware for the Bafang SW102 display, built for genuine Bafang mid-drive controllers - redesigned cockpit, full menu, Bluetooth OTA updates.",
     "url": "https://spotrobotics.app/sw102/",
     "image": "https://spotrobotics.app/sw102/img/logo.jpg",
-    "softwareVersion": "0.1.2",
+    "softwareVersion": "0.1.5",
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
     "author": { "@type": "Person", "name": "Tomasz Pieczara" },
     "publisher": { "@type": "Organization", "name": "Spot Robotics", "url": "https://spotrobotics.app" }
@@ -259,7 +259,7 @@
       <p class="lede">Open-source firmware that replaces the stock SW102 firmware entirely - a redesigned cockpit, a full settings menu, and Bluetooth OTA updates, built from scratch for genuine Bafang mid-drive controllers (BBS01/<wbr>BBS02/<wbr>BBSHD/<wbr>M400/<wbr>M420/<wbr>M620).</p>
       <div class="hero-ctas">
         <a class="btn-github" href="https://github.com/moskil2/SW102_BAFANG_OSF" target="_blank" rel="noopener">View on GitHub &rarr;</a>
-        <span class="badge-warn">v0.1.4</span>
+        <span class="badge-warn">v0.1.5</span>
       </div>
       <div class="hero-foot mono">
         <span>nRF51822</span>
@@ -327,6 +327,17 @@
     </div>
   </section>
 
+  <!-- BUTTONS -->
+  <section class="wrap" style="padding-top:0; padding-bottom:96px;">
+    <div class="section-head">
+      <div class="eyebrow">Buttons</div>
+      <h2>What each button does.</h2>
+    </div>
+    <div style="max-width:1080px; margin:0 auto;">
+      <img src="img/buttons.png" alt="SW102 buttons: what each button does" class="zoomable" style="display:block; width:100%; height:auto; border-radius:18px;">
+    </div>
+  </section>
+
   <!-- COCKPIT -->
   <section class="anydevice">
     <div>
@@ -341,6 +352,7 @@
         <li>Average and current energy consumption (Wh/km or Wh/mile)</li>
         <li>Data screen: trip distance, average and top speed, total and moving time, maximum current and power, consumption, energy used - remembered after power-off and cleared only by Trip reset</li>
         <li>On the data screen, an assist level change shows the new level big in the middle, with "PAS" underneath, for 3 seconds</li>
+        <li>STREET/RACE: a second, independent assist-level table kept on the display. Hold UP + DOWN for 3 seconds to switch; the active profile (S or R) shows in the top bar.</li>
       </ul>
     </div>
     <div class="shot-card" style="margin: 0;">
@@ -360,7 +372,7 @@
         <li>Odometer correction, trip reset, and full factory reset</li>
         <li>Battery percentage mode (Standard or Precise) with configurable min/max pack voltage</li>
         <li>Cockpit layout options - assist-level layout, indicator style, separators, and turning the whole display upside down (remembered after power-off)</li>
-        <li>Assist Level Programming - read and edit the controller's own per-level current and speed limits, then save them back</li>
+        <li>Assist Level Programming - read and edit the controller's own per-level current and speed limits, then save them back, plus the STREET/RACE option (USE RACE)</li>
         <li>Screen test and firmware/hardware info</li>
       </ul>
     </div>

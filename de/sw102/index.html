@@ -229,7 +229,7 @@
     "description": "Open-Source-Firmware für das Bafang-SW102-Display, gebaut für originale Bafang-Mittelmotor-Controller - neu gestaltetes Cockpit, vollständiges Menü, Bluetooth-OTA-Updates.",
     "url": "https://spotrobotics.app/sw102/",
     "image": "https://spotrobotics.app/sw102/img/logo.jpg",
-    "softwareVersion": "0.1.2",
+    "softwareVersion": "0.1.5",
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
     "author": { "@type": "Person", "name": "Tomasz Pieczara" },
     "publisher": { "@type": "Organization", "name": "Spot Robotics", "url": "https://spotrobotics.app" }
@@ -259,7 +259,7 @@
       <p class="lede">Open-Source-Firmware, die die originale SW102-Firmware vollständig ersetzt - ein neu gestaltetes Cockpit, ein vollständiges Einstellungsmenü und Bluetooth-OTA-Updates, von Grund auf gebaut für originale Bafang-Mittelmotor-Controller (BBS01/<wbr>BBS02/<wbr>BBSHD/<wbr>M400/<wbr>M420/<wbr>M620).</p>
       <div class="hero-ctas">
         <a class="btn-github" href="https://github.com/moskil2/SW102_BAFANG_OSF" target="_blank" rel="noopener">Auf GitHub ansehen &rarr;</a>
-        <span class="badge-warn">v0.1.4</span>
+        <span class="badge-warn">v0.1.5</span>
       </div>
       <div class="hero-foot mono">
         <span>nRF51822</span>
@@ -327,6 +327,17 @@
     </div>
   </section>
 
+  <!-- BUTTONS -->
+  <section class="wrap" style="padding-top:0; padding-bottom:96px;">
+    <div class="section-head">
+      <div class="eyebrow">Tasten</div>
+      <h2>Was jede Taste macht.</h2>
+    </div>
+    <div style="max-width:1080px; margin:0 auto;">
+      <img src="/sw102/img/buttons.png" alt="SW102-Tasten: was jede Taste macht" class="zoomable" style="display:block; width:100%; height:auto; border-radius:18px;">
+    </div>
+  </section>
+
   <!-- COCKPIT -->
   <section class="anydevice">
     <div>
@@ -341,6 +352,7 @@
         <li>Durchschnittlicher und aktueller Energieverbrauch (Wh/km oder Wh/Meile)</li>
         <li>Datenbildschirm: Fahrtstrecke, Durchschnitts- und Höchstgeschwindigkeit, Gesamt- und Fahrzeit, maximaler Strom und maximale Leistung, Verbrauch, verbrauchte Energie - bleibt nach dem Ausschalten erhalten und wird nur durch Trip-Reset gelöscht</li>
         <li>Auf dem Datenbildschirm zeigt ein Wechsel der Unterstützungsstufe die neue Stufe groß in der Mitte, darunter "PAS", für 3 Sekunden</li>
+        <li>STREET/RACE: eine zweite, unabhängige Tabelle der Unterstützungsstufen, auf dem Display gespeichert. UP + DOWN 3 Sekunden halten zum Umschalten; das aktive Profil (S oder R) steht in der oberen Leiste.</li>
       </ul>
     </div>
     <div class="shot-card" style="margin: 0;">
@@ -360,7 +372,7 @@
         <li>Korrektur des Kilometerzählers, Trip-Reset und vollständiger Werksreset</li>
         <li>Modus für den Akkustand (Standard oder Präzise) mit einstellbarer minimaler/maximaler Akkuspannung</li>
         <li>Layout-Optionen für das Cockpit - Layout der Unterstützungsstufe, Anzeigestil, Trennlinien und Drehen des ganzen Displays um 180 Grad (bleibt nach dem Ausschalten erhalten)</li>
-        <li>Programmierung der Unterstützungsstufen - die eigenen Strom- und Geschwindigkeitsgrenzen des Controllers je Stufe auslesen, bearbeiten und zurückspeichern</li>
+        <li>Programmierung der Unterstützungsstufen - die eigenen Strom- und Geschwindigkeitsgrenzen des Controllers je Stufe auslesen, bearbeiten und zurückspeichern, dazu die Option STREET/RACE (USE RACE)</li>
         <li>Bildschirmtest und Infos zu Firmware/Hardware</li>
       </ul>
     </div>
