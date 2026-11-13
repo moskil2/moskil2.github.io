@@ -1020,4 +1020,64 @@
     <xhtml:link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/onlymusic/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/onlymusic/"/>
   </url>
+  <url>
+    <loc>https://spotrobotics.app/onlymusic/privacy.html</loc>
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://spotrobotics.app/onlymusic/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/onlymusic/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/onlymusic/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/onlymusic/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/onlymusic/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/onlymusic/privacy.html"/>
+  </url>
+  <url>
+    <loc>https://spotrobotics.app/de/onlymusic/privacy.html</loc>
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://spotrobotics.app/onlymusic/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/onlymusic/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/onlymusic/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/onlymusic/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/onlymusic/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/onlymusic/privacy.html"/>
+  </url>
+  <url>
+    <loc>https://spotrobotics.app/fr/onlymusic/privacy.html</loc>
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://spotrobotics.app/onlymusic/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/onlymusic/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/onlymusic/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/onlymusic/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/onlymusic/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/onlymusic/privacy.html"/>
+  </url>
+  <url>
+    <loc>https://spotrobotics.app/pl/onlymusic/privacy.html</loc>
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://spotrobotics.app/onlymusic/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/onlymusic/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/onlymusic/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/onlymusic/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/onlymusic/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/onlymusic/privacy.html"/>
+  </url>
+  <url>
+    <loc>https://spotrobotics.app/no/onlymusic/privacy.html</loc>
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://spotrobotics.app/onlymusic/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://spotrobotics.app/de/onlymusic/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://spotrobotics.app/fr/onlymusic/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://spotrobotics.app/pl/onlymusic/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://spotrobotics.app/no/onlymusic/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://spotrobotics.app/onlymusic/privacy.html"/>
+  </url>
 </urlset>
