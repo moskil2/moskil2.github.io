@@ -78,42 +78,9 @@
       font-family: 'JetBrains Mono', monospace; font-size: 13px; flex-wrap: wrap;
     }
     .hero-visual { display: flex; align-items: center; justify-content: center; gap: 8px; }
-    .hero-shot { display: flex; justify-content: center; flex: none; }
-    .hero-shot img {
-      width: 300px; max-width: 100%; height: auto; display: block;
-      border-radius: 28px; box-shadow: 0 30px 80px rgba(0,0,0,0.55), 0 0 0 1px #2c2e36;
-    }
+    .hero-shot { display: flex; justify-content: center; flex: 0 1 auto; min-width: 0; }
+    .hero-shot img { width: 420px; max-width: 100%; height: auto; display: block; }
 
-    /* where it plays */
-    .tree-arrow {
-      flex: none; display: flex; flex-direction: column; justify-content: center; gap: 16px;
-    }
-    .arrow-line {
-      position: relative; width: 96px; height: 3px; background: #9b6cff; border-radius: 2px;
-    }
-    .arrow-line::after {
-      content: ""; position: absolute; top: 50%; width: 0; height: 0; border-style: solid;
-      right: -1px; transform: translateY(-50%);
-      border-width: 7px 0 7px 9px; border-color: transparent transparent transparent #9b6cff;
-    }
-    .device-tree {
-      flex: none; position: relative; padding-left: 24px;
-      display: flex; flex-direction: column; gap: 10px;
-    }
-    .device-tree::before {
-      content: ""; position: absolute; left: 8px; top: 14px; bottom: 14px;
-      width: 2px; background: rgba(155,108,255,0.35); border-radius: 1px;
-    }
-    .device-node {
-      position: relative; background: #1f2128; border: 1px solid #2c2e36;
-      border-radius: 12px; padding: 8px 16px; min-width: 168px;
-    }
-    .device-node::before {
-      content: ""; position: absolute; left: -16px; top: 50%; width: 16px; height: 2px;
-      background: rgba(155,108,255,0.35); transform: translateY(-1px);
-    }
-    .device-node .name { font-size: 14px; font-weight: 700; color: #f3f1ea; }
-    .device-node .via { font-size: 12px; color: #6f6a5f; font-family: 'JetBrains Mono', monospace; }
 
     /* how it works */
     .section-head { text-align: center; margin-bottom: 56px; }
@@ -127,7 +94,7 @@
       display: flex; align-items: center; justify-content: center; flex: none;
     }
     .step-head span.title { font-weight: 700; font-size: 16px; }
-    .step-shot img { width: 100%; height: auto; display: block; border-radius: 18px; }
+    .step-shot img { width: 100%; height: auto; display: block; }
     .step-card p { margin: 0; color: #a8a49a; font-size: 14.5px; line-height: 1.5; }
 
     #sky {
@@ -162,10 +129,7 @@
     .anydevice p:last-child { margin-bottom: 0; }
     .anydevice p strong { color: #f3f1ea; }
     .shot-row { display: flex; align-items: flex-start; gap: 20px; flex-wrap: wrap; }
-    .shot-row img {
-      width: 250px; height: auto; display: block; flex: none;
-      border-radius: 22px; box-shadow: 0 24px 60px rgba(0,0,0,0.5), 0 0 0 1px #2c2e36;
-    }
+    .shot-row img { width: 250px; height: auto; display: block; flex: none; }
 
     /* privacy */
     .privacy-wrap { max-width: 1200px; margin: 32px auto 96px; padding: 0 32px; }
@@ -234,12 +198,11 @@
       z-index: 1000; align-items: center; justify-content: center; padding: 24px; cursor: zoom-out;
     }
     .lightbox-overlay.open { display: flex; }
-    .lightbox-overlay img { max-width: 100%; max-height: 100%; border-radius: 16px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5); }
+    .lightbox-overlay img { max-width: 100%; max-height: 100%; }
 
     @media (max-width: 880px) {
       .hero { grid-template-columns: 1fr; padding-top: 40px; gap: 40px; }
       .hero-visual { order: -1; }
-      .tree-arrow, .device-tree { display: none; }
       .hero h1 { font-size: 38px; }
       .steps { grid-template-columns: repeat(2, 1fr); }
       .feature-grid { grid-template-columns: repeat(2, 1fr); }
@@ -347,15 +310,7 @@
     </div>
     <div class="hero-visual">
       <div class="hero-shot">
-        <img src="/onlymusic/img/01_player.jpg" alt="Odtwarzacz OnlyMusic z falą dźwięku, sterowaniem i listą utworów" width="540" height="1170">
-      </div>
-      <div class="tree-arrow"><span class="arrow-line"></span></div>
-      <div class="device-tree">
-        <div class="device-node"><div class="name">Głośnik telefonu</div><div class="via">Ekran włączony lub wyłączony</div></div>
-        <div class="device-node"><div class="name">Słuchawki</div><div class="via">Przewodowe i Bluetooth</div></div>
-        <div class="device-node"><div class="name">Ekran blokady</div><div class="via">Sterowanie i okładka</div></div>
-        <div class="device-node"><div class="name">Powiadomienie</div><div class="via">Powtarzanie i Stop</div></div>
-        <div class="device-node"><div class="name">Twój samochód</div><div class="via">Android Auto</div></div>
+        <img src="/onlymusic/img/01_player.png" alt="Odtwarzacz OnlyMusic z falą dźwięku, sterowaniem i listą utworów" width="600" height="976">
       </div>
     </div>
   </section>
@@ -369,22 +324,22 @@
     <div class="steps">
       <div class="step-card">
         <div class="step-head"><span class="step-num">1</span><span class="title">Wybierz foldery</span></div>
-        <div class="step-shot"><img src="/onlymusic/img/16_folders.jpg" alt="Ekran folderów z muzyką z jednym wybranym folderem" width="540" height="1200"></div>
+        <div class="step-shot"><img src="/onlymusic/img/16_folders.png" alt="Ekran folderów z muzyką z jednym wybranym folderem" width="600" height="993"></div>
         <p>Wybierz foldery ze swoją muzyką. OnlyMusic od razu je wczytuje i może obserwować, czy pojawiają się nowe pliki.</p>
       </div>
       <div class="step-card">
         <div class="step-head"><span class="step-num">2</span><span class="title">Przeglądaj bibliotekę</span></div>
-        <div class="step-shot"><img src="/onlymusic/img/04_library.jpg" alt="Biblioteka z utworami posortowanymi A-Z" width="540" height="1200"></div>
+        <div class="step-shot"><img src="/onlymusic/img/04_library.png" alt="Biblioteka z utworami posortowanymi A-Z" width="600" height="993"></div>
         <p>Utwory, wykonawcy, albumy i foldery, z sortowaniem i szybkim indeksem A-Z.</p>
       </div>
       <div class="step-card">
         <div class="step-head"><span class="step-num">3</span><span class="title">Twórz playlisty</span></div>
-        <div class="step-shot"><img src="/onlymusic/img/08_playlists.jpg" alt="Playlisty z listami Ostatnio dodane i Ulubione" width="540" height="1200"></div>
+        <div class="step-shot"><img src="/onlymusic/img/08_playlists.png" alt="Playlisty z listami Ostatnio dodane i Ulubione" width="600" height="993"></div>
         <p>Twórz własne listy i zmieniaj ich kolejność. Ostatnio dodane i Ulubione wypełniają się same.</p>
       </div>
       <div class="step-card">
         <div class="step-head"><span class="step-num">4</span><span class="title">Zwiń i słuchaj</span></div>
-        <div class="step-shot"><img src="/onlymusic/img/02_folded.jpg" alt="Zwinięty odtwarzacz z większą liczbą utworów na ekranie" width="540" height="1200"></div>
+        <div class="step-shot"><img src="/onlymusic/img/02_folded.png" alt="Zwinięty odtwarzacz z większą liczbą utworów na ekranie" width="600" height="993"></div>
         <p>Zwiń odtwarzacz, żeby widzieć więcej kolejki. Fala dalej porusza się za tytułem.</p>
       </div>
     </div>
@@ -471,8 +426,8 @@
       <p>Wyszukiwanie obejmuje tytuły, wykonawców, albumy, a nawet nazwy plików, i pamięta, czego ostatnio szukałeś.</p>
     </div>
     <div class="shot-row">
-      <img src="/onlymusic/img/05_albums.jpg" alt="Zakładka Albumy w bibliotece" width="540" height="1200">
-      <img src="/onlymusic/img/10_search.jpg" alt="Wyniki wyszukiwania wykonawcy i utworów" width="540" height="1200">
+      <img src="/onlymusic/img/05_albums.png" alt="Zakładka Albumy w bibliotece" width="600" height="993">
+      <img src="/onlymusic/img/10_search.png" alt="Wyniki wyszukiwania wykonawcy i utworów" width="600" height="993">
     </div>
   </section>
 
@@ -484,8 +439,8 @@
       <p>OnlyMusic używa języka telefonu albo wybierasz język w menu bocznym w pozycji <strong>Language</strong>. Teksty zmieniają się od razu - muzyka gra dalej.</p>
     </div>
     <div class="shot-row">
-      <img src="/onlymusic/img/13_language_pl.jpg" alt="Lista języków z wybranym polskim" width="540" height="1200">
-      <img src="/onlymusic/img/14_player_pl.jpg" alt="Odtwarzacz OnlyMusic po polsku" width="540" height="1200">
+      <img src="/onlymusic/img/13_language_pl.png" alt="Lista języków z wybranym polskim" width="600" height="993">
+      <img src="/onlymusic/img/14_player_pl.png" alt="Odtwarzacz OnlyMusic po polsku" width="600" height="993">
     </div>
   </section>
 
@@ -498,8 +453,8 @@
       <p>Odtwarzanie bez przerw i płynne przejścia są o jedno dotknięcie.</p>
     </div>
     <div class="shot-row">
-      <img src="/onlymusic/img/11_settings.jpg" alt="Ustawienia z kolorami akcentu, falą dźwięku i opcjami odtwarzania" width="540" height="1200">
-      <img src="/onlymusic/img/06_trackmenu.jpg" alt="Menu utworu z opcjami Odtwórz jako następny, Dodaj do playlisty i Dodaj do ulubionych" width="540" height="1200">
+      <img src="/onlymusic/img/11_settings.png" alt="Ustawienia z kolorami akcentu, falą dźwięku i opcjami odtwarzania" width="600" height="993">
+      <img src="/onlymusic/img/06_trackmenu.png" alt="Menu utworu z opcjami Odtwórz jako następny, Dodaj do playlisty i Dodaj do ulubionych" width="600" height="993">
     </div>
   </section>
 
