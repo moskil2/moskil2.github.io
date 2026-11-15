@@ -257,10 +257,10 @@
       </div>
       <div class="eyebrow">Własny firmware - wyświetlacz Bafang SW102</div>
       <h1>Twój wyświetlacz Bafang SW102, całkowicie przeprogramowany.</h1>
-      <p class="lede">Otwarty firmware, który całkowicie zastępuje fabryczny firmware SW102 - nowy kokpit, pełne menu ustawień i aktualizacje przez Bluetooth (OTA), napisany od zera dla oryginalnych sterowników silników centralnych Bafang (BBS01/<wbr>BBS02/<wbr>BBSHD/<wbr>M400/<wbr>M420/<wbr>M620).</p>
+      <p class="lede">Otwarty firmware, który całkowicie zastępuje fabryczny firmware SW102 - nowy kokpit, pełne menu ustawień i aktualizacje przez Bluetooth (OTA), napisany od zera dla sterowników silników centralnych Bafang (BBS01/<wbr>BBS02/<wbr>BBSHD/<wbr>M400/<wbr>M420/<wbr>M620), z oryginalnym firmware Bafang albo otwartym BBS-FW.</p>
       <div class="hero-ctas">
         <a class="btn-github" href="https://github.com/moskil2/SW102_BAFANG_OSF" target="_blank" rel="noopener">Zobacz na GitHubie &rarr;</a>
-        <span class="badge-warn">v0.1.5</span>
+        <span class="badge-warn">v0.2.0</span>
       </div>
       <div class="hero-foot mono">
         <span>nRF51822</span>
@@ -353,7 +353,9 @@
         <li>Średnie i bieżące zużycie energii (Wh/km albo Wh/milę)</li>
         <li>Ekran danych: dystans trasy, średnia i maksymalna prędkość, czas całkowity i czas jazdy, maksymalny prąd i moc, zużycie, zużyta energia - zapamiętywane po wyłączeniu i kasowane tylko przez reset trasy</li>
         <li>Na ekranie danych zmiana poziomu wspomagania pokazuje nowy poziom dużą cyfrą na środku, z napisem "PAS" pod spodem, przez 3 sekundy</li>
-        <li>STREET/RACE: druga, niezależna tabela poziomów wspomagania, przechowywana w wyświetlaczu. Przytrzymaj UP + DOWN przez 3 sekundy, żeby przełączyć; aktywny profil (S lub R) widać na górnym pasku.</li>
+        <li>STREET/RACE (oryginalny firmware Bafang): druga, niezależna tabela poziomów wspomagania, przechowywana w wyświetlaczu. Przytrzymaj UP + DOWN przez 3 sekundy, żeby przełączyć; aktywny profil (S lub R) widać na górnym pasku.</li>
+        <li>Z BBS-FW przytrzymaj UP + DOWN przez 3 sekundy, żeby przełączyć Standard/Sport - działa to jak przycisk SPORT</li>
+        <li>Trip, przebieg i statystyki są zapisywane co minutę w czasie jazdy i 30 sekund po zatrzymaniu - wyłączenie baterii nie kasuje przejazdu</li>
       </ul>
     </div>
     <div class="shot-card" style="margin: 0;">
@@ -373,8 +375,11 @@
         <li>Korekta licznika całkowitego, reset trasy i pełny reset do ustawień fabrycznych</li>
         <li>Tryb procentu baterii (Standard albo Precyzyjny) z ustawianym minimalnym/maksymalnym napięciem pakietu</li>
         <li>Opcje układu kokpitu - układ poziomu wspomagania, styl wskaźnika, linie oddzielające i obrót całego wyświetlacza o 180 stopni (zapamiętywany po wyłączeniu)</li>
-        <li>Programowanie poziomów wspomagania - odczyt i edycja limitów prądu i prędkości sterownika dla każdego poziomu, a potem zapis z powrotem, oraz opcja STREET/RACE (USE RACE)</li>
-        <li>Test ekranu i informacje o firmware/sprzęcie</li>
+        <li>Controller - oryginalny firmware Bafang (OEM) albo BBS-FW</li>
+        <li>Programowanie poziomów wspomagania - programowanie sterownika prosto z wyświetlacza (patrz niżej)</li>
+        <li>Statystyki - przebieg, średnia prędkość i średnie zużycie, zużyta energia, czas pracy, maksymalna moc i prąd przez cały czas życia wyświetlacza</li>
+        <li>Trip History - ostatnie 10 tripów z czasem jazdy; otwórz trip, żeby zobaczyć jego wartości albo go usunąć</li>
+        <li>Test ekranu i informacje: wersja firmware, sprzęt i wybrany sterownik</li>
       </ul>
     </div>
     <div class="shot-card" style="margin: 0; background: #1f2128;">
@@ -387,9 +392,14 @@
     <div class="wrap">
       <div class="section-head">
         <div class="eyebrow">Pod maską</div>
-        <h2>Zbudowany dla oryginalnych sterowników Bafang.</h2>
+        <h2>Zbudowany dla sterowników Bafang.</h2>
       </div>
       <div class="feature-grid">
+        <div class="feature-card">
+          <span class="feature-glyph mono">PAS</span>
+          <div class="title">Programowanie sterownika z wyświetlacza</div>
+          <p>Zmieniaj poziomy wspomagania sterownika prosto na wyświetlaczu - bez laptopa, kabla i aplikacji. Oryginalny firmware Bafang: prąd i prędkość dla PAS 0-9 oraz STREET/RACE. BBS-FW: tabele Standard i Sport z prądem, kadencją i prędkością. Pozostałe ustawienia BBS-FW zmienisz w <a href="/pl/eggspeed/">aplikacji EggSPEED</a>.</p>
+        </div>
         <div class="feature-card">
           <span class="feature-glyph mono">UART</span>
           <div class="title">Natywny protokół Bafang</div>
@@ -428,7 +438,7 @@
         <div class="feature-card">
           <span class="feature-glyph mono">FW</span>
           <div class="title">Zgodne sterowniki</div>
-          <p>BBS01/BBS01B, BBS02/BBS02B, BBSHD, M400, M420, M620/G510 Ultra - rodzina ze standardowym protokołem wyświetlaczy Bafang.</p>
+          <p>BBS01/BBS01B, BBS02/BBS02B, BBSHD, M400, M420, M620/G510 Ultra - rodzina ze standardowym protokołem wyświetlaczy Bafang. Obsługiwane są też sterowniki z otwartym firmware BBS-FW.</p>
         </div>
       </div>
     </div>
@@ -458,7 +468,7 @@
       <span class="sep">|</span>
       <span>Bezpłatny i otwarty</span>
       <span class="sep">|</span>
-      <span>BBS01 &middot; BBS02 &middot; BBSHD &middot; M400 &middot; M420 &middot; M620</span>
+      <span>BBS01 &middot; BBS02 &middot; BBSHD &middot; M400 &middot; M420 &middot; M620 &middot; BBS-FW</span>
     </div>
   </section>
 
@@ -467,7 +477,7 @@
     <div class="final-cta">
       <div>
         <h2>Pobierz firmware.</h2>
-        <p>Bezpłatny i otwarty, dla oryginalnych sterowników silników centralnych Bafang. Kod źródłowy, instrukcja instalacji i wydania na GitHubie.</p>
+        <p>Bezpłatny i otwarty, dla sterowników silników centralnych Bafang z oryginalnym firmware Bafang albo BBS-FW. Kod źródłowy, instrukcja instalacji i wydania na GitHubie.</p>
         <div class="hero-ctas">
           <a class="btn-github" href="https://github.com/moskil2/SW102_BAFANG_OSF" target="_blank" rel="noopener">Zobacz na GitHubie &rarr;</a>
         </div>

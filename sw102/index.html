@@ -257,10 +257,10 @@
       </div>
       <div class="eyebrow">Custom firmware - Bafang SW102 display</div>
       <h1>Your Bafang SW102 display, completely reprogrammed.</h1>
-      <p class="lede">Open-source firmware that replaces the stock SW102 firmware entirely - a redesigned cockpit, a full settings menu, and Bluetooth OTA updates, built from scratch for genuine Bafang mid-drive controllers (BBS01/<wbr>BBS02/<wbr>BBSHD/<wbr>M400/<wbr>M420/<wbr>M620).</p>
+      <p class="lede">Open-source firmware that replaces the stock SW102 firmware entirely - a redesigned cockpit, a full settings menu, and Bluetooth OTA updates, built from scratch for Bafang mid-drive controllers (BBS01/<wbr>BBS02/<wbr>BBSHD/<wbr>M400/<wbr>M420/<wbr>M620), with original Bafang firmware or the open source BBS-FW.</p>
       <div class="hero-ctas">
         <a class="btn-github" href="https://github.com/moskil2/SW102_BAFANG_OSF" target="_blank" rel="noopener">View on GitHub &rarr;</a>
-        <span class="badge-warn">v0.1.5</span>
+        <span class="badge-warn">v0.2.0</span>
       </div>
       <div class="hero-foot mono">
         <span>nRF51822</span>
@@ -353,7 +353,9 @@
         <li>Average and current energy consumption (Wh/km or Wh/mile)</li>
         <li>Data screen: trip distance, average and top speed, total and moving time, maximum current and power, consumption, energy used - remembered after power-off and cleared only by Trip reset</li>
         <li>On the data screen, an assist level change shows the new level big in the middle, with "PAS" underneath, for 3 seconds</li>
-        <li>STREET/RACE: a second, independent assist-level table kept on the display. Hold UP + DOWN for 3 seconds to switch; the active profile (S or R) shows in the top bar.</li>
+        <li>STREET/RACE (original Bafang firmware): a second, independent assist-level table kept on the display. Hold UP + DOWN for 3 seconds to switch; the active profile (S or R) shows in the top bar.</li>
+        <li>With BBS-FW, hold UP + DOWN for 3 seconds to switch Standard/Sport - it works like the SPORT button</li>
+        <li>Trip, odometer and statistics are saved every minute while riding and 30 seconds after stopping - switching the battery off does not lose your ride</li>
       </ul>
     </div>
     <div class="shot-card" style="margin: 0;">
@@ -373,8 +375,11 @@
         <li>Odometer correction, trip reset, and full factory reset</li>
         <li>Battery percentage mode (Standard or Precise) with configurable min/max pack voltage</li>
         <li>Cockpit layout options - assist-level layout, indicator style, separators, and turning the whole display upside down (remembered after power-off)</li>
-        <li>Assist Level Programming - read and edit the controller's own per-level current and speed limits, then save them back, plus the STREET/RACE option (USE RACE)</li>
-        <li>Screen test and firmware/hardware info</li>
+        <li>Controller - original Bafang firmware (OEM) or BBS-FW</li>
+        <li>Assist Level Programming - program the controller from the display (see below)</li>
+        <li>Statistics - ODO, average speed and efficiency, energy used, run time, maximum power and current over the display's lifetime</li>
+        <li>Trip History - the last 10 trips with their riding time; open a trip to see its values or delete it</li>
+        <li>Screen test, and info: firmware version, hardware and the selected controller</li>
       </ul>
     </div>
     <div class="shot-card" style="margin: 0; background: #1f2128;">
@@ -387,9 +392,14 @@
     <div class="wrap">
       <div class="section-head">
         <div class="eyebrow">Under the hood</div>
-        <h2>Built for genuine Bafang controllers.</h2>
+        <h2>Built for Bafang controllers.</h2>
       </div>
       <div class="feature-grid">
+        <div class="feature-card">
+          <span class="feature-glyph mono">PAS</span>
+          <div class="title">Program the controller from the display</div>
+          <p>Change the controller's assist levels right on the display - no laptop, cable or app needed. Original Bafang firmware: current and speed for PAS 0-9, plus STREET/RACE. BBS-FW: Standard and Sport tables with current, cadence and speed. For all other BBS-FW settings, use the <a href="/eggspeed/">EggSPEED app</a>.</p>
+        </div>
         <div class="feature-card">
           <span class="feature-glyph mono">UART</span>
           <div class="title">Native Bafang protocol</div>
@@ -428,7 +438,7 @@
         <div class="feature-card">
           <span class="feature-glyph mono">FW</span>
           <div class="title">Compatible controllers</div>
-          <p>BBS01/BBS01B, BBS02/BBS02B, BBSHD, M400, M420, M620/G510 Ultra - the standard Bafang display protocol family.</p>
+          <p>BBS01/BBS01B, BBS02/BBS02B, BBSHD, M400, M420, M620/G510 Ultra - the standard Bafang display protocol family. Controllers running the open source BBS-FW are supported too.</p>
         </div>
       </div>
     </div>
@@ -458,7 +468,7 @@
       <span class="sep">|</span>
       <span>Free &amp; open source</span>
       <span class="sep">|</span>
-      <span>BBS01 &middot; BBS02 &middot; BBSHD &middot; M400 &middot; M420 &middot; M620</span>
+      <span>BBS01 &middot; BBS02 &middot; BBSHD &middot; M400 &middot; M420 &middot; M620 &middot; BBS-FW</span>
     </div>
   </section>
 
@@ -467,7 +477,7 @@
     <div class="final-cta">
       <div>
         <h2>Get the firmware.</h2>
-        <p>Free and open source, for genuine Bafang mid-drive controllers. Source, install instructions, and releases on GitHub.</p>
+        <p>Free and open source, for Bafang mid-drive controllers with original Bafang firmware or BBS-FW. Source, install instructions, and releases on GitHub.</p>
         <div class="hero-ctas">
           <a class="btn-github" href="https://github.com/moskil2/SW102_BAFANG_OSF" target="_blank" rel="noopener">View on GitHub &rarr;</a>
         </div>

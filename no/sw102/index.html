@@ -257,10 +257,10 @@
       </div>
       <div class="eyebrow">Egen fastvare - Bafang SW102-display</div>
       <h1>Bafang SW102-displayet ditt, helt omprogrammert.</h1>
-      <p class="lede">Fastvare med åpen kildekode som erstatter den originale SW102-fastvaren fullstendig - en ny cockpit, en full innstillingsmeny og Bluetooth OTA-oppdateringer, bygd fra bunnen av for originale Bafang-kontrollere for midtmotor (BBS01/<wbr>BBS02/<wbr>BBSHD/<wbr>M400/<wbr>M420/<wbr>M620).</p>
+      <p class="lede">Fastvare med åpen kildekode som erstatter den originale SW102-fastvaren fullstendig - en ny cockpit, en full innstillingsmeny og Bluetooth OTA-oppdateringer, bygd fra bunnen av for Bafang-kontrollere for midtmotor (BBS01/<wbr>BBS02/<wbr>BBSHD/<wbr>M400/<wbr>M420/<wbr>M620), med original Bafang-fastvare eller BBS-FW med åpen kildekode.</p>
       <div class="hero-ctas">
         <a class="btn-github" href="https://github.com/moskil2/SW102_BAFANG_OSF" target="_blank" rel="noopener">Se på GitHub &rarr;</a>
-        <span class="badge-warn">v0.1.5</span>
+        <span class="badge-warn">v0.2.0</span>
       </div>
       <div class="hero-foot mono">
         <span>nRF51822</span>
@@ -353,7 +353,9 @@
         <li>Gjennomsnittlig og nåværende energiforbruk (Wh/km eller Wh/mile)</li>
         <li>Dataskjerm: turdistanse, snitt- og toppfart, total tid og kjøretid, maks strøm og effekt, forbruk, brukt energi - huskes etter avslåing og slettes bare ved Trip-nullstilling</li>
         <li>På dataskjermen viser et bytte av assistnivå det nye nivået stort midt på skjermen, med "PAS" under, i 3 sekunder</li>
-        <li>STREET/RACE: en andre, uavhengig tabell med assistnivåer, lagret på displayet. Hold UP + DOWN i 3 sekunder for å bytte; den aktive profilen (S eller R) vises i topplinjen.</li>
+        <li>STREET/RACE (original Bafang-fastvare): en andre, uavhengig tabell med assistnivåer, lagret på displayet. Hold UP + DOWN i 3 sekunder for å bytte; den aktive profilen (S eller R) vises i topplinjen.</li>
+        <li>Med BBS-FW holder du UP + DOWN i 3 sekunder for å bytte mellom Standard og Sport - det fungerer som SPORT-knappen</li>
+        <li>Tur, kilometerteller og statistikk lagres hvert minutt under kjøring og 30 sekunder etter at du stopper - å slå av batteriet gjør ikke at turen går tapt</li>
       </ul>
     </div>
     <div class="shot-card" style="margin: 0;">
@@ -373,8 +375,11 @@
         <li>Korrigering av kilometerteller, Trip-nullstilling og full fabrikktilbakestilling</li>
         <li>Modus for batteriprosent (Standard eller Presis) med justerbar min./maks. pakkespenning</li>
         <li>Oppsettvalg for cockpit - oppsett for assistnivå, visningsstil, skillelinjer og å snu hele displayet opp ned (huskes etter avslåing)</li>
-        <li>Programmering av assistnivåer - les og endre kontrollerens egne strøm- og fartsgrenser per nivå, og lagre dem tilbake, pluss valget STREET/RACE (USE RACE)</li>
-        <li>Skjermtest og info om fastvare/maskinvare</li>
+        <li>Controller - original Bafang-fastvare (OEM) eller BBS-FW</li>
+        <li>Programmering av assistnivåer - programmer kontrolleren rett fra displayet (se nedenfor)</li>
+        <li>Statistikk - kilometerteller, snittfart og snittforbruk, brukt energi, driftstid, maksimal effekt og strøm over hele displayets levetid</li>
+        <li>Trip History - de 10 siste turene med kjøretid; åpne en tur for å se verdiene eller slette den</li>
+        <li>Skjermtest og info: fastvareversjon, maskinvare og valgt kontroller</li>
       </ul>
     </div>
     <div class="shot-card" style="margin: 0; background: #1f2128;">
@@ -387,9 +392,14 @@
     <div class="wrap">
       <div class="section-head">
         <div class="eyebrow">Under panseret</div>
-        <h2>Laget for originale Bafang-kontrollere.</h2>
+        <h2>Laget for Bafang-kontrollere.</h2>
       </div>
       <div class="feature-grid">
+        <div class="feature-card">
+          <span class="feature-glyph mono">PAS</span>
+          <div class="title">Programmer kontrolleren fra displayet</div>
+          <p>Endre kontrollerens assistnivåer rett på displayet - uten PC, kabel eller app. Original Bafang-fastvare: strøm og fart for PAS 0-9, pluss STREET/RACE. BBS-FW: tabellene Standard og Sport med strøm, kadens og fart. For alle andre BBS-FW-innstillinger, bruk <a href="/no/eggspeed/">EggSPEED-appen</a>.</p>
+        </div>
         <div class="feature-card">
           <span class="feature-glyph mono">UART</span>
           <div class="title">Bafangs egen protokoll</div>
@@ -428,7 +438,7 @@
         <div class="feature-card">
           <span class="feature-glyph mono">FW</span>
           <div class="title">Kompatible kontrollere</div>
-          <p>BBS01/BBS01B, BBS02/BBS02B, BBSHD, M400, M420, M620/G510 Ultra - familien med Bafangs standard displayprotokoll.</p>
+          <p>BBS01/BBS01B, BBS02/BBS02B, BBSHD, M400, M420, M620/G510 Ultra - familien med Bafangs standard displayprotokoll. Kontrollere med BBS-FW (åpen kildekode) støttes også.</p>
         </div>
       </div>
     </div>
@@ -458,7 +468,7 @@
       <span class="sep">|</span>
       <span>Gratis og åpen kildekode</span>
       <span class="sep">|</span>
-      <span>BBS01 &middot; BBS02 &middot; BBSHD &middot; M400 &middot; M420 &middot; M620</span>
+      <span>BBS01 &middot; BBS02 &middot; BBSHD &middot; M400 &middot; M420 &middot; M620 &middot; BBS-FW</span>
     </div>
   </section>
 
@@ -467,7 +477,7 @@
     <div class="final-cta">
       <div>
         <h2>Skaff deg fastvaren.</h2>
-        <p>Gratis og med åpen kildekode, for originale Bafang-kontrollere for midtmotor. Kildekode, installasjonsveiledning og utgivelser på GitHub.</p>
+        <p>Gratis og med åpen kildekode, for Bafang-kontrollere for midtmotor med original Bafang-fastvare eller BBS-FW. Kildekode, installasjonsveiledning og utgivelser på GitHub.</p>
         <div class="hero-ctas">
           <a class="btn-github" href="https://github.com/moskil2/SW102_BAFANG_OSF" target="_blank" rel="noopener">Se på GitHub &rarr;</a>
         </div>

@@ -257,10 +257,10 @@
       </div>
       <div class="eyebrow">Eigene Firmware - Bafang-SW102-Display</div>
       <h1>Dein Bafang-SW102-Display, komplett neu programmiert.</h1>
-      <p class="lede">Open-Source-Firmware, die die originale SW102-Firmware vollständig ersetzt - ein neu gestaltetes Cockpit, ein vollständiges Einstellungsmenü und Bluetooth-OTA-Updates, von Grund auf gebaut für originale Bafang-Mittelmotor-Controller (BBS01/<wbr>BBS02/<wbr>BBSHD/<wbr>M400/<wbr>M420/<wbr>M620).</p>
+      <p class="lede">Open-Source-Firmware, die die originale SW102-Firmware vollständig ersetzt - ein neu gestaltetes Cockpit, ein vollständiges Einstellungsmenü und Bluetooth-OTA-Updates, von Grund auf gebaut für Bafang-Mittelmotor-Controller (BBS01/<wbr>BBS02/<wbr>BBSHD/<wbr>M400/<wbr>M420/<wbr>M620), mit originaler Bafang-Firmware oder der Open-Source-Firmware BBS-FW.</p>
       <div class="hero-ctas">
         <a class="btn-github" href="https://github.com/moskil2/SW102_BAFANG_OSF" target="_blank" rel="noopener">Auf GitHub ansehen &rarr;</a>
-        <span class="badge-warn">v0.1.5</span>
+        <span class="badge-warn">v0.2.0</span>
       </div>
       <div class="hero-foot mono">
         <span>nRF51822</span>
@@ -353,7 +353,9 @@
         <li>Durchschnittlicher und aktueller Energieverbrauch (Wh/km oder Wh/Meile)</li>
         <li>Datenbildschirm: Fahrtstrecke, Durchschnitts- und Höchstgeschwindigkeit, Gesamt- und Fahrzeit, maximaler Strom und maximale Leistung, Verbrauch, verbrauchte Energie - bleibt nach dem Ausschalten erhalten und wird nur durch Trip-Reset gelöscht</li>
         <li>Auf dem Datenbildschirm zeigt ein Wechsel der Unterstützungsstufe die neue Stufe groß in der Mitte, darunter "PAS", für 3 Sekunden</li>
-        <li>STREET/RACE: eine zweite, unabhängige Tabelle der Unterstützungsstufen, auf dem Display gespeichert. UP + DOWN 3 Sekunden halten zum Umschalten; das aktive Profil (S oder R) steht in der oberen Leiste.</li>
+        <li>STREET/RACE (originale Bafang-Firmware): eine zweite, unabhängige Tabelle der Unterstützungsstufen, auf dem Display gespeichert. UP + DOWN 3 Sekunden halten zum Umschalten; das aktive Profil (S oder R) steht in der oberen Leiste.</li>
+        <li>Mit BBS-FW UP + DOWN 3 Sekunden halten, um zwischen Standard und Sport umzuschalten - das funktioniert wie die SPORT-Taste</li>
+        <li>Trip, Kilometerstand und Statistiken werden während der Fahrt jede Minute und 30 Sekunden nach dem Anhalten gespeichert - wird der Akku ausgeschaltet, geht die Fahrt nicht verloren</li>
       </ul>
     </div>
     <div class="shot-card" style="margin: 0;">
@@ -373,8 +375,11 @@
         <li>Korrektur des Kilometerzählers, Trip-Reset und vollständiger Werksreset</li>
         <li>Modus für den Akkustand (Standard oder Präzise) mit einstellbarer minimaler/maximaler Akkuspannung</li>
         <li>Layout-Optionen für das Cockpit - Layout der Unterstützungsstufe, Anzeigestil, Trennlinien und Drehen des ganzen Displays um 180 Grad (bleibt nach dem Ausschalten erhalten)</li>
-        <li>Programmierung der Unterstützungsstufen - die eigenen Strom- und Geschwindigkeitsgrenzen des Controllers je Stufe auslesen, bearbeiten und zurückspeichern, dazu die Option STREET/RACE (USE RACE)</li>
-        <li>Bildschirmtest und Infos zu Firmware/Hardware</li>
+        <li>Controller - originale Bafang-Firmware (OEM) oder BBS-FW</li>
+        <li>Programmierung der Unterstützungsstufen - den Controller direkt am Display programmieren (siehe unten)</li>
+        <li>Statistiken - Kilometerstand, Durchschnittsgeschwindigkeit und Durchschnittsverbrauch, verbrauchte Energie, Laufzeit, maximale Leistung und maximaler Strom über die gesamte Lebensdauer des Displays</li>
+        <li>Trip History - die letzten 10 Fahrten mit ihrer Fahrzeit; eine Fahrt öffnen, um ihre Werte zu sehen oder sie zu löschen</li>
+        <li>Bildschirmtest und Infos: Firmware-Version, Hardware und gewählter Controller</li>
       </ul>
     </div>
     <div class="shot-card" style="margin: 0; background: #1f2128;">
@@ -387,9 +392,14 @@
     <div class="wrap">
       <div class="section-head">
         <div class="eyebrow">Unter der Haube</div>
-        <h2>Gebaut für originale Bafang-Controller.</h2>
+        <h2>Gebaut für Bafang-Controller.</h2>
       </div>
       <div class="feature-grid">
+        <div class="feature-card">
+          <span class="feature-glyph mono">PAS</span>
+          <div class="title">Den Controller direkt am Display programmieren</div>
+          <p>Die Unterstützungsstufen des Controllers direkt am Display ändern - ohne Laptop, Kabel oder App. Originale Bafang-Firmware: Strom und Geschwindigkeit für PAS 0-9, dazu STREET/RACE. BBS-FW: Tabellen Standard und Sport mit Strom, Trittfrequenz und Geschwindigkeit. Für alle anderen BBS-FW-Einstellungen: die <a href="/de/eggspeed/">EggSPEED-App</a>.</p>
+        </div>
         <div class="feature-card">
           <span class="feature-glyph mono">UART</span>
           <div class="title">Natives Bafang-Protokoll</div>
@@ -428,7 +438,7 @@
         <div class="feature-card">
           <span class="feature-glyph mono">FW</span>
           <div class="title">Kompatible Controller</div>
-          <p>BBS01/BBS01B, BBS02/BBS02B, BBSHD, M400, M420, M620/G510 Ultra - die Familie mit dem Standard-Displayprotokoll von Bafang.</p>
+          <p>BBS01/BBS01B, BBS02/BBS02B, BBSHD, M400, M420, M620/G510 Ultra - die Familie mit dem Standard-Displayprotokoll von Bafang. Controller mit der Open-Source-Firmware BBS-FW werden ebenfalls unterstützt.</p>
         </div>
       </div>
     </div>
@@ -458,7 +468,7 @@
       <span class="sep">|</span>
       <span>Kostenlos &amp; Open Source</span>
       <span class="sep">|</span>
-      <span>BBS01 &middot; BBS02 &middot; BBSHD &middot; M400 &middot; M420 &middot; M620</span>
+      <span>BBS01 &middot; BBS02 &middot; BBSHD &middot; M400 &middot; M420 &middot; M620 &middot; BBS-FW</span>
     </div>
   </section>
 
@@ -467,7 +477,7 @@
     <div class="final-cta">
       <div>
         <h2>Hol dir die Firmware.</h2>
-        <p>Kostenlos und Open Source, für originale Bafang-Mittelmotor-Controller. Quellcode, Installationsanleitung und Releases auf GitHub.</p>
+        <p>Kostenlos und Open Source, für Bafang-Mittelmotor-Controller mit originaler Bafang-Firmware oder BBS-FW. Quellcode, Installationsanleitung und Releases auf GitHub.</p>
         <div class="hero-ctas">
           <a class="btn-github" href="https://github.com/moskil2/SW102_BAFANG_OSF" target="_blank" rel="noopener">Auf GitHub ansehen &rarr;</a>
         </div>
