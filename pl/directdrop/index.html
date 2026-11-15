@@ -97,39 +97,47 @@
     .hero-shot img { width: 420px; max-width: 100%; height: auto; display: block; }
 
     /* device tree */
-    .tree-arrow {
-      flex: none; display: flex; flex-direction: column; justify-content: center; gap: 16px;
+    .bit-stream {
+      flex: none; position: relative; width: 132px; height: 64px; margin: 0 4px;
     }
-    .arrow-line {
-      position: relative; width: 96px; height: 3px; background: #1f6feb; border-radius: 2px;
+    .bit-stream .lane { position: absolute; left: 0; right: 0; height: 17px; }
+    .bit-stream .lane-out { top: 10px; }
+    .bit-stream .lane-in { bottom: 10px; }
+    .bit-stream .bit {
+      position: absolute; left: 0; top: 0; width: 17px; height: 17px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font: 600 9px 'JetBrains Mono', monospace; color: #fff; text-shadow: 0 1px 1px rgba(0,60,20,.6);
+      background: radial-gradient(circle at 34% 28%, #d2ffd8 0%, #5ee77b 26%, #1e9c3d 68%, #07501c 100%);
+      box-shadow: 0 3px 5px rgba(0,0,0,.5), 0 0 12px rgba(72,232,106,.45);
+      opacity: 0; animation: bit-go 2.4s linear infinite;
     }
-    .arrow-line::after {
-      content: ""; position: absolute; top: 50%; width: 0; height: 0; border-style: solid;
+    .bit-stream .lane-in .bit { animation-direction: reverse; }
+    .bit-stream .bit:nth-child(2) { animation-delay: -0.6s; }
+    .bit-stream .bit:nth-child(3) { animation-delay: -1.2s; }
+    .bit-stream .bit:nth-child(4) { animation-delay: -1.8s; }
+    @keyframes bit-go {
+      0% { transform: translateX(0); opacity: 0; }
+      15% { opacity: 1; }
+      85% { opacity: 1; }
+      100% { transform: translateX(115px); opacity: 0; }
     }
-    .arrow-right::after {
-      right: -1px; transform: translateY(-50%);
-      border-width: 7px 0 7px 9px; border-color: transparent transparent transparent #1f6feb;
-    }
-    .arrow-left::after {
-      left: -1px; transform: translateY(-50%);
-      border-width: 7px 9px 7px 0; border-color: transparent #1f6feb transparent transparent;
+    @media (prefers-reduced-motion: reduce) {
+      .bit-stream .bit { animation: none; opacity: 1; }
+      .bit-stream .bit:nth-child(2) { transform: translateX(38px); }
+      .bit-stream .bit:nth-child(3) { transform: translateX(77px); }
+      .bit-stream .bit:nth-child(4) { transform: translateX(115px); }
     }
     .device-tree {
-      flex: none; position: relative; padding-left: 24px;
+      flex: none; position: relative;
       display: flex; flex-direction: column; gap: 10px;
-    }
-    .device-tree::before {
-      content: ""; position: absolute; left: 8px; top: 14px; bottom: 14px;
-      width: 2px; background: rgba(31,111,235,0.35); border-radius: 1px;
     }
     .device-node {
       position: relative; background: #1f2128; border: 1px solid #2c2e36;
-      border-radius: 12px; padding: 8px 16px; min-width: 168px;
+      border-radius: 12px; padding: 8px 16px 8px 10px; min-width: 168px;
+      display: flex; align-items: center; gap: 12px;
     }
-    .device-node::before {
-      content: ""; position: absolute; left: -16px; top: 50%; width: 16px; height: 2px;
-      background: rgba(31,111,235,0.35); transform: translateY(-1px);
-    }
+    .device-node .thumb { flex: none; width: 104px; height: 64px; display: flex; align-items: center; justify-content: center; }
+    .device-node .thumb img { max-width: 104px; max-height: 64px; width: auto; height: auto; display: block; }
     .device-node .name { font-size: 14px; font-weight: 700; color: #f3f1ea; }
     .device-node .via { font-size: 12px; color: #6f6a5f; font-family: 'JetBrains Mono', monospace; }
 
@@ -254,7 +262,7 @@
       .hero { grid-template-columns: 1fr; padding-top: 40px; gap: 40px; }
       .hero-visual { order: -1; }
       .hero-shot { margin-left: 0; }
-      .tree-arrow, .device-tree { display: none; }
+      .bit-stream, .device-tree { display: none; }
       .hero h1 { font-size: 38px; }
       .steps { grid-template-columns: repeat(2, 1fr); }
       .feature-grid { grid-template-columns: repeat(2, 1fr); }
@@ -367,15 +375,15 @@
           <img src="/directdrop/img/home.png" alt="Ekran główny DirectDrop" width="420" height="694">
         </div>
       </div>
-      <div class="tree-arrow"><span class="arrow-line arrow-right"></span><span class="arrow-line arrow-left"></span></div>
+      <div class="bit-stream" aria-hidden="true"><div class="lane lane-out"><span class="bit">1</span><span class="bit">0</span><span class="bit">1</span><span class="bit">1</span></div><div class="lane lane-in"><span class="bit">0</span><span class="bit">1</span><span class="bit">0</span><span class="bit">0</span></div></div>
       <div class="device-tree">
-        <div class="device-node"><div class="name">PC z Windows</div><div class="via">Przeglądarka</div></div>
-        <div class="device-node"><div class="name">Mac</div><div class="via">Przeglądarka</div></div>
-        <div class="device-node"><div class="name">PC z Linuksem</div><div class="via">Przeglądarka</div></div>
-        <div class="device-node"><div class="name">Telefon Apple</div><div class="via">Przeglądarka</div></div>
-        <div class="device-node"><div class="name">Telefon z Androidem</div><div class="via">Przeglądarka</div></div>
-        <div class="device-node"><div class="name">Tablet</div><div class="via">Przeglądarka</div></div>
-        <div class="device-node"><div class="name">Inne</div><div class="via">Przeglądarka</div></div>
+        <div class="device-node"><div class="thumb"><img src="/directdrop/img/devices/windows.png" alt="Monitor ze stroną pobierania DirectDrop" width="77" height="64"></div><div><div class="name">PC z Windows</div><div class="via">Przeglądarka</div></div></div>
+        <div class="device-node"><div class="thumb"><img src="/directdrop/img/devices/mac.png" alt="Laptop ze stroną pobierania DirectDrop" width="94" height="64"></div><div><div class="name">Mac</div><div class="via">Przeglądarka</div></div></div>
+        <div class="device-node"><div class="thumb"><img src="/directdrop/img/devices/linux.png" alt="Laptop ze stroną pobierania DirectDrop" width="92" height="64"></div><div><div class="name">PC z Linuksem</div><div class="via">Przeglądarka</div></div></div>
+        <div class="device-node"><div class="thumb"><img src="/directdrop/img/devices/iphone.png" alt="Telefon ze stroną pobierania DirectDrop" width="34" height="64"></div><div><div class="name">Telefon Apple</div><div class="via">Przeglądarka</div></div></div>
+        <div class="device-node"><div class="thumb"><img src="/directdrop/img/devices/android.png" alt="Telefon ze stroną pobierania DirectDrop" width="34" height="64"></div><div><div class="name">Telefon z Androidem</div><div class="via">Przeglądarka</div></div></div>
+        <div class="device-node"><div class="thumb"><img src="/directdrop/img/devices/tablet.png" alt="Tablet ze stroną pobierania DirectDrop" width="50" height="64"></div><div><div class="name">Tablet</div><div class="via">Przeglądarka</div></div></div>
+        <div class="device-node"><div class="thumb"><img src="/directdrop/img/devices/other.png" alt="Telewizor ze stroną pobierania DirectDrop" width="96" height="64"></div><div><div class="name">Inne</div><div class="via">Przeglądarka</div></div></div>
       </div>
     </div>
   </section>
