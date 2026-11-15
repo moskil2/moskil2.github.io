@@ -61,6 +61,14 @@
       transition: filter .15s ease;
     }
     .btn-primary:hover { filter: brightness(1.12); }
+    .btn-github {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: #FFC107; color: #1a1408; font-weight: 700; font-size: 17px;
+      padding: 16px 28px; border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(255,193,7,0.4);
+      transition: background .15s ease;
+    }
+    .btn-github:hover { background: #ffce3d; }
 
     /* hero */
     .hero {
@@ -285,6 +293,7 @@
 
   <div class="topbar">
     <a href="/fr/">&larr; spotrobotics.app</a>
+    <a href="https://github.com/moskil2/OnlyMusic" target="_blank" rel="noopener">GitHub</a>
     <a href="/fr/support/">Assistance</a>
     <a href="/fr/onlymusic/privacy.html">Politique de confidentialité</a>
   </div>
@@ -300,6 +309,7 @@
       <p class="lede">Un lecteur de musique léger pour les morceaux que vous avez déjà. Choisissez vos dossiers et lancez la lecture - les commandes sont en haut, vos titres remplissent le reste de l'écran. Sans publicité, sans compte, sans Internet.</p>
       <div class="hero-ctas">
         <a class="btn-primary" href="https://play.google.com/store/apps/details?id=app.spotrobotics.onlymusic" target="_blank" rel="noopener">Disponible sur Google Play &rarr;</a>
+        <a class="btn-github" href="https://github.com/moskil2/OnlyMusic" target="_blank" rel="noopener">Voir sur GitHub &rarr;</a>
       </div>
       <div class="hero-foot mono">
         <span>~2,3 Mo</span>
@@ -527,7 +537,10 @@
       <div>
         <h2>Téléchargez OnlyMusic.</h2>
         <p>Gratuit sur Google Play. Sans publicité, sans compte, sans Internet.</p>
-        <a class="btn-primary" href="https://play.google.com/store/apps/details?id=app.spotrobotics.onlymusic" target="_blank" rel="noopener">Disponible sur Google Play &rarr;</a>
+        <div class="hero-ctas">
+          <a class="btn-primary" href="https://play.google.com/store/apps/details?id=app.spotrobotics.onlymusic" target="_blank" rel="noopener">Disponible sur Google Play &rarr;</a>
+          <a class="btn-github" href="https://github.com/moskil2/OnlyMusic" target="_blank" rel="noopener">Voir sur GitHub &rarr;</a>
+        </div>
       </div>
       <div class="final-cta-qr">
         <img src="https://api.qrserver.com/v1/create-qr-code/?size=260x260&margin=0&color=16-17-28&data=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dapp.spotrobotics.onlymusic" alt="QR code vers la fiche Google Play" width="150" height="150">
