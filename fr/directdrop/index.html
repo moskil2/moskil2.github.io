@@ -98,7 +98,8 @@
 
     /* device tree */
     .bit-stream {
-      flex: none; position: relative; width: 132px; height: 64px; margin: 0 4px;
+      flex: 1 1 auto; min-width: 120px; position: relative; z-index: 1; height: 64px;
+      margin: 0 6px 0 -83px; /* start at the phone's edge (its PNG has ~83px transparent margin) */
     }
     .bit-stream .lane { position: absolute; left: 0; right: 0; height: 17px; }
     .bit-stream .lane-out { top: 10px; }
@@ -109,23 +110,23 @@
       font: 600 9px 'JetBrains Mono', monospace; color: #fff; text-shadow: 0 1px 1px rgba(0,60,20,.6);
       background: radial-gradient(circle at 34% 28%, #d2ffd8 0%, #5ee77b 26%, #1e9c3d 68%, #07501c 100%);
       box-shadow: 0 3px 5px rgba(0,0,0,.5), 0 0 12px rgba(72,232,106,.45);
-      opacity: 0; animation: bit-go 2.4s linear infinite;
+      opacity: 0; animation: bit-go 3.2s linear infinite;
     }
     .bit-stream .lane-in .bit { animation-direction: reverse; }
-    .bit-stream .bit:nth-child(2) { animation-delay: -0.6s; }
-    .bit-stream .bit:nth-child(3) { animation-delay: -1.2s; }
-    .bit-stream .bit:nth-child(4) { animation-delay: -1.8s; }
+    .bit-stream .bit:nth-child(2) { animation-delay: -0.8s; }
+    .bit-stream .bit:nth-child(3) { animation-delay: -1.6s; }
+    .bit-stream .bit:nth-child(4) { animation-delay: -2.4s; }
     @keyframes bit-go {
-      0% { transform: translateX(0); opacity: 0; }
-      15% { opacity: 1; }
-      85% { opacity: 1; }
-      100% { transform: translateX(115px); opacity: 0; }
+      0% { left: 0; opacity: 0; }
+      5% { opacity: 1; }
+      95% { opacity: 1; }
+      100% { left: calc(100% - 17px); opacity: 0; }
     }
     @media (prefers-reduced-motion: reduce) {
       .bit-stream .bit { animation: none; opacity: 1; }
-      .bit-stream .bit:nth-child(2) { transform: translateX(38px); }
-      .bit-stream .bit:nth-child(3) { transform: translateX(77px); }
-      .bit-stream .bit:nth-child(4) { transform: translateX(115px); }
+      .bit-stream .bit:nth-child(2) { left: calc(33% - 6px); }
+      .bit-stream .bit:nth-child(3) { left: calc(66% - 11px); }
+      .bit-stream .bit:nth-child(4) { left: calc(100% - 17px); }
     }
     .device-tree {
       flex: none; position: relative;
