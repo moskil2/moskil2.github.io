@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SW102-fastvare – egen fastvare med åpen kildekode for Bafang SW102-displayet | Spot Robotics</title>
-  <meta name="description" content="Fastvare med åpen kildekode for Bafang SW102-displayet, laget for originale Bafang-kontrollere for midtmotor (BBS01/BBS02/BBSHD/M400/M420/M620). Ny cockpit, full meny, Bluetooth OTA-oppdateringer.">
+  <title>SW102-fastvare – egen fastvare for Bafang SW102-displayet | Spot Robotics</title>
+  <meta name="description" content="Egen fastvare for Bafang SW102-displayet, laget for originale Bafang-kontrollere for midtmotor (BBS01/BBS02/BBSHD/M400/M420/M620). Ny cockpit, full meny, Bluetooth OTA-oppdateringer.">
   <meta name="author" content="Tomasz Pieczara">
   <meta property="og:title" content="SW102-fastvare – egen fastvare for Bafang SW102-displayet">
-  <meta property="og:description" content="Fastvare med åpen kildekode som erstatter den originale SW102-fastvaren - ny cockpit, full meny, Bluetooth OTA-oppdateringer, for originale Bafang-kontrollere for midtmotor.">
+  <meta property="og:description" content="Egen fastvare som erstatter den originale SW102-fastvaren - ny cockpit, full meny, Bluetooth OTA-oppdateringer, for originale Bafang-kontrollere for midtmotor.">
   <meta property="og:url" content="https://spotrobotics.app/no/sw102/">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://spotrobotics.app/sw102/img/logo.jpg">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="SW102-fastvare – egen fastvare for Bafang SW102-displayet">
-  <meta name="twitter:description" content="Fastvare med åpen kildekode som erstatter den originale SW102-fastvaren - ny cockpit, full meny, Bluetooth OTA-oppdateringer, for originale Bafang-kontrollere for midtmotor.">
+  <meta name="twitter:description" content="Egen fastvare som erstatter den originale SW102-fastvaren - ny cockpit, full meny, Bluetooth OTA-oppdateringer, for originale Bafang-kontrollere for midtmotor.">
   <meta name="twitter:image" content="https://spotrobotics.app/sw102/img/logo.jpg">
   <link rel="canonical" href="https://spotrobotics.app/no/sw102/">
   <link rel="icon" href="/favicon.ico" sizes="any">
@@ -226,7 +226,7 @@
     "name": "SW102 Firmware",
     "operatingSystem": "nRF51822",
     "applicationCategory": "UtilitiesApplication",
-    "description": "Fastvare med åpen kildekode for Bafang SW102-displayet, laget for originale Bafang-kontrollere for midtmotor - ny cockpit, full meny, Bluetooth OTA-oppdateringer.",
+    "description": "Egen fastvare for Bafang SW102-displayet, laget for originale Bafang-kontrollere for midtmotor - ny cockpit, full meny, Bluetooth OTA-oppdateringer.",
     "url": "https://spotrobotics.app/sw102/",
     "image": "https://spotrobotics.app/sw102/img/logo.jpg",
     "softwareVersion": "0.1.5",
@@ -243,7 +243,7 @@
 
   <div class="topbar">
     <a href="/no/">&larr; spotrobotics.app</a>
-    <a href="https://github.com/moskil2/SW102_BAFANG_OSF" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://github.com/moskil2/SW102_BAFANG_CUSTOM_FIRMWARE" target="_blank" rel="noopener">GitHub</a>
     <a href="/no/sw102/privacy.html">Personvern</a>
     <a href="/sw102/terms.html">Vilkår for bruk</a>
   </div>
@@ -257,15 +257,15 @@
       </div>
       <div class="eyebrow">Egen fastvare - Bafang SW102-display</div>
       <h1>Bafang SW102-displayet ditt, helt omprogrammert.</h1>
-      <p class="lede">Fastvare med åpen kildekode som erstatter den originale SW102-fastvaren fullstendig - en ny cockpit, en full innstillingsmeny og Bluetooth OTA-oppdateringer, bygd fra bunnen av for Bafang-kontrollere for midtmotor (BBS01/<wbr>BBS02/<wbr>BBSHD/<wbr>M400/<wbr>M420/<wbr>M620), med original Bafang-fastvare eller BBS-FW med åpen kildekode.</p>
+      <p class="lede">Egen fastvare som erstatter den originale SW102-fastvaren fullstendig - en ny cockpit, en full innstillingsmeny og Bluetooth OTA-oppdateringer, bygd fra bunnen av for Bafang-kontrollere for midtmotor (BBS01/<wbr>BBS02/<wbr>BBSHD/<wbr>M400/<wbr>M420/<wbr>M620), med original Bafang-fastvare eller BBS-FW med åpen kildekode.</p>
       <div class="hero-ctas">
-        <a class="btn-github" href="https://github.com/moskil2/SW102_BAFANG_OSF" target="_blank" rel="noopener">Se på GitHub &rarr;</a>
-        <span class="badge-warn">v0.2.0</span>
+        <a class="btn-github" href="https://github.com/moskil2/SW102_BAFANG_CUSTOM_FIRMWARE" target="_blank" rel="noopener">Se på GitHub &rarr;</a>
+        <span class="badge-warn">v0.2.3</span>
       </div>
       <div class="hero-foot mono">
         <span>nRF51822</span>
         <span>&middot;</span>
-        <span>Gratis og åpen kildekode</span>
+        <span>Gratis</span>
         <span>&middot;</span>
         <span>Bluetooth OTA-oppdateringer</span>
       </div>
@@ -347,7 +347,7 @@
       <ul>
         <li>Batterispenning og -prosent (Standard, eller Presis - beregnet lokalt fra målt spenning)</li>
         <li>Fart med store tall - tre oppsett, byttes med et kort trykk på M: standard, fart i hele tall enda større, og en dataskjerm</li>
-        <li>Motoreffekt i watt</li>
+        <li>Motoreffekt i watt, eller batteristrøm i ampere - du velger i menyen</li>
         <li>Assistnivå - to valgbare oppsett, med søyle- eller pilvisning, pluss statusikoner for lys, Bluetooth og brems</li>
         <li>Turdistanse med én desimal, telt nøyaktig ved alle farter, pluss kilometerteller og en beregnet rekkevidde basert på din egen kjørehistorikk</li>
         <li>Gjennomsnittlig og nåværende energiforbruk (Wh/km eller Wh/mile)</li>
@@ -374,7 +374,7 @@
         <li>Kalibrering av strøm og spenning for kontrollere med shunt-modifikasjon eller en spenningsdeler som måler feil</li>
         <li>Korrigering av kilometerteller, Trip-nullstilling og full fabrikktilbakestilling</li>
         <li>Modus for batteriprosent (Standard eller Presis) med justerbar min./maks. pakkespenning</li>
-        <li>Oppsettvalg for cockpit - oppsett for assistnivå, visningsstil, skillelinjer og å snu hele displayet opp ned (huskes etter avslåing)</li>
+        <li>Oppsettvalg for cockpit - oppsett for assistnivå, visningsstil, skillelinjer, å snu hele displayet opp ned (huskes etter avslåing) og visning av effekt i watt eller ampere</li>
         <li>Controller - original Bafang-fastvare (OEM) eller BBS-FW</li>
         <li>Programmering av assistnivåer - programmer kontrolleren rett fra displayet (se nedenfor)</li>
         <li>Statistikk - kilometerteller, snittfart og snittforbruk, brukt energi, driftstid, maksimal effekt og strøm over hele displayets levetid</li>
@@ -421,9 +421,9 @@
           <p>En ekte forbruksmodell kombinerer kjørehistorikken din med kjørestilen din nå til en live rekkeviddeberegning - ikke et fast tall.</p>
         </div>
         <div class="feature-card">
-          <span class="feature-glyph mono">GPL</span>
-          <div class="title">Åpen kildekode</div>
-          <p>SW102-fastvaren er lisensiert under GPL-3.0 og bygd på fellesskapsforken <code class="mono">anszom/SW102_LCD</code>. Skriftene på skjermen er håndtegnet av forfatteren, alle rettigheter forbeholdt utenfor denne fastvaren.</p>
+          <span class="feature-glyph mono">&copy;</span>
+          <div class="title">Egen kode</div>
+          <p>Skrevet fra bunnen av av forfatteren, inkludert de håndtegnede skriftene på skjermen. Alle rettigheter forbeholdt.</p>
         </div>
         <div class="feature-card">
           <span class="feature-glyph mono">SIM</span>
@@ -466,7 +466,7 @@
     <div class="footnote-pill">
       <span>nRF51822</span>
       <span class="sep">|</span>
-      <span>Gratis og åpen kildekode</span>
+      <span>Gratis</span>
       <span class="sep">|</span>
       <span>BBS01 &middot; BBS02 &middot; BBSHD &middot; M400 &middot; M420 &middot; M620 &middot; BBS-FW</span>
     </div>
@@ -477,9 +477,9 @@
     <div class="final-cta">
       <div>
         <h2>Skaff deg fastvaren.</h2>
-        <p>Gratis og med åpen kildekode, for Bafang-kontrollere for midtmotor med original Bafang-fastvare eller BBS-FW. Kildekode, installasjonsveiledning og utgivelser på GitHub.</p>
+        <p>Gratis, for Bafang-kontrollere for midtmotor med original Bafang-fastvare eller BBS-FW. Installasjonsveiledning og utgivelser på GitHub.</p>
         <div class="hero-ctas">
-          <a class="btn-github" href="https://github.com/moskil2/SW102_BAFANG_OSF" target="_blank" rel="noopener">Se på GitHub &rarr;</a>
+          <a class="btn-github" href="https://github.com/moskil2/SW102_BAFANG_CUSTOM_FIRMWARE" target="_blank" rel="noopener">Se på GitHub &rarr;</a>
         </div>
       </div>
     </div>

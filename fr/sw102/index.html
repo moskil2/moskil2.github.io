@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Firmware SW102 – firmware open source personnalisé pour l'écran Bafang SW102 | Spot Robotics</title>
-  <meta name="description" content="Firmware open source pour l'écran Bafang SW102, conçu pour les contrôleurs de moteurs pédaliers Bafang d'origine (BBS01/BBS02/BBSHD/M400/M420/M620). Cockpit repensé, menu complet, mises à jour Bluetooth OTA.">
+  <title>Firmware SW102 – firmware personnalisé pour l'écran Bafang SW102 | Spot Robotics</title>
+  <meta name="description" content="Firmware personnalisé pour l'écran Bafang SW102, conçu pour les contrôleurs de moteurs pédaliers Bafang d'origine (BBS01/BBS02/BBSHD/M400/M420/M620). Cockpit repensé, menu complet, mises à jour Bluetooth OTA.">
   <meta name="author" content="Tomasz Pieczara">
   <meta property="og:title" content="Firmware SW102 – firmware personnalisé pour l'écran Bafang SW102">
-  <meta property="og:description" content="Firmware open source qui remplace le firmware d'origine du SW102 - cockpit repensé, menu complet, mises à jour Bluetooth OTA, pour les contrôleurs de moteurs pédaliers Bafang d'origine.">
+  <meta property="og:description" content="Firmware personnalisé qui remplace le firmware d'origine du SW102 - cockpit repensé, menu complet, mises à jour Bluetooth OTA, pour les contrôleurs de moteurs pédaliers Bafang d'origine.">
   <meta property="og:url" content="https://spotrobotics.app/fr/sw102/">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://spotrobotics.app/sw102/img/logo.jpg">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Firmware SW102 – firmware personnalisé pour l'écran Bafang SW102">
-  <meta name="twitter:description" content="Firmware open source qui remplace le firmware d'origine du SW102 - cockpit repensé, menu complet, mises à jour Bluetooth OTA, pour les contrôleurs de moteurs pédaliers Bafang d'origine.">
+  <meta name="twitter:description" content="Firmware personnalisé qui remplace le firmware d'origine du SW102 - cockpit repensé, menu complet, mises à jour Bluetooth OTA, pour les contrôleurs de moteurs pédaliers Bafang d'origine.">
   <meta name="twitter:image" content="https://spotrobotics.app/sw102/img/logo.jpg">
   <link rel="canonical" href="https://spotrobotics.app/fr/sw102/">
   <link rel="icon" href="/favicon.ico" sizes="any">
@@ -226,7 +226,7 @@
     "name": "SW102 Firmware",
     "operatingSystem": "nRF51822",
     "applicationCategory": "UtilitiesApplication",
-    "description": "Firmware open source pour l'écran Bafang SW102, conçu pour les contrôleurs de moteurs pédaliers Bafang d'origine - cockpit repensé, menu complet, mises à jour Bluetooth OTA.",
+    "description": "Firmware personnalisé pour l'écran Bafang SW102, conçu pour les contrôleurs de moteurs pédaliers Bafang d'origine - cockpit repensé, menu complet, mises à jour Bluetooth OTA.",
     "url": "https://spotrobotics.app/sw102/",
     "image": "https://spotrobotics.app/sw102/img/logo.jpg",
     "softwareVersion": "0.1.5",
@@ -243,7 +243,7 @@
 
   <div class="topbar">
     <a href="/fr/">&larr; spotrobotics.app</a>
-    <a href="https://github.com/moskil2/SW102_BAFANG_OSF" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://github.com/moskil2/SW102_BAFANG_CUSTOM_FIRMWARE" target="_blank" rel="noopener">GitHub</a>
     <a href="/fr/sw102/privacy.html">Confidentialité</a>
     <a href="/sw102/terms.html">Conditions d'utilisation</a>
   </div>
@@ -257,15 +257,15 @@
       </div>
       <div class="eyebrow">Firmware personnalisé - écran Bafang SW102</div>
       <h1>Votre écran Bafang SW102, entièrement reprogrammé.</h1>
-      <p class="lede">Un firmware open source qui remplace entièrement celui d'origine du SW102 - un cockpit repensé, un menu de réglages complet et des mises à jour Bluetooth OTA, conçu de zéro pour les contrôleurs de moteurs pédaliers Bafang (BBS01/<wbr>BBS02/<wbr>BBSHD/<wbr>M400/<wbr>M420/<wbr>M620), avec le firmware Bafang d'origine ou le firmware open source BBS-FW.</p>
+      <p class="lede">Un firmware personnalisé qui remplace entièrement celui d'origine du SW102 - un cockpit repensé, un menu de réglages complet et des mises à jour Bluetooth OTA, conçu de zéro pour les contrôleurs de moteurs pédaliers Bafang (BBS01/<wbr>BBS02/<wbr>BBSHD/<wbr>M400/<wbr>M420/<wbr>M620), avec le firmware Bafang d'origine ou le firmware open source BBS-FW.</p>
       <div class="hero-ctas">
-        <a class="btn-github" href="https://github.com/moskil2/SW102_BAFANG_OSF" target="_blank" rel="noopener">Voir sur GitHub &rarr;</a>
-        <span class="badge-warn">v0.2.0</span>
+        <a class="btn-github" href="https://github.com/moskil2/SW102_BAFANG_CUSTOM_FIRMWARE" target="_blank" rel="noopener">Voir sur GitHub &rarr;</a>
+        <span class="badge-warn">v0.2.3</span>
       </div>
       <div class="hero-foot mono">
         <span>nRF51822</span>
         <span>&middot;</span>
-        <span>Gratuit &amp; open source</span>
+        <span>Gratuit</span>
         <span>&middot;</span>
         <span>Mises à jour Bluetooth OTA</span>
       </div>
@@ -347,7 +347,7 @@
       <ul>
         <li>Tension et pourcentage de la batterie (Standard, ou Précis - calculé localement à partir de la tension mesurée)</li>
         <li>Vitesse en grands chiffres - trois dispositions, à faire défiler par un appui court sur M : standard, vitesse en nombre entier encore plus grande, et un écran de données</li>
-        <li>Puissance du moteur, en watts</li>
+        <li>Puissance du moteur en watts, ou courant de la batterie en ampères - au choix dans le menu</li>
         <li>Niveau d'assistance - deux dispositions au choix, avec indicateur en barres ou en flèches, plus des icônes d'état pour l'éclairage, le Bluetooth et le frein</li>
         <li>Distance du trajet avec une décimale, comptée exactement à toute vitesse, plus le compteur total et une autonomie estimée d'après votre historique de conduite</li>
         <li>Consommation d'énergie moyenne et actuelle (Wh/km ou Wh/mile)</li>
@@ -374,7 +374,7 @@
         <li>Étalonnage du courant et de la tension pour les contrôleurs à shunt modifié ou un pont diviseur qui mesure mal</li>
         <li>Correction du compteur total, remise à zéro du trajet et réinitialisation complète</li>
         <li>Mode du pourcentage de batterie (Standard ou Précis) avec tension minimale/maximale de la batterie réglable</li>
-        <li>Options d'affichage du cockpit - disposition du niveau d'assistance, style d'indicateur, séparateurs et retournement complet de l'écran (conservé après l'extinction)</li>
+        <li>Options d'affichage du cockpit - disposition du niveau d'assistance, style d'indicateur, séparateurs, retournement complet de l'écran (conservé après l'extinction) et affichage de la puissance en watts ou en ampères</li>
         <li>Controller - firmware Bafang d'origine (OEM) ou BBS-FW</li>
         <li>Programmation des niveaux d'assistance - programmer le contrôleur directement depuis l'écran (voir plus bas)</li>
         <li>Statistiques - compteur kilométrique, vitesse et consommation moyennes, énergie utilisée, temps de fonctionnement, puissance et courant maximum sur toute la durée de vie de l'écran</li>
@@ -421,9 +421,9 @@
           <p>Un vrai modèle de consommation combine votre historique de conduite et votre style actuel en une estimation d'autonomie en direct - pas un chiffre figé.</p>
         </div>
         <div class="feature-card">
-          <span class="feature-glyph mono">GPL</span>
-          <div class="title">Open source</div>
-          <p>Le firmware SW102 est sous licence GPL-3.0, basé sur le fork communautaire <code class="mono">anszom/SW102_LCD</code>. Polices d'affichage dessinées à la main par l'auteur, tous droits réservés en dehors de ce firmware.</p>
+          <span class="feature-glyph mono">&copy;</span>
+          <div class="title">Code propre</div>
+          <p>Écrit de zéro par l'auteur, y compris les polices d'affichage dessinées à la main. Tous droits réservés.</p>
         </div>
         <div class="feature-card">
           <span class="feature-glyph mono">SIM</span>
@@ -466,7 +466,7 @@
     <div class="footnote-pill">
       <span>nRF51822</span>
       <span class="sep">|</span>
-      <span>Gratuit &amp; open source</span>
+      <span>Gratuit</span>
       <span class="sep">|</span>
       <span>BBS01 &middot; BBS02 &middot; BBSHD &middot; M400 &middot; M420 &middot; M620 &middot; BBS-FW</span>
     </div>
@@ -477,9 +477,9 @@
     <div class="final-cta">
       <div>
         <h2>Obtenez le firmware.</h2>
-        <p>Gratuit et open source, pour les contrôleurs de moteurs pédaliers Bafang avec le firmware Bafang d'origine ou BBS-FW. Code source, instructions d'installation et versions sur GitHub.</p>
+        <p>Gratuit, pour les contrôleurs de moteurs pédaliers Bafang avec le firmware Bafang d'origine ou BBS-FW. Instructions d'installation et versions sur GitHub.</p>
         <div class="hero-ctas">
-          <a class="btn-github" href="https://github.com/moskil2/SW102_BAFANG_OSF" target="_blank" rel="noopener">Voir sur GitHub &rarr;</a>
+          <a class="btn-github" href="https://github.com/moskil2/SW102_BAFANG_CUSTOM_FIRMWARE" target="_blank" rel="noopener">Voir sur GitHub &rarr;</a>
         </div>
       </div>
     </div>

@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SW102 Firmware – Custom open-source firmware for the Bafang SW102 display | Spot Robotics</title>
-  <meta name="description" content="Open-source firmware for the Bafang SW102 display, built for genuine Bafang mid-drive controllers (BBS01/BBS02/BBSHD/M400/M420/M620). Redesigned cockpit, full menu, Bluetooth OTA updates.">
+  <title>SW102 Firmware – Custom firmware for the Bafang SW102 display | Spot Robotics</title>
+  <meta name="description" content="Custom firmware for the Bafang SW102 display, built for genuine Bafang mid-drive controllers (BBS01/BBS02/BBSHD/M400/M420/M620). Redesigned cockpit, full menu, Bluetooth OTA updates.">
   <meta name="author" content="Tomasz Pieczara">
   <meta property="og:title" content="SW102 Firmware – custom firmware for the Bafang SW102 display">
-  <meta property="og:description" content="Open-source firmware replacing the stock SW102 firmware - redesigned cockpit, full menu, Bluetooth OTA updates, for genuine Bafang mid-drive controllers.">
+  <meta property="og:description" content="Custom firmware replacing the stock SW102 firmware - redesigned cockpit, full menu, Bluetooth OTA updates, for genuine Bafang mid-drive controllers.">
   <meta property="og:url" content="https://spotrobotics.app/sw102/">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://spotrobotics.app/sw102/img/logo.jpg">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="SW102 Firmware – custom firmware for the Bafang SW102 display">
-  <meta name="twitter:description" content="Open-source firmware replacing the stock SW102 firmware - redesigned cockpit, full menu, Bluetooth OTA updates, for genuine Bafang mid-drive controllers.">
+  <meta name="twitter:description" content="Custom firmware replacing the stock SW102 firmware - redesigned cockpit, full menu, Bluetooth OTA updates, for genuine Bafang mid-drive controllers.">
   <meta name="twitter:image" content="https://spotrobotics.app/sw102/img/logo.jpg">
   <link rel="canonical" href="https://spotrobotics.app/sw102/">
   <link rel="icon" href="/favicon.ico" sizes="any">
@@ -226,7 +226,7 @@
     "name": "SW102 Firmware",
     "operatingSystem": "nRF51822",
     "applicationCategory": "UtilitiesApplication",
-    "description": "Open-source firmware for the Bafang SW102 display, built for genuine Bafang mid-drive controllers - redesigned cockpit, full menu, Bluetooth OTA updates.",
+    "description": "Custom firmware for the Bafang SW102 display, built for genuine Bafang mid-drive controllers - redesigned cockpit, full menu, Bluetooth OTA updates.",
     "url": "https://spotrobotics.app/sw102/",
     "image": "https://spotrobotics.app/sw102/img/logo.jpg",
     "softwareVersion": "0.1.5",
@@ -243,7 +243,7 @@
 
   <div class="topbar">
     <a href="/">&larr; spotrobotics.app</a>
-    <a href="https://github.com/moskil2/SW102_BAFANG_OSF" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://github.com/moskil2/SW102_BAFANG_CUSTOM_FIRMWARE" target="_blank" rel="noopener">GitHub</a>
     <a href="/sw102/privacy.html">Privacy Policy</a>
     <a href="/sw102/terms.html">Terms of Service</a>
   </div>
@@ -257,15 +257,15 @@
       </div>
       <div class="eyebrow">Custom firmware - Bafang SW102 display</div>
       <h1>Your Bafang SW102 display, completely reprogrammed.</h1>
-      <p class="lede">Open-source firmware that replaces the stock SW102 firmware entirely - a redesigned cockpit, a full settings menu, and Bluetooth OTA updates, built from scratch for Bafang mid-drive controllers (BBS01/<wbr>BBS02/<wbr>BBSHD/<wbr>M400/<wbr>M420/<wbr>M620), with original Bafang firmware or the open source BBS-FW.</p>
+      <p class="lede">Custom firmware that replaces the stock SW102 firmware entirely - a redesigned cockpit, a full settings menu, and Bluetooth OTA updates, built from scratch for Bafang mid-drive controllers (BBS01/<wbr>BBS02/<wbr>BBSHD/<wbr>M400/<wbr>M420/<wbr>M620), with original Bafang firmware or the open source BBS-FW.</p>
       <div class="hero-ctas">
-        <a class="btn-github" href="https://github.com/moskil2/SW102_BAFANG_OSF" target="_blank" rel="noopener">View on GitHub &rarr;</a>
-        <span class="badge-warn">v0.2.0</span>
+        <a class="btn-github" href="https://github.com/moskil2/SW102_BAFANG_CUSTOM_FIRMWARE" target="_blank" rel="noopener">View on GitHub &rarr;</a>
+        <span class="badge-warn">v0.2.3</span>
       </div>
       <div class="hero-foot mono">
         <span>nRF51822</span>
         <span>&middot;</span>
-        <span>Free &amp; open source</span>
+        <span>Free</span>
         <span>&middot;</span>
         <span>Bluetooth OTA updates</span>
       </div>
@@ -347,7 +347,7 @@
       <ul>
         <li>Battery voltage and percentage (Standard, or Precise - computed locally from measured voltage)</li>
         <li>Speed, in large digits - three layouts, cycled with a short press of M: standard, whole-number speed even larger, and a data screen</li>
-        <li>Motor power, in watts</li>
+        <li>Motor power in watts, or battery current in amps - your choice in the menu</li>
         <li>Assist level - two selectable layouts, with a bar-graph or an arrow-based indicator, plus light/Bluetooth/brake status icons</li>
         <li>Trip distance with one decimal, counted exactly at any speed, plus odometer and an estimated range based on your own riding history</li>
         <li>Average and current energy consumption (Wh/km or Wh/mile)</li>
@@ -374,7 +374,7 @@
         <li>Current and voltage calibration for shunt-modded controllers or an off-reading voltage divider</li>
         <li>Odometer correction, trip reset, and full factory reset</li>
         <li>Battery percentage mode (Standard or Precise) with configurable min/max pack voltage</li>
-        <li>Cockpit layout options - assist-level layout, indicator style, separators, and turning the whole display upside down (remembered after power-off)</li>
+        <li>Cockpit layout options - assist-level layout, indicator style, separators, turning the whole display upside down (remembered after power-off), and showing power in watts or amps</li>
         <li>Controller - original Bafang firmware (OEM) or BBS-FW</li>
         <li>Assist Level Programming - program the controller from the display (see below)</li>
         <li>Statistics - ODO, average speed and efficiency, energy used, run time, maximum power and current over the display's lifetime</li>
@@ -421,9 +421,9 @@
           <p>A real energy-use model blends your riding history with your current style into a live range estimate - not a static number.</p>
         </div>
         <div class="feature-card">
-          <span class="feature-glyph mono">GPL</span>
-          <div class="title">Open source</div>
-          <p>SW102 firmware is GPL-3.0, built on the community <code class="mono">anszom/SW102_LCD</code> fork. Display fonts hand-drawn by the author, all rights reserved outside this firmware.</p>
+          <span class="feature-glyph mono">&copy;</span>
+          <div class="title">Own code</div>
+          <p>Written from scratch by the author, including the hand-drawn display fonts. All rights reserved.</p>
         </div>
         <div class="feature-card">
           <span class="feature-glyph mono">SIM</span>
@@ -466,7 +466,7 @@
     <div class="footnote-pill">
       <span>nRF51822</span>
       <span class="sep">|</span>
-      <span>Free &amp; open source</span>
+      <span>Free</span>
       <span class="sep">|</span>
       <span>BBS01 &middot; BBS02 &middot; BBSHD &middot; M400 &middot; M420 &middot; M620 &middot; BBS-FW</span>
     </div>
@@ -477,9 +477,9 @@
     <div class="final-cta">
       <div>
         <h2>Get the firmware.</h2>
-        <p>Free and open source, for Bafang mid-drive controllers with original Bafang firmware or BBS-FW. Source, install instructions, and releases on GitHub.</p>
+        <p>Free, for Bafang mid-drive controllers with original Bafang firmware or BBS-FW. Install instructions and releases on GitHub.</p>
         <div class="hero-ctas">
-          <a class="btn-github" href="https://github.com/moskil2/SW102_BAFANG_OSF" target="_blank" rel="noopener">View on GitHub &rarr;</a>
+          <a class="btn-github" href="https://github.com/moskil2/SW102_BAFANG_CUSTOM_FIRMWARE" target="_blank" rel="noopener">View on GitHub &rarr;</a>
         </div>
       </div>
     </div>
