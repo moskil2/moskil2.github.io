@@ -7,12 +7,30 @@
   var w, h, dpr, stars, band, meteor = null, nextMeteor = 0;
   // 3 parallax layers: far (many, dim, slow) to near (few, bright, faster)
   var layers = [
-    { density: 0.00045, size: [0.5, 1.2], alpha: [0.25, 0.55], speed: 0.6 },
-    { density: 0.00018, size: [0.9, 1.7], alpha: [0.4, 0.8], speed: 1.2 },
-    { density: 0.00005, size: [1.4, 2.4], alpha: [0.6, 1.0], speed: 2.0, glow: true }
+    // glow: halo radius (x star radius) and halo strength
+    { density: 0.00045, size: [0.5, 1.2], alpha: [0.25, 0.55], speed: 1.8 },
+    { density: 0.00018, size: [0.9, 1.7], alpha: [0.4, 0.8], speed: 3.6, glow: { r: 4, a: 0.35 } },
+    { density: 0.00005, size: [1.4, 2.4], alpha: [0.6, 1.0], speed: 6.0, glow: { r: 5.5, a: 0.55 }, cross: true }
   ];
 
   function rand(a, b) { return a + Math.random() * (b - a); }
+
+  // Soft round halo, pre-rendered once per star colour and stamped with drawImage
+  var halos = {};
+  function halo(c) {
+    if (halos[c]) return halos[c];
+    var s = document.createElement('canvas');
+    s.width = s.height = 64;
+    var g2 = s.getContext('2d');
+    var g = g2.createRadialGradient(32, 32, 0, 32, 32, 32);
+    g.addColorStop(0, 'rgba(' + c + ',1)');
+    g.addColorStop(0.25, 'rgba(' + c + ',0.4)');
+    g.addColorStop(0.6, 'rgba(' + c + ',0.08)');
+    g.addColorStop(1, 'rgba(' + c + ',0)');
+    g2.fillStyle = g;
+    g2.fillRect(0, 0, 64, 64);
+    return (halos[c] = s);
+  }
 
   // Faint Milky Way band, pre-rendered once into an offscreen canvas
   function buildBand() {
@@ -53,7 +71,7 @@
     canvas.height = h * dpr;
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     stars = [];
-    layers.forEach(function (L) {
+    layers.forEach(function (L, li) {
       var n = Math.round(w * h * L.density);
       for (var i = 0; i < n; i++) {
         var warm = Math.random();
@@ -63,19 +81,51 @@
           r: rand(L.size[0], L.size[1]),
           a: rand(L.alpha[0], L.alpha[1]),
           v: L.speed,
-          glow: !!L.glow,
+          glow: L.glow || null,
+          L: li,
+          gf: rand(0.3, 0.9),
           tw: Math.random() < 0.25 ? rand(0.5, 1.6) : 0,
           ph: Math.random() * Math.PI * 2,
           c: warm < 0.05 ? '200,215,255' : warm < 0.15 ? '255,205,140' : warm < 0.45 ? '255,228,160' : '255,246,225'
         });
         var st = stars[stars.length - 1];
-        if (st.glow && Math.random() < 0.3) {
+        if (L.cross && Math.random() < 0.3) {
           // Cross glint with its own slow shimmer, so glints flare up and fade independently
           st.cross = { f: rand(0.4, 1.1), ph: rand(0, 6.28), len: rand(5, 8) };
         }
       }
     });
     buildBand();
+    buildHalos();
+  }
+
+  // Halos of the steady (non-twinkling) stars, drawn once per layer into a half-resolution
+  // canvas that just slides along with its layer - the halos are soft, so half resolution
+  // looks the same and costs far less than stamping hundreds of halos every frame.
+  function buildHalos() {
+    layers.forEach(function (L) {
+      L.haloCanvas = null;
+      if (!L.glow) return;
+      var hc = document.createElement('canvas');
+      hc.width = Math.ceil(w / 2);
+      hc.height = Math.ceil(h / 2);
+      var g = hc.getContext('2d');
+      g.scale(0.5, 0.5);
+      L.haloCanvas = hc;
+    });
+    stars.forEach(function (s) {
+      if (!s.glow || s.tw) return;
+      var hc = layers[s.L].haloCanvas, g = hc.getContext('2d');
+      var R = s.r * s.glow.r;
+      g.globalAlpha = s.a * s.glow.a * 0.85;
+      // Halos near an edge are drawn on both sides so the slide wraps seamlessly
+      for (var k = -1; k <= 1; k++) {
+        var x = s.x + k * w;
+        if (x + R < 0 || x - R > w) continue;
+        g.drawImage(halo(s.c), x - R, s.y - R, R * 2, R * 2);
+      }
+      s.baked = true;
+    });
   }
 
   function drawCross(x, y, s, a, t) {
@@ -125,17 +175,24 @@
     var t = time / 1000;
     ctx.clearRect(0, 0, w, h);
     ctx.drawImage(band, 0, 0, w, h);
+    for (var j = 0; j < layers.length; j++) {
+      var hc = layers[j].haloCanvas;
+      if (!hc) continue;
+      var off = still ? 0 : (t * layers[j].speed) % w;
+      ctx.drawImage(hc, -off, 0, w, h);
+      ctx.drawImage(hc, w - off, 0, w, h);
+    }
     for (var i = 0; i < stars.length; i++) {
       var s = stars[i];
-      // Very slow drift to the left (px per second), wrapping around
+      // Slow drift to the left (px per second), wrapping around
       var x = still ? s.x : ((s.x - t * s.v) % w + w) % w;
       var a = s.tw && !still ? s.a * (0.65 + 0.35 * Math.sin(t * s.tw + s.ph)) : s.a;
-      if (s.glow) {
-        // Soft halo around the nearest, brightest stars
-        ctx.fillStyle = 'rgba(' + s.c + ',' + (a * 0.12) + ')';
-        ctx.beginPath();
-        ctx.arc(x, s.y, s.r * 3, 0, Math.PI * 2);
-        ctx.fill();
+      if (s.glow && !s.baked) {
+        // Twinkling stars keep a live halo, gently breathing on its own rhythm
+        var R = s.r * s.glow.r;
+        ctx.globalAlpha = a * s.glow.a * (still ? 0.85 : 0.7 + 0.3 * Math.sin(t * s.gf + s.ph * 2));
+        ctx.drawImage(halo(s.c), x - R, s.y - R, R * 2, R * 2);
+        ctx.globalAlpha = 1;
       }
       if (s.cross) drawCross(x, s.y, s, a, t);
       ctx.fillStyle = 'rgba(' + s.c + ',' + a + ')';
