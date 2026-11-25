@@ -48,6 +48,16 @@
     '  box-shadow: inset 0 1px 0 rgba(255,255,255,.45), inset 0 -2px 0 rgba(0,0,0,.16); }',
     'html .btn-primary { text-shadow: 0 1px 0 rgba(0,0,0,.28); }',
     'html .btn-github { text-shadow: 0 1px 0 rgba(255,244,204,.5); }',
+    /* Form Send buttons (support page): the same lift + sweeping light, no shading; disabled ones stay still */
+    'html button[type="submit"]:not(:disabled) { position: relative; overflow: hidden; isolation: isolate;',
+    '  transition: background .15s ease, transform .2s cubic-bezier(.2,.8,.2,1), filter .2s ease; }',
+    'html button[type="submit"]:not(:disabled)::after { content: ""; position: absolute; top: -20%; bottom: -20%; left: -40%; width: 34%;',
+    '  transform: skewX(-22deg) translateX(-150%); pointer-events: none; z-index: -1;',
+    '  background: linear-gradient(90deg, transparent, rgba(255,255,255,.6), transparent); }',
+    '@media (hover: hover) { html button[type="submit"]:not(:disabled):hover { transform: translateY(-2px); filter: brightness(1.06); }',
+    '  html button[type="submit"]:not(:disabled):hover::after { animation: sr-sheen .9s ease-out; } }',
+    'html button[type="submit"]:not(:disabled):active { transform: translateY(1px); }',
+    '@media (prefers-reduced-motion: reduce) { html button[type="submit"]:not(:disabled)::after { display: none; } html button[type="submit"]:not(:disabled):hover { transform: none; } }',
     '@keyframes sr-sheen { from { transform: skewX(-22deg) translateX(-150%); } to { transform: skewX(-22deg) translateX(560%); } }',
     '@media (prefers-reduced-motion: reduce) { html .btn-primary::after, html .btn-github::after { display: none; }',
     '  html .btn-primary:hover, html .btn-github:hover { transform: none; } }',
@@ -105,7 +115,18 @@
     '.sr-lock .tr { right: 0; top: 0; background: linear-gradient(to left, var(--lc), transparent) right top / 100% 2px no-repeat, linear-gradient(to bottom, var(--lc), transparent) right top / 2px 100% no-repeat; }',
     '.sr-lock .bl { left: 0; bottom: 0; background: linear-gradient(to right, var(--lc), transparent) left bottom / 100% 2px no-repeat, linear-gradient(to top, var(--lc), transparent) left bottom / 2px 100% no-repeat; }',
     '.sr-lock .br { right: 0; bottom: 0; background: linear-gradient(to left, var(--lc), transparent) right bottom / 100% 2px no-repeat, linear-gradient(to top, var(--lc), transparent) right bottom / 2px 100% no-repeat; }',
-    '@keyframes sr-snap { from { transform: scale(1.25); opacity: 0; } to { transform: none; opacity: 1; } }'
+    '@keyframes sr-snap { from { transform: scale(1.25); opacity: 0; } to { transform: none; opacity: 1; } }',
+    /* White dot cursor with a tapering light tail (replaces the arrow while a mouse is in use) */
+    'html.sr-cursor, html.sr-cursor * { cursor: none !important; }',
+    '.sr-cursor-tail { position: fixed; left: 0; top: 0; z-index: 91; pointer-events: none; }',
+    '.sr-cursor-dot { position: fixed; left: 0; top: 0; z-index: 92; pointer-events: none; opacity: 0; transition: opacity .3s; will-change: transform; }',
+    '.sr-cursor-dot.on { opacity: 1; }',
+    '.sr-cursor-dot i { position: absolute; left: -4px; top: -4px; width: 8px; height: 8px; border-radius: 50%; background: #fff;',
+    '  box-shadow: 0 0 10px 2px rgba(255,255,255,.85); transition: left .3s, top .3s, width .3s, height .3s, background-color .3s, box-shadow .3s; }',
+    /* No rubber-band bounce past the end of the page on mouse/touchpad computers: in
+       Firefox the bounce made the fixed star sky vanish or flicker. Phones keep their
+       own overscroll (pull to refresh). */
+    '@media (hover: hover) and (pointer: fine) { html { overscroll-behavior: none; } }'
   ].join('\n');
   document.head.appendChild(style);
 
@@ -309,6 +330,64 @@
     document.body.appendChild(lock);
     document.body.appendChild(drone);
 
+    // White dot cursor + tail: the dot eases after the mouse, the tail is drawn on a
+    // see-through canvas from the dot's positions of the last TAIL_MS, widest at the dot.
+    var TAIL_MS = 150;
+    var tail = document.createElement('canvas');
+    tail.id = 'sr-cursor-tail';
+    tail.className = 'sr-cursor-tail';
+    tail.setAttribute('aria-hidden', 'true');
+    var dot = document.createElement('div');
+    dot.id = 'sr-cursor-dot';
+    dot.className = 'sr-cursor-dot';
+    dot.setAttribute('aria-hidden', 'true');
+    dot.innerHTML = '<i></i>';
+    document.body.appendChild(tail);
+    document.body.appendChild(dot);
+    var tctx = tail.getContext('2d');
+    var dpr = 1, cx = 0, cy = 0, pts = [];
+    function sizeTail() {
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      tail.width = Math.round(window.innerWidth * dpr);
+      tail.height = Math.round(window.innerHeight * dpr);
+      tail.style.width = window.innerWidth + 'px';
+      tail.style.height = window.innerHeight + 'px';
+    }
+    sizeTail();
+    window.addEventListener('resize', sizeTail);
+
+    function drawTail(t) {
+      var lastPt = pts[pts.length - 1];
+      if (!lastPt || Math.abs(cx - lastPt.x) + Math.abs(cy - lastPt.y) >= 1.5) pts.push({ x: cx, y: cy, t: t });
+      while (pts.length && t - pts[0].t > TAIL_MS) pts.shift();
+      tctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      tctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+      var n = pts.length;
+      if (n < 3) return;
+      var left = [], right = [];
+      for (var i = 0; i < n; i++) {
+        var p0 = pts[Math.max(0, i - 1)], p1 = pts[Math.min(n - 1, i + 1)];
+        var dx = p1.x - p0.x, dy = p1.y - p0.y, len = Math.sqrt(dx * dx + dy * dy) || 1;
+        var fresh = Math.max(0, Math.min(1, 1 - (t - pts[i].t) / TAIL_MS));
+        var half = (1.5 + 7.5 * fresh) / 2;          // 9 px wide at the dot, 1.5 px at the end
+        left.push(pts[i].x - dy / len * half, pts[i].y + dx / len * half);
+        right.push(pts[i].x + dy / len * half, pts[i].y - dx / len * half);
+      }
+      var g = tctx.createLinearGradient(pts[0].x, pts[0].y, pts[n - 1].x, pts[n - 1].y);
+      g.addColorStop(0, 'rgba(255,255,255,0)');
+      g.addColorStop(1, '#fff');
+      tctx.beginPath();
+      tctx.moveTo(left[0], left[1]);
+      for (i = 1; i < n; i++) tctx.lineTo(left[i * 2], left[i * 2 + 1]);
+      for (i = n - 1; i >= 0; i--) tctx.lineTo(right[i * 2], right[i * 2 + 1]);
+      tctx.closePath();
+      tctx.fillStyle = g;
+      tctx.shadowColor = '#fff';
+      tctx.shadowBlur = 10;
+      tctx.fill();
+      tctx.shadowBlur = 0;
+    }
+
     var px = 0, py = 0, x = 0, y = 0, vx = 0, vy = 0, on = false, running = false, last = 0;
     var movedAt = 0, pixelAt = 0, alive = 0, hot = null, glitchTimer;
 
@@ -358,29 +437,37 @@
       var dt = last ? Math.min(0.034, (t - last) / 1000) : 0.016;
       last = t;
       var a = t * 0.0019, gx, gy;
+      // dot: closes 28% of the gap per 60 fps frame (frame-rate independent)
+      var k = 1 - Math.pow(0.72, dt * 60);
+      cx += (px - cx) * k;
+      cy += (py - cy) * k;
+      dot.style.transform = 'translate3d(' + cx.toFixed(1) + 'px,' + cy.toFixed(1) + 'px,0)';
+      drawTail(t);
       if (hot && !hot.isConnected) aim(null);
       if (hot) {
         var r = hot.getBoundingClientRect();
         placeLock(r);
         if (r.height <= 90) {
-          // Small target: hover just above it (below it when it sits at the top of the window)
-          gx = Math.max(r.left + 8, Math.min(r.right - 8, px)) + Math.cos(a * 1.7) * 10;
-          gy = (r.top < 44 ? r.bottom + 16 : r.top - 16) + Math.sin(a * 3.4) * 3;
+          // Small target: hover 40 px above it (below it when it sits at the top of the window);
+          // 16 px until 2026-11-25 made the drone cover the target (owner)
+          gx = Math.max(r.left + 8, Math.min(r.right - 8, cx)) + Math.cos(a * 1.7) * 10;
+          gy = (r.top < 68 ? r.bottom + 40 : r.top - 40) + Math.sin(a * 3.4) * 3;
         } else {
-          gx = px + 24 + Math.cos(a * 1.3) * 4;
-          gy = py - 26 + Math.sin(a * 2.3) * 4;
+          gx = cx + 72 + Math.cos(a * 1.3) * 4;
+          gy = cy - 78 + Math.sin(a * 2.3) * 4;
         }
       } else if (t - movedAt > 1000) {
-        // Mouse resting: figure-eight patrol around the pointer
-        gx = px + Math.cos(a) * 38;
-        gy = py - 14 + Math.sin(a * 2) * 13;
+        // Mouse resting: figure-eight patrol around the dot (owner 2026-11-25: 38/14/13 at first, now +/-150 px)
+        gx = cx + Math.cos(a) * 150;
+        gy = cy - 54 + Math.sin(a * 2) * 52;
       } else {
-        // In flight: just behind the pointer's shoulder, bobbing a little
-        gx = px + 24 + Math.cos(a * 1.3) * 4;
-        gy = py - 26 + Math.sin(a * 2.3) * 4;
+        // In flight: behind the dot's shoulder, about 105 px away, bobbing a little (24/26 until 2026-11-25)
+        gx = cx + 72 + Math.cos(a * 1.3) * 4;
+        gy = cy - 78 + Math.sin(a * 2.3) * 4;
       }
-      vx += ((gx - x) * 95 - vx * 13) * dt;
-      vy += ((gy - y) * 95 - vy * 13) * dt;
+      // Spring: stiffness 55, damping 10 (was 95/13 - about 30% slower chase, same slight bounce)
+      vx += ((gx - x) * 55 - vx * 10) * dt;
+      vy += ((gy - y) * 55 - vy * 10) * dt;
       x += vx * dt;
       y += vy * dt;
       var tilt = Math.max(-20, Math.min(20, vx * 0.03));
@@ -403,8 +490,11 @@
         // Flies in from up and to the left
         on = true;
         x = px - 90; y = py - 70; vx = vy = 0; last = 0;
+        cx = px; cy = py; pts.length = 0;
         drone.classList.add('on');
         light.classList.add('on');
+        dot.classList.add('on');
+        document.documentElement.classList.add('sr-cursor');
       }
       if (!running) { running = true; requestAnimationFrame(step); }
     }, { passive: true });
@@ -424,6 +514,10 @@
       on = false;
       drone.classList.remove('on');
       light.classList.remove('on');
+      dot.classList.remove('on');
+      document.documentElement.classList.remove('sr-cursor');
+      pts.length = 0;
+      tctx.clearRect(0, 0, tail.width, tail.height);
       aim(null);
     });
   })();
@@ -434,7 +528,7 @@
   // Any failure falls back to a normal page load.
   if (!window.fetch || !window.DOMParser || !history.pushState || location.protocol === 'file:') return;
 
-  var KEEP_IDS = { sky: 1, 'bg-music': 1, 'sound-ctl': 1, 'sr-site-style': 1, 'sr-drone': 1, 'sr-drone-trail': 1, 'sr-lock': 1, 'sr-drone-light': 1 };
+  var KEEP_IDS = { sky: 1, 'bg-music': 1, 'sound-ctl': 1, 'sr-site-style': 1, 'sr-drone': 1, 'sr-drone-trail': 1, 'sr-lock': 1, 'sr-drone-light': 1, 'sr-cursor-tail': 1, 'sr-cursor-dot': 1 };
   var loadedScripts = {};
   [].forEach.call(document.scripts, function (s) { if (s.src) loadedScripts[s.src] = 1; });
   var navToken = 0;
