@@ -86,7 +86,8 @@
     '.sr-lock.on { opacity: 1; }',
     '.sr-lock-in { position: absolute; inset: 0; }',
     '.sr-lock.snap .sr-lock-in { animation: sr-snap .3s cubic-bezier(.2,.8,.2,1); }',
-    '.sr-lock i { position: absolute; width: 10px; height: 10px; border: 0 solid rgb(255,90,230);',
+    /* Each corner: two 2px arms, full colour at the corner, fading out to the arm end */
+    '.sr-lock i { position: absolute; width: 12px; height: 12px; --lc: rgb(255,90,230);',
     '  filter: blur(.6px) drop-shadow(0 0 2px rgba(255,43,214,1)) drop-shadow(0 0 6px rgba(220,60,255,.9)) drop-shadow(0 0 14px rgba(170,70,255,.7)); }',
     /* Faint violet glow around the whole locked-on target */
     '.sr-lock-in::before { content: ""; position: absolute; inset: 6px; border-radius: 16px;',
@@ -100,10 +101,10 @@
     '.sr-drone-light .l2 { opacity: 0; background: radial-gradient(circle, rgba(255,43,214,.17), rgba(170,70,255,.07) 38%, transparent 70%); }',
     '.sr-drone-light.hot .l1 { opacity: 0; }',
     '.sr-drone-light.hot .l2 { opacity: 1; }',
-    '.sr-lock .tl { left: 0; top: 0; border-top-width: 2px; border-left-width: 2px; }',
-    '.sr-lock .tr { right: 0; top: 0; border-top-width: 2px; border-right-width: 2px; }',
-    '.sr-lock .bl { left: 0; bottom: 0; border-bottom-width: 2px; border-left-width: 2px; }',
-    '.sr-lock .br { right: 0; bottom: 0; border-bottom-width: 2px; border-right-width: 2px; }',
+    '.sr-lock .tl { left: 0; top: 0; background: linear-gradient(to right, var(--lc), transparent) left top / 100% 2px no-repeat, linear-gradient(to bottom, var(--lc), transparent) left top / 2px 100% no-repeat; }',
+    '.sr-lock .tr { right: 0; top: 0; background: linear-gradient(to left, var(--lc), transparent) right top / 100% 2px no-repeat, linear-gradient(to bottom, var(--lc), transparent) right top / 2px 100% no-repeat; }',
+    '.sr-lock .bl { left: 0; bottom: 0; background: linear-gradient(to right, var(--lc), transparent) left bottom / 100% 2px no-repeat, linear-gradient(to top, var(--lc), transparent) left bottom / 2px 100% no-repeat; }',
+    '.sr-lock .br { right: 0; bottom: 0; background: linear-gradient(to left, var(--lc), transparent) right bottom / 100% 2px no-repeat, linear-gradient(to top, var(--lc), transparent) right bottom / 2px 100% no-repeat; }',
     '@keyframes sr-snap { from { transform: scale(1.25); opacity: 0; } to { transform: none; opacity: 1; } }'
   ].join('\n');
   document.head.appendChild(style);
