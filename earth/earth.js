@@ -106,6 +106,26 @@
       b.fillStyle = grad;
       b.fillRect(s[0] - r, s[1] - r, r * 2, r * 2);
     });
+
+    // Bright part of each group, drawn once per size: a frame only changes its brightness,
+    // redrawing all fibres every frame made the band drop the page to about half the frame rate
+    var gain = st.small ? 0.7 : 1;
+    st.sprites = st.fills.map(function (path, i) {
+      if (st.small && i % 2) return null;
+      var sp = document.createElement('canvas');
+      sp.width = canvas.width;
+      sp.height = canvas.height;
+      var x = sp.getContext('2d');
+      x.setTransform(st.k, 0, 0, st.k, st.ox, st.oy);
+      x.globalCompositeOperation = 'lighter';
+      x.lineJoin = 'round';
+      x.strokeStyle = 'rgba(' + LINE + ',' + (0.13 * gain) + ')';
+      x.lineWidth = 6 * ws;
+      x.stroke(st.lines[i]);
+      x.fillStyle = 'rgba(' + LINE + ',' + (0.95 * gain) + ')';
+      x.fill(path);
+      return sp;
+    });
   }
 
   function draw(t) {
@@ -114,20 +134,17 @@
     c.globalCompositeOperation = 'source-over';
     c.clearRect(0, 0, canvas.width, canvas.height);
     c.drawImage(st.base, 0, 0);
-    c.setTransform(st.k, 0, 0, st.k, st.ox, st.oy);
     c.globalCompositeOperation = 'lighter';
-    c.lineJoin = 'round';
     var gain = st.small ? 0.7 : 1;
     for (var i = 0; i < flicker.length; i++) {
-      if (st.small && i % 2) continue;
+      if (!st.sprites[i]) continue;
       var v = fire(flicker[i], t);
       if (v < 0.01) continue;
-      c.strokeStyle = 'rgba(' + LINE + ',' + (v * 0.13 * gain).toFixed(3) + ')';
-      c.lineWidth = 6 * st.ws;
-      c.stroke(st.lines[i]);
-      c.fillStyle = 'rgba(' + LINE + ',' + (v * 0.95 * gain).toFixed(3) + ')';
-      c.fill(st.fills[i]);
+      c.globalAlpha = v;
+      c.drawImage(st.sprites[i], 0, 0);
     }
+    c.globalAlpha = 1;
+    c.setTransform(st.k, 0, 0, st.k, st.ox, st.oy);
     glowGroups.forEach(function (g, j) {
       c.fillStyle = 'rgba(' + SOMA + ',' + ((0.8 + 0.2 * Math.sin(t * g.f + g.p)) * gain).toFixed(3) + ')';
       c.fill(st.somas[j]);
