@@ -437,8 +437,9 @@
       var dt = last ? Math.min(0.034, (t - last) / 1000) : 0.016;
       last = t;
       var a = t * 0.0019, gx, gy;
-      // dot: closes 28% of the gap per 60 fps frame (frame-rate independent)
-      var k = 1 - Math.pow(0.72, dt * 60);
+      // dot: closes 60% of the gap per 60 fps frame (frame-rate independent);
+      // 28% until 2026-11-26 made the dot lag behind the mouse and clicks hard to aim (owner)
+      var k = 1 - Math.pow(0.40, dt * 60);
       cx += (px - cx) * k;
       cy += (py - cy) * k;
       dot.style.transform = 'translate3d(' + cx.toFixed(1) + 'px,' + cy.toFixed(1) + 'px,0)';
