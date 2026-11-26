@@ -141,6 +141,20 @@
       text-decoration: none;
     }
     .app-card a:hover { text-decoration: underline; }
+    /* "Open app page" as a button; lift, sheen and shading come from /site.js (.btn-primary).
+       background-color only, so the shading gradient from site.js stays */
+    .app-card a.app-open {
+      display: table;
+      margin: 0.6rem auto 0.7rem;
+      padding: 0.55rem 1.1rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      background-color: rgba(107,159,255,0.16);
+      color: #d4e3ff;
+      font-weight: 700;
+      font-size: 0.8rem;
+    }
+    .app-card a.app-open:hover { background-color: rgba(107,159,255,0.26); text-decoration: none; }
     /* Auto margins keep the content centered with the footer at the bottom,
        and collapse to normal flow when the content is taller than the screen */
     footer {
@@ -206,49 +220,49 @@
     <div class="app-card">
       <a class="app-icon-link" href="/de/directdrop/"><img class="app-icon" src="/icons/directdrop.png" alt="DirectDrop-Symbol"></a>
       <div class="app-name">DirectDrop</div>
-      <a href="/de/directdrop/" style="font-weight:600;">App-Seite öffnen</a><br>
+      <a class="btn-primary app-open" href="/de/directdrop/">App-Seite öffnen</a>
       <a href="/de/directdrop/privacy.html">Datenschutzerklärung</a>
     </div>
     <div class="app-card">
       <a class="app-icon-link" href="/de/truebubble/"><img class="app-icon" src="/icons/truebubble.jpg" alt="TrueBubble-Symbol"></a>
       <div class="app-name">TrueBubble</div>
-      <a href="/de/truebubble/" style="font-weight:600;">App-Seite öffnen</a><br>
+      <a class="btn-primary app-open" href="/de/truebubble/">App-Seite öffnen</a>
       <a href="/de/truebubble/privacy.html">Datenschutzerklärung</a>
     </div>
     <div class="app-card">
       <a class="app-icon-link" href="/de/fogrider/"><img class="app-icon" src="/icons/fogrider.png" alt="FogRider-Symbol"></a>
       <div class="app-name">FogRider</div>
-      <a href="/de/fogrider/" style="font-weight:600;">App-Seite öffnen</a><br>
+      <a class="btn-primary app-open" href="/de/fogrider/">App-Seite öffnen</a>
       <a href="/de/fogrider/privacy.html">Datenschutzerklärung</a>
     </div>
     <div class="app-card">
       <a class="app-icon-link" href="/de/eggspeed/"><img class="app-icon" src="/icons/eggspeed.png" alt="EggSPEED-Symbol"></a>
       <div class="app-name">EggSPEED</div>
-      <a href="/de/eggspeed/" style="font-weight:600;">App-Seite öffnen</a><br>
+      <a class="btn-primary app-open" href="/de/eggspeed/">App-Seite öffnen</a>
       <a href="/de/eggspeed/privacy.html">Datenschutzerklärung</a>
     </div>
     <div class="app-card">
       <a class="app-icon-link" href="/de/sw102/"><img class="app-icon" src="/sw102/img/logo.jpg" alt="SW102-Firmware-Symbol"></a>
       <div class="app-name">SW102-Firmware</div>
-      <a href="/de/sw102/" style="font-weight:600;">App-Seite öffnen</a><br>
+      <a class="btn-primary app-open" href="/de/sw102/">App-Seite öffnen</a>
       <a href="/de/sw102/privacy.html">Datenschutzerklärung</a>
     </div>
     <div class="app-card">
       <a class="app-icon-link" href="/de/eggspeed-bt/"><img class="app-icon" src="/eggspeed-bt/img/logo.png" alt="EggSPEED-Bluetooth-Modul-Symbol"></a>
       <div class="app-name">EggSPEED Bluetooth</div>
-      <a href="/de/eggspeed-bt/" style="font-weight:600;">Seite öffnen</a><br>
+      <a class="btn-primary app-open" href="/de/eggspeed-bt/">Seite öffnen</a>
       <a href="/de/eggspeed-bt/privacy.html">Datenschutzerklärung</a>
     </div>
     <div class="app-card">
       <a class="app-icon-link" href="/de/labdroid/"><img class="app-icon" src="/icons/labdroid.png" alt="LabDroid-Symbol"></a>
       <div class="app-name">LabDroid</div>
-      <a href="/de/labdroid/" style="font-weight:600;">App-Seite öffnen</a><br>
+      <a class="btn-primary app-open" href="/de/labdroid/">App-Seite öffnen</a>
       <a href="/de/labdroid/privacy.html">Datenschutzerklärung</a>
     </div>
     <div class="app-card">
       <a class="app-icon-link" href="/de/onlymusic/"><img class="app-icon" src="/icons/onlymusic.png" alt="OnlyMusic-Symbol"></a>
       <div class="app-name">OnlyMusic</div>
-      <a href="/de/onlymusic/" style="font-weight:600;">App-Seite öffnen</a><br>
+      <a class="btn-primary app-open" href="/de/onlymusic/">App-Seite öffnen</a>
       <a href="/de/onlymusic/privacy.html">Datenschutzerklärung</a>
     </div>
   </div>

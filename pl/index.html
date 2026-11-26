@@ -141,6 +141,20 @@
       text-decoration: none;
     }
     .app-card a:hover { text-decoration: underline; }
+    /* "Open app page" as a button; lift, sheen and shading come from /site.js (.btn-primary).
+       background-color only, so the shading gradient from site.js stays */
+    .app-card a.app-open {
+      display: table;
+      margin: 0.6rem auto 0.7rem;
+      padding: 0.55rem 1.1rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      background-color: rgba(107,159,255,0.16);
+      color: #d4e3ff;
+      font-weight: 700;
+      font-size: 0.8rem;
+    }
+    .app-card a.app-open:hover { background-color: rgba(107,159,255,0.26); text-decoration: none; }
     /* Auto margins keep the content centered with the footer at the bottom,
        and collapse to normal flow when the content is taller than the screen */
     footer {
@@ -206,49 +220,49 @@
     <div class="app-card">
       <a class="app-icon-link" href="/pl/directdrop/"><img class="app-icon" src="/icons/directdrop.png" alt="Ikona DirectDrop"></a>
       <div class="app-name">DirectDrop</div>
-      <a href="/pl/directdrop/" style="font-weight:600;">Otwórz stronę aplikacji</a><br>
+      <a class="btn-primary app-open" href="/pl/directdrop/">Otwórz stronę aplikacji</a>
       <a href="/pl/directdrop/privacy.html">Polityka prywatności</a>
     </div>
     <div class="app-card">
       <a class="app-icon-link" href="/pl/truebubble/"><img class="app-icon" src="/icons/truebubble.jpg" alt="Ikona TrueBubble"></a>
       <div class="app-name">TrueBubble</div>
-      <a href="/pl/truebubble/" style="font-weight:600;">Otwórz stronę aplikacji</a><br>
+      <a class="btn-primary app-open" href="/pl/truebubble/">Otwórz stronę aplikacji</a>
       <a href="/pl/truebubble/privacy.html">Polityka prywatności</a>
     </div>
     <div class="app-card">
       <a class="app-icon-link" href="/pl/fogrider/"><img class="app-icon" src="/icons/fogrider.png" alt="Ikona FogRider"></a>
       <div class="app-name">FogRider</div>
-      <a href="/pl/fogrider/" style="font-weight:600;">Otwórz stronę aplikacji</a><br>
+      <a class="btn-primary app-open" href="/pl/fogrider/">Otwórz stronę aplikacji</a>
       <a href="/pl/fogrider/privacy.html">Polityka prywatności</a>
     </div>
     <div class="app-card">
       <a class="app-icon-link" href="/pl/eggspeed/"><img class="app-icon" src="/icons/eggspeed.png" alt="Ikona EggSPEED"></a>
       <div class="app-name">EggSPEED</div>
-      <a href="/pl/eggspeed/" style="font-weight:600;">Otwórz stronę aplikacji</a><br>
+      <a class="btn-primary app-open" href="/pl/eggspeed/">Otwórz stronę aplikacji</a>
       <a href="/pl/eggspeed/privacy.html">Polityka prywatności</a>
     </div>
     <div class="app-card">
       <a class="app-icon-link" href="/pl/sw102/"><img class="app-icon" src="/sw102/img/logo.jpg" alt="Ikona firmware SW102"></a>
       <div class="app-name">Firmware SW102</div>
-      <a href="/pl/sw102/" style="font-weight:600;">Otwórz stronę aplikacji</a><br>
+      <a class="btn-primary app-open" href="/pl/sw102/">Otwórz stronę aplikacji</a>
       <a href="/pl/sw102/privacy.html">Polityka prywatności</a>
     </div>
     <div class="app-card">
       <a class="app-icon-link" href="/pl/eggspeed-bt/"><img class="app-icon" src="/eggspeed-bt/img/logo.png" alt="Ikona modułu Bluetooth EggSPEED"></a>
       <div class="app-name">EggSPEED Bluetooth</div>
-      <a href="/pl/eggspeed-bt/" style="font-weight:600;">Otwórz stronę</a><br>
+      <a class="btn-primary app-open" href="/pl/eggspeed-bt/">Otwórz stronę</a>
       <a href="/pl/eggspeed-bt/privacy.html">Polityka prywatności</a>
     </div>
     <div class="app-card">
       <a class="app-icon-link" href="/pl/labdroid/"><img class="app-icon" src="/icons/labdroid.png" alt="Ikona LabDroid"></a>
       <div class="app-name">LabDroid</div>
-      <a href="/pl/labdroid/" style="font-weight:600;">Otwórz stronę aplikacji</a><br>
+      <a class="btn-primary app-open" href="/pl/labdroid/">Otwórz stronę aplikacji</a>
       <a href="/pl/labdroid/privacy.html">Polityka prywatności</a>
     </div>
     <div class="app-card">
       <a class="app-icon-link" href="/pl/onlymusic/"><img class="app-icon" src="/icons/onlymusic.png" alt="Ikona OnlyMusic"></a>
       <div class="app-name">OnlyMusic</div>
-      <a href="/pl/onlymusic/" style="font-weight:600;">Otwórz stronę aplikacji</a><br>
+      <a class="btn-primary app-open" href="/pl/onlymusic/">Otwórz stronę aplikacji</a>
       <a href="/pl/onlymusic/privacy.html">Polityka prywatności</a>
     </div>
   </div>
