@@ -260,7 +260,7 @@
       <p class="lede">Custom firmware that replaces the stock SW102 firmware entirely - a redesigned cockpit, a full settings menu, and Bluetooth OTA updates, built from scratch for Bafang mid-drive controllers (BBS01/<wbr>BBS02/<wbr>BBSHD/<wbr>M400/<wbr>M420/<wbr>M620), with original Bafang firmware or the open source BBS-FW.</p>
       <div class="hero-ctas">
         <a class="btn-github" href="https://github.com/moskil2/SW102_BAFANG_CUSTOM_FIRMWARE" target="_blank" rel="noopener">View on GitHub &rarr;</a>
-        <span class="badge-warn">v0.2.4</span>
+        <span class="badge-warn">v0.3.1</span>
       </div>
       <div class="hero-foot mono">
         <span>nRF51822</span>
@@ -364,7 +364,7 @@
         <li>Trip distance with one decimal, counted exactly at any speed, plus odometer and an estimated range based on your own riding history</li>
         <li>Average and current energy consumption (Wh/km or Wh/mile)</li>
         <li>Data screen: trip distance, average and top speed, total and moving time, maximum current and power, consumption, energy used - remembered after power-off and cleared only by Trip reset</li>
-        <li>On the data screen, an assist level change shows the new level big in the middle, with "PAS" underneath, for 3 seconds</li>
+        <li>An assist level change shows the new level big in the middle, with "PAS" underneath, for 3 seconds - always on the data screen, and on the other two layouts when "PAS Popup" is on</li>
         <li>STREET/RACE (original Bafang firmware): a second, independent assist-level table kept on the display. Hold UP + DOWN for 3 seconds to switch; the active profile (S or R) shows in the top bar.</li>
         <li>With BBS-FW, hold UP + DOWN for 3 seconds to switch Standard/Sport - it works like the SPORT button</li>
         <li>Trip, odometer and statistics are saved every minute while riding and 30 seconds after stopping - switching the battery off does not lose your ride</li>
@@ -391,6 +391,8 @@
         <li>Assist Level Programming - program the controller from the display (see below)</li>
         <li>Statistics - ODO, average speed and efficiency, energy used, run time, maximum power and current over the display's lifetime</li>
         <li>Trip History - the last 10 trips with their riding time; open a trip to see its values or delete it</li>
+        <li>Active Errors - the controller's current error code with a short description</li>
+        <li>Logbook - why the display switched itself off (automatic power off or a firmware fault); entries can be cleared</li>
         <li>Screen test, and info: firmware version, hardware and the selected controller</li>
       </ul>
     </div>
@@ -419,8 +421,8 @@
         </div>
         <div class="feature-card">
           <span class="feature-glyph mono">OTA</span>
-          <div class="title">Bluetooth updates</div>
-          <p>Update the firmware over Bluetooth after the first flash - no need to open the display again. <a href="https://www.youtube.com/watch?v=GyanRPCOuG8" target="_blank" rel="noopener">Watch how it works</a>.</p>
+          <div class="title">Bluetooth</div>
+          <p>Update the firmware over Bluetooth after the first flash - no need to open the display again. <a href="https://www.youtube.com/watch?v=GyanRPCOuG8" target="_blank" rel="noopener">Watch how it works</a>. The same Bluetooth link connects the display to the EggSPEED Android app: live data, assist level, light, Normal/Sport and controller programming from the phone. The EggSPEED version with this connection is not on Google Play yet.</p>
         </div>
         <div class="feature-card">
           <span class="feature-glyph mono">%</span>
@@ -462,12 +464,12 @@
       <div>
         <span class="privacy-badge">&check;</span>
         <h2>Nothing leaves the display.</h2>
-        <p>This is firmware, not an app - it has no internet connection of any kind. It talks to the motor controller over a wired UART cable, and to a phone over Bluetooth only for firmware updates (DFU) - nothing is ever sent anywhere online.</p>
+        <p>This is firmware, not an app - it has no internet connection of any kind. It talks to the motor controller over a wired UART cable, and to a phone over Bluetooth - for firmware updates (DFU) and the optional EggSPEED app - nothing is ever sent anywhere online.</p>
       </div>
       <div class="privacy-points">
         <div><span class="check">&check;</span><span class="label">No internet connectivity, ever</span></div>
         <div><span class="check">&check;</span><span class="label">No account, no analytics, no tracking</span></div>
-        <div><span class="check">&check;</span><span class="label">Bluetooth used only for firmware updates</span></div>
+        <div><span class="check">&check;</span><span class="label">Bluetooth only for updates and the EggSPEED app</span></div>
         <div><span class="check">&check;</span><span class="label">Riding data stays on the display itself</span></div>
       </div>
     </div>

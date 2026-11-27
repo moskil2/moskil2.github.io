@@ -260,7 +260,7 @@
       <p class="lede">Własny firmware, który całkowicie zastępuje fabryczny firmware SW102 - nowy kokpit, pełne menu ustawień i aktualizacje przez Bluetooth (OTA), napisany od zera dla sterowników silników centralnych Bafang (BBS01/<wbr>BBS02/<wbr>BBSHD/<wbr>M400/<wbr>M420/<wbr>M620), z oryginalnym firmware Bafang albo otwartym BBS-FW.</p>
       <div class="hero-ctas">
         <a class="btn-github" href="https://github.com/moskil2/SW102_BAFANG_CUSTOM_FIRMWARE" target="_blank" rel="noopener">Zobacz na GitHubie &rarr;</a>
-        <span class="badge-warn">v0.2.4</span>
+        <span class="badge-warn">v0.3.1</span>
       </div>
       <div class="hero-foot mono">
         <span>nRF51822</span>
@@ -364,7 +364,7 @@
         <li>Dystans trasy z jednym miejscem po przecinku, liczony dokładnie przy każdej prędkości, oraz licznik całkowity i szacowany zasięg na podstawie Twojej historii jazdy</li>
         <li>Średnie i bieżące zużycie energii (Wh/km albo Wh/milę)</li>
         <li>Ekran danych: dystans trasy, średnia i maksymalna prędkość, czas całkowity i czas jazdy, maksymalny prąd i moc, zużycie, zużyta energia - zapamiętywane po wyłączeniu i kasowane tylko przez reset trasy</li>
-        <li>Na ekranie danych zmiana poziomu wspomagania pokazuje nowy poziom dużą cyfrą na środku, z napisem "PAS" pod spodem, przez 3 sekundy</li>
+        <li>Zmiana poziomu wspomagania pokazuje nowy poziom dużą cyfrą na środku, z napisem "PAS" pod spodem, przez 3 sekundy - zawsze na ekranie danych, a na dwóch pozostałych układach, gdy włączone jest "PAS Popup"</li>
         <li>STREET/RACE (oryginalny firmware Bafang): druga, niezależna tabela poziomów wspomagania, przechowywana w wyświetlaczu. Przytrzymaj UP + DOWN przez 3 sekundy, żeby przełączyć; aktywny profil (S lub R) widać na górnym pasku.</li>
         <li>Z BBS-FW przytrzymaj UP + DOWN przez 3 sekundy, żeby przełączyć Standard/Sport - działa to jak przycisk SPORT</li>
         <li>Trip, przebieg i statystyki są zapisywane co minutę w czasie jazdy i 30 sekund po zatrzymaniu - wyłączenie baterii nie kasuje przejazdu</li>
@@ -391,6 +391,8 @@
         <li>Programowanie poziomów wspomagania - programowanie sterownika prosto z wyświetlacza (patrz niżej)</li>
         <li>Statystyki - przebieg, średnia prędkość i średnie zużycie, zużyta energia, czas pracy, maksymalna moc i prąd przez cały czas życia wyświetlacza</li>
         <li>Trip History - ostatnie 10 tripów z czasem jazdy; otwórz trip, żeby zobaczyć jego wartości albo go usunąć</li>
+        <li>Active Errors - aktualny kod błędu sterownika z krótkim opisem</li>
+        <li>Logbook - dlaczego wyświetlacz sam się wyłączył (automatyczne wyłączenie albo błąd firmware); wpisy można wyczyścić</li>
         <li>Test ekranu i informacje: wersja firmware, sprzęt i wybrany sterownik</li>
       </ul>
     </div>
@@ -419,8 +421,8 @@
         </div>
         <div class="feature-card">
           <span class="feature-glyph mono">OTA</span>
-          <div class="title">Aktualizacje przez Bluetooth</div>
-          <p>Po pierwszym wgraniu aktualizujesz firmware przez Bluetooth - nie trzeba ponownie otwierać wyświetlacza. <a href="https://www.youtube.com/watch?v=GyanRPCOuG8" target="_blank" rel="noopener">Zobacz, jak to działa</a>.</p>
+          <div class="title">Bluetooth</div>
+          <p>Po pierwszym wgraniu aktualizujesz firmware przez Bluetooth - nie trzeba ponownie otwierać wyświetlacza. <a href="https://www.youtube.com/watch?v=GyanRPCOuG8" target="_blank" rel="noopener">Zobacz, jak to działa</a>. To samo połączenie Bluetooth łączy wyświetlacz z aplikacją EggSPEED na Androida: dane na żywo, poziom wspomagania, światło, Normal/Sport i programowanie sterownika z telefonu. Wersji EggSPEED z tym połączeniem nie ma jeszcze w Google Play.</p>
         </div>
         <div class="feature-card">
           <span class="feature-glyph mono">%</span>
@@ -462,12 +464,12 @@
       <div>
         <span class="privacy-badge">&check;</span>
         <h2>Nic nie opuszcza wyświetlacza.</h2>
-        <p>To firmware, nie aplikacja - nie ma żadnego połączenia z internetem. Rozmawia ze sterownikiem silnika przez przewód UART, a z telefonem przez Bluetooth tylko przy aktualizacji firmware (DFU) - nic nigdy nie jest wysyłane do sieci.</p>
+        <p>To firmware, nie aplikacja - nie ma żadnego połączenia z internetem. Rozmawia ze sterownikiem silnika przez przewód UART, a z telefonem przez Bluetooth - przy aktualizacji firmware (DFU) i z opcjonalną aplikacją EggSPEED - nic nigdy nie jest wysyłane do sieci.</p>
       </div>
       <div class="privacy-points">
         <div><span class="check">&check;</span><span class="label">Nigdy połączenia z internetem</span></div>
         <div><span class="check">&check;</span><span class="label">Bez konta, bez analityki, bez śledzenia</span></div>
-        <div><span class="check">&check;</span><span class="label">Bluetooth tylko do aktualizacji firmware</span></div>
+        <div><span class="check">&check;</span><span class="label">Bluetooth tylko do aktualizacji i aplikacji EggSPEED</span></div>
         <div><span class="check">&check;</span><span class="label">Dane z jazdy zostają w wyświetlaczu</span></div>
       </div>
     </div>

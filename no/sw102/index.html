@@ -260,7 +260,7 @@
       <p class="lede">Egen fastvare som erstatter den originale SW102-fastvaren fullstendig - en ny cockpit, en full innstillingsmeny og Bluetooth OTA-oppdateringer, bygd fra bunnen av for Bafang-kontrollere for midtmotor (BBS01/<wbr>BBS02/<wbr>BBSHD/<wbr>M400/<wbr>M420/<wbr>M620), med original Bafang-fastvare eller BBS-FW med åpen kildekode.</p>
       <div class="hero-ctas">
         <a class="btn-github" href="https://github.com/moskil2/SW102_BAFANG_CUSTOM_FIRMWARE" target="_blank" rel="noopener">Se på GitHub &rarr;</a>
-        <span class="badge-warn">v0.2.4</span>
+        <span class="badge-warn">v0.3.1</span>
       </div>
       <div class="hero-foot mono">
         <span>nRF51822</span>
@@ -364,7 +364,7 @@
         <li>Turdistanse med én desimal, telt nøyaktig ved alle farter, pluss kilometerteller og en beregnet rekkevidde basert på din egen kjørehistorikk</li>
         <li>Gjennomsnittlig og nåværende energiforbruk (Wh/km eller Wh/mile)</li>
         <li>Dataskjerm: turdistanse, snitt- og toppfart, total tid og kjøretid, maks strøm og effekt, forbruk, brukt energi - huskes etter avslåing og slettes bare ved Trip-nullstilling</li>
-        <li>På dataskjermen viser et bytte av assistnivå det nye nivået stort midt på skjermen, med "PAS" under, i 3 sekunder</li>
+        <li>Et bytte av assistnivå viser det nye nivået stort midt på skjermen, med "PAS" under, i 3 sekunder - alltid på dataskjermen, og på de to andre oppsettene når "PAS Popup" er slått på</li>
         <li>STREET/RACE (original Bafang-fastvare): en andre, uavhengig tabell med assistnivåer, lagret på displayet. Hold UP + DOWN i 3 sekunder for å bytte; den aktive profilen (S eller R) vises i topplinjen.</li>
         <li>Med BBS-FW holder du UP + DOWN i 3 sekunder for å bytte mellom Standard og Sport - det fungerer som SPORT-knappen</li>
         <li>Tur, kilometerteller og statistikk lagres hvert minutt under kjøring og 30 sekunder etter at du stopper - å slå av batteriet gjør ikke at turen går tapt</li>
@@ -391,6 +391,8 @@
         <li>Programmering av assistnivåer - programmer kontrolleren rett fra displayet (se nedenfor)</li>
         <li>Statistikk - kilometerteller, snittfart og snittforbruk, brukt energi, driftstid, maksimal effekt og strøm over hele displayets levetid</li>
         <li>Trip History - de 10 siste turene med kjøretid; åpne en tur for å se verdiene eller slette den</li>
+        <li>Active Errors - kontrollerens gjeldende feilkode med en kort beskrivelse</li>
+        <li>Logbook - hvorfor displayet slo seg av selv (automatisk avslåing eller fastvarefeil); oppføringene kan slettes</li>
         <li>Skjermtest og info: fastvareversjon, maskinvare og valgt kontroller</li>
       </ul>
     </div>
@@ -419,8 +421,8 @@
         </div>
         <div class="feature-card">
           <span class="feature-glyph mono">OTA</span>
-          <div class="title">Bluetooth-oppdateringer</div>
-          <p>Oppdater fastvaren over Bluetooth etter første flashing - du trenger ikke åpne displayet igjen. <a href="https://www.youtube.com/watch?v=GyanRPCOuG8" target="_blank" rel="noopener">Se hvordan det fungerer</a>.</p>
+          <div class="title">Bluetooth</div>
+          <p>Oppdater fastvaren over Bluetooth etter første flashing - du trenger ikke åpne displayet igjen. <a href="https://www.youtube.com/watch?v=GyanRPCOuG8" target="_blank" rel="noopener">Se hvordan det fungerer</a>. Den samme Bluetooth-forbindelsen kobler displayet til Android-appen EggSPEED: sanntidsdata, assistnivå, lys, Normal/Sport og programmering av kontrolleren fra telefonen. EggSPEED-versjonen med denne tilkoblingen er ikke på Google Play ennå.</p>
         </div>
         <div class="feature-card">
           <span class="feature-glyph mono">%</span>
@@ -462,12 +464,12 @@
       <div>
         <span class="privacy-badge">&check;</span>
         <h2>Ingenting forlater displayet.</h2>
-        <p>Dette er fastvare, ikke en app - den har ingen internettforbindelse av noe slag. Den snakker med motorkontrolleren via en UART-kabel, og med en telefon over Bluetooth bare for fastvareoppdateringer (DFU) - ingenting sendes noen gang på nett.</p>
+        <p>Dette er fastvare, ikke en app - den har ingen internettforbindelse av noe slag. Den snakker med motorkontrolleren via en UART-kabel, og med en telefon over Bluetooth - for fastvareoppdateringer (DFU) og den valgfrie EggSPEED-appen - ingenting sendes noen gang på nett.</p>
       </div>
       <div class="privacy-points">
         <div><span class="check">&check;</span><span class="label">Aldri internettforbindelse</span></div>
         <div><span class="check">&check;</span><span class="label">Ingen konto, ingen analyse, ingen sporing</span></div>
-        <div><span class="check">&check;</span><span class="label">Bluetooth brukes bare til fastvareoppdateringer</span></div>
+        <div><span class="check">&check;</span><span class="label">Bluetooth bare for oppdateringer og EggSPEED-appen</span></div>
         <div><span class="check">&check;</span><span class="label">Kjøredata blir værende på displayet</span></div>
       </div>
     </div>

@@ -260,7 +260,7 @@
       <p class="lede">Eigene Firmware, die die originale SW102-Firmware vollständig ersetzt - ein neu gestaltetes Cockpit, ein vollständiges Einstellungsmenü und Bluetooth-OTA-Updates, von Grund auf gebaut für Bafang-Mittelmotor-Controller (BBS01/<wbr>BBS02/<wbr>BBSHD/<wbr>M400/<wbr>M420/<wbr>M620), mit originaler Bafang-Firmware oder der Open-Source-Firmware BBS-FW.</p>
       <div class="hero-ctas">
         <a class="btn-github" href="https://github.com/moskil2/SW102_BAFANG_CUSTOM_FIRMWARE" target="_blank" rel="noopener">Auf GitHub ansehen &rarr;</a>
-        <span class="badge-warn">v0.2.4</span>
+        <span class="badge-warn">v0.3.1</span>
       </div>
       <div class="hero-foot mono">
         <span>nRF51822</span>
@@ -364,7 +364,7 @@
         <li>Fahrtstrecke mit einer Nachkommastelle, bei jeder Geschwindigkeit genau gezählt, dazu Kilometerzähler und eine geschätzte Reichweite aus deinen bisherigen Fahrten</li>
         <li>Durchschnittlicher und aktueller Energieverbrauch (Wh/km oder Wh/Meile)</li>
         <li>Datenbildschirm: Fahrtstrecke, Durchschnitts- und Höchstgeschwindigkeit, Gesamt- und Fahrzeit, maximaler Strom und maximale Leistung, Verbrauch, verbrauchte Energie - bleibt nach dem Ausschalten erhalten und wird nur durch Trip-Reset gelöscht</li>
-        <li>Auf dem Datenbildschirm zeigt ein Wechsel der Unterstützungsstufe die neue Stufe groß in der Mitte, darunter "PAS", für 3 Sekunden</li>
+        <li>Ein Wechsel der Unterstützungsstufe zeigt die neue Stufe groß in der Mitte, darunter "PAS", für 3 Sekunden - auf dem Datenbildschirm immer, auf den beiden anderen Layouts, wenn "PAS Popup" eingeschaltet ist</li>
         <li>STREET/RACE (originale Bafang-Firmware): eine zweite, unabhängige Tabelle der Unterstützungsstufen, auf dem Display gespeichert. UP + DOWN 3 Sekunden halten zum Umschalten; das aktive Profil (S oder R) steht in der oberen Leiste.</li>
         <li>Mit BBS-FW UP + DOWN 3 Sekunden halten, um zwischen Standard und Sport umzuschalten - das funktioniert wie die SPORT-Taste</li>
         <li>Trip, Kilometerstand und Statistiken werden während der Fahrt jede Minute und 30 Sekunden nach dem Anhalten gespeichert - wird der Akku ausgeschaltet, geht die Fahrt nicht verloren</li>
@@ -391,6 +391,8 @@
         <li>Programmierung der Unterstützungsstufen - den Controller direkt am Display programmieren (siehe unten)</li>
         <li>Statistiken - Kilometerstand, Durchschnittsgeschwindigkeit und Durchschnittsverbrauch, verbrauchte Energie, Laufzeit, maximale Leistung und maximaler Strom über die gesamte Lebensdauer des Displays</li>
         <li>Trip History - die letzten 10 Fahrten mit ihrer Fahrzeit; eine Fahrt öffnen, um ihre Werte zu sehen oder sie zu löschen</li>
+        <li>Active Errors - der aktuelle Fehlercode des Controllers mit einer kurzen Beschreibung</li>
+        <li>Logbook - warum sich das Display selbst ausgeschaltet hat (automatische Abschaltung oder Firmware-Fehler); die Einträge lassen sich löschen</li>
         <li>Bildschirmtest und Infos: Firmware-Version, Hardware und gewählter Controller</li>
       </ul>
     </div>
@@ -419,8 +421,8 @@
         </div>
         <div class="feature-card">
           <span class="feature-glyph mono">OTA</span>
-          <div class="title">Bluetooth-Updates</div>
-          <p>Nach dem ersten Flashen die Firmware über Bluetooth aktualisieren - das Display muss nicht mehr geöffnet werden. <a href="https://www.youtube.com/watch?v=GyanRPCOuG8" target="_blank" rel="noopener">So funktioniert's</a>.</p>
+          <div class="title">Bluetooth</div>
+          <p>Nach dem ersten Flashen die Firmware über Bluetooth aktualisieren - das Display muss nicht mehr geöffnet werden. <a href="https://www.youtube.com/watch?v=GyanRPCOuG8" target="_blank" rel="noopener">So funktioniert's</a>. Dieselbe Bluetooth-Verbindung verbindet das Display mit der Android-App EggSPEED: Live-Daten, Unterstützungsstufe, Licht, Normal/Sport und Programmierung des Controllers vom Smartphone. Die EggSPEED-Version mit dieser Verbindung ist noch nicht bei Google Play.</p>
         </div>
         <div class="feature-card">
           <span class="feature-glyph mono">%</span>
@@ -462,12 +464,12 @@
       <div>
         <span class="privacy-badge">&check;</span>
         <h2>Nichts verlässt das Display.</h2>
-        <p>Das ist Firmware, keine App - sie hat keinerlei Internetverbindung. Sie spricht mit dem Motor-Controller über ein UART-Kabel und mit einem Smartphone über Bluetooth nur für Firmware-Updates (DFU) - nichts wird je online gesendet.</p>
+        <p>Das ist Firmware, keine App - sie hat keinerlei Internetverbindung. Sie spricht mit dem Motor-Controller über ein UART-Kabel und mit einem Smartphone über Bluetooth - für Firmware-Updates (DFU) und die optionale EggSPEED-App - nichts wird je online gesendet.</p>
       </div>
       <div class="privacy-points">
         <div><span class="check">&check;</span><span class="label">Niemals Internetverbindung</span></div>
         <div><span class="check">&check;</span><span class="label">Kein Konto, keine Analyse, kein Tracking</span></div>
-        <div><span class="check">&check;</span><span class="label">Bluetooth nur für Firmware-Updates</span></div>
+        <div><span class="check">&check;</span><span class="label">Bluetooth nur für Updates und die EggSPEED-App</span></div>
         <div><span class="check">&check;</span><span class="label">Fahrdaten bleiben auf dem Display</span></div>
       </div>
     </div>
