@@ -94,6 +94,7 @@
     .hero {
       max-width: 1200px; margin: 0 auto; padding: 56px 32px 80px;
       display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 64px; align-items: center;
+      overflow-x: clip;
     }
     .hero-brand { display: flex; align-items: center; gap: 16px; margin-bottom: 28px; }
     .hero-brand img { width: 56px; height: 56px; border-radius: 16px; box-shadow: 0 8px 24px rgba(255,145,66,0.35); }
@@ -110,12 +111,10 @@
     }
     .hero-note a { color: #FF9142; font-weight: 600; }
     .hero-note a:hover { text-decoration: underline; }
-    .hero-shot { display: flex; justify-content: center; }
-    .hero-shot .bezel {
-      border-radius: 36px; padding: 10px; background: #1f2128;
-      box-shadow: 0 30px 80px rgba(0,0,0,0.55), inset 0 0 0 1px #2c2e36;
-    }
-    .hero-shot img { width: 280px; height: auto; display: block; border-radius: 28px; }
+    .hero-shot { display: flex; justify-content: center; min-width: 0; }
+    /* 3D phone (same render as OnlyMusic); 464 px keeps the screenshot itself 280 px wide like before,
+       also on phones: the transparent shadow may stick out of the column (clipped by .hero) */
+    .hero-shot img { width: 464px; max-width: none; height: auto; display: block; }
 
     /* how it works */
     .section-head { text-align: center; margin-bottom: 56px; }
@@ -330,9 +329,7 @@
       <p style="margin-top:16px; color:#6f6a5f; font-size:13.5px; max-width:520px;">Du kommst von der Speeed-App für Bafang? EggSPEED unterstützt dieselben BBS01/BBS02/BBSHD-Controller mit einer modernen, aktiv weiterentwickelten Oberfläche.</p>
     </div>
     <div class="hero-shot">
-      <div class="bezel">
-        <img src="/eggspeed/img/01_Cockpit.jpg" alt="EggSPEED Live-Cockpit mit Geschwindigkeit, Leistung und Reichweite" width="280" height="607">
-      </div>
+      <img src="/eggspeed/img/hero_3d.png" alt="EggSPEED Live-Cockpit mit Geschwindigkeit, Leistung und Reichweite" width="464" height="755">
     </div>
   </section>
 

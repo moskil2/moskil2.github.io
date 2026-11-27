@@ -130,6 +130,17 @@
     '.sr-cursor-dot.zoom::before { transform: scale(1); opacity: 1; }',
     '.sr-cursor-dot.zoom::after { transform: rotate(90deg) scale(1); opacity: 1; }',
     '.sr-cursor-dot.zoom i { left: 0; top: 0; width: 0; height: 0; box-shadow: 0 0 0 0 rgba(255,255,255,0); }',
+    /* App pages: the top link bar stays at the top of the window, on a full-width dark strip
+       with a scroll progress line in the drone's cyan (idea from triforceproject.com, own code) */
+    'html .topbar { position: sticky; top: 0; z-index: 40; padding-top: 7px; padding-bottom: 7px; }',
+    '.sr-topbar-bg { position: fixed; left: 0; right: 0; top: 0; height: 0; z-index: 39; pointer-events: none; display: none;',
+    '  background: linear-gradient(to bottom, rgba(10,11,16,.78), rgba(10,11,16,.58)); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);',
+    '  border-bottom: 1px solid rgba(255,255,255,.06); }',
+    '.sr-topbar-bg.on { display: block; }',
+    '.sr-topbar-bg .p { position: absolute; left: 0; bottom: -1px; height: 2px; width: calc(var(--p, 0) * 100%);',
+    '  background: linear-gradient(90deg, rgba(0,240,255,.35), rgb(0,240,255) 60%, #a8fbff); box-shadow: 0 0 14px rgba(0,240,255,.5); }',
+    '.sr-topbar-bg .p::after { content: ""; position: absolute; right: -4px; top: -2.5px; width: 7px; height: 7px; background: #e0feff; transform: rotate(45deg);',
+    '  box-shadow: 0 0 12px 3px rgba(0,240,255,.75); opacity: calc(var(--p, 0) * 40); }',
     /* No rubber-band bounce past the end of the page on mouse/touchpad computers: in
        Firefox the bounce made the fixed star sky vanish or flicker. Phones keep their
        own overscroll (pull to refresh). */
@@ -537,13 +548,41 @@
     });
   })();
 
+  // ---------- Top bar strip + scroll progress (app pages with .topbar) ----------
+  // One fixed strip behind the sticky .topbar (fixed, so it never widens the page);
+  // its line grows with how far the page is scrolled: 0 at the top, 100% at the bottom.
+  var srTopbar = (function () {
+    var bg = document.createElement('div');
+    bg.id = 'sr-topbar-bg';
+    bg.className = 'sr-topbar-bg';
+    bg.setAttribute('aria-hidden', 'true');
+    bg.innerHTML = '<i class="p"></i>';
+    document.body.appendChild(bg);
+    var queued = false;
+    function update() {
+      queued = false;
+      var bar = document.querySelector('.topbar');
+      bg.classList.toggle('on', !!bar);
+      if (!bar) return;
+      bg.style.height = bar.offsetHeight + 'px';
+      var max = document.documentElement.scrollHeight - window.innerHeight;
+      bg.style.setProperty('--p', max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)).toFixed(4) : 0);
+    }
+    function queue() { if (!queued) { queued = true; requestAnimationFrame(update); } }
+    window.addEventListener('scroll', queue, { passive: true });
+    window.addEventListener('resize', queue);
+    window.addEventListener('load', queue);
+    update();
+    return queue;
+  })();
+
   // ---------- Navigation without reloads ----------
   // Internal links fetch the next page and swap its head and body content in place.
   // The sky canvas, the music player and the speaker controls stay untouched.
   // Any failure falls back to a normal page load.
   if (!window.fetch || !window.DOMParser || !history.pushState || location.protocol === 'file:') return;
 
-  var KEEP_IDS = { sky: 1, 'bg-music': 1, 'sound-ctl': 1, 'sr-site-style': 1, 'sr-drone': 1, 'sr-drone-trail': 1, 'sr-lock': 1, 'sr-drone-light': 1, 'sr-cursor-tail': 1, 'sr-cursor-dot': 1 };
+  var KEEP_IDS = { sky: 1, 'bg-music': 1, 'sound-ctl': 1, 'sr-site-style': 1, 'sr-drone': 1, 'sr-drone-trail': 1, 'sr-lock': 1, 'sr-drone-light': 1, 'sr-cursor-tail': 1, 'sr-cursor-dot': 1, 'sr-topbar-bg': 1 };
   var loadedScripts = {};
   [].forEach.call(document.scripts, function (s) { if (s.src) loadedScripts[s.src] = 1; });
   var navToken = 0;
@@ -634,6 +673,7 @@
       swapHead(doc.head);
       swapBody(doc.body);
       scrollToTarget(url, savedScroll);
+      srTopbar();
     }).catch(function () {
       if (token === navToken) location.href = url.href;
     });

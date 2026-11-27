@@ -279,6 +279,26 @@
       .privacy-wrap, .final-cta-wrap, .footnote-wrap { padding-left: 16px; padding-right: 16px; }
       .footnote-pill { border-radius: 24px; padding: 16px 20px; }
     }
+    /* Lightbox - click a phone screenshot to zoom */
+    img.zoomable { cursor: zoom-in; }
+    .lightbox-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(10, 11, 15, 0.92);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      cursor: zoom-out;
+    }
+    .lightbox-overlay.open { display: flex; }
+    .lightbox-overlay img {
+      max-width: 100%;
+      max-height: 100%;
+      border-radius: 12px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    }
   </style>
   <script type="application/ld+json">
   {
@@ -577,6 +597,33 @@
     <a href="/fr/">spotrobotics.app</a> &middot; <a href="https://github.com/moskil2/DirectDrop" target="_blank" rel="noopener">GitHub</a> &middot; <a href="/fr/directdrop/privacy.html">Politique de confidentialité</a> &middot; <a href="/directdrop/terms.html">Conditions d'utilisation</a> &middot; &copy; 2026 Spot Robotics - Tomasz Pieczara
   </footer>
 
+  <div class="lightbox-overlay" id="lightbox">
+    <img id="lightbox-img" src="" alt="">
+  </div>
+  <script>
+    (function () {
+      var overlay = document.getElementById('lightbox');
+      var overlayImg = document.getElementById('lightbox-img');
+      document.querySelectorAll('.hero-shot img, .step-shot img').forEach(function (img) {
+        img.classList.add('zoomable');
+        img.addEventListener('click', function () {
+          overlayImg.src = img.src;
+          overlayImg.alt = img.alt;
+          overlay.classList.add('open');
+        });
+      });
+      overlay.addEventListener('click', function () {
+        overlay.classList.remove('open');
+        overlayImg.src = '';
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') {
+          overlay.classList.remove('open');
+          overlayImg.src = '';
+        }
+      });
+    })();
+  </script>
   <script src="/sky.js"></script>
   <script src="/site.js"></script>
 </body>
