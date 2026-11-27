@@ -144,7 +144,7 @@
     /* No rubber-band bounce past the end of the page on mouse/touchpad computers: in
        Firefox the bounce made the fixed star sky vanish or flicker. Phones keep their
        own overscroll (pull to refresh). */
-    '@media (hover: hover) and (pointer: fine) { html { overscroll-behavior: none; } }'
+    '@media (hover: hover) and (pointer: fine) { html, body { overscroll-behavior: none; } }'
   ].join('\n');
   document.head.appendChild(style);
 
