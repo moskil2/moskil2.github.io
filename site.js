@@ -123,6 +123,13 @@
     '.sr-cursor-dot.on { opacity: 1; }',
     '.sr-cursor-dot i { position: absolute; left: -4px; top: -4px; width: 8px; height: 8px; border-radius: 50%; background: #fff;',
     '  box-shadow: 0 0 10px 2px rgba(255,255,255,.85); transition: left .3s, top .3s, width .3s, height .3s, background-color .3s, box-shadow .3s; }',
+    /* Over a zoomable photo the dot turns into a glowing plus (the arrow's zoom-in cursor is hidden) */
+    '.sr-cursor-dot::before, .sr-cursor-dot::after { content: ""; position: absolute; left: -7px; top: -1px; width: 14px; height: 2px; border-radius: 1px; background: #fff;',
+    '  box-shadow: 0 0 8px 1px rgba(255,255,255,.85); transform: scale(0); opacity: 0; transition: transform .3s, opacity .3s; }',
+    '.sr-cursor-dot::after { transform: rotate(90deg) scale(0); }',
+    '.sr-cursor-dot.zoom::before { transform: scale(1); opacity: 1; }',
+    '.sr-cursor-dot.zoom::after { transform: rotate(90deg) scale(1); opacity: 1; }',
+    '.sr-cursor-dot.zoom i { left: 0; top: 0; width: 0; height: 0; box-shadow: 0 0 0 0 rgba(255,255,255,0); }',
     /* No rubber-band bounce past the end of the page on mouse/touchpad computers: in
        Firefox the bounce made the fixed star sky vanish or flicker. Phones keep their
        own overscroll (pull to refresh). */
@@ -481,12 +488,18 @@
       requestAnimationFrame(step);
     }
 
+    // Plus instead of the dot while over a photo that opens enlarged (img.zoomable)
+    function zoomOver(el) {
+      dot.classList.toggle('zoom', !!(el && el.closest && el.closest('img.zoomable')));
+    }
+
     window.addEventListener('pointermove', function (e) {
       if (e.pointerType && e.pointerType !== 'mouse') return;
       px = e.clientX;
       py = e.clientY;
       movedAt = performance.now();
       aim(e.target && e.target.closest ? e.target.closest(PRESS) : null);
+      zoomOver(e.target);
       if (!on) {
         // Flies in from up and to the left
         on = true;
@@ -504,6 +517,7 @@
       if (!on) return;
       var u = document.elementFromPoint(px, py);
       aim(u && u.closest ? u.closest(PRESS) : null);
+      zoomOver(u);
     }, { passive: true });
 
     window.addEventListener('pointerdown', function (e) {
@@ -515,7 +529,7 @@
       on = false;
       drone.classList.remove('on');
       light.classList.remove('on');
-      dot.classList.remove('on');
+      dot.classList.remove('on', 'zoom');
       document.documentElement.classList.remove('sr-cursor');
       pts.length = 0;
       tctx.clearRect(0, 0, tail.width, tail.height);

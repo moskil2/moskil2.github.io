@@ -541,7 +541,7 @@
     (function () {
       var overlay = document.getElementById('lightbox');
       var overlayImg = document.getElementById('lightbox-img');
-      document.querySelectorAll('img[src^="img/"]').forEach(function (img) {
+      document.querySelectorAll('img[src^="img/"], img[src*="/img/"]').forEach(function (img) {
         img.classList.add('zoomable');
         img.addEventListener('click', function () {
           overlayImg.src = img.src;
