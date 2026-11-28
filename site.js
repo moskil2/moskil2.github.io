@@ -132,7 +132,7 @@
     '.sr-cursor-dot.zoom i { left: 0; top: 0; width: 0; height: 0; box-shadow: 0 0 0 0 rgba(255,255,255,0); }',
     /* App pages: the top link bar stays at the top of the window, on a full-width dark strip
        with a scroll progress line in the drone's cyan (idea from triforceproject.com, own code) */
-    'html .topbar { position: sticky; top: 0; z-index: 40; padding-top: 7px; padding-bottom: 7px; }',
+    'html .topbar { position: sticky; top: 0; z-index: 40; padding-top: 6px; padding-bottom: 8px; }',
     '.sr-topbar-bg { position: fixed; left: 0; right: 0; top: 0; height: 0; z-index: 39; pointer-events: none; display: none;',
     '  background: linear-gradient(to bottom, rgba(10,11,16,.78), rgba(10,11,16,.58)); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);',
     '  border-bottom: 1px solid rgba(255,255,255,.06); }',
